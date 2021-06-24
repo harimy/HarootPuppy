@@ -1,0 +1,262 @@
+■■■ 하룻강아지 물리적 파일 리스트 ■■■
+
+○ 구역
+
+   - 시작 페이지 : harootpuppy.action
+
+   - 일반회원 회원가입 및 로그인 관련
+
+   - 일반회원 마이페이지
+
+   - 반려견 다이어리
+  
+   - 산책메이트
+
+   - 게시판
+
+   - 고객지원
+
+   - 관리자
+
+
+○ 일반회원 회원가입 및 로그인 관련 페이지
+
+   - Main.jsp
+
+   - BeforeMenu.jsp			→ 로그인 전 메뉴
+
+   - AfterMenu.jsp			→ 로그인 후 메뉴
+
+   - RegisterForm.jsp
+   
+   - RegisterFormController.java
+
+   - RegisterController.java 
+
+   - LoginForm.jsp
+
+   - LoginFormController.java
+   
+   - LoginController.java
+
+   - LogoutController.java
+
+   - FindId.jsp                         → 아이디 찾기 페이지
+
+   - FindIdController.java
+  
+   - FindPw.jsp                         → PW 재설정 페이지
+
+   - FindPwController.java
+
+   - ResetPw.jsp                        → 새 비밀번호 입력 페이지
+
+   - ResetPwController.java 
+
+
+○ 일반회원 마이페이지
+
+   [마이페이지 메인]
+
+   - UserMyPage.jsp                     → 마이페이지 메인(좌측영역)
+
+   - UserMyPageController.java
+
+   [마이페이지 내 게시글, 댓글 관리]
+
+   - UserBoardList.jsp			→ 마이페이지 > 내 게시글/댓글 관리 
+
+   - UserBoardListController.jsp 
+   
+   - UserReplyList.jsp
+
+   - UserReplyListController.jsp
+
+   [마이페이지 나의 차단 관리]
+
+   - UserBlockList.jsp
+
+   - UserBlockListController.java
+
+   [마이페이지 나의 신고 관리]
+
+   - UserSendReportList.jsp
+ 
+   - UserSendReportListController.java
+
+   - UserReceiveReportList.jsp
+
+   - UserReceiveReportListController.java
+
+   [내 정보 수정]
+
+   - UserUpdateForm.jsp                 → 회원정보 수정 페이지
+
+   - UserUpdateFormController.java
+ 
+   - UserUpdateController.java
+
+   [회원 탈퇴]
+
+   - UserOutForm.jsp
+
+   - UserOutFormController.java
+
+○ 반려견 다이어리
+
+   - 
+
+○ 산책 메이트
+   
+   - 
+
+○ 게시판
+
+   - BoardList.jsp
+
+   - BoardListController.java
+ 
+   - HotBoardList.jsp
+
+   - HotBoardListController.java
+
+   - BoardInsertForm.jsp
+
+   - BoardRead.jsp
+
+   - BoardReadController.jsp
+
+   - 댓글 페이지 추가 필요 !!! 
+
+   - BoardInsertFormController.java
+
+   - BoardInsertController.java
+
+   - BoardUpdateForm.jsp
+
+   - BoardUpdateFormController.java
+
+   - BoardUpdateController.java
+
+   - BoardDeleteController.java		→ 글 하나 선택해서 들어가면 있는 삭제버튼 누를 시! 
+
+
+○ 고객지원
+
+   - FaqList.jsp			→ 자주하는 질문 목록 페이지
+
+   - FaqListController.java
+
+   - FaqRead.jsp			→ 자주하는 질문 글 보기 페이지
+
+   - FaqReadController.java		
+
+   - AskList.jsp			→ 1:1 문의 목록 페이지
+
+   - AskListController.java
+
+   - AskRead.jsp			→ 1:1 문의 글 보기 페이지
+
+   - AskReadController.java
+
+   - AskInsertForm.jsp			→ 글 쓰기 페이지
+
+   - AskInserFormController.java	
+   
+   - AskInsertController.java
+
+   - AskUpdateForm.jsp			→ 글 수정 페이지
+
+   - AskUpdateFormController.java
+
+   - AskUpdateController.java
+
+   - AskDeleteController.java		→ 글 삭제 페이지
+
+
+○ 관리자
+
+   - AdminMain.jsp
+
+   - AdminMenu.jsp
+
+   [전체 회원 정보 조회]
+
+   - AllUserInfoList.jsp		→ 전체 회원 목록 페이지
+
+   - AllUserInfoListController.java
+
+   - UserInfoRead.jsp			→ 회원 세부 정보 조회 페이지
+   
+   - UserInfoReadController.java
+
+   - UserInfoUpdateForm.jsp		→ 회원 정보 수정 페이지
+
+   - UserInfoUpdateFormController.java
+
+   - UserInfoUpdateController.java
+
+   - UserDeleteController.java
+
+
+   [탈퇴 회원 정보 조회]
+
+   - OutUserInfoList.jsp
+
+   - OutUserInfoListController.java
+
+
+   [관리자 정보 조회]
+
+   - AdminInfoList.jsp
+
+   - AdminInfoListController.java
+
+   - AdminInsertForm.jsp
+
+   - AdminInsertFormController.java
+
+   - AdminInsertController.java
+
+   - AdminUpdateForm.jsp
+
+   - AdminUpdateFormController.java
+
+   - AdminUpdateController.java
+
+   - AdminDeleteController.java
+
+   [게시물 관리]
+
+   - DeletedBoardList.jsp
+
+   - DeletedBoardListController.java
+
+   - DeletedBoardRead.jsp
+
+   - DeletedBoardReadController.java
+
+   [공지 관리]
+
+   - NoticeList.jsp
+
+   - NoticeListController.java
+
+   - NoticeRead.jsp
+
+   - NoticeReadController.java
+
+   - NoticeInsertForm.jsp
+
+   - NoticeInsertFormController.java
+
+   - NoticeInsertController.java
+
+   - NoticeUpdateForm.jsp
+
+   - NoticeUpdateFormController.java
+
+   - NoticeUpdateController.java
+
+   - NoticeDeleteContoller.java
+
