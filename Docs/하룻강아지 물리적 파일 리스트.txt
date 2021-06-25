@@ -26,7 +26,7 @@
 
    - BeforeMenu.jsp			→ 로그인 전 메뉴
 
-   - AfterMenu.jsp			→ 로그인 후 메뉴
+   - AfterMenu.jsp		      	→ 로그인 후 메뉴
 
    - RegisterForm.jsp
    
@@ -42,11 +42,11 @@
 
    - LogoutController.java
 
-   - FindId.jsp                         → 아이디 찾기 페이지
+   - FindId.jsp                            → 아이디 찾기 페이지
 
    - FindIdController.java
   
-   - FindPw.jsp                         → PW 재설정 페이지
+   - FindPw.jsp                          → PW 재설정 페이지
 
    - FindPwController.java
 
@@ -66,7 +66,7 @@
 
    [마이페이지 내 게시글, 댓글 관리]
 
-   - UserBoardList.jsp			→ 마이페이지 > 내 게시글/댓글 관리 
+   - UserBoardList.jsp			     → 마이페이지 > 내 게시글/댓글 관리 
 
    - UserBoardListController.jsp 
    
@@ -125,24 +125,146 @@
    - DiaryInfoController.java
 
    [기본관리 - 상태]
-   - DiaryState.jsp
-   - DiaryStateController.java
-   - Diary.jsp
-   - DiaryController.java
-   - Diary.jsp
-   - DiaryController.java
-   - Diary.jsp
-   - DiaryController.java
-   - Diary.jsp
-   - DiaryController.java
-   - Diary.jsp
-   - DiaryController.java
-   - Diary.jsp
-   - DiaryController.java
-   - Diary.jsp
-   - DiaryController.java
-   - Diary.jsp
-   - DiaryController.java
+   - DiaryStateInsertForm.jsp
+   - DiaryStateInsertFormController.java
+   - DiaryStateWeightInsertForm.jsp
+   - DiaryStateWeightInsertFormController.java
+   - DiaryStateMoodInsertForm.jsp
+   - DiaryStateMoodInsertFormController.java
+
+   - DiaryStateUpdateForm.jsp
+   - DiaryStateUpdateFormController.java
+   - DiaryStateWeightUpdateForm.jsp
+   - DiaryStateWeightUpdateFormController.java
+   - DiaryStateMoodUpdateForm.jsp
+   - DiaryStateMoodUpdateFormController.java
+
+
+   [기본관리 - 식사]
+   - DiaryMealInsertForm.jsp
+   - DiaryMealInsertFormController.java
+
+   - DiaryMealUpdateForm.jsp
+   - DiaryMealUpdateFormController.java
+
+
+   [기본관리 - 간식]
+   - DiarySnackInsertForm.jsp
+   - DiarySnackInsertFormController.java
+
+   - DiarySnackUpdateForm.jsp
+   - DiarySnackUpdateFormController.java
+
+
+   [기본관리 - 산책]
+   - DiaryWalkInsertForm.jsp
+   - DiaryWalkInsertFormController.java
+
+   - DiaryWalkUpdateForm.jsp
+   - DiaryWalkUpdateFormController.java
+
+
+   [기본관리 - 청결]
+   - DiaryCleanInsertForm.jsp
+   - DiaryCleanInsertFormController.java
+   - DiaryCleanToothInsertForm.jsp
+   - DiaryCleanToothInsertFormController.java
+   - DiaryCleanEarInsertForm.jsp
+   - DiaryCleanEarInsertFormController.java
+   - DiaryCleanBathInsertForm.jsp
+   - DiaryCleanBathInsertFormController.java
+
+   - DiaryCleanUpdateForm.jsp
+   - DiaryCleanUpdateFormController.java
+   - DiaryCleanToothUpdateForm.jsp
+   - DiaryCleanToothUpdateFormController.java
+   - DiaryCleanEarUpdateForm.jsp
+   - DiaryCleanEarUpdateFormController.java
+   - DiaryCleanBathUpdateForm.jsp
+   - DiaryCleanBathUpdateFormController.java
+
+
+   [기본관리 - 진료]
+   - DiaryClinicInsertForm.jsp
+   - DiaryClinicInsertFormController.java
+   - DiaryClinicCheckInsertForm.jsp
+   - DiaryClinicCheckInsertFormController.java
+   - DiaryClinicInjectionInsertForm.jsp
+   - DiaryClinicInjectionInsertFormController.java
+   - DiaryClinicIllnessInsertForm.jsp
+   - DiaryClinicIllnessInsertFormController.java
+   - DiaryClinicSurgeryInsertForm.jsp
+   - DiaryClinicSurgeryInsertFormController.java
+
+   - DiaryClinicUpdateForm.jsp
+   - DiaryClinicUpdateFormController.java
+   - DiaryClinicCheckUpdateForm.jsp
+   - DiaryClinicCheckUpdateFormController.java
+   - DiaryClinicInjectionUpdateForm.jsp
+   - DiaryClinicInjectionUpdateFormController.java
+   - DiaryClinicIllnessUpdateForm.jsp
+   - DiaryClinicIllnessUpdateFormController.java
+   - DiaryClinicSurgeryUpdateForm.jsp
+   - DiaryClinicSurgeryUpdateFormController.java
+
+
+   [기본관리 - 미용]
+   - DiaryBeautyInsertForm.jsp
+   - DiaryBeautyInsertFormController.java
+
+   - DiaryBeautyUpdateForm.jsp
+   - DiaryBeautyUpdateFormController.java
+
+
+   [기본관리 - 영양제]
+   - DiaryNutrientsInsertForm.jsp
+   - DiaryNutrientsInsertFormController.java
+
+   - DiaryNutrientsUpdateForm.jsp
+   - DiaryNutrientsUpdateFormController.java
+
+
+   [기본관리 - 훈련]
+   - DiaryTrainInsertForm.jsp
+   - DiaryTrainInsertFormController.java
+
+   - DiaryTrainUpdateForm.jsp
+   - DiaryTrainUpdateFormController.java
+
+
+   [기본관리 - 기타]
+   - DiaryEtcInsertForm.jsp
+   - DiaryEtcInsertFormController.java
+
+   - DiaryEtcUpdateForm.jsp
+   - DiaryEtcUpdateFormController.java
+
+
+   [특별관리 - 배변]
+   - DiaryToiletInsertForm.jsp
+   - DiaryToiletInsertFormController.java
+
+   - DiaryToiletUpdateForm.jsp
+   - DiaryToiletUpdateFormController.java
+
+
+   [특별관리 - 복약]
+   - DiaryMedicineInsertForm.jsp
+   - DiaryMedicineInsertFormController.java
+
+   - DiaryMedicineUpdateForm.jsp
+   - DiaryMedicineUpdateFormController.java
+
+
+   [특별관리 - 출산]
+   - DiaryBirthInsertForm.jsp
+   - DiaryBirthInsertFormController.java
+
+   - DiaryBirthUpdateForm.jsp
+   - DiaryBirthUpdateFormController.java
+
+
+
 
 
 ○ 산책 메이트
