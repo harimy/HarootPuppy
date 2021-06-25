@@ -1,4 +1,5 @@
 ■■■ 하룻강아지 물리적 파일 리스트 ■■■
+※ Ajax 추가해야됨
 
 ○ 구역
 
@@ -109,7 +110,40 @@
 
 ○ 반려견 다이어리
 
-   - 
+   [다이어리 메인]
+   - DiarySelectPet.jsp
+   - DiarySelectPetController.java
+   - DiaryaCalendarArea.jsp
+   - DiaryCalendarAreaController.java
+   - DiaryBasicMenu.jsp
+   - DiaryBasicMenuController.java
+   - DiarySpecialMenu.jsp
+   - DiarySpecialMenuController.java
+   - DiaryTimeLine.jsp
+   - DiaryTimeLineController.java
+   - DiaryInfo.jsp
+   - DiaryInfoController.java
+
+   [기본관리 - 상태]
+   - DiaryState.jsp
+   - DiaryStateController.java
+   - Diary.jsp
+   - DiaryController.java
+   - Diary.jsp
+   - DiaryController.java
+   - Diary.jsp
+   - DiaryController.java
+   - Diary.jsp
+   - DiaryController.java
+   - Diary.jsp
+   - DiaryController.java
+   - Diary.jsp
+   - DiaryController.java
+   - Diary.jsp
+   - DiaryController.java
+   - Diary.jsp
+   - DiaryController.java
+
 
 ○ 산책 메이트
    
@@ -314,6 +348,15 @@
    - ReportedOfflineProcessingController.java		→ 의견보기에서 신고확정/해제 하는 기능
 
      <고객지원>
+   - AdminAskList.jsp
+   - AdminAskListController.java
+   - AdminAskReadList.jsp
+   - AdminAskReadListController.java
+   /*
+   - AdminAjax.jsp
+   - AdminAjaxController.java
+   */
+
 
 
 
