@@ -42,6 +42,9 @@
 
    - LogoutController.java
 
+
+[ 아이디 찾기/비밀번호 재설정]
+
    - FindId.jsp                            → 아이디 찾기 페이지
 
    - FindIdController.java
@@ -53,6 +56,12 @@
    - ResetPw.jsp                        → 새 비밀번호 입력 페이지
 
    - ResetPwController.java 
+
+[ 알림 ]
+
+   - MyAlert.jsp
+   - MyAlertController.java
+   - 
 
 
 ○ 일반회원 마이페이지
@@ -108,168 +117,313 @@
 
    - UserOutFormController.java
 
+
+
+
 ○ 반려견 다이어리
 
-   [다이어리 메인]
-   - DiarySelectPet.jsp
+[ 다이어리 메인 ]
+
+   - DiarySelectPet.jsp : 반려견다이어리 작성할 강아지 선택
    - DiarySelectPetController.java
-   - DiaryaCalendarArea.jsp
+   - DiaryCalendarArea.jsp : 다이어리 상단의 달력 구성
    - DiaryCalendarAreaController.java
-   - DiaryBasicMenu.jsp
+   - DiaryBasicMenu.jsp : 다이어리 기본관리 메뉴 구성
    - DiaryBasicMenuController.java
-   - DiarySpecialMenu.jsp
+   - DiarySpecialMenu.jsp : 다이어리 특별관리 메뉴 구성
    - DiarySpecialMenuController.java
-   - DiaryTimeLine.jsp
+   - DiaryTimeLine.jsp : 다이어리 타임라인 div 구성
    - DiaryTimeLineController.java
-   - DiaryInfo.jsp
+   - DiaryInfo.jsp : 반려견 정보보기
    - DiaryInfoController.java
 
-   [기본관리 - 상태]
-   - DiaryStateInsertForm.jsp
-   - DiaryStateInsertFormController.java
-   - DiaryStateWeightInsertForm.jsp
+## 기본관리 ##
+
+[ 기본 관리 - 상태]
+
+   - DiaryState.jsp : 상태 메인
+   - DiaryStateController.java
+   - DiaryStateWeightInsertForm.jsp : 체중
    - DiaryStateWeightInsertFormController.java
-   - DiaryStateMoodInsertForm.jsp
-   - DiaryStateMoodInsertFormController.java
-
-   - DiaryStateUpdateForm.jsp
-   - DiaryStateUpdateFormController.java
-   - DiaryStateWeightUpdateForm.jsp
+   - DiaryStateWeightInsertController.java
+   - DiaryStateWeightUpdateForm.jsp : 체중 수정
    - DiaryStateWeightUpdateFormController.java
-   - DiaryStateMoodUpdateForm.jsp
+   - DiaryStateWeightUpdateController.java
+   - DiaryStateWeightDeleteController.java : 체중 삭제 컨트롤러
+   - DiaryStateMoodInsertForm.jsp : 기분
+   - DiaryStateMoodInsertFormController.java
+   - DiaryStateMoonInsertController.java
+   - DiaryStateMoodUpdateForm.jsp : 기분 수정 폼 페이지
    - DiaryStateMoodUpdateFormController.java
+   - DiaryStateMoodUpdateController.java
+   - DiaryStateMoodDeleteController.java : 기분 삭제 컨트롤러
 
+[ 기본관리 - 식사 ]
 
-   [기본관리 - 식사]
-   - DiaryMealInsertForm.jsp
+   - DiaryMealInsertForm.jsp : 식사 등록 페이지
    - DiaryMealInsertFormController.java
-
-   - DiaryMealUpdateForm.jsp
+   - DiaryMealInsertController.java
+   - DiaryMealUpdateForm.jsp : 식사 수정 페이지
    - DiaryMealUpdateFormController.java
+   - DiaryMealUpdateController.java
+   - DiaryMealDeleteController.java : 식사 삭제 컨트롤러
 
+[ 기본관리 - 간식 ]
 
-   [기본관리 - 간식]
-   - DiarySnackInsertForm.jsp
+   - DiarySnackInsertForm.jsp : 간식 등록 페이지
    - DiarySnackInsertFormController.java
-
-   - DiarySnackUpdateForm.jsp
+   - DiarySnackInsertController.java
+   - DiarySnackUpdateForm.jsp : 간식 수정 페이지
    - DiarySnackUpdateFormController.java
+   - DiarySnackUpdateController.java
+   - DiarySnackDeleteController.java : 간식 삭제 컨트롤러
 
+[ 기본관리 - 산책 ]
 
-   [기본관리 - 산책]
-   - DiaryWalkInsertForm.jsp
+   - DiaryWalkInsertForm.jsp : 산책
    - DiaryWalkInsertFormController.java
-
-   - DiaryWalkUpdateForm.jsp
+   - DiaryWalkInsertController.java
+   - DiaryWalkUpdateForm.jsp : 산책 수정 페이지
    - DiaryWalkUpdateFormController.java
+   - DiaryWalkUpdateController.java
+   - DiaryWalkDeleteController.java : 산책 삭제 컨트롤러
 
+[ 기본관리 - 청결 ]
 
-   [기본관리 - 청결]
-   - DiaryCleanInsertForm.jsp
-   - DiaryCleanInsertFormController.java
-   - DiaryCleanToothInsertForm.jsp
+   - DiaryClean.jsp : 청결 관리 메인(양치, 귀청소, 목욕으로 분기됨)
+   - DiaryCleanController.java
+
+[ 기본관리 - 청결 → 양치]
+
+   - DiaryCleanToothInsertForm.jsp : 청결-양치 등록 페이지
    - DiaryCleanToothInsertFormController.java
-   - DiaryCleanEarInsertForm.jsp
-   - DiaryCleanEarInsertFormController.java
-   - DiaryCleanBathInsertForm.jsp
-   - DiaryCleanBathInsertFormController.java
-
-   - DiaryCleanUpdateForm.jsp
-   - DiaryCleanUpdateFormController.java
-   - DiaryCleanToothUpdateForm.jsp
+   - DiaryCleanToothInsertController.java
+   - DiaryCleanToothUpdateForm.jsp : 양치 수정 페이지
    - DiaryCleanToothUpdateFormController.java
-   - DiaryCleanEarUpdateForm.jsp
+   - DiaryCleanToothUpdateController.java
+   - DiaryCleanToothDeleteController.java : 양치 삭제 컨트롤러
+
+[ 기본관리 - 청결 → 귀청소]
+
+   - DiaryCleanEarInsertForm.jsp : 청결-귀청소
+   - DiaryCleanEarInsertFormController.java
+   - DiaryCleanEarInsertController.java
+   - DiaryCleanEarUpdateForm.jsp : 귀청소 수정 페이지
    - DiaryCleanEarUpdateFormController.java
-   - DiaryCleanBathUpdateForm.jsp
+   - DiaryCleanEarUpdateController.java
+   - DiaryCleanEarDeleteController.java : 귀청소 삭제 컨트롤러
+
+[ 기본관리 - 청결 → 목욕]
+
+   - DiaryCleanBathInsertForm.jsp : 청결-목욕
+   - DiaryCleanBathInsertFormController.java
+   - DiaryCleanBathInsertController.java
+   - DiaryCleanBathUpdateForm.jsp : 양치 수정 페이지
    - DiaryCleanBathUpdateFormController.java
+   - DiaryCleanBathUpdateController.java
+   - DiaryCleanBathDeleteController.java : 양치 삭제 컨트롤러
 
+[ 기본관리 - 진료 ]
 
-   [기본관리 - 진료]
-   - DiaryClinicInsertForm.jsp
-   - DiaryClinicInsertFormController.java
-   - DiaryClinicCheckInsertForm.jsp
+   - DiaryClinic.jsp : 진료
+   - DiaryClinicController.java
+
+[ 기본관리 - 진료 → 건강검진]
+
+   - DiaryClinicCheckInsertForm.jsp : 건강검진 등록 페이지
    - DiaryClinicCheckInsertFormController.java
-   - DiaryClinicInjectionInsertForm.jsp
-   - DiaryClinicInjectionInsertFormController.java
-   - DiaryClinicIllnessInsertForm.jsp
-   - DiaryClinicIllnessInsertFormController.java
-   - DiaryClinicSurgeryInsertForm.jsp
-   - DiaryClinicSurgeryInsertFormController.java
-
-   - DiaryClinicUpdateForm.jsp
-   - DiaryClinicUpdateFormController.java
-   - DiaryClinicCheckUpdateForm.jsp
+   - DiaryClinicCheckInsertController.java
+   - DiaryClinicCheckUpdateForm.jsp :  건강검진 수정 페이지
    - DiaryClinicCheckUpdateFormController.java
-   - DiaryClinicInjectionUpdateForm.jsp
+   - DiaryClinicCheckUpdateController.java
+   - DiaryClinicCheckDeleteController.java : 건강검진 삭제 컨트롤러
+
+[ 기본관리 - 진료 → 접종]
+
+   - DiaryClinicInjectionInsertForm.jsp : 접종 등록 페이지
+   - DiaryClinicInjectionInsertFormController.java
+   - DiaryClinicInjectionInsertController.java
+   - DiaryClinicInjectionUpdateForm.jsp :  접종 수정 페이지
    - DiaryClinicInjectionUpdateFormController.java
-   - DiaryClinicIllnessUpdateForm.jsp
-   - DiaryClinicIllnessUpdateFormController.java
-   - DiaryClinicSurgeryUpdateForm.jsp
+   - DiaryClinicInjectionUpdateController.java
+   - DiaryClinicInjectionDeleteController.java : 접종 삭제 컨트롤러
+
+[ 기본관리 - 진료 → 질환]
+
+   - DiaryClinicDiseaseInsertForm.jsp : 질병 등록 페이지
+   - DiaryClinicDiseaseInsertFormController.java
+   - DiaryClinicDiseaseInsertController.java
+   - DiaryClinicDiseaseUpdateForm.jsp : 질병 수정 페이지
+   - DiaryClinicDiseaseUpdateFormController.java
+   - DiaryClinicDiseaseUpdateController.java
+   - DiaryClinicDiseaseDeleteController.java : 질병 삭제 컨트롤러
+
+[ 기본관리 - 진료 → 수술/입원]
+
+   - DiaryClinicSurgeryInsertForm.jsp : 수술/입원 등록 페이지
+   - DiaryClinicSurgeryInsertFormController.java
+   - DiaryClinicSurgeryInsertController.java
+   - DiaryClinicSurgeryUpdateForm.jsp : 수술/입원 수정 페이지
    - DiaryClinicSurgeryUpdateFormController.java
+   - DiaryClinicSurgeryUpdateController.java
+   - DiaryClinicSurgeryDeleteController.java : 수술/입원 삭제 컨트롤러
 
+[ 기본관리 - 미용 ]
 
-   [기본관리 - 미용]
-   - DiaryBeautyInsertForm.jsp
+   - DiaryBeautyInsertForm.jsp : 미용 등록 페이지
    - DiaryBeautyInsertFormController.java
-
-   - DiaryBeautyUpdateForm.jsp
+   - DiaryBeautyInsertController.java
+   - DiaryBeautyUpdateForm.jsp : 미용 수정 페이지
    - DiaryBeautyUpdateFormController.java
+   - DiaryBeautyUpdateController.java
+   - DiaryBeautyDeleteController.java : 미용 삭제 컨트롤러
 
+[ 기본관리 - 영양제 ]
 
-   [기본관리 - 영양제]
-   - DiaryNutrientsInsertForm.jsp
+   - DiaryNutrientsInsertForm.jsp : 영양제 등록 페이지
    - DiaryNutrientsInsertFormController.java
-
-   - DiaryNutrientsUpdateForm.jsp
+   - DiaryNutrientsInsertController.java
+   - DiaryNutrientsUpdateForm.jsp : 영양제 수정 페이지
    - DiaryNutrientsUpdateFormController.java
+   - DiaryNutrientsUpdateController.java
+   - DiaryNutrientsDeleteController.java : 영양제 삭제 컨트롤러
 
+[ 기본관리 - 훈련 ]
 
-   [기본관리 - 훈련]
-   - DiaryTrainInsertForm.jsp
+   - DiaryTrainInsertForm.jsp : 훈련 등록 페이지
    - DiaryTrainInsertFormController.java
-
-   - DiaryTrainUpdateForm.jsp
+   - DiaryTrainInsertController.java
+   - DiaryTrainUpdateForm.jsp : 훈련 수정 페이지
    - DiaryTrainUpdateFormController.java
+   - DiaryTrainUpdateController.java
+   - DiaryTrainDeleteController.java : 훈련 삭제 컨트롤러
 
+[ 기본관리 - 기타 ]
 
-   [기본관리 - 기타]
-   - DiaryEtcInsertForm.jsp
+   - DiaryEtcInsertForm.jsp : 기타 등록 페이지
    - DiaryEtcInsertFormController.java
-
-   - DiaryEtcUpdateForm.jsp
+   - DiaryEtcInsertController.java
+   - DiaryEtcUpdateForm.jsp : 기타 수정 페이지
    - DiaryEtcUpdateFormController.java
+   - DiaryEtcUpdateController.java
+   - DiaryEtcDeleteController.java : 기타 삭제 컨트롤러
 
+## 특별관리 ##
 
-   [특별관리 - 배변]
-   - DiaryToiletInsertForm.jsp
+[ 특별관리 - 배변 ]
+
+   - DiaryToiletInsertForm.jsp : 배변 등록 페이지
    - DiaryToiletInsertFormController.java
-
-   - DiaryToiletUpdateForm.jsp
+   - DiaryToiletInsertController.java
+   - DiaryToiletUpdateForm.jsp : 배변 수정 페이지
    - DiaryToiletUpdateFormController.java
+   - DiaryToiletUpdateController.java
+   - DiaryToiletDeleteController.java : 배변 삭제 컨트롤러
 
+[ 특별관리 - 복약 ]
 
-   [특별관리 - 복약]
-   - DiaryMedicineInsertForm.jsp
+   - DiaryMedicineInsertForm.jsp : 복약 등록 페이지
    - DiaryMedicineInsertFormController.java
-
-   - DiaryMedicineUpdateForm.jsp
+   - DiaryMedicineInsertController.java
+   - DiaryMedicineUpdateForm.jsp : 복약수정 페이지
    - DiaryMedicineUpdateFormController.java
+   - DiaryMedicineUpdateController.java
+   - DiaryMedicineDeleteController.java : 복약삭제 컨트롤러
 
+[ 특별관리 - 출산 ]
 
-   [특별관리 - 출산]
-   - DiaryBirthInsertForm.jsp
+   - DiaryBirthInsertForm.jsp : 출산 등록 페이지
    - DiaryBirthInsertFormController.java
-
-   - DiaryBirthUpdateForm.jsp
+   - DiaryBirthInsertController.java
+   - DiaryBirthUpdateForm.jsp : 출산수정 페이지
    - DiaryBirthUpdateFormController.java
-
-
+   - DiaryBirthUpdateController.java
+   - DiaryBirthDeleteController.java : 출산삭제 컨트롤러
 
 
 
 ○ 산책 메이트
+
+## 산책 메이트 ##
    
-   - 
+[대기방]
+
+   - WalkSelectPet.jsp
+   - WalkSelectPetContoller.java
+   - WalkMain.jsp : 산책방 리스트를 제외한 윗부분까지 띄움(검색 버튼)
+   - WalkMainController.java
+   - WalkLocate.jsp : 위치 재설정 버튼 누르면 뜨는 창
+   - WalkLocateController.java
+   - WalkRoomList.jsp → 팝업창 (레디고정옵션) JS window.open() / 부모창 자식창
+   - WalkRoomListController.java
+
+
+[방 만들기, 수정, 삭제]
+
+   - WalkRoomInsertForm.jsp → 방장용 입장페이지로 이동
+   - WalkRoomInsertFormController.java
+   - WalkRoomInsertController.java
+   - WalkRoomUpdateForm.jsp
+   - WalkRoomUpdateFormController.java
+   - WalkRoomUpdateController.java
+   - WalkRoomDeleteContoller.java
+
+
+[방 입장 - 공통]
+
+   - WalkRoomBlockInsertForm.jsp
+   - WalkRoomBlockInsertFormController.java
+   - WalkRoomBlockProcessingController.java
+   - WalkRoomReportInsertForm.jsp
+   - WalkRoomReportInsertFormController.java
+   - WalkRoomReportProcessingController.java
+
+
+[방 입장 - 방장용]
+
+   - WalkRoomMasterEnter.jsp
+   	 →  수정 버튼 누를 시 : WalkRoomUpdateFormController 로
+    	 →  삭제 버튼 누를 시 : WalkRoomDeleteController 로
+   - WalkRoomMasterEnterController.java
+   - WalkRoomMatchingProcessingController.java → 매칭확정 시 매칭확정 테이블에 Insert
+   - WalkRoomKickProcessingController.java
+
+
+[방 입장 - 게스트용]
+
+   - WalkRoomGuestEnter.jsp → 나가기 버튼 : WalkMain으로
+   - WalkRoomGuestEnterController.java
+   - WalkRoomGuestReadyController.java
+
+
+## 히스토리## → 참고자료 탭 처리 참조
+   
+[ 히스토리 - 신청완료 ] 
+
+   - WalkApplyDone.jsp
+   - WalkApplyDoneController.java
+
+
+[ 히스토리 - 산책예정 ]
+ 
+   - WalkScheduled.jsp
+   - WalkScheduledController.java
+
+
+[ 히스토리 - 산책완료 ] 
+
+   - WalkFinished.jsp
+   - WalkFinishedController.java
+   - WalkFinishedInfo.jsp
+   - WalkFinishedInfoController.java
+   - WalkReviewController.java : 리뷰 제출(리뷰테이블 인서트) 메소드와 신고(신고테이블 인서트) 메소드
+   - WalkOfflineReportInsertForm.jsp
+   - WalkOfflineRportInsertFromController.java
+   - WalkOfflineReportController.java
+
+
+
+
 
 ○ 게시판
 
