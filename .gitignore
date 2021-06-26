@@ -1,2 +1,18 @@
-## Mac ##
+### Mac ###
 *.DS_Store
+
+
+### Eclipse ###
+/build/
+/bin/
+target/
+.idea
+classes/
+/META-INF/
+MANIFEST.MF
+.settings/
+.metadata
+.classpath
+.project
+.class
+.loadpath
