@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+
+/* 반려견다이어리 공통항목 css */
+#profile_pt
+{
+	color: #6c757d;
+  	border-color: #6c757d;
+}
+
+#profile_pt:hover
+{
+  border-color: #6c757d;
+}
+
+#profile_pt:focus
+{
+	box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+}
+
+#View_area
+{
+	position:relative;
+	width: 100px; 
+	height: 100px; 
+	color: black; 
+	dispaly: inline; 
+	border: 0px solid black; 
+}
