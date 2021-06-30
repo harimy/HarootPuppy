@@ -3,7 +3,7 @@
    - 사용자 정의 컨트롤러 클래스
 ================================*/
 
-package com.test.mvc;
+package com.haroot.mvc;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

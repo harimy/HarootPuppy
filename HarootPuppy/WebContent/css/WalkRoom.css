@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+body {
+	padding: 10px;
+}
+
+div {
+	margin: 10px;
+	font-size: 18px;
+}
+
+#walkTitle {
+	font-size: 55px;
+	font-weight: bold;
+	font-family: 맑은 고딕;
+	color: #343;
+}
+
+#walkInfo {
+	font-size: 18px;
+	font-family: 맑은 고딕;
+	color: #343;
+}
+
+.table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.table th, .table td {
+	border: 1px solid gray;
+	border-left: 0px;
+	border-right: 0px;
+	padding: 3px;
+	line-height: 150%;
+}
+
+.table th {
+	font-weight: bold;
+	background-color: #EEE;
+}
+
+#mr {
+	display: inline-block;
+	float: none;
+}
+
+#profileArea {
+	background-color: #EEE;
+}
+
+img {
+	width: 200px;
+}
+
+.icons {
+	width: 20px;
+}
+
+
+
+.btn {
+	background-color: blue;
+	border: none;
+	color: white;
+	padding: 15px 30px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+.btn:hover {
+	color: orange;
+	background-color: #778877;
+}
