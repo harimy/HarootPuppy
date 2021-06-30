@@ -1,20 +1,15 @@
-@CHARSET "UTF-8";
-
-body
-{
-	width: 700px;
-}
+﻿@CHARSET "UTF-8";
 
 #bbsList 
 {
-	width:100%;
+	width:900px;
 	margin:30px auto;
 	text-align:left;
 }
 
 #bbsList_title 
 {
-	width:100%;   /*690px - (padding-left+border:3px+border:3px)*/
+	width:100%;   690px - (padding-left+border:3px+border:3px) 
 	padding-left:20px; 
 	height:40px;
 	/* border:3px solid #D6D4A6; */
@@ -87,7 +82,14 @@ body
 
 #bbsList_list #title dl 
 {
-	height:27px;
+	height:30px;
+	border-left:0px solid #5db062;
+	border-right:0px solid #5db062;
+}
+
+#bbsList_list #title tr 
+{
+	height:30px;
 	border-left:0px solid #5db062;
 	border-right:0px solid #5db062;
 }
@@ -99,13 +101,20 @@ body
 	text-align:center;
 }
 
-#bbsList_list .cate {width:50px;}
-#bbsList_list .num {width:40px;}
-#bbsList_list .subject {width:350px;}
-#bbsList_list .name {width:80px;}
-#bbsList_list .created {width:55px;}
-#bbsList_list .hitCount {width:50px;}
-#bbsList_list .like {width:50px;}
+#bbsList_list #title th 
+{
+	float:center;
+	line-height:34px;
+	text-align:center;
+}
+
+#bbsList_list .cate {width:80px;}
+#bbsList_list .num {width:70px;}
+#bbsList_list .subject {width:380px;}
+#bbsList_list .name {width:110px;}
+#bbsList_list .created {width:80px;}
+#bbsList_list .hitCount {width:80px;}
+#bbsList_list .like {width:80px;}
 
 #bbsList_list #lists 
 {
@@ -126,21 +135,48 @@ body
 #bbsList_list dd.subject 
 {
 	width:340px;
-	margin-left:10px;
-	text-align:left;
+	margin-left:5px;
+	text-align:center;
 }
 
+#bbsList_list #lists tr 
+{
+	float:left;
+	border-bottom:1px solid #E4E4E4;
+}
+
+#bbsList_list #lists td.created
+{
+	font-size: 7pt;
+}
+
+#bbsList_list td.subject 
+{
+	width:300px;
+	margin-left:5px;
+	text-align:center;
+}
 
 #bbsList_list a 
 {
 	line-height: 27px;
 }
 
-#bbsList_list #footer 
+#bbsList_list #footer_number
 {
 	clear:both;
 	height:32px;
 	line-height:32px;
 	margin-top:5px;
 	text-align:center;
+}
+
+#hotlist
+{
+	text-align: right;	
+}
+
+#gotohotboard
+{
+	color: red;
 }
