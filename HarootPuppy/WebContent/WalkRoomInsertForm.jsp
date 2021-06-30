@@ -10,13 +10,58 @@
 <meta charset="UTF-8">
 <title>WalkRoomInsertForm.jsp</title>
 <script type="text/javascript">
-
+/* 산책방 수정할 때 이 함수 사용하면 될 듯 */
+/* $(function ()
+   {
+      $(".btnDelete").click(function()
+      {
+         if (confirm("현재 데이터를 정말 삭제하시겠습니까?"))
+         {
+            $(location).attr("href", "memberdelete.action?mid=" + $(this).val());
+         }
+      });
+      
+      
+      $(".btnUpdate").click(function()
+	    {
+	    	$("#title").html("회원 정보 수정").css({"color":"red", "font-weight":"bold"});
+	    	
+	    	
+	    	var mid = $(this).parents("tr").find("td:eq(0)").text();
+	    	// btnUpdate의 부모 tr 에서 찾아라 0번째td를 (=mid)
+	    	var name = $(this).parents("tr").find("td:eq(1)").text();
+	    	var telephone = $(this).parents("tr").find("td:eq(2)").text();
+	    	
+	    	$("#mid").val(mid);
+	    	$("#name").val(name);
+	    	$("#telephone").val(telephone);
+	    	// insertform 안에 값을 채우기 
+	    	// mid 는 hidden
+	    	
+	    	$("form").attr("action", "memberupdate.action");
+	    	// form 속성들 중에 action (=memberinsert.action) 을 바꾸겠다 → "memberupdate.action"
+	    	// form 엘리먼트선택자 잡은거 (role의 form)
+	    	// role  = 어떤 역할 하는지 이야기
+	    });
+      
+      
+      $(".btnCancel").click(function()
+ 		  {
+    	  		$("#title").html("회원 정보 입력").css({"color":"black", "font-weight":"normal"});
+    	  		
+    	  		$("form").attr("action", "memberinsert.action");
+ 		  });
+   }); */
 </script>
 </head>
 <body>
 
-<div>
-<form>
+<div id="title">
+	산책방 등록하기
+</div>
+
+<div >
+<form role="form" action="roominsert.action" method="post">
 	<table>
 		<tr>
 			<th>방 제목</th>
@@ -171,6 +216,11 @@
 		</tr>
 	</table>
 	<textarea style="width: 700px; height: 100px;" placeholder="내용을 입력하세요"></textarea>
+	<br>
+	
+	<button type="button" class="btn btn-danger btn-xs btnRegister">등록</button>
+	<button type="button" class="btn btn-primary btn-xs btnCancel">취소</button>
+	
 </form>		
 </div>
 

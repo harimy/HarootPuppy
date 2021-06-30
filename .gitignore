@@ -17,3 +17,5 @@ MANIFEST.MF
 .class
 .loadpath
 .gitignore
+/Servers/
+server.xml

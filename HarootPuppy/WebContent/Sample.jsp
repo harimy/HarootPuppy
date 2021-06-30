@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -11,8 +12,7 @@
 <title>Sample.jsp</title>
 
 <!-- jQuery JS -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <!-- jQuery-UI CSS -->
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
@@ -24,11 +24,10 @@
 
 </head>
 <body>
-	<!-----------------------------
+<!-----------------------------
   Sample.jsp
   - 페이지 설명
 ------------------------------->
-
 	<div>
 		<!-- 메뉴영역 -->
 		<div>
@@ -36,9 +35,8 @@
 		</div>
 
 		<!-- content 영역 -->
-		<div>
-			
-			
+		<div id="content">
+
 		</div>
 
 		<!-- 하단 회사 설명 영역 -->
@@ -46,6 +44,7 @@
 			<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
 		</div>
 	</div>
+
 
 </body>
 </html>
