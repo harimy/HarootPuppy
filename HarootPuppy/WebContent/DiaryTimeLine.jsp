@@ -75,7 +75,7 @@ h1{
   border-radius: 12px;
   position: relative;
 }
-li{
+li.timeLineLi{
   border-left: 3px solid #fed22f;
   padding-bottom: 1.5rem;
   position: relative;
@@ -144,31 +144,31 @@ li{
 				<div class="wrapper">
 					<h1 style="text-align: center;">2021.06.29</h1>
 					<ul class="sessions">
-						<li>
+						<li class="timeLineLi">
 							<div class="time">09:00 AM</div>
 							<span>산책</span><br>
 							<span>날씨 : 좋음</span><br>
 							<span class="memo">산책하다가 귀여운 강아지 만남!</span>
 						</li>
-						<li>
+						<li class="timeLineLi">
 							<div class="time">09:30 AM</div>
 							<span>관리명</span><br>
 							<span>관리내용</span><br>
 							<span class="memo">메모</span>
 						</li>
-						<li>
+						<li class="timeLineLi">
 							<div class="time">09:30 AM</div>
 							<span>관리명</span><br>
 							<span>관리내용</span><br>
 							<span class="memo">메모</span>
 						</li>
-						<li>
+						<li class="timeLineLi">
 							<div class="time">09:30 AM</div>
 							<span>관리명</span><br>
 							<span>관리내용</span><br>
 							<span class="memo">메모</span>
 						</li>
-						<li></li>
+						<li class="timeLineLi"></li>
 					</ul>
 				</div>
 			</div><!-- div.container -->

@@ -24,24 +24,25 @@
 
 </head>
 <body>
+
 <!-----------------------------
   Sample.jsp
   - 페이지 설명
 ------------------------------->
 	<div>
 		<!-- 메뉴영역 -->
-		<div>
-			<%-- <c:import url="상단메뉴.jsp"></c:import> --%>
+		<div id="harootHeader">
+			<c:import url="Main.jsp"></c:import>
 		</div>
 
 		<!-- content 영역 -->
-		<div id="content">
-
+		<div id="harootContent">
+			<c:import url="DiaryMain.jsp"></c:import>
 		</div>
 
 		<!-- 하단 회사 설명 영역 -->
-		<div>
-			<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
+		<div id="harootFooter">
+			<c:import url="MainFooter.jsp"></c:import>
 		</div>
 	</div>
 
