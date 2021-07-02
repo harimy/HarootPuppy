@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+ul,ol,li
+{
+	list-style: none;	
+}
+
+/* 자식 요소인 li의 float 해제 */
+ul::after
+{
+	content:"";
+	display: block;
+	clear: both;
+}
+
+a
+{
+	text-decoration: none;
+	color:inherit;
+	display: block;
+}
+
+header
+{
+	background-color: gray;
+	width: 100%;
+	height: auto;
+	z-index: 999;	/* 가장 상위로 올라가게 하기 */
+}
+
+#gnbBox
+{
+	background-color: gray;
+	width: 100%;
+	margin: 0 auto;
+	margin-left: 25%;
+}
+
+#gnb>li
+{
+	position: relative;
+	float: left;
+	width: 15%;
+	height: 40px;
+}
+
+ul>li>a
+{
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 4%;
+	color: white;
+}
+
+.submenu1,.submenu3,.submenu3
+{
+	display: none;
+} 

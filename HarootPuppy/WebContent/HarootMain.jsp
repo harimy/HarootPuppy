@@ -33,25 +33,20 @@
 <body>
 
 <div>
-   <!-- 메뉴영역 -->
-   <div id="header">
-      <%-- <c:import url="EmployeeMenu.jsp"></c:import> --%>
-      <c:import url="MainHeader.jsp"></c:import>
-   </div>
-   
-   <div id="menu">
-   		<c:import url="MainMenu.jsp"></c:import>
-   </div>
-   
-   <!-- 본문 영역 -->
-   <div id="content">
-   		<c:import url="BoardList.jsp"></c:import>
-   </div>
-   
-   <!-- 회사 소개 및 어플리케이션 소개 영역 -->
-   <div id="footer">
-   		<c:import url="MainFooter.jsp"></c:import>
-   </div>
+	<!-- 메뉴영역 -->
+	<div id="harootHeader">
+		<c:import url="Main.jsp"></c:import>
+	</div>
+
+	<!-- content 영역 -->
+	<div id="harootContent">
+		<c:import url="BoardList.jsp"></c:import>
+	</div>
+
+	<!-- 하단 회사 설명 영역 -->
+	<div id="harootFooter">
+		<c:import url="MainFooter.jsp"></c:import>
+	</div>
 </div>
 
 </body>

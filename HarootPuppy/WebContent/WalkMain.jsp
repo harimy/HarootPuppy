@@ -76,7 +76,7 @@ body
             openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
         }
   */
-   </script>
+</script>
 
 </head>
 <body>
