@@ -32,7 +32,7 @@
 <div>
 	<!-- 메뉴영역 -->
 	<div id="harootHeader">
-		<c:import url="Main.jsp"></c:import>
+		<c:import url="AdminMain.jsp"></c:import>
 	</div>
 
 	<!-- content 영역 -->

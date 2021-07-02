@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div style="background-color: rgb(236,181,73);">
+<div style="background-color: rgb(244,188,23);">
 	<p align="center">email : gpdus1015@gmail.com</p>
 	<p align="center">tel : 010.2414.5742</p>
 </div>

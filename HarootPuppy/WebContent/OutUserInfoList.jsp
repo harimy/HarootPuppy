@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Sample.jsp</title>
+<title>OutUserInfoList.jsp</title>
 
 <!-- jQuery JS -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -37,7 +37,39 @@
 
 	<!-- content 영역 -->
 	<div id="harootContent">
-		<c:import url="DiaryMain.jsp"></c:import>
+		<div style="text-align: center;">
+			<h1>탈퇴회원 정보 조회</h1>
+		</div>
+		
+		<br><br>
+		
+		<div>
+			<select>
+				<option>회원번호</option>
+				<option>아이디</option>
+			</select>
+			<input type="text" name="searchValue" class="textField">
+			<input type="button" value="검색" class="btn2" onclick="sendIt()"> 
+		</div>
+		
+		<br><br>
+		
+		<div>
+			<table class="table table-striped table-condensed table-hover table table-bordered" style="text-align: center;"> 
+				<tr>
+					<th>회원번호</th>
+					<th>아이디</th>
+					<th>탈퇴날짜</th>
+					<th>탈퇴유형</th>
+				</tr>	
+				<tr>
+					<td>10000</td>
+					<td>aa@naver.com</td>
+					<td>2021.05.05</td>
+					<td>자진탈퇴</td>
+				</tr>	
+			</table>
+		</div>
 	</div>
 
 	<!-- 하단 회사 설명 영역 -->
