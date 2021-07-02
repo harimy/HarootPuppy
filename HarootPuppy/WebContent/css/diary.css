@@ -27,3 +27,39 @@
 	dispaly: inline; 
 	border: 0px solid black; 
 }
+
+.emojiInline {
+	font-size: 70px;
+	margin: 0px auto;
+}
+
+div.diaryMenu
+{
+	text-align: center;
+	margin: 0px auto !important;
+	align-content: center;
+}
+
+.diaryIcon
+{
+	width: 50px;
+	height: 50px;
+	margin: 0px auto;
+
+}
+
+.diarySpan
+{
+
+	text-align: center;
+}
+
+label.icons
+{
+	text-align: center;
+	cursor:pointer;
+	/* 아이콘 사이 간격 */
+	margin-top: 10px;
+	margin-left: 30px;
+	margin-right: 30px;
+}

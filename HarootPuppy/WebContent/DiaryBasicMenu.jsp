@@ -23,39 +23,6 @@
 <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 
 <style type="text/css">
-
-
-div.diaryMenu
-{
-	text-align: center;
-	margin: 0px auto !important;
-	align-content: center;
-}
-
-.diaryIcon
-{
-	width: 50px;
-	height: 50px;
-	margin: 0px auto;
-
-}
-
-.diarySpan
-{
-
-	text-align: center;
-}
-
-label
-{
-	text-align: center;
-	cursor:pointer;
-	/* 아이콘 사이 간격 */
-	margin-top: 10px;
-	margin-left: 30px;
-	margin-right: 30px;
-}
-
 </style>
 
 

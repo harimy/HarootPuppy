@@ -8,7 +8,7 @@ String cp = request.getContextPath();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>DiaryMealInsertForm.jsp</title>
+<title>DiarySnackInsertForm.jsp</title>
 
 <!-- jQuery JS -->
 <script type="text/javascript"
@@ -32,7 +32,7 @@ String cp = request.getContextPath();
 }
 
 #focusedInput {
-	width: 180px !important;
+	width: 80px !important;
 }
 
 .form-group {
@@ -125,13 +125,26 @@ String cp = request.getContextPath();
 .stars #one:checked ~ .result:before {
 	content: "I hate it ";
 }
+
+#etcSnack
+{
+	width : 120px;
+	display: none;
+}
+
 </style>
 
+
+<script type="text/javascript">
+
+
+
+</script>
 
 </head>
 <body>
 	<!-----------------------------
-  DiaryMealInsertForm.jsp
+  DiarySnackInsertForm.jsp
   - 페이지 설명
 ------------------------------->
 
@@ -156,36 +169,34 @@ String cp = request.getContextPath();
 			</div>
 			
 			<!-- 즐겨찾기 영역 -->
-			<div style="background-color: powderblue; width: 450px; height: 200px;">
+			<div style="background-color: powderblue; width: 600px; height: 200px;">
 				<div class="form-group">
-				<label for="focusedInput"> <span class="input-group-text" id="">사료이름</span> </label> 
+				<label for="focusedInput"> <span class="input-group-text" id="">간식이름</span> </label> 
 				<input class="form-control" id="focusedInput" type="text" placeholder="">
 				</div>
 				<div class="form-group">
 				<label for="focusedInput"> 
-				<span class="input-group-text" id="">사료양</span>
+				<span class="input-group-text" id="">급여양</span>
 				</label> <input class="form-control" id="focusedInput" type="text"
-					placeholder="숫자만 입력하세요">g
+					placeholder="">g
 				</div>
 				
-				<span class="input-group-text form-control" id="">사료 종류</span>
-				<input type="radio" name="mealKind" id="dryMeal" >
-				<label for="dryMeal">건식</label>
-				<input type="radio" name="mealKind" id="wetMeal" >
-				<label for="wetMeal">습식</label>
-				<input type="radio" name="mealKind" id="freshMeal" >
-				<label for="freshMeal">생식</label>
+				<span class="input-group-text form-control" id="">간식 종류</span>
+				<!-- 껌 비스킷 져키 캔 육포 기타-->
+				<input type="radio" name="snackKind" id="chew" value="chew">
+				<label for="chew">껌</label>
+				<input type="radio" name="snackKind" id="biscuit" value="biscuit">
+				<label for="Biscuit">비스킷</label>
+				<input type="radio" name="snackKind" id="jerky" value="jerky">
+				<label for="jerky">져키</label>
+				<input type="radio" name="snackKind" id="dryMeat" value="dryMeat">
+				<label for="dryMeat">육포</label>
+				<input type="radio" name="snackKind" id="can" value="can">
+				<label for="can">캔</label>
+				<input type="radio" name="snackKind" id="etc" value="">
+				<label for="etc">기타</label>
 				
 			</div>
-
-			<!-- input meal (음수량) -->
-			<div class="form-group">
-				<label for="focusedInput"> <span class="input-group-text"
-					id="">음수량</span>
-				</label> <input class="form-control" id="focusedInput" type="text"
-					placeholder="">ml
-			</div>
-
 
 			<!-- input meal (기호도) -->
 			<div class="form-group starsDiv">
@@ -223,10 +234,10 @@ String cp = request.getContextPath();
 
 			<br>
 			<br>
-			<br> <input type="reset" value="취소"
-				class="btn btn-outline-secondary"> <input type="button"
-				value="저장" class="btn btn-secondary" onclick="">
-
+			<br> 
+			<input type="reset" id="resetBtn" name="resetBtn" value="취소" class="btn btn-outline-secondary"> 
+			<input type="button" id="submitBtn" name="submitBtn" value="저장" class="btn btn-secondary" onclick="">
+			
 		</form>
 	</div>
 
