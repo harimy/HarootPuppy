@@ -7,16 +7,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>common.jsp</title>
-
+<meta charset="UTF-8">
+<title>DiaryClean.jsp</title>
+<%-- 
 <!-- jQuery JS -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <!-- jQuery-UI CSS -->
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
-
+ --%>
 <!--  부트스트랩 JS -->
 <script type="text/javascript" src="<%=cp%>/js/bootstrap.js"></script>
 <!-- 부트스트랩 CSS -->
@@ -27,51 +27,37 @@
 <script type="text/javascript" src="<%=cp%>/js/diary.js"></script>
 
 <style type="text/css">
-
-
-.form-control, #focusedInput
-{
-	display: inline !important;
-	
-}
-.form-time-control, 
-{
-	width: 50px; 
-}
-
-.form-group
-{
-    margin: 0px auto;
-    text-align : center;
-    
-}
-
-
 </style>
 
 
 </head>
 <body>
-<div>
-	<form>
-		 	<!-- 공통항목 (시작 시간) -->
-		    <div class="form-group">
-		      <label for="focusedInput">시작 시간</label>
-		      <input type="time" class="focusedInput form-time-control" id="start1">
-		    
-		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<!-----------------------------
+  Sample.jsp
+  - 페이지 설명
+------------------------------->
 
-		    
-		    <!-- 공통항목 (종료 시간) -->
-		   
-		      <label for="focusedInput">종료 시간</label>
-		      <input type="time" class="focusedInput form-time-control" id="end1">
 
-		    </div>
-		  
+	<!-- content 영역 -->
+	<!-- 양치 귀청소 목욕 -->
+	<div class="diaryMenu">
+		<label for="clean" class="icons" onclick="">
+			<img class="diaryIcon" src="<%=cp%>/images/icons/main/toothbrush.png"
+			alt="toothbrush" id="toothbrush" title="양치">
+			<br>양치
+		</label>
+		<label for="clean" class="icons">
+			<img class="diaryIcon" src="<%=cp%>/images/icons/main/earClean.png"
+			alt="earClean" id="earClean" title="귀청소">
+			<br>귀청소
+		</label>
+		<label for="clean" class="icons">
+			<img class="diaryIcon" src="<%=cp%>/images/icons/main/clean.png"
+			alt="bath" id="bath" title="목욕">
+			<br>목욕
+		</label>
+	</div>
 
-  	</form>
-</div>
 
 </body>
 </html>

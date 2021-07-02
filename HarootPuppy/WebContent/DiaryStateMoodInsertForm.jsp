@@ -39,19 +39,6 @@ String cp = request.getContextPath();
 	margin: 0px auto;
 }
 
-.emojiMood {
-	font-size: 80px;
-	margin:
-}
-
-
-div.diaryMenu
-{
-	text-align: center;
-	margin: 0px auto !important;
-	align-content: center;
-}
-
 
 </style>
 
@@ -76,14 +63,17 @@ div.diaryMenu
 			<!-- 기분 상태 나열, 이모지와 글자 클릭하면 라디오버튼 체크 -->
 			<!-- 
 			<label for="lonely">
-               	<span class="emojiMood">😳</span>
+               	<span class="emojiInline">😳</span>
                	<br>
-               	<span><input type="radio" name="mood" id="lonely">테스트1</span>
+               	<span>
+               	<input type="radio" name="mood" id="lonely">
+               	테스트1
+               	</span>
             </label>
             
 			 -->
 				<label for="good" class="icons"> 
-					<span class="emojiMood">😊</span>
+					<span class="emojiInline">😊</span>
 					<br>
 					<span>
 						<input type="radio" name="mood" id="good" value="good">
@@ -92,7 +82,7 @@ div.diaryMenu
 				</label>
 			
 				<label for="excited" class="icons"> 
-					<span class="emojiMood">😆</span>
+					<span class="emojiInline">😆</span>
 					<br>
 					<span>
 						<input type="radio" name="mood" id="excited" value="excited">
@@ -101,7 +91,7 @@ div.diaryMenu
 				</label> 
 			
 				<label for="angry" class="icons"> 
-					<span class="emojiMood">😡</span>
+					<span class="emojiInline">😡</span>
 					<br>
 					<span>
 						<input type="radio" name="mood" id="angry" value="angry">	
@@ -110,7 +100,7 @@ div.diaryMenu
 				</label> 
 			
 				<label for="blue" class="icons"> 
-					<span class="emojiMood">😥</span>
+					<span class="emojiInline">😥</span>
 					<br> 
 					<span>
 						<input type="radio" name="mood" id="blue" value="blue">
@@ -120,7 +110,7 @@ div.diaryMenu
 			
 
 				<label for="lonely" class="icons"> 
-					<span class="emojiMood">😳</span>
+					<span class="emojiInline">😳</span>
 					<br> 
 					<span>
 						<input type="radio" name="mood" id="lonely">
