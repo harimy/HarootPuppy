@@ -8,7 +8,7 @@ String cp = request.getContextPath();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>DiaryInsertFormSample.jsp</title>
+<title>DiaryCleanToothInsertForm.jsp</title>
 
 <!-- jQuery JS -->
 <script type="text/javascript"
@@ -34,7 +34,7 @@ String cp = request.getContextPath();
 
 #focusedInput 
 {
-	width: 80px !important;
+	width: 230px !important;
 }
 
 .form-group 
@@ -47,13 +47,9 @@ String cp = request.getContextPath();
 
 </head>
 <body>
-<jsp:include page="Main.jsp" />
-
 <!-----------------------------
-  DiaryInsertFormSample.jsp
-  - 페이지 설명
+  다이어리 청결 > 양치,귀청소, 목욕
 ------------------------------->
-
 
 
 	<!-- content 영역 -->
@@ -72,17 +68,9 @@ String cp = request.getContextPath();
 			</div>
 			
 			
-			<!-- 즐겨찾기 영역 -->
-			<div style="background-color: powderblue; width:500px; height: 400px;">
-				
-				즐겨찾기영역
-				
-				
-			</div>
-
-			<!-- input div-->
+			
 			<div class="form-group">
-				<label for="focusedInput"> <span class="input-group-text">샘플</span>
+				<label for="focusedInput"> <span class="input-group-text">제목</span>
 				</label>
 				 <input class="form-control" id="focusedInput" name="" type="text" placeholder="">
 			</div>

@@ -58,36 +58,24 @@ body {
 </style>
 
 <script type="text/javascript">
-	var openWin;
-
-	function openChild() {
-		// window.name = "부모창 이름"; 
-		window.name = "parentForm";
-		// window.open("open할 window", "자식창 이름", "팝업창 옵션");
-		openWin = window.open("WalkPlaceSelect.jsp", "childForm",
-				"width=570, height=350, resizable = no, scrollbars = no");
-	}
-
-	/*  function setChildText(){
-	     openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
-	 }
-	 */
+  
+        var openWin;
+    
+        function openChild()
+        {
+            // window.name = "부모창 이름"; 
+            window.name = "parentForm";
+            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+            openWin = window.open("WalkPlaceSelect.jsp",
+                    "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
+        }
+        
+       /*  function setChildText(){
+            openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
+        }
+  */
 </script>
-<head>
-<meta charset="UTF-8">
-<title>Sample.jsp</title>
 
-<!-- jQuery JS -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
-<!-- jQuery-UI CSS -->
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
-
-<!--  부트스트랩 JS -->
-<script type="text/javascript" src="<%=cp%>/js/bootstrap.js"></script>
-<!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 
 </head>
 <body>
