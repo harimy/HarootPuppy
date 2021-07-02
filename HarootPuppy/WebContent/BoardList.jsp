@@ -14,7 +14,7 @@
 
 </head>
 <body>
-
+<jsp:include page="Main.jsp" />
 <div id="bbsList">
 	<div style="text-align : left; width: 300px; float:right;">
       	<div id="gotohotboard">

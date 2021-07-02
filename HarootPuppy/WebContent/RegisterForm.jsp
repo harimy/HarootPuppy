@@ -66,7 +66,7 @@
 
 </head>
 <body>
-
+<jsp:include page="Main.jsp" />
 <!-----------------------------
   RegisterForm.jsp
   - 회원가입 페이지

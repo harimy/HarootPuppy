@@ -24,6 +24,7 @@ body
 </style>
 </head>
 <body>
+<jsp:include page="Main.jsp" />
 <div>
 <form>
 	<div>

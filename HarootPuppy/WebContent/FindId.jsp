@@ -32,6 +32,8 @@
 
 </head>
 <body>
+<jsp:include page="Main.jsp" />
+
 <!-----------------------------
   FindId.jsp
   - 아이디 찾기 페이지

@@ -55,7 +55,7 @@
 </script>
 </head>
 <body>
-
+<jsp:include page="Main.jsp" />
 <div id="title">
 	산책방 등록하기
 </div>

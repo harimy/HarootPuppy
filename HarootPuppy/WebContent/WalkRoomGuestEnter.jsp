@@ -5,6 +5,7 @@
 	request.setCharacterEncoding("UTF-8");
 String cp = request.getContextPath();
 %>
+<jsp:include page="Main.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,8 +66,6 @@ String cp = request.getContextPath();
 			}
 			else if ( $(this).val() == "ready" )
 			{
-				alert( $(this).val() );
-				$(this).css("background-color", "blue");
 				$(this).html("READY");
 				$(this).val("notReady");
 				return;
@@ -78,6 +77,7 @@ String cp = request.getContextPath();
 <link rel="stylesheet" type="text/css" href="css/WalkRoom.css">
 </head>
 <body>
+<jsp:include page="Main.jsp" />
 	<!-- 방 개설하면서 정보 불러오기 -->
 	<div>
 

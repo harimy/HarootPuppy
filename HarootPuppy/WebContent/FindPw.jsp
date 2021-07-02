@@ -33,6 +33,8 @@
 
 </head>
 <body>
+<jsp:include page="Main.jsp" />
+
 <!-----------------------------
   FindPw.jsp
   - 비밀번호 찾기 페이지

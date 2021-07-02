@@ -68,6 +68,8 @@ body {
 
 </head>
 <body>
+<jsp:include page="Main.jsp" />
+
  <!---------------------------------------
   DiarySelectPet.jsp
   - 반려견 다이어리 작성할 반려견 선택

@@ -154,6 +154,8 @@ max-width: 30px;
 
 </head>
 <body>
+<jsp:include page="Main.jsp" />
+
 	<!-----------------------------
   DiaryInfo.jsp
   - 반려견 정보 보기 페이지

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@ String cp = request.getContextPath();
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/list.css">
 </head>
 <body>
-
+<jsp:include page="Main.jsp" />
 	<div id="bbsList">
 
 		<div id="bbsList_title" style="text-align: center;">내 게시글 보기</div>
