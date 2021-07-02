@@ -47,6 +47,8 @@ String cp = request.getContextPath();
 
 </head>
 <body>
+<jsp:include page="Main.jsp" />
+
 <!-----------------------------
   DiaryInsertFormSample.jsp
   - 페이지 설명

@@ -28,6 +28,8 @@ body {
 	text-align: center;
 }
 
+content
+
 .card {
 	border: none;
 }
@@ -76,7 +78,8 @@ body {
 
 </head>
 <body>
-	<!---------------------------------------
+<jsp:include page="Main.jsp" />
+<!---------------------------------------
   DiarySelectPet.jsp
   - 반려견 다이어리 작성할 반려견 선택
 ---------------------------------------->
@@ -85,7 +88,6 @@ body {
 		<div>
 			<%-- <c:import url="상단메뉴.jsp"></c:import> --%>
 		</div>
-
 		<!-- content 영역 -->
 		<div style="margin-top: 30px;">
 			<h3>산책에 데려갈 반려견을 선택해주세요</h3>
@@ -132,6 +134,6 @@ body {
 			<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
 		</div>
 	</div>
-
+	<jsp:include page="MainFooter.jsp" />
 </body>
 </html>

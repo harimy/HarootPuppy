@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -30,22 +29,22 @@
   Sample.jsp
   - 페이지 설명
 ------------------------------->
-<div>
-	<!-- 메뉴영역 -->
-	<div id="harootHeader">
-		<c:import url="Main.jsp"></c:import>
-	</div>
+	<div>
+		<!-- 메뉴영역 -->
+		<div id="harootHeader">
+			<c:import url="Main.jsp"></c:import>
+		</div>
 
-	<!-- content 영역 -->
-	<div id="harootContent">
-		<c:import url="DiaryMain.jsp"></c:import>
-	</div>
+		<!-- content 영역 -->
+		<div id="harootContent">
+			
+		</div>
 
-	<!-- 하단 회사 설명 영역 -->
-	<div id="harootFooter">
-		<c:import url="MainFooter.jsp"></c:import>
+		<!-- 하단 회사 설명 영역 -->
+		<div id="harootFooter">
+			<c:import url="MainFooter.jsp"></c:import>
+		</div>
 	</div>
-</div>
 
 
 </body>

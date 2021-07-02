@@ -21,7 +21,7 @@ String cp = request.getContextPath();
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/HarootMain.css">
 </head>
 <body>
-
+<jsp:include page="Main.jsp" />
 	<div class="tab">
 		
 		<div class="tabContent">

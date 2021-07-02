@@ -33,6 +33,8 @@
 
 </head>
 <body>
+<jsp:include page="Main.jsp" />
+
 <!-----------------------------
   ResetPw.jsp
   - 새 비밀번호 입력 페이지

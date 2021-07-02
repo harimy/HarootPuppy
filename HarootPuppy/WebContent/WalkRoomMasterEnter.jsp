@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -54,16 +54,13 @@ String cp = request.getContextPath();
 		$("#match").click(function()
 		{
 			if ( $(this).val() == "notMatched" )
-			{
-				alert( $(this).val() );
-				$(this).css("background-color", "orange");
+			{				$(this).css("background-color", "orange");
 				$(this).html("매칭완");
 				$(this).val("matched");
 				return;
 			}
 			else if ( $(this).val() == "matched" )
 			{
-				alert( $(this).val() );
 				$(this).css("background-color", "blue");
 				$(this).html("READY");
 				$(this).val("notMatched");
@@ -76,6 +73,7 @@ String cp = request.getContextPath();
 <link rel="stylesheet" type="text/css" href="css/WalkRoom.css">
 </head>
 <body>
+<jsp:include page="Main.jsp" />
 	<!-- 방 개설하면서 정보 불러오기 -->
 	<div>
 

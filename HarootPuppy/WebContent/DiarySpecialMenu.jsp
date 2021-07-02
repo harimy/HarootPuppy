@@ -54,6 +54,7 @@ label
 
 </head>
 <body>
+<jsp:include page="Main.jsp" />
 	<!-----------------------------
   DiarySpecialMenu.jsp
   - 페이지 설명

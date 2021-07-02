@@ -58,7 +58,7 @@ label
 
 </head>
 <body>
-
+<jsp:include page="Main.jsp" />
 	<!-- 기본관리 > 상태 메인 -->
 	<!-- 체중, 기분 -->
 	<div class="diaryMenu">

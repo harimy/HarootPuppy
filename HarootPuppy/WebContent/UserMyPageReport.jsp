@@ -30,7 +30,6 @@ String cp = request.getContextPath();
 </script>
 </head>
 <body>
-
 	<div id="loadArea">
 		<div id="bbsList">
 			<div id="bbsList_title" style="text-align: center;">내가 접수한 신고 보기</div>

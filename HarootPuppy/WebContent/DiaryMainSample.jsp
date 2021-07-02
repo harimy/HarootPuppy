@@ -40,6 +40,7 @@ h1>span
 
 </head>
 <body>
+<jsp:include page="Main.jsp" />
 	<!-----------------------------
   DiaryMain.jsp
   - 페이지 설명

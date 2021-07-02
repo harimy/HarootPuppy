@@ -31,7 +31,7 @@
 </style>
 </head>
 <body>
-
+<jsp:include page="Main.jsp" />
 <div>
 	<!-- 메뉴영역 -->
 	<div id="harootHeader">

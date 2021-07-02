@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="/HarootPuppy/css/bootstrap.css">
 </head>
 <body>
-
+<jsp:include page="Main.jsp" />
 <div>
 	<input type="button" value="방 만들기" style="float: right;">
 </div>

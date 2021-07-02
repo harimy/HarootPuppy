@@ -84,6 +84,6 @@
 
 </ul>
 </div>
-
+<jsp:include page="MainFooter.jsp" />
 </body>
 </html>

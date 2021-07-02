@@ -24,6 +24,8 @@
 
 </head>
 <body>
+<jsp:include page="Main.jsp" />
+
 	<!-----------------------------
   Sample.jsp
   - 페이지 설명

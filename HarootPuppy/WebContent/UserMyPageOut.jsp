@@ -11,6 +11,7 @@ String cp = request.getContextPath();
 <title>UserMyPageOut.jsp</title>
 </head>
 <body>
+<jsp:include page="Main.jsp" />
 <div>
 	<label>정말로 탈퇴를 하시궜어요?</label>
 	<button type="submit">탈퇴하기</button>

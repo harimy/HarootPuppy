@@ -24,7 +24,7 @@
 
 </head>
 <body>
-
+<jsp:include page="MainHeader.jsp" />
 <div id="menu">
 	<ul>
 		<li>

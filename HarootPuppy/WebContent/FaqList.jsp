@@ -11,7 +11,7 @@
 <title>FaqList.jsp</title>
 </head>
 <body>
-
+<jsp:include page="Main.jsp" />
 <div style="text-align: center;">
 	<h1>자주하는 질문</h1>
 </div>
