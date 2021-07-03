@@ -25,6 +25,17 @@
 	{
 		border: 1px solid black;
 	}
+	
+	#allUserTable th, td
+	{
+		text-align: center !important;
+	}
+	
+	#harootContent
+	{
+		margin: 30px;
+	}
+	
 </style>
 
 <script type="text/javascript">
@@ -57,6 +68,9 @@
 	<div id="harootHeader">
 		<c:import url="AdminMain.jsp"></c:import>
 	</div>
+	
+	<br><br><br><br>
+	
 	<div id="harootContent">
 		<div style="width: 100%; text-align: center;">
 			<h1>전체 회원정보 조회</h1>
@@ -79,7 +93,7 @@
 		<br><br>
 		
 		<div>
-			<table class="table table-striped table-condensed table-hover" style="text-align: center;"> 
+			<table class="table table-striped table-condensed table-hover" style="text-align: center;" id="allUserTable"> 
 				<tr>
 					<th>회원번호</th>
 					<th>아이디</th>

@@ -14,7 +14,8 @@
 
 </head>
 <body>
-<jsp:include page="Main.jsp" />
+<jsp:include page="MainTest.jsp" />
+<br><br><br><br>
 <div id="bbsList">
 	<div style="text-align : left; width: 300px; float:right;">
       	<div id="gotohotboard">
@@ -132,6 +133,6 @@
       
    </div><!-- #bbsList_list -->
    
-
+<jsp:include page="MainFooter.jsp" />
 </body>
 </html>

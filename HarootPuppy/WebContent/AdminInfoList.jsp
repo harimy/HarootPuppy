@@ -25,6 +25,16 @@
 	{
 		border: 1px solid black;
 	}
+	
+	#adminUserTable th, td
+	{
+		text-align: center !important;
+	}
+	
+	#harootContent
+	{
+		margin: 30px;
+	}
 </style>
 <script type="text/javascript">
     
@@ -64,16 +74,11 @@
 		<br><br>
 		
 		<div>
-			<table class="table table-striped table-condensed table-hover" style="text-align: center;"> 
+			<table class="table table-striped table-condensed table-hover" style="text-align: center;" id="adminUserTable"> 
 				<tr>
 					<th>관리자번호</th>
 					<th>이름</th>
 					<th>아이디</th>
-					<th>비밀번호</th>
-					<th>생년월일</th>
-					<th>성별</th>
-					<th>핸대폰번호</th>
-					<th>주소</th>
 					<th>등록일자</th>
 					<th>정보수정</th>
 					<th>정보삭제</th>
@@ -82,11 +87,6 @@
 					<td>3030</td>
 					<td>부르스리</td>
 					<td>tt@naver.com</td>
-					<td>9999****</td>
-					<td>1995.11.02</td>
-					<td>여성</td>
-					<td>010-2222-2222</td>
-					<td>서울시 서초구</td>
 					<td>2019.07.03</td>
 					<td>
 						<button type = "button" id="update" onclick="openUpdateChild()">수정</button>
