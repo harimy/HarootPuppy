@@ -4,6 +4,7 @@
   #13-1. menuStyle.jsp
   - 메뉴 스타일 구성 
 =============================*/
+/* 
 
 ul
 {
@@ -18,7 +19,8 @@ li
 {
 	width: 25%;
 	float: left;
-}
+} 
+*/
 
 a.menu:link, a.menu:visited
 {

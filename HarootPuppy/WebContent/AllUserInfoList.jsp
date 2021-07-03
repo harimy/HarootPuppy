@@ -13,18 +13,14 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <style type="text/css">
-	/*테이블 기본 서식*/
-	#table
+	
+	/* 가운데 정렬 */
+	#userTable th, td
 	{
-		width: 500px;
-		border: 1px solid black;
-		border-collapse: collapse;
+		text-align: center !important; 
 	}
 	
-	#table td
-	{
-		border: 1px solid black;
-	}
+	
 </style>
 
 <script type="text/javascript">
@@ -79,7 +75,7 @@
 		<br><br>
 		
 		<div>
-			<table class="table table-striped table-condensed table-hover" style="text-align: center;"> 
+			<table class="table table-striped table-condensed table-hover" id="userTable" style="text-align: center;"> 
 				<tr>
 					<th>회원번호</th>
 					<th>아이디</th>

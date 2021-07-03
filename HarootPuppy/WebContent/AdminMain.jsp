@@ -13,10 +13,11 @@
 <script type="text/javascript"
    src="http://code.jquery.com/jquery.min.js"></script>
 <style>
-    ul, ol, li { list-style:none; margin:0; padding:0; width: 100%}
+    /* 메뉴 수정 */
+   .ab ul, ol, li { list-style:none; margin:0; padding:0; width: 100%}
    
     ul.myMenu {text-align: center;}
-    ul.myMenu > li { display:inline-block; width:300px;; padding:5px 10px; background:rgb(244,188,23); text-align:center; position:relative; }
+    ul.myMenu > li { display:inline-block; width:300px; padding:5px 10px; background:rgb(244,188,23); text-align:center; position:relative; }
     ul.myMenu > li:hover { background:rgb(244,188,23); }
     ul.myMenu > li ul.submenu { display:none; position:absolute; top:30px; left:0; }
     ul.myMenu > li:hover ul.submenu { display:block; }
@@ -42,6 +43,8 @@
 		color: #000000;
 		height: 26px;
 	}
+
+    
 </style>
 
 </head>
@@ -49,12 +52,12 @@
 
 <jsp:include page="AdminMainHeader.jsp"></jsp:include>
 
-<div id="container" style="background-color: rgb(244,188,23);">
+<div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">
 	<li class="menu1">
         회원관리
         <ul class="menu1_s submenu">
-            <li>전체회원 정보 조회</li>
+            <li style="margin-top: 5px;">전체회원 정보 조회</li>
             <li>탈퇴회원 정보 조회</li>
             <li>관리자 정보 조회</li>
         </ul>   
@@ -62,13 +65,13 @@
     <li class="menu2">
     	게시물 관리
     	<ul class="menu2_s submenu">
-            <li>게시판 공지 작성</li>
+            <li style="margin-top: 5px;">게시판 공지 작성</li>
         </ul> 	
     </li>
     <li class="menu3">
         신고 관리
         <ul class="menu3_s submenu">
-            <li>게시판 신고</li>
+            <li style="margin-top: 5px;">게시판 신고</li>
             <li>산책메이트 온라인 신고</li>
             <li>산책메이트 오프라인 신고</li>
         </ul>   
@@ -76,7 +79,7 @@
     <li class="menu4">
     	고객지원
     	<ul class="menu4_s submenu">
-            <li>고객문의 게시판</li>
+            <li style="margin-top: 5px;">고객문의 게시판</li>
         </ul> 	
     </li>
 

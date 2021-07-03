@@ -28,8 +28,11 @@ body {
 	text-align: center;
 }
 
+/* div.Card 가운데 정렬 */
 .card {
-	border: none;
+    border: none;
+    width: 300px;
+    display: inline-block;
 }
 
 .card-body {
@@ -68,8 +71,6 @@ body {
 
 </head>
 <body>
-<jsp:include page="Main.jsp" />
-
  <!---------------------------------------
   DiarySelectPet.jsp
   - 반려견 다이어리 작성할 반려견 선택
