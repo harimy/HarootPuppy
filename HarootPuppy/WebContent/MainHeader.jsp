@@ -25,6 +25,16 @@
 
 		background-color: rgb(244,188,23);
 	}
+	
+	.transparent-button
+	{
+	    background-color: transparent !important;
+	    background-image: none !important;
+	    border-color: transparent;
+	    border: none;
+	    color: #FFFFFF; 
+	}
+
 
 </style>
 </head>
@@ -36,7 +46,8 @@
 	<div style="float:right;">알림</div>
 	<div style="float:right;">환영합니다!&nbsp;&nbsp;&nbsp;</div>
 	<div id="logo" style="text-align : center;">
-		<img alt="" src="images/mainlogo.png" width="250" height="100" border="0">
+		<button type="button" class="transparent-button"onclick="location.href='Main.jsp'">
+		<img alt="" src="images/mainlogo.png" width="250" height="100" border="0"></button>
 	</div>
 </div>
 

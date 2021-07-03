@@ -10,6 +10,7 @@ String cp = request.getContextPath();
 <meta charset="UTF-8">
 <title>UserMyPageBoard.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<link rel="stylesheet" type="text/css" href="<%=cp%>/css/list.css">
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>

@@ -8,7 +8,7 @@ String cp = request.getContextPath();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>DiaryTrainInsertForm.jsp</title>
+<title>DiaryNutrientsInsertForm.jsp</title>
 <style type="text/css">
 .container-fluid 
 {
@@ -43,85 +43,7 @@ String cp = request.getContextPath();
 	align-content: space-between;
 }
 
-/* star rating CSS */
-@import
-	url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap')
-	;
 
-.stars {
-	display: inline;
-	text-align: left;
-}
-
-.stars input {
-	display: none;
-}
-
-.stars label {
-	float: right;
-	font-size: 25px;
-	color: lightgrey;
-	margin: 0 5px;
-	text-shadow: 1px 1px #bbb;
-}
-
-.stars label:before {
-	content: '★';
-}
-
-.stars input:checked ~ label {
-	color: gold;
-	text-shadow: 1px 1px #c60;
-}
-
-.stars:not (:checked ) >label:hover, .stars:not (:checked ) >label:hover 
-	~ label {
-	color: gold;
-}
-
-.stars input:checked>label:hover, .stars input:checked>label:hover ~
-	label {
-	color: gold;
-	text-shadow: 1px 1px goldenrod;
-}
-
-.stars .result:before {
-	position: absolute;
-	content: "";
-	width: 100%;
-	left: 50%;
-	transform: translateX(-47%);
-	bottom: -30px;
-	font-size: 30px;
-	font-weight: 500;
-	color: gold;
-	font-family: 'Poppins', sans-serif;
-	display: none;
-}
-
-.stars input:checked ~ .result:before {
-	display: block;
-}
-
-.stars #five:checked ~ .result:before {
-	content: "I love it ";
-}
-
-.stars #four:checked ~ .result:before {
-	content: "I like it ";
-}
-
-.stars #three:checked ~ .result:before {
-	content: "It's good ";
-}
-
-.stars #two:checked ~ .result:before {
-	content: "I don't like it ";
-}
-
-.stars #one:checked ~ .result:before {
-	content: "I hate it ";
-}
 </style>
 
 <script type="text/javascript">
@@ -173,14 +95,12 @@ String cp = request.getContextPath();
 </head>
 <body>
 	<!-----------------------------
- DiaryTrainInsertForm.jsp
-  - 다이어리 훈련 입력폼
-  - 문제 : + - 버튼 추가 시 한번 눌러도 여러개가 들어가고 
-  		   첫번째 - 버튼으로는 삭제가 되지 않음
+ DairyNutrientsInsertForm.jsp
+  - 다이어리 영양제 입력폼
 ------------------------------->
 
 <div>
-	
+
 	<!-- content 영역 -->
 	<div>
 		<!-- 즐겨찾기 영역 (form 영역 바깥) -->
@@ -236,22 +156,58 @@ String cp = request.getContextPath();
 			<!-- content 영역 -->
 			<!-- 즐겨찾기 -->
 			<div class="container-fluid favorite" id="privateBlock">
-				즐겨찾기&nbsp; 
-				<select name="favorite">
+				즐겨찾기&nbsp; <select name="favorite">
 					<option value="mirivogi">미리보기</option>
-				</select> 
-				<br><br>
+				</select> <br>
+				<br>
 		
 				<button value="+" onclick="add_div()">+</button>
+				
+				<!-- text 박스 -->
+				<br> 영양제 이름 <input type="text" id="nutName">
+				<br> 투여량&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="text" id="nutName"> 
+				
+				<!-- radio 영양제 종류 -->
+				<br> 영양제 종류 
+				<label><input type="radio" name="nutType1" 
+				value="영양제종류" checked="checked">알약</label>
+				<label><input type="radio" name="nutType2" value="행동교정훈련">물약</label>
+				<label><input type="radio" name="nutType3" value="사회화훈련">가루약</label>
+				
+				
+				<!-- checkbox 관리종류 -->
+				<br>관리 종류
+				<input type="checkbox" id="setType"> 
+				<label for="Type1">심혈관</label>
+				
+				<input type="checkbox" id="setType"> 
+				<label for="Type2">관절</label>
 		
-				<br> 훈련 이름 <input type="text" name=trainName >
-				<br> 훈련 종류 
-				<label><input type="radio" name="trainType1" 
-				value="기본명령훈련" checked="checked">기본명령훈련</label>
-				<label><input type="radio" name="trainType2" value="행동교정훈련">행동교정훈련</label>
-				<label><input type="radio" name="trainType3" value="사회화훈련">사회화훈련</label>
-				<label><input type="radio" name="trainType4" value="배변훈련">배변훈련</label>
+				<input type="checkbox" id="setType"> 
+				<label for="Type3">눈</label>
 		
+				<input type="checkbox" id="setType"> 
+				<label for="Type4">구충제</label>
+				
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				<input type="checkbox" id="setType"> 
+				<label for="Type5">장건강</label>
+		
+				<input type="checkbox" id="setType"> 
+				<label for="Type6">구강</label>
+		
+				<input type="checkbox" id="setType"> 
+				<label for="Type7">피부/모질</label>
+				
+				<input type="checkbox" id="setType"> 
+				<label for="Type8">기타</label>
+				<input type="text" id="setEtc">
+					
+										
+				
 				<br>
 				<button value="-" onclick="remove_div(this)">-</button>
 		
@@ -260,25 +216,6 @@ String cp = request.getContextPath();
 			</div>
 			<br>
 			<!-- 즐겨찾기 끝  -->
-		
-			<!-- input meal (성취도) -->
-			<div class="form-group starsDiv">
-				<label for="focusedInput"> <span class="input-group-text"
-					id="basic-addon1">성취도</span>
-				</label>
-				<div class="stars">
-					<input type="radio" id="five" name="rate" value="5"> <label
-						for="five"></label> <input type="radio" id="four" name="rate"
-						value="4"> <label for="four"></label> <input type="radio"
-						id="three" name="rate" value="3"> <label for="three"></label>
-					<input type="radio" id="two" name="rate" value="2"> <label
-						for="two"></label> <input type="radio" id="one" name="rate"
-						value="1"> <label for="one"></label> <span class="result"></span>
-				</div>
-			</div>
-			<!-- 성취도 끝 -->
-			<br>
-			<br>
 		
 		
 			<!-- 공통항목 (메모) -->
@@ -303,18 +240,17 @@ String cp = request.getContextPath();
 			<br> <input type="reset" value="취소"
 				class="btn btn-outline-secondary"> <input type="button"
 				value="저장" class="btn btn-secondary" onclick="">
-		
+
 		</form>
-	
 	</div>
-	
-		<!-- 하단 회사 설명 영역 -->
-		<!-- 시간 -->
-		<div>
-			<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
-		</div>
+
+	<!-- 하단 회사 설명 영역 -->
+	<!-- 시간 -->
+	<div>
+		<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
+	</div>
 </div>
-	
+
 
 
 
