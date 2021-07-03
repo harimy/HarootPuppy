@@ -9,17 +9,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Main.jsp</title>
-<link rel="stylesheet" type="text/css" href="<%=cp %>/css/menuStyle.css">
-<link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.css">
 <style type="text/css">
 	body
 	{
 		margin: 0px;
 	}
 </style>
-
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script> -->
-<%-- <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script> --%>
 
 </head>
 <body>

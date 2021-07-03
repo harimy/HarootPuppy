@@ -45,22 +45,22 @@
 			<div class="nameArea">
 				<img src="images/user.jpg" width=200px /> <br> 이름(닉네임)<br>
 				아이디@test.com<br>
-			</div>
+			</div> 
 			<div class="tabArea">
 				<ul class="nav nav-pills nav-justified">
-					<li class="nav-item"><a class="nav-link" 
+					<li class="nav-item"><a class="nav-link active" 
 					data-toggle="tab" href="#menu1">나의 게시물</a></li>
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link"
 						data-toggle="tab" href="#menu2">차단 회원 관리</a></li>
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link"
 						data-toggle="tab" href="#menu3">나의 신고 관리</a></li>
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link"
 						data-toggle="tab" href="#menu4">회원 정보 수정</a></li>
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link"
 						data-toggle="tab" href="#menu5">회원 탈퇴</a></li>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane container fade active" id="menu1">
+					<div class="tab-pane container active" id="menu1">
 						<c:import url="UserMyPageBoard.jsp"></c:import>
 					</div>
 					<div class="tab-pane container fade" id="menu2">

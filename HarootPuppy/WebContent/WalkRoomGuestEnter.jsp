@@ -3,9 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
-<jsp:include page="Main.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,9 +74,23 @@ String cp = request.getContextPath();
 	});
 </script>
 <link rel="stylesheet" type="text/css" href="css/WalkRoom.css">
+
 </head>
 <body>
-	<!-- 방 개설하면서 정보 불러오기 -->
+
+<!-----------------------------
+  Sample.jsp
+  - 페이지 설명
+------------------------------->
+	<div>
+		<!-- 메뉴영역 -->
+		<div id="harootHeader">
+			<c:import url="Main.jsp"></c:import>
+		</div>
+
+		<!-- content 영역 -->
+		<div id="harootContent">
+			<!-- 방 개설하면서 정보 불러오기 -->
 	<div>
 
 		<!-- 방 제목 -->
@@ -144,8 +157,18 @@ String cp = request.getContextPath();
 
 	<!-- 방장/일반 개별 버튼 -->
 	<div id="buttonArea">
-		<button type="button" id="list" onclick="location.href='WalkMain.jsp'">목록으로</button>
+		<button type="button" id="list" onclick="location.href='WalkRoomList.jsp'">목록으로</button>
 		<button type="button" id="out">방 나가기</button>
 	</div>
+		</div>
+
+		<!-- 하단 회사 설명 영역 -->
+		<div id="harootFooter">
+			<c:import url="MainFooter.jsp"></c:import>
+		</div>
+	</div>
+
+
 </body>
+
 </html>
