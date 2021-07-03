@@ -33,13 +33,14 @@ String cp = request.getContextPath();
 
 
 
-ul, li{
+.timeLineUl, .timeLineLi
+{
   list-style: none;
   padding: 0;
 }
 
 
-li:before {
+.timeLineLi:before {
     content: "";
     width: 15px;
     height: 15px;
@@ -51,7 +52,7 @@ li:before {
     top: 0px;
 }
 
-.container{
+.timeContainer{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,16 +61,18 @@ li:before {
   
   padding: 3rem 0;
 }
-.wrapper{
+.timeWrapper{
   background: #eaf6ff;
   padding: 2rem;
   border-radius: 15px;
   width: 500px;
 }
-h1{
+
+#h1Time{
   font-size: 1.1rem;
   font-family: sans-serif;
 }
+
 .sessions{
   margin-top: 2rem;
   border-radius: 12px;
@@ -140,10 +143,10 @@ li.timeLineLi{
 
 		<!-- content 영역 -->
 		<div>
-			<div class="container">
-				<div class="wrapper">
-					<h1 style="text-align: center;">2021.06.29</h1>
-					<ul class="sessions">
+			<div class="container timeContainer">
+				<div class="wrapper timeWrapper">
+					<h1 style="text-align: center;" id="h1Time">2021.06.29</h1>
+					<ul class="sessions timeLineUl">
 						<li class="timeLineLi">
 							<div class="time">09:00 AM</div>
 							<span>산책</span><br>

@@ -14,8 +14,8 @@
    src="http://code.jquery.com/jquery.min.js"></script>
 <style>
     /* 메뉴 수정 */
-   .ab ul, ol, li {margin:0; padding:0; width: 100%}
-   	
+   .ab ul, ol, li { list-style:none; margin:0; padding:0; width: 100%}
+   
     ul.myMenu {text-align: center;}
     ul.myMenu > li { display:inline-block; width:300px; padding:5px 10px; background:rgb(244,188,23); text-align:center; position:relative; }
     ul.myMenu > li:hover { background:rgb(244,188,23); }
@@ -43,12 +43,13 @@
 		color: #000000;
 		height: 26px;
 	}
-	
-	a.link { text-decoration: none; color: black; }
-    a.link:visited { text-decoration: none; }
-    a.link:hover { text-decoration: none; }
-    a.link:focus { text-decoration: none; }
-    a.link:hover, a:active { text-decoration: none; }
+
+  a.link { text-decoration: none; color: black; }
+  a.link:visited { text-decoration: none; }
+  a.link:hover { text-decoration: none; }
+  a.link:focus { text-decoration: none; }
+  a.link:hover, a:active { text-decoration: none; }
+
 </style>
 
 </head>
@@ -61,6 +62,7 @@
 	<li class="menu1">
         <a href="AllUserInfoList.jsp" class="link">회원 관리</a>
         <ul class="menu1_s submenu">
+
             <li style="margin-top: 5px;"><a href="AllUserInfoList.jsp" class="link">전체회원 정보 조회</a></li>
             <li><a href="OutUserInfoList.jsp" class="link">탈퇴회원 정보 조회</a></li>
             <li><a href="AdminInfoList.jsp" class="link">관리자 정보 조회</a></li>
@@ -68,10 +70,12 @@
     </li>
     <li class="menu2">
     	<a href="NoticeList.jsp" class="link">공지 관리</a>	
+
     </li>
     <li class="menu3">
         <a href="ReportMain.jsp" class="link">신고 관리</a>
         <ul class="menu3_s submenu">
+
             <li style="margin-top: 5px;"><a href="ReportedBoardTab.jsp" class="link">게시판 글 신고</a></li>
             <li><a href="ReportedReplyTab.jsp" class="link">게시판 댓글 신고</a></li>
             <li><a href="ReportedBoardTab.jsp" class="link">산책메이트 온라인 신고</a></li>
@@ -80,6 +84,7 @@
     </li>
     <li class="menu4">
     	<a href="AdminFaQTab.jsp" class="link">고객 지원</a>
+
     </li>
 
 </ul>

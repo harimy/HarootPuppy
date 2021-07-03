@@ -28,11 +28,20 @@ body {
 	text-align: center;
 }
 
-content
 
+/* div.Card 가운데 정렬 */
 .card {
-	border: none;
+    border: none;
+    width: 300px;
+    display: inline-block;
 }
+
+/* .card, .card-body
+{	
+	display: inline !important;
+	border: none;
+	width: 250px;
+} */
 
 .card-body {
 	height: 50px;
@@ -107,7 +116,7 @@ content
           -->
 				<div class="card">
 					<label for="a1"> <img class="cardImage"
-						src="<%=cp%>/images/coco.png">
+						src="<%=cp%>/images/puppy1.png">
 						<div class="card-body">
 							<h5 class="card-title">코코</h5>
 							<input type="radio" name="radioGroup" id="a1" value="1">
