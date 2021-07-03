@@ -16,6 +16,9 @@
     /* 메뉴 수정 */
    .ab ul, ol, li { list-style:none; margin:0; padding:0; width: 100%}
    
+   
+   	
+   	
     ul.myMenu {text-align: center;}
     ul.myMenu > li { display:inline-block; width:300px; padding:5px 10px; background:rgb(244,188,23); text-align:center; position:relative; }
     ul.myMenu > li:hover { background:rgb(244,188,23); }
