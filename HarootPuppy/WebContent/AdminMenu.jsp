@@ -12,7 +12,7 @@
 <style type="text/css">
 body
 {
-	margin: 50px;
+	margin: 10px;
 }
 </style>
 </head>
@@ -80,6 +80,8 @@ body
 		</tr>
 	</table>
 </div>
+
+<br><br><br><br>
 
 </body>
 </html>

@@ -35,9 +35,11 @@
 		<c:import url="AdminMain.jsp"></c:import>
 	</div>
 
+	<br><br><br><br>
+
 	<!-- content 영역 -->
 	<div id="harootContent">
-		<c:import url="DiaryMain.jsp"></c:import>
+		<c:import url="AdminMenu.jsp"></c:import>
 	</div>
 
 	<!-- 하단 회사 설명 영역 -->
