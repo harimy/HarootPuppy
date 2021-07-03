@@ -1,14 +1,12 @@
 @charset "UTF-8";
-
+/* 
 body, p, div, span, input, table, th, td, select
 {
 	font-size: 18px;
 	font-family: 맑은 고딕;
-	color: #343;
-	
-	
+	color: #343;	
 }
-
+*/
 .control
 {
 	border: 1px solid gray;

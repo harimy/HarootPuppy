@@ -26,14 +26,14 @@
 #bbsList_header #leftHeader
 {
 	float:left;
-	width:345px;
+	width:300px;
 	text-align:left;
 }
 
 #bbsList_header #rightHeader
 {
 	float:right;
-	width:345px;
+	width:300px;
 	text-align:right;
 }
 
@@ -111,7 +111,7 @@
 #bbsList_list .num {width:70px;}
 #bbsList_list .subject {width:380px;}
 #bbsList_list .name {width:110px;}
-#bbsList_list .created {width:80px;}
+#bbsList_list .created {width:120px;}
 #bbsList_list .hitCount {width:80px;}
 #bbsList_list .like {width:80px;}
 

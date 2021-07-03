@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -14,6 +14,15 @@ String cp = request.getContextPath();
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
+<style type="text/css">
+
+	#bbsList_title, .table th, .table td
+	{
+		text-align: center;
+		
+	}
+	
+</style>
 <script type="text/javaScript">
 	$(document).ready(function()
 	{
@@ -43,12 +52,12 @@ String cp = request.getContextPath();
 <body>
 	<div id="loadArea">
 		<div id="bbsList">
-			<div id="bbsList_title" style="text-align: center;">내 게시글 보기</div>
+			<div id="bbsList_title">내 게시글 보기</div>
 			<select name="categoryKey" id="categoryKey" class="selectField">
 				<option value="board" selected="selected">게시글</option>
 				<option value="reply">댓글</option>
-			</select>
-			<table id="bbsList_list" class="table" style="text-align: center;">
+			</select><br>
+			<table id="bbsList_list" class="table">
 				<tr>
 					<th class="cate">카테고리</th>
 					<th class="num">번호</th>
@@ -88,7 +97,7 @@ String cp = request.getContextPath();
 
 			</div>
 
-			<div id="footer">
+			<div id="footer_number">
 				<p>1 Prev 21 22 23 24 25 26 27 28 29 30 Next 63</p>
 			</div>
 
