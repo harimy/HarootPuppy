@@ -9,18 +9,23 @@
 <head>
 <meta charset="UTF-8">
 <title>DiaryBasicMenu.jsp</title>
-<%-- 
+
 <!-- jQuery JS -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <!-- jQuery-UI CSS -->
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
- --%>
+ 
 <!--  부트스트랩 JS -->
 <script type="text/javascript" src="<%=cp%>/js/bootstrap.js"></script>
 <!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
+
+<!-- 반려견다이어리 CSS / JS -->
+<link rel="stylesheet" href="<%=cp%>/css/diary.css">
+<script type="text/javascript" src="<%=cp%>/js/diary.js"></script>
+
 
 <style type="text/css">
 </style>
