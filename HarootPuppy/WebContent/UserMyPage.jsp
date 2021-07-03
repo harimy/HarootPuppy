@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -28,9 +28,11 @@ String cp = request.getContextPath();
 </style>
 </head>
 <body>
+
 <!-----------------------------
   UserMyPage.jsp
   - 마이페이지 메인
+  - 탭으로 구성하여 각각의 페이지 import
 ------------------------------->
 	<div>
 		<!-- 메뉴영역 -->

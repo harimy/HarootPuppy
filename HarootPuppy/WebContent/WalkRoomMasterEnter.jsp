@@ -62,7 +62,7 @@
 			else if ( $(this).val() == "matched" )
 			{
 				$(this).css("background-color", "blue");
-				$(this).html("READY");
+				$(this).html("Matching");
 				$(this).val("notMatched");
 				return;
 			}
@@ -126,13 +126,13 @@
 				<td><span id="nickName">진수123</span></td>
 				<td>산책끝나고 치맥어떠시어요?</td>
 				<td>06/28/09:23</td>
-				<td><img src="images/report.jpeg" class="icons"></td>
+				<td><button type="button"><img src="images/report.jpeg" class="icons"></button></td>
 			</tr>
 			<tr id="reply">
 				<td><span id="nickName">진수사냥꾼</span></td>
 				<td>이상한 소리좀 하지마라 ㅅㅂ</td>
 				<td>06/28/14:21</td>
-				<td><img src="images/report.jpeg" class="icons"></td>
+				<td><button type="button"><img src="images/report.jpeg" class="icons"></button></td>
 			</tr>
 		</table>
 

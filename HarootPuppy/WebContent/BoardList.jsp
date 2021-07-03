@@ -36,7 +36,7 @@
 	   <div>
 	      <form action="" name="categoryForm" method="post">
 	         <select name="categoryKey" class="selectField">
-	            <option value="notic">공지</option>
+	            <option value="notice">공지</option>
 	            <option value="event">행사/할인정보</option>
 	            <option value="review">리뷰</option>
 	            <option value="talk">수다</option>
@@ -46,7 +46,7 @@
 	    </div>
 	    <br>
    </div>
-   <table id="bbsList_list" class="table" style="text-align: center;">
+   <table id="bbsList_list" class="table" style="text-align: center; width: 100%;">
 		<tr id="title">
 			<th class="cate">카테고리</th>
 			<th class="num">번호</th>
