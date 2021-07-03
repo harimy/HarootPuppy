@@ -11,8 +11,21 @@ String cp = request.getContextPath();
 <head>
 <meta charset="UTF-8">
 <title>WalkRoomGuestEnter.jsp</title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<%=cp%>/css/menuStyle.css">
+<link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="/HarootPuppy/js/jquery-ui.js"></script>
+<!-- jQuery-UI CSS -->
+<link rel="stylesheet" type="text/css" href="/HarootPuppy/css/jquery-ui.css">
+
+<!--  부트스트랩 JS -->
+<script type="text/javascript" src="/HarootPuppy/js/bootstrap.js"></script>
+<!-- 부트스트랩 CSS -->
+<link rel="stylesheet" href="/HarootPuppy/css/bootstrap.css">
+
+
+
 <script type="text/javascript">
 	CountDownTimer('06/30/2021 09:30 PM', 'leftTime');
 
@@ -73,6 +86,24 @@ String cp = request.getContextPath();
 			
 		});
 	});
+	
+	
+	//---------------------------------------------댓글 신고 시 신고 확인 알람창 뜨도록 하는 js
+	var openWin;
+
+	function openChild()
+	{
+	    // window.name = "부모창 이름"; 
+	    window.name = "parentForm";
+	    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+	    openWin = window.open("WalkRoomReplyBlock.jsp",
+	            "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
+	}
+
+	function setChildText(){
+	    openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
+	}
+
 </script>
 <link rel="stylesheet" type="text/css" href="css/WalkRoom.css">
 </head>
@@ -127,13 +158,15 @@ String cp = request.getContextPath();
 				<td><span id="nickName">진수123</span></td>
 				<td>산책끝나고 치맥어떠시어요?</td>
 				<td>06/28/09:23</td>
-				<td><button type="button"><img src="images/report.jpeg" class="icons"></button></td>
+				<td><button type="button"><img src="images/report.jpeg" class="icons"
+					onclick = "openChild()"></button></td>
 			</tr>
 			<tr id="reply">
 				<td><span id="nickName">진수사냥꾼</span></td>
 				<td>이상한 소리좀 하지마라 ㅅㅂ</td>
 				<td>06/28/14:21</td>
-				<td><button type="button"><img src="images/report.jpeg" class="icons"></button></td>
+				<td><button type="button"><img src="images/report.jpeg" class="icons"
+					onclick = "openChild()"></button></td>
 			</tr>
 		</table>
 
