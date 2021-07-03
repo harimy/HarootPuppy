@@ -1,11 +1,7 @@
 @charset "UTF-8";
 
-body {
-	padding: 10px;
-}
 
 div {
-	margin: 10px;
 	font-size: 18px;
 }
 
@@ -57,10 +53,7 @@ img {
 	width: 20px;
 }
 
-
-
 .btn {
-	background-color: blue;
 	border: none;
 	color: white;
 	padding: 15px 30px;
@@ -72,7 +65,3 @@ img {
 	cursor: pointer;
 }
 
-.btn:hover {
-	color: orange;
-	background-color: #778877;
-}

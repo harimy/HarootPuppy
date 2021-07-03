@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Sample.jsp</title>
+<title>AdminSample.jsp</title>
 
 <!-- jQuery JS -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -35,10 +35,12 @@
 		<c:import url="AdminMain.jsp"></c:import>
 	</div>
 
+	<br><br><br><br>
+
 	<!-- content 영역 -->
-	<div id="harootContent">
-		<c:import url="DiaryMain.jsp"></c:import>
-	</div>
+<%-- 	<div id="harootContent">
+		<c:import url="".jsp"></c:import>
+	</div> --%>
 
 	<!-- 하단 회사 설명 영역 -->
 	<div id="harootFooter">

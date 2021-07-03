@@ -43,7 +43,7 @@
 </head>
 <body>
 <div>
-	<div id="harootContent">
+	<div id="harootContent" class="reportTable">
 		<!-- 미처리 건수 표시 -->
 		<span style="float: right;">미처리 <span style="font-weight: bold">3</span>건</span>
 		

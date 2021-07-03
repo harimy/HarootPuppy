@@ -10,8 +10,7 @@ String cp = request.getContextPath();
 <meta charset="UTF-8">
 <title>DiaryNutrientsInsertForm.jsp</title>
 <style type="text/css">
-.container-fluid 
-{
+.container-fluid {
 	border: 1px solid;
 	border-width: 2px;
 	background-color: #E6E6E6;
@@ -46,8 +45,6 @@ String cp = request.getContextPath();
 	flex-wrap: wrap;
 	align-content: space-between;
 }
-
-
 </style>
 
 <script type="text/javascript">
@@ -91,7 +88,10 @@ String cp = request.getContextPath();
 	즐겨찾기 등록 → 부트스트랩 모달 ()
 	*/
 
-	
+	function add_private() {
+		var inputString = prompt('즐겨찾기 이름을 입력하세요'); 
+		alert(inputString)
+		};
 	
 </script>
 
@@ -103,157 +103,112 @@ String cp = request.getContextPath();
   - 다이어리 영양제 입력폼
 ------------------------------->
 
-<div>
-
-	<!-- content 영역 -->
 	<div>
-		<!-- 즐겨찾기 영역 (form 영역 바깥) -->
-		<form action="" id="">
 
-			<!-- 시작 시간 종료 시간 -->
-			<!-- 공통항목 (시작 시간) -->
-			<div class="form-time">
-				<label for="focusedtime">시작 시간</label> <input type="time"
-					class="focusedInput form-time-control" id="start1">
-		
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		
-		
-				<!-- 공통항목 (종료 시간) -->
-				<label for="focusedtime">종료 시간</label> <input type="time"
-					class="focusedInput form-time-control" id="end1">
-			</div>
-		
-			<!-- 즐겨찾기 추가 버튼 (하트)  -->	
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-				data-bs-target="#exampleModal" data-bs-whatever="@mdo">❤</button>
-		
-			<div class="modal fade" id="exampleModal" tabindex="-1"
-				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">즐겨찾기 등록하기</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal"
-								aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							
-								<div class="mb-3">
-									<label for="recipient-name" class="col-form-label">즐겨찾기 이름</label>
-								</div>
-								<div class="mb-3">
-									<label for="message-text" class="col-form-label"></label>
-									<textarea class="form-control" id="message-text"></textarea>
-								</div>
-							
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-bs-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-primary">등록</button>
-						</div>
+		<!-- content 영역 -->
+		<div>
+			<!-- 즐겨찾기 영역 (form 영역 바깥) -->
+			<form action="" id="">
+
+				<!-- 시작 시간 종료 시간 -->
+				<!-- 공통항목 (시작 시간) -->
+				<div class="form-time">
+					<label for="focusedtime">시작 시간</label> <input type="time"
+						class="focusedInput form-time-control" id="start1">
+
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+					<!-- 공통항목 (종료 시간) -->
+					<label for="focusedtime">종료 시간</label> <input type="time"
+						class="focusedInput form-time-control" id="end1">
+				</div>
+
+				<!-- 즐겨찾기 추가 버튼 (하트)  -->
+				<button type="button" class="btn btn-primary"
+					onclick="add_private()">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+						fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  			<path
+							d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+			</svg>
+				</button>
+
+				<!-- content 영역 -->
+				<!-- 즐겨찾기 -->
+				<div class="container-fluid favorite" id="privateBlock">
+					즐겨찾기&nbsp; <select name="favorite">
+						<option value="mirivogi">미리보기</option>
+					</select> <br> <br>
+
+					<button value="+" onclick="add_div()">+</button>
+
+					<!-- text 박스 -->
+					<br> 영양제 이름 <input type="text" id="nutName"> <br>
+					투여량&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+						type="text" id="nutName">
+
+					<!-- radio 영양제 종류 -->
+					<br> 영양제 종류 <label><input type="radio" name="nutType1"
+						value="영양제종류" checked="checked">알약</label> <label><input
+						type="radio" name="nutType2" value="행동교정훈련">물약</label> <label><input
+						type="radio" name="nutType3" value="사회화훈련">가루약</label>
+
+
+					<!-- checkbox 관리종류 -->
+					<br>관리 종류 <input type="checkbox" id="setType"> <label
+						for="Type1">심혈관</label> <input type="checkbox" id="setType">
+					<label for="Type2">관절</label> <input type="checkbox" id="setType">
+					<label for="Type3">눈</label> <input type="checkbox" id="setType">
+					<label for="Type4">구충제</label> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+						type="checkbox" id="setType"> <label for="Type5">장건강</label>
+
+					<input type="checkbox" id="setType"> <label for="Type6">구강</label>
+
+					<input type="checkbox" id="setType"> <label for="Type7">피부/모질</label>
+
+					<input type="checkbox" id="setType"> <label for="Type8">기타</label>
+					<input type="text" id="setEtc"> <br>
+					<button value="-" onclick="remove_div(this)">-</button>
+
+
+					<div id="here"></div>
+				</div>
+				<br>
+				<!-- 즐겨찾기 끝  -->
+
+
+				<!-- 공통항목 (메모) -->
+				<div style="display: block !important;">
+					<div class="form-floating">
+						<label for="floatingTextarea"></label>
+						<textarea class="form-control" placeholder="특이사항(메모)"
+							id="floatingTextarea" style="width: 300px; height: 100px;"></textarea>
+						<br>
 					</div>
 				</div>
-			</div>
-		
-			<!-- content 영역 -->
-			<!-- 즐겨찾기 -->
-			<div class="container-fluid favorite" id="privateBlock">
-				즐겨찾기&nbsp; <select name="favorite">
-					<option value="mirivogi">미리보기</option>
-				</select> <br>
-				<br>
-		
-				<button value="+" onclick="add_div()">+</button>
-				
-				<!-- text 박스 -->
-				<br> 영양제 이름 <input type="text" id="nutName">
-				<br> 투여량&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="text" id="nutName"> 
-				
-				<!-- radio 영양제 종류 -->
-				<br> 영양제 종류 
-				<label><input type="radio" name="nutType1" 
-				value="영양제종류" checked="checked">알약</label>
-				<label><input type="radio" name="nutType2" value="행동교정훈련">물약</label>
-				<label><input type="radio" name="nutType3" value="사회화훈련">가루약</label>
-				
-				
-				<!-- checkbox 관리종류 -->
-				<br>관리 종류
-				<input type="checkbox" id="setType"> 
-				<label for="Type1">심혈관</label>
-				
-				<input type="checkbox" id="setType"> 
-				<label for="Type2">관절</label>
-		
-				<input type="checkbox" id="setType"> 
-				<label for="Type3">눈</label>
-		
-				<input type="checkbox" id="setType"> 
-				<label for="Type4">구충제</label>
-				
-				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				
-				<input type="checkbox" id="setType"> 
-				<label for="Type5">장건강</label>
-		
-				<input type="checkbox" id="setType"> 
-				<label for="Type6">구강</label>
-		
-				<input type="checkbox" id="setType"> 
-				<label for="Type7">피부/모질</label>
-				
-				<input type="checkbox" id="setType"> 
-				<label for="Type8">기타</label>
-				<input type="text" id="setEtc">
-					
-										
-				
-				<br>
-				<button value="-" onclick="remove_div(this)">-</button>
-		
-		
-				<div id="here"></div>
-			</div>
-			<br>
-			<!-- 즐겨찾기 끝  -->
-		
-		
-			<!-- 공통항목 (메모) -->
-			<div style="display: block !important;">
-				<div class="form-floating">
-					<label for="floatingTextarea"></label>
-					<textarea class="form-control" placeholder="특이사항(메모)"
-						id="floatingTextarea" style="width: 300px; height: 100px;"></textarea>
-					<br>
-				</div>
-			</div>
-			<!-- 공통항목 (사진 첨부) -->
-			<input type="file" name="profile_pt" id="profile_pt"
-				onchange="previewImage(this,'View_area')">
-			<!-- 사진 미리보기 -->
-			<div id="View_area"></div>
-		
-			<!-- 사진첨부시 미리보기 출력영역 -->
-		
-			<br>
-			<br>
-			<br> <input type="reset" value="취소"
-				class="btn btn-outline-secondary"> <input type="button"
-				value="저장" class="btn btn-secondary" onclick="">
+				<!-- 공통항목 (사진 첨부) -->
+				<input type="file" name="profile_pt" id="profile_pt"
+					onchange="previewImage(this,'View_area')">
+				<!-- 사진 미리보기 -->
+				<div id="View_area"></div>
 
-		</form>
-	</div>
+				<!-- 사진첨부시 미리보기 출력영역 -->
 
-	<!-- 하단 회사 설명 영역 -->
-	<!-- 시간 -->
-	<div>
-		<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
+				<br> <br> <br> <input type="reset" value="취소"
+					class="btn btn-outline-secondary"> <input type="button"
+					value="저장" class="btn btn-secondary" onclick="">
+
+			</form>
+		</div>
+
+		<!-- 하단 회사 설명 영역 -->
+		<!-- 시간 -->
+		<div>
+			<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
+		</div>
 	</div>
-</div>
 
 
 

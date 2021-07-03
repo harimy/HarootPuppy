@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+.masterTag, .readyTag, .notReadyTag 
+{
+	width: 100%;
+	height: 25px;
+	border-radius: 15px;
+	text-align: center;
+	vertical-align: center;
+	color: white;
+}
+
+.masterTag 
+{
+	background: rgb(196, 91, 36);
+}
+
+.readyTag 
+{
+	background: rgb(232, 159, 60);
+}
+
+.notReadyTag 
+{
+	background: rgb(224, 224, 224);
+}
+
+.mateOp 
+{
+	height: 35px;
+	border-radius: 15px;
+	text-align: center;
+	vertical-align: center;
+	padding: 5px;
+	font-size: 16px;
+}
+
+#dogSize 
+{
+	width: 150px;
+	background: rgb(146, 95, 177);
+	color: white;
+}
+
+#gender 
+{
+	width: 200px;
+	background: rgb(235, 196, 69);
+	color: black;
+}
+
+#mouth 
+{
+	width: 200px;
+	background: rgb(56, 72, 92);
+	color: white;
+}
+
+#auto 
+{
+	width: 200px;
+	background: rgb(94, 94, 94);
+	color: white;
+}
+
+#readyBtn
+{
+	border-radius: 10px;
+	background: rgb(232, 159, 60);
+}
+
+#matchBtn
+{
+	border-radius: 10px;
+	background: rgb(196, 91, 36);
+}
