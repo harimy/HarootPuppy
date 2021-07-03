@@ -210,7 +210,7 @@
 	<div id="buttonArea">
 		<button type="button" id="changeInfo"
 			onclick="location.href='WalkRoomInsertForm.jsp'">방 정보 변경</button>
-		<button type="button" id="list" onclick="location.href='WalkMain.jsp'">목록으로</button>
+		<button type="button" id="list" onclick="location.href='WalkRoomList.jsp'">목록으로</button>
 		<button type="button" id="delete">방 삭제하기</button>
 	</div>
 </body>

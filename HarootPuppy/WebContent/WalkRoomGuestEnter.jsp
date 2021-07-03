@@ -220,7 +220,7 @@
 
 	<!-- 방장/일반 개별 버튼 -->
 	<div id="buttonArea">
-		<button type="button" id="list" onclick="location.href='WalkMain.jsp'">목록으로</button>
+		<button type="button" id="list" onclick="location.href='WalkRoomList.jsp'">목록으로</button>
 		<button type="button" id="out">방 나가기</button>
 	</div>
 		</div>

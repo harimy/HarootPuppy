@@ -77,7 +77,7 @@
 			<div class="nameArea">
 				<img src="images/user.jpg" width=200px /> <br> 이름(닉네임)<br>
 				아이디@test.com<br>
-			</div>
+			</div> 
 			<div class="tabArea">
 				<ul class="nav nav-pills nav-justified">
 					<li class="nav-item"><a class="nav-link active" 
