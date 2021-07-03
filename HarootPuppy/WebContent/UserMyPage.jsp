@@ -58,16 +58,14 @@
 </head>
 <body>
 
+<jsp:include page="MainTest.jsp"></jsp:include>
+
 <!-----------------------------
   UserMyPage.jsp
   - 마이페이지 메인
   - 탭으로 구성하여 각각의 페이지 import
 ------------------------------->
 	<div>
-		<!-- 메뉴영역 -->
-		<div id="harootHeader">
-			<c:import url="Main.jsp"></c:import>
-		</div>
 
 		<br><br><br>
 

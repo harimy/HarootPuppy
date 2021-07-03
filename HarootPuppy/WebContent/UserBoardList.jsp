@@ -13,7 +13,12 @@
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/list.css">
 </head>
 <body>
-<jsp:include page="Main.jsp" />
+	<div id="harootHeader">
+		<c:import url="Main.jsp"></c:import>
+	</div>
+
+	<br><br><br><br>
+
 	<div id="bbsList">
 
 		<div id="bbsList_title" style="text-align: center;">내 게시글 보기</div>
@@ -100,12 +105,20 @@
 				</div>
 
 			</div>
+			
+			<br><br><br><br>
 
 			<div id="footer">
 				<p>1 Prev 21 22 23 24 25 26 27 28 29 30 Next 63</p>
 			</div>
 
 		</div>
+	</div>
+	
+	<br><br><br><br>
+	
+	<div id="harootFooter">
+		<c:import url="MainFooter.jsp"></c:import>
 	</div>
 </body>
 </html>

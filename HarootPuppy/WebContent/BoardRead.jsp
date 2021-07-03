@@ -62,7 +62,7 @@ body
 	</div>
 	<br>
 	<div>
-		<textarea rows="3" cols="112" style="float: left;">댓글을 입력해주세요.</textarea>
+		<textarea rows="3" cols="112" style="float: left; width: 807px;">댓글을 입력해주세요.</textarea>
 		<input type="button" value="등록" id="submitBtn" class="submitbtn">
 	</div>
 	

@@ -32,13 +32,17 @@
 	<div>
 		<!-- 메뉴영역 -->
 		<div id="harootHeader">
-			<c:import url="Main.jsp"></c:import>
+			<c:import url="MainTest.jsp"></c:import>
 		</div>
-
+		
+		<br><br><br><br>
+		
 		<!-- content 영역 -->
 		<div id="harootContent">
-			
+			<c:import url="UserMyPage.jsp"></c:import>
 		</div>
+
+		<br><br><br><br>
 
 		<!-- 하단 회사 설명 영역 -->
 		<div id="harootFooter">

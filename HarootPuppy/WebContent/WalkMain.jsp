@@ -68,21 +68,17 @@ body {
 
 <script type="text/javascript">
   
-        var openWin;
-    
-        function openChild()
-        {
-            // window.name = "부모창 이름"; 
-            window.name = "parentForm";
-            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-            openWin = window.open("WalkPlaceSelect.jsp",
-                    "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
-        }
-        
-       /*  function setChildText(){
-            openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
-        }
-  */
+  function openChild() {
+	  
+	    var _width = '650';
+	    var _height = '380';
+	 
+	    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+	    var _left = Math.ceil(( window.screen.width - _width )/2);
+	    var _top = Math.ceil(( window.screen.height - _height )/2); 
+	 
+	    window.open('WalkPlaceSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+	}
 </script>
 
 
