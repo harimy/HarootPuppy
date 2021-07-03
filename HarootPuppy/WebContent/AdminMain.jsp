@@ -44,7 +44,12 @@
 		height: 26px;
 	}
 
-    
+  a.link { text-decoration: none; color: black; }
+  a.link:visited { text-decoration: none; }
+  a.link:hover { text-decoration: none; }
+  a.link:focus { text-decoration: none; }
+  a.link:hover, a:active { text-decoration: none; }
+
 </style>
 
 </head>
@@ -55,32 +60,31 @@
 <div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">
 	<li class="menu1">
-        회원관리
+        <a href="AllUserInfoList.jsp" class="link">회원 관리</a>
         <ul class="menu1_s submenu">
-            <li style="margin-top: 5px;">전체회원 정보 조회</li>
-            <li>탈퇴회원 정보 조회</li>
-            <li>관리자 정보 조회</li>
+
+            <li style="margin-top: 5px;"><a href="AllUserInfoList.jsp" class="link">전체회원 정보 조회</a></li>
+            <li><a href="OutUserInfoList.jsp" class="link">탈퇴회원 정보 조회</a></li>
+            <li><a href="AdminInfoList.jsp" class="link">관리자 정보 조회</a></li>
         </ul>   
     </li>
     <li class="menu2">
-    	게시물 관리
-    	<ul class="menu2_s submenu">
-            <li style="margin-top: 5px;">게시판 공지 작성</li>
-        </ul> 	
+    	<a href="NoticeList.jsp" class="link">공지 관리</a>	
+
     </li>
     <li class="menu3">
-        신고 관리
+        <a href="ReportMain.jsp" class="link">신고 관리</a>
         <ul class="menu3_s submenu">
-            <li style="margin-top: 5px;">게시판 신고</li>
-            <li>산책메이트 온라인 신고</li>
-            <li>산책메이트 오프라인 신고</li>
+
+            <li style="margin-top: 5px;"><a href="ReportedBoardTab.jsp" class="link">게시판 글 신고</a></li>
+            <li><a href="ReportedReplyTab.jsp" class="link">게시판 댓글 신고</a></li>
+            <li><a href="ReportedBoardTab.jsp" class="link">산책메이트 온라인 신고</a></li>
+            <li><a href="ReportedBoardTab.jsp" class="link">산책메이트 오프라인 신고</a></li>
         </ul>   
     </li>
     <li class="menu4">
-    	고객지원
-    	<ul class="menu4_s submenu">
-            <li style="margin-top: 5px;">고객문의 게시판</li>
-        </ul> 	
+    	<a href="AdminFaQTab.jsp" class="link">고객 지원</a>
+
     </li>
 
 </ul>

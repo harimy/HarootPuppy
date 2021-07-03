@@ -20,6 +20,7 @@
 		text-align: center !important; 
 	}
 	
+
 	
 </style>
 
@@ -53,6 +54,9 @@
 	<div id="harootHeader">
 		<c:import url="AdminMain.jsp"></c:import>
 	</div>
+	
+	<br><br><br><br>
+	
 	<div id="harootContent">
 		<div style="width: 100%; text-align: center;">
 			<h1>전체 회원정보 조회</h1>
@@ -76,6 +80,7 @@
 		
 		<div>
 			<table class="table table-striped table-condensed table-hover" id="userTable" style="text-align: center;"> 
+
 				<tr>
 					<th>회원번호</th>
 					<th>아이디</th>
