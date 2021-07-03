@@ -10,13 +10,25 @@
 <meta charset="UTF-8">
 <title>AdminMenu.jsp</title>
 <style type="text/css">
-body
-{
-	margin: 50px;
-}
+	body
+	{
+		margin: 0px !important;
+	}
+	
+	a.link { text-decoration: none; color: black; }
+    a.link:visited { text-decoration: none; }
+    a.link:hover { text-decoration: none; }
+    a.link:focus { text-decoration: none; }
+    a.link:hover, a:active { text-decoration: none; }
 </style>
 </head>
 <body>
+
+<div id="harootHeader">
+	<c:import url="AdminMain.jsp"></c:import>
+</div>
+
+<br><br><br><br>
 
 <div style="text-align: center;">
 	<h1>관리자 페이지</h1>
@@ -24,7 +36,7 @@ body
 </div>
 
 <div>
-	<table style="width: 100%;">
+	<table style="width: 100%;" id="adminMenu">
 		<tr>
 			<th>
 				<h3>게시판 신고</h3>
@@ -39,14 +51,14 @@ body
 		<tr>
 			<td style="background-color: rgb(239,239,239);">
 				<ul>
-					<li>미처리 게시물 50건</li>
-					<li>미처리 댓글 50건</li>
+					<li><a href="ReportedBoardTab.jsp" class="link">미처리 게시물 50건</a></li><br>
+					<li><a href="ReportedReplyTab.jsp" class="link">미처리 댓글 50건</a></li>
 				</ul>
 			</td>
 			<td style="background-color: rgb(208,208,208);">
 				<h4>&nbsp;&nbsp;&nbsp;온라인 신고</h4>
 				<ul>
-					<li>미처리 게시물 50건</li>
+					<li>미처리 게시물 50건</li><br>
 					<li>미처리 댓글 50건</li>
 				</ul>
 				<h4>&nbsp;&nbsp;&nbsp;오프라인 신고</h4>
@@ -79,6 +91,12 @@ body
 			<td style="background-color: rgb(208,208,208);">안보면 후회 지금 클릭해보세요</td>
 		</tr>
 	</table>
+</div>
+
+<br><br><br><br>
+
+<div id="harootFooter">
+	<c:import url="MainFooter.jsp"></c:import>
 </div>
 
 </body>

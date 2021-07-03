@@ -21,21 +21,11 @@
 <script src="<%=cp%>/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-	
-	.nameArea
+
+	.nameArea, .tabArea
 	{
-	
-	
-		margin-left: 50px;
-		margin-right: 30px;
-		float: left;
+		display: inline-block !important;
 	}
-	
-	.container
-	{
-		display: inline-block;
-	}
-	
 
 	/* 탭 관련 css */
 	.nav-tabs { border-bottom: 2px solid #DDD; }
@@ -54,11 +44,10 @@
 	.nav-tabs > li > a > span {display:none;}	
 	.nav-tabs > li > a {padding: 5px 5px;}
 	
+
 </style>
 </head>
 <body>
-
-<jsp:include page="MainTest.jsp"></jsp:include>
 
 <!-----------------------------
   UserMyPage.jsp
@@ -66,18 +55,22 @@
   - 탭으로 구성하여 각각의 페이지 import
 ------------------------------->
 	<div>
+		<!-- 메뉴영역 -->
+		<div id="harootHeader">
+			<c:import url="Main.jsp"></c:import>
+		</div>
 
 		<br><br><br>
 
 		<!-- content 영역 -->
 		<div id="harootContent">
 		
-			<!-- 기존의 파란색 탭 디자인 -->
+		<!-- 기존의 파란색 탭 디자인 -->
 			<%-- 
 			<div class="nameArea">
 				<img src="images/user.jpg" width=200px /> <br> 이름(닉네임)<br>
 				아이디@test.com<br>
-			</div> 
+			</div>
 			<div class="tabArea">
 				<ul class="nav nav-pills nav-justified">
 					<li class="nav-item"><a class="nav-link active" 
@@ -116,14 +109,9 @@
 			--%>
 			
 			
-			<div class="nameArea thumbnail">
-				<img src="images/user.jpg" width=200px/> <br> 이름(닉네임)<br>
-				아이디@test.com<br>
-			</div> 
+			
 			<div class="container">
-			  <div class="row">			
-			    <div class="col-md-12">
-			    
+			  <div class="row">
 			      <!-- Nav tabs -->
 			      <div class="card">
 			        <ul class="nav nav-tabs nav-justified" role="tablist">

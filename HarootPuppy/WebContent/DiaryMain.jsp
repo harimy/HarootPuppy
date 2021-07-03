@@ -26,7 +26,6 @@ String cp = request.getContextPath();
 <link rel="stylesheet" href="<%=cp%>/css/diary.css">
 <script type="text/javascript" src="<%=cp%>/js/diary.js"></script>
 
-
 <style type="text/css">
 h1 {
 	text-align: center !important;

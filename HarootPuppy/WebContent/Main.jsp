@@ -10,9 +10,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Main.jsp</title>
+
 <script type="text/javascript"
    src="http://code.jquery.com/jquery.min.js"></script>
 <style>
+
     /* 메뉴 수정 */
    .ab ul, ol, li { list-style:none; margin:0; padding:0; width: 100%}
    	
@@ -24,8 +26,8 @@
     ul.myMenu > li ul.submenu > li { display:inline-block; width:300px; padding:5px 10px; text-align:center; background-color: white;}
     ul.myMenu > li ul.submenu > li:hover { background-color: rgb(250, 223, 114);  }
     
-    a.container:link, a.container:visited
-	{
+   a.container:link, a.container:visited
+	 {
 		display: block;
 		font-weight: bold;
 		background-color: rgb(244,188,23);
@@ -35,8 +37,8 @@
 		text-transform: uppercase;
 		height: 30px;
 		font-size: 14pt;
-	}
-
+	 }
+  
 	a.container:hover, a.container:active
 	{
 		background-color: rgb(244,188,23);

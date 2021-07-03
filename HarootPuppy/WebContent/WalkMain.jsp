@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -55,25 +55,30 @@ body {
 .table {
 	margin: 0px auto !important;
 }
+
+#mapAndPet
+{
+	width: 100%;
+	display: flex;
+  	justify-content: center;
+  	padding-top: 30px;
+	
+}
 </style>
 
 <script type="text/javascript">
   
-        var openWin;
-    
-        function openChild()
-        {
-            // window.name = "부모창 이름"; 
-            window.name = "parentForm";
-            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-            openWin = window.open("WalkPlaceSelect.jsp",
-                    "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
-        }
-        
-       /*  function setChildText(){
-            openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
-        }
-  */
+  function openChild() {
+	  
+	    var _width = '650';
+	    var _height = '380';
+	 
+	    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+	    var _left = Math.ceil(( window.screen.width - _width )/2);
+	    var _top = Math.ceil(( window.screen.height - _height )/2); 
+	 
+	    window.open('WalkPlaceSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+	}
 </script>
 
 
@@ -94,7 +99,7 @@ body {
 
 		<!-- content 영역 -->
 		<div id="harootContent">
-			<div>
+			<div id="mapAndPet">
 				<table style="text-align: center;">
 					<tr>
 						<th>내 주변 산책 핫플레이스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
@@ -107,7 +112,7 @@ body {
 					<tr>
 						<td
 							style="width: 300px; height: 280px; padding-left: 40px; padding-right: 40px;">
-							<div id="map" style="width: 300px; height: 300px;"></div> <script
+							<div id="map" style="width: 380px; height: 300px;"></div> <script
 								type="text/javascript"
 								src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c980959de9d6957591bdf2f69c03ce68"></script>
 							<script>
@@ -124,7 +129,7 @@ body {
 							</script>
 						</td>
 						<td><img class="Image" src="/HarootPuppy/images/coco.png"
-							style="width: 380px; height: 280px; padding-right: 40px; padding-left: 40px;">
+							style="width: 380px; height: 300px; padding-right: 40px; padding-left: 40px;">
 						</td>
 					</tr>
 					<tr>
@@ -148,7 +153,7 @@ body {
 			<br> <br>
 
 			<div>
-				<table border="1" style="text-align: center;">
+				<table border="1" style="text-align: center; width: 100%;">
 					<tr>
 						<th>반경</th>
 						<td>
@@ -220,6 +225,11 @@ body {
 					방만 보기&nbsp;&nbsp;
 				</label>
 			</div>
+			<br><br><br>
+			
+			<jsp:include page="WalkRoomList.jsp" />
+			
+			<br><br>
 
 		</div>
 		<!-- 하단 회사 설명 영역 -->

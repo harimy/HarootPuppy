@@ -40,25 +40,33 @@ function setChildText(){
 
 
 </script>
+
+<style type="text/css">
+	th, td
+	{
+		text-align: center;
+	}
+
+</style>
+
 </head>
 <body>
-<jsp:include page="Main.jsp" />
 <div>
 	<input type="button" value="방 만들기" style="float: right;">
 </div>
 <br><br>
 <div>
-	<table id="bbsList_list" class="table" style="text-align: center;">
+	<table id="bbsList_list" class="table">
 		<tr id="title">
 			<th class="num" style="width: 100px;">번호</th>
-			<th class="info" style="width: 400px;">소개</th>
+			<th class="roomInfo" style="width: 400px;">소개</th>
 			<th class="memNum" style="width: 100px;">산책 인원</th>
 			<th class="time" style="width: 150px;">산책 시간</th>
 			<th class="host" style="width: 100px;">개설자</th>
 		</tr>
 		<tr id="lists" onclick="openChild()"> 
 			<td class="num">1</td>
-			<td class="info">저녁 산책 하GO 건강 챙기GO</td>
+			<td class="roomInfo">저녁 산책 하GO 건강 챙기GO</td>
 			<td class="memNum">저쩌구</td>
 			<td class="time">1/4</td>
 			<td class="host">뚜또맘</td> 
