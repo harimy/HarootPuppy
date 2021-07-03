@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>UserMyPage.jsp</title>
+<title>WalkHistoryMain.jsp</title>
 <!-- 부트스트랩 css -->
 <link rel="stylesheet" href="<%=cp%>/css/bootstrap.min.css">
 
@@ -19,16 +19,13 @@
 <!-- 부트스트랩 script -->
 <script src="<%=cp%>/js/bootstrap.min.js"></script>
 
-<style type="text/css">
-</style>
 </head>
 <body>
 
-<!--------------------------------------
-   UserMyPage.jsp
-   - 사용자 마이페이지 첫 화면
-   - 탭으로 구성하여 각각의 페이지 import
---------------------------------------->
+<!-----------------------------
+   WalkHistoryMain.jsp
+   - 산책 히스토리 메인
+------------------------------->
 	<div>
 		<!-- 메뉴영역 -->
 		<div id="harootHeader">
@@ -40,24 +37,24 @@
 
 			<ul class="nav nav-pills nav-justified">
 				<li class="nav-item">
-					<a class="nav-link" data-toggle="tab" href="#home">Home</a>
+					<a class="nav-link" data-toggle="tab" href="#home">신청완료</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" data-toggle="tab" href="#menu1">Menu1</a>
+					<a class="nav-link active" data-toggle="tab" href="#menu1">산책예정</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" data-toggle="tab" href="#menu2">Menu2</a>
+					<a class="nav-link active" data-toggle="tab" href="#menu2">산책완료</a>
 				</li>
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane container fade active" id="home">
-					<c:import url="UserMyPageBoard.jsp"></c:import>
+					<c:import url="WalkApplyDone.jsp"></c:import>
 				</div>
 				<div class="tab-pane container fade" id="menu1">
-					<c:import url="UserMyPageBlock.jsp"></c:import>
+					<c:import url="WalkScheduled.jsp"></c:import>
 				</div>
 				<div class="tab-pane container fade" id="menu2">
-					<c:import url="UserMyPageReport.jsp"></c:import>
+					<c:import url="WalkFinished.jsp"></c:import>
 				</div>
 			</div>
 		</div>
