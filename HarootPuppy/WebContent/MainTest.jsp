@@ -9,14 +9,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminMain.jsp</title>
+<title>MainTest.jsp</title>
 <script type="text/javascript"
    src="http://code.jquery.com/jquery.min.js"></script>
 <style>
-    ul, ol, li { list-style:none; margin:0; padding:0; width: 100%}
-   
+    /* 메뉴 수정 */
+   .ab ul, ol, li { list-style:none; margin:0; padding:0; width: 100%}
+   	
     ul.myMenu {text-align: center;}
-    ul.myMenu > li { display:inline-block; width:300px;; padding:5px 10px; background:rgb(244,188,23); text-align:center; position:relative; }
+    ul.myMenu > li { display:inline-block; width:300px; padding:5px 10px; background:rgb(244,188,23); text-align:center; position:relative; }
     ul.myMenu > li:hover { background:rgb(244,188,23); }
     ul.myMenu > li ul.submenu { display:none; position:absolute; top:30px; left:0; }
     ul.myMenu > li:hover ul.submenu { display:block; }
@@ -42,38 +43,40 @@
 		color: #000000;
 		height: 26px;
 	}
+	
+	a { text-decoration: none; color: black; }
+    a:visited { text-decoration: none; }
+    a:hover { text-decoration: none; }
+    a:focus { text-decoration: none; }
+    a:hover, a:active { text-decoration: none; }
 </style>
 
 </head>
 <body>
 
-<jsp:include page="Main.jsp"></jsp:include>
+<jsp:include page="MainHeader.jsp"></jsp:include>
 
-<div id="container" style="background-color: rgb(244,188,23);">
+<div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">
 	<li class="menu1">
-        나의 반려견
-	</li>
+        <a href="AllUserInfoList.jsp">나의 반려견</a>  
+    </li>
     <li class="menu2">
-    	산책메이트
-    	<ul class="menu2_s submenu">
-            <li>산책메이트</li>
+    	<a href="NoticeList.jsp">산책메이트</a>	
+    	<ul class="menu3_s submenu">
+            <li style="margin-top: 5px;"><a href=".jsp">산책메이트</a></li>
             <li>히스토리</li>
-        </ul> 	
+        </ul> 
     </li>
     <li class="menu3">
-        자유 게시판
+        <a href="ReportMain.jsp">자유게시판</a>
         <ul class="menu3_s submenu">
-            <li>자유 게시판</li>
-            <li>HOT 게시판</li>
+            <li style="margin-top: 5px;"><a href=".jsp">자유게시판</a></li>
+            <li>HOT 게시판<li>
         </ul>   
     </li>
     <li class="menu4">
-    	고객지원
-    	<ul class="menu4_s submenu">
-            <li>자주하는 질문</li>
-            <li>1:1 문의</li>
-        </ul> 	
+    	<a href="AllUserInfoList.jsp">고객 지원</a>
     </li>
 
 </ul>
