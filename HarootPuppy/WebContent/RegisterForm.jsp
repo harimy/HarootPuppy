@@ -32,6 +32,46 @@
 		});
 		
 		
+		$("#join").click(function(){
+			// 데이터 검사(공란이 있는지 없는지에 대한 여부 확인)
+			$("#errForm").css("display", "none");
+			$("#errCheck").css("display", "none");
+			$("#errOverlap").css("display", "none");
+			
+			alert($('input:checkbox[name="agree2"]:checked').val());
+	
+			if ( $("#id").val()=="" || $("#pwd").val()==""|| $("#pwdCheck").val()=="" 
+					|| $("#name").val()=="" || $("#nickName").val()=="" 
+					|| $("#phone").val()=="" || $("#birthday").val()=="" 
+					|| $("#address").val()==""
+					|| $('input[name="gender"]:checked').val() == 'undefined' )
+			{
+				$("#errForm").css("display" ,"inline");
+				return;
+			} 
+
+			if ( $("input:checkbox[name='agree2']").is(":checked") == false )
+			{
+				alert("된다노");
+				$("#errCheck").css("display" ,"inline");
+				return;
+			}
+			
+			$("#joinForm").submit();
+
+		});
+		
+		
+		
+	});
+	
+	$(function() {
+		var checkNum1=0;
+		var checkNum2=0;
+		var checkNum3=0;
+		$("#join").click(function(){
+		
+		});
 	});
 	
 </script>
@@ -58,7 +98,12 @@
 			resize: vertical;  세로크기만 조절가능  */
 	}
 	
-
+	#errForm, #errCheck, #errOverlap, #errPwd, #errPwdCheck, #errNickName
+	{
+		color: red;
+		font-size: small;
+		display: none;
+	}
 	
 </style>
 
@@ -66,22 +111,24 @@
 
 </head>
 <body>
-<jsp:include page="Main.jsp" />
 <!-----------------------------
   RegisterForm.jsp
   - 회원가입 페이지
 ------------------------------->
+<!-- 마이페이지 회원정보 수정으로 이 페이지를 로드 
+RegisterForm의 Form이 채워지고 
+헤더, 푸터를 포함하는 div는 display:none 상태여야 함.-->		
 
 <div>
 	<!-- 메뉴영역 -->
 	<div>
-		<%-- <c:import url="EmployeeMenu.jsp"></c:import> --%>
+			<c:import url="Main.jsp"></c:import>
 	</div>
 	
 	<div id="content">
 		<h1>[ 회원가입 ]</h1>
 		<hr />
-	    <form action="" method="GET" name="joinForm">
+	    <form action="" method="GET" id="joinForm" name="joinForm">
 	        <table id="joinTbl">
 	            <tr>
 	                <td>
@@ -89,7 +136,7 @@
 	                </td>
 	                <td>
 	                    <input type="text" name="id" id="id" size="20px">
-	                    <input type="button" class="check" value="중복확인">
+	                    <input type="button" id="idCheck" class="check" value="중복확인">
 	                </td>
 	            </tr>
 	            <tr>
@@ -98,6 +145,7 @@
 	                </td>
 	                <td>
 	                    <input type="text" name="pwd" id="pwd" size="20px"> 
+	                    <span id="errPw">4자 이상~15자 이내</span>
 	                </td>
 	            </tr>
 	            <tr>
@@ -106,6 +154,7 @@
 	                </td>
 	                <td>
 	                    <input type="text" name="pwdCheck" id="pwdCheck" size="20px">
+	                    <span id="errPwdCheck">일치하지 않습니다.</span>
 	                </td>
 	            </tr>
 	            <tr>
@@ -123,6 +172,7 @@
 	                <td>
 	                    <input type="text" name="nickName" id="nickName" size="20px">
 	                    <input type="button" class="check" value="중복확인">
+	                    <span id="errNickName">2자 이상 15자 이내, 특수문자 사용 불가</span>
 	                </td>
 	            </tr>
 	            <tr>
@@ -150,8 +200,8 @@
 	                        <option value="019">019</option>
 	                    </select>
 	                    -
-	                    <input type="text" name="phone" id="phone" size="10">-
-	                    <input type="text" name="phone" id="phone" size="10">
+	                    <input type="text" name="phone" id="phone1" size="10">-
+	                    <input type="text" name="phone" id="phone2" size="10">
 	                    <input type="button" class="check" value="중복확인">
 	                </td>
 	            </tr>
@@ -190,7 +240,7 @@
 					<td colspan="2">
 						<textarea name="agree1" id="agree1" cols="30" rows="10">이용약관</textarea><br />
 						<label>
-							<input type="checkbox" name="agree2" value="agree2">
+							<input type="checkbox" id="agree2" name="agree2" value="agree2">
 							<span class="span">위 사항에 동의합니다.</span>
 						</label>
 					<br /><br />
@@ -199,11 +249,15 @@
 				<tr>
 					<td colspan="2">
 				        <!-- 취소버튼 누르면 로그인 페이지로 간다. -->
-				        <input type="button" id="login" value="취소">
+				        <input type="button" id="cancel" value="취소">
 				        <input type="button" id="join" value="회원가입">
+						<span id="errForm">필수 입력 항목을 입력하세요.</span>		
+						<span id="errCheck">필수 동의 사항에 동의하세요.</span>						
+						<span id="errOverlap">아이디/닉네임 중복여부를 확인하세요.</span>							
 					</td>
 				</tr>
 	        </table>
+	        
 	    </form>
 	</div>
 	<br /><br />
@@ -211,7 +265,7 @@
 	
 	<!-- 회사 소개 및 어플리케이션 소개 영역 -->
 	<div id="footer">
-	
+				<c:import url="MainFooter.jsp"></c:import>
 	</div>
 </div>
 
