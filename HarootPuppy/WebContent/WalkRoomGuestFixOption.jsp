@@ -29,8 +29,30 @@ String cp = request.getContextPath();
 			//자식 창 닫기
 			window.close();
 		});
+		
 
 	});
+	
+	function openChild()
+	{
+	    // window.name = "부모창 이름"; 
+	    window.name = "parentForm";
+	    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+	    openWin = window.open("WalkRoomReportInsertForm.jsp",
+	            "childForm", "width=570, height=350, resizable = no, scrollbars = no");
+	    
+	    close.window();
+	  
+	} 
+	
+	/* $("#enter").click(function() {
+		
+		window.opener.location.href = "WalkRoomReportInsertForm.jsp";
+		//자식 창 닫기
+		window.close();
+	}); */
+
+
 </script>
 <style>
 body {
@@ -65,11 +87,14 @@ body {
 			<button type="button" id="cancel" onclick="window.close()">취소</button>
 			<button type="button" id="enter">입장</button>
 			<span id="errMsg">필수 선택 사항을 선택하세요</span> <br> <br>
-
+		</form>
+	</div>
+	<div class="replyReport">
+		<form action="WalkRoomReportInsertForm.jsp">
 			<details>
 				<summary>이 방에 대한 문제를 제기하겠습니까?</summary>
 				<div>
-					<button type="button" id="report">신고하기</button>
+					<button type="button" id="report" onclick="openChild()">신고하기</button>
 				</div>
 			</details>
 		</form>
