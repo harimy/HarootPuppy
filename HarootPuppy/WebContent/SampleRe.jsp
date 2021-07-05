@@ -5,253 +5,147 @@
 	request.setCharacterEncoding("UTF-8");
 String cp = request.getContextPath();
 %>
+<jsp:include page="Main.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>WalkMain.jsp</title>
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/menuStyle.css">
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
-<!-- jQuery JS -->
+<title>WalkRoomGuestEnter.jsp</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="/HarootPuppy/js/jquery-ui.js"></script>
-<!-- jQuery-UI CSS -->
-<link rel="stylesheet" type="text/css"
-	href="/HarootPuppy/css/jquery-ui.css">
-
-<!--  부트스트랩 JS -->
-<script type="text/javascript" src="/HarootPuppy/js/bootstrap.js"></script>
-<!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="/HarootPuppy/css/bootstrap.css">
-
-<style type="text/css">
-.cardImage {
-	border: 5px solid #ffc107;
-	-webkit-border-radius: 50px;
-	max-width: 200px;
-	height: 200px;
-	margin: 0px auto;
-}
-
-.cardImage:hover {
-	color: #212529;
-	background-color: #e0a800;
-	border-color: #d39e00;
-}
-
-.Image {
-	width: 460px;
-	height: 300px;
-	float: center;
-	padding-right: 0px;
-	padding-left: 160px;
-}
-
-body {
-	margin: 100px;
-}
-
-.table {
-	margin: 0px auto !important;
-}
-</style>
-
 <script type="text/javascript">
-	var openWin;
+	CountDownTimer('06/30/2021 09:30 PM', 'leftTime');
 
-	function openChild() {
-		// window.name = "부모창 이름"; 
-		window.name = "parentForm";
-		// window.open("open할 window", "자식창 이름", "팝업창 옵션");
-		openWin = window.open("WalkPlaceSelect.jsp", "childForm",
-				"width=570, height=350, resizable = no, scrollbars = no");
-	}
+	function CountDownTimer(walkStart, id)
+	{
+		var end = new Date(walkStart);
 
-	/*  function setChildText(){
-	     openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
-	 }
-	 */
+		var _second = 1000;
+		var _minute = _second * 60;
+		var _hour = _minute * 60;
+		var _day = _hour * 24;
+		var timer;
+
+		function showRemaining()
+		{
+			var now = new Date();
+			var distance = end - now;
+			if (distance < 0)
+			{
+				clearInterval(timer); // 반복되는 함수를 종료
+				document.getElementById("leftTimer").innerHTML = '산책 완료';
+
+				return;
+			}
+			var days = Math.floor(distance / _day);
+			var hours = Math.floor((distance % _day) / _hour);
+			var minutes = Math.floor((distance % _hour) / _minute);
+			var seconds = Math.floor((distance % _minute) / _second);
+
+			document.getElementById(id).innerHTML = hours + ':';
+			document.getElementById(id).innerHTML += minutes + ':';
+			document.getElementById(id).innerHTML += seconds;
+		}
+
+		timer = setInterval(showRemaining, 1000); // 1초마다 반복되는 함
+
+	};
+	// Source: stackoverflow
+
+	$(document).ready(function()
+	{
+		$("#match").click(function()
+		{
+			alert("됨");
+			if ( $(this).val() == "notReady" )
+			{
+				$(this).css("background-color", "orange");
+				$(this).html("준비완");
+				$(this).val("ready");
+				return;
+			}
+			else if ( $(this).val() == "ready" )
+			{
+				$(this).html("READY");
+				$(this).val("notReady");
+				return;
+			}
+			
+		});
+	});
 </script>
-<head>
-<meta charset="UTF-8">
-<title>Sample.jsp</title>
-
-<!-- jQuery JS -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
-<!-- jQuery-UI CSS -->
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
-
-<!--  부트스트랩 JS -->
-<script type="text/javascript" src="<%=cp%>/js/bootstrap.js"></script>
-<!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
-
+<link rel="stylesheet" type="text/css" href="css/WalkRoom.css">
 </head>
 <body>
-
-	<!-----------------------------
-  Sample.jsp
-  - 페이지 설명
-------------------------------->
+	<!-- 방 개설하면서 정보 불러오기 -->
 	<div>
-		<!-- 메뉴영역 -->
-		<div id="harootHeader">
-			<c:import url="Main.jsp"></c:import>
+
+		<!-- 방 제목 -->
+		<div id="walkTitle">재롱이랑 동구랑 산책하실</div>
+		<!-- 방 정보 -->
+		<div id="walkInfo">
+			산책 장소 : 안양천 <br> 산책 일시 : 2021년 06월 13일 18:30 ~ 21:00<br> 산책
+			인원 : 최소 3명 최대 4명<br> 방장 한 마디 : 같이 즐겁게 산책해요 ~~ <br>
+
+
+			<!-- 산책메이트 특징 -->
+			원하는 산책 메이트 특징<br> <span id="dogSize" class="mateOp">대형견</span> <span
+				id="dogSize" class="mateOp">중형견</span> <span id="gender"
+				class="mateOp">동일 성별 양육자</span> <span id="mouth" class="mateOp">입질하는
+				반려견 금지</span> <span id="auto" class="mateOp">자동 확정 옵션 OFF</span>
 		</div>
 
-		<!-- content 영역 -->
-		<div id="harootContent"></div>
+		<!-- 매칭 타이머 -->
+		<div id="leftTimer">
+			<div id="timerMsg">
+				매칭 완료까지 <span id="leftTime"></span> 남음
+			</div>
+		</div>
 
-		<!-- 하단 회사 설명 영역 -->
-		<div id="harootFooter">
-			<c:import url="MainFooter.jsp"></c:import>
+		<!-- 매칭/준비 버튼 -->
+		<button type="button" id="match" class="btn" value="notReady">READY</button>
+
+	</div>
+
+
+	<!-- 참여자 프로필 -->
+	<div id="profileArea">
+		<div id="nickName">
+			나와 재롱이와 동구<img src="images/man.png" class="icons">
+		</div>
+		<div id="score">산책점수 85</div>
+		<div id="profile">
+			<img src="images/jaerong.jpg"><br> 재롱<br> 로트와일러, 3세<br>
+			중성화 완료<br> 입질 없음<br> 낯가림 없음<br> <span id="status">방장</span>
 		</div>
 	</div>
 
-
-</body>
-</html>
-eader">
-<c:import url="Main.jsp"></c:import>
-</div>
-
-<!-- content 영역 -->
-<div id="harootContent">
-	<div>
-		<table style="text-align: center;">
-			<tr>
-				<th>내 주변 산책 핫플레이스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-					type="button" value="위치 재설정" onclick="openChild()"><br>
-				</th>
-				<th>산책할 반려견&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-					type="button" value="수정">
-				</th>
+	<!-- 댓글 -->
+	<div id="walkReply">
+		<table id="replyBoard" class="table">
+			<tr id="reply">
+				<td><span id="nickName">진수123</span></td>
+				<td>산책끝나고 치맥어떠시어요?</td>
+				<td>06/28/09:23</td>
+				<td><button type="button"><img src="images/report.jpeg" class="icons"></button></td>
 			</tr>
-			<tr>
-				<td
-					style="width: 300px; height: 280px; padding-left: 40px; padding-right: 40px;">
-					<div id="map" style="width: 300px; height: 300px;"></div> <script
-						type="text/javascript"
-						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c980959de9d6957591bdf2f69c03ce68"></script>
-					<script>
-						var container = document.getElementById('map');
-						var options = {
-							center : new kakao.maps.LatLng(37.383431730893726,
-									126.96076431156959),
-							level : 3
-						};
-
-						var map = new kakao.maps.Map(container, options);
-						var map = new kakao.maps.Map(container, options);
-					</script>
-				</td>
-				<td><img class="Image" src="/HarootPuppy/images/coco.png"
-					style="width: 380px; height: 280px; padding-right: 40px; padding-left: 40px;">
-				</td>
-			</tr>
-			<tr>
-				<td>기준 주소지 : 경기도 고양시 일산서구 주엽로 98</td>
-				<td>재롱이</td>
+			<tr id="reply">
+				<td><span id="nickName">진수사냥꾼</span></td>
+				<td>이상한 소리좀 하지마라 ㅅㅂ</td>
+				<td>06/28/14:21</td>
+				<td><button type="button"><img src="images/report.jpeg" class="icons"></button></td>
 			</tr>
 		</table>
+
+		<textarea rows="10" cols="150" placeholder="댓글을입력하세요"></textarea>
+		<button type="button">등록</button>
+		<!— onclick 필요 —>
 	</div>
 
-	<!-- <div style="width: 50%; float: center;">
-	<div>
-		<h5 style="float: left; padding-left: 160px; padding-right: 90px;">산책할 나의 반려견</h5>
-		<input type="button" value="수정">
-	<br>
-		<img class = "Image" src="/HarootPuppy/images/coco.png" style="width: 300px;"> 
-		<h5 style="padding-left: 690px;">재롱이</h5>
-		여기 여백 padding-left: 690px; 준 부분 이렇게 주면 안될듯 함.,,,같이 고민 plz
+	<!— 방장/일반 개별 버튼 —>
+	<div id="buttonArea">
+		<button type="button" id="list" onclick="location.href='WalkMain.jsp'">목록으로</button>
+		<button type="button" id="out">방 나가기</button>
 	</div>
-</div> -->
-
-	<br>
-	<br>
-
-	<div>
-		<table border="1" style="text-align: center;">
-			<tr>
-				<th>반경</th>
-				<td>
-					<form action="" name="radiusForm" method="post">
-						<select name="radiusSelect" class="selectField">
-							<option value="0.5">500m</option>
-							<option value="1">1Km</option>
-							<option value="2">2Km</option>
-							<option value="3">3Km</option>
-						</select>
-					</form>
-				</td>
-			</tr>
-			<tr>
-				<th>산책 출발 시간</th>
-				<td>
-					<form action="" name="timeForm" method="post">
-						<select name="timeSelect" class="selectField">
-							<option value="1h">1시간 이내</option>
-							<option value="2h">2시간 이내</option>
-							<option value="3h">3시간 이내</option>
-							<option value="4h">4시간 이내</option>
-							<option value="etc">상관없음</option>
-						</select>
-					</form>
-				</td>
-			</tr>
-			<tr>
-				<th>반려견 크기</th>
-				<td><label for="big"> <input type="checkBox"
-						name="checkGroup" id="big" value="big">&nbsp;대형견
-				</label> <label for="midium"> <input type="checkBox"
-						name="checkGroup" id="midium" value="midiun">&nbsp;중형견
-				</label> <label for="small"> <input type="checkBox"
-						name="checkGroup" id="small" value="small">&nbsp;소형견
-				</label></td>
-			</tr>
-			<tr>
-				<th>중성화 여부</th>
-				<td><label for="necc"> <input type="radio" name="necc"
-						id="necc" value="necc">&nbsp;필수
-				</label> <label for="neccdontcare"> <input type="radio" name="necc"
-						id="neccdontcare" value="neccdontcare">&nbsp;상관없음
-				</label></td>
-			</tr>
-			<tr>
-				<th>입질 여부</th>
-				<td><label for="noBite"> <input type="radio"
-						name="bite" id="noBite" value="no">&nbsp;입질 없는 반려견만
-				</label> <label for="bitedontcare"> <input type="radio" name="bite"
-						id="bitedontcare" value="bitedontcare">&nbsp;상관없음
-				</label></td>
-			</tr>
-			<tr>
-				<th>양육자 성별</th>
-				<td><label for="sameSex"> <input type="radio"
-						name="sex" id="sameSex" value="same">&nbsp;동일 성별만
-				</label> <label for="sexdontcare"> <input type="radio" name="sex"
-						id="sexdontcare" value="sexdontcare">&nbsp;상관없음
-				</label></td>
-			</tr>
-		</table>
-	</div>
-	<br>
-	<div>
-		<input type="button" value="검색" style="float: right;"> <label
-			for="onlyAble" style="float: right;"> <input type="checkBox"
-			name="able" id="onlyAble" value="onlyAble">&nbsp;참여가능한 방만
-			보기&nbsp;&nbsp;
-		</label>
-	</div>
-
-</div>
-<!-- 하단 회사 설명 영역 -->
-<div id="harootFooter">
-	<c:import url="MainFooter.jsp"></c:import>
-</div>
-</div>
 </body>
 </html>

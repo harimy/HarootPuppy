@@ -9,17 +9,28 @@
 <head>
 <meta charset="UTF-8">
 <title>ReportMain.jsp</title>
+<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 <style type="text/css">
-body
-{
-	margin: 50px;
-}
+	a.link { text-decoration: none; color: black; }
+    a.link:visited { text-decoration: none; }
+    a.link:hover { text-decoration: none; }
+    a.link:focus { text-decoration: none; }
+    a.link:hover, a:active { text-decoration: none; }
 </style>
 </head>
 <body>
 
+<div>
+
+<!-- 메뉴영역 -->
+<div id="harootHeader">
+	<c:import url="AdminMain.jsp"></c:import>
+</div>
+
+<br><br><br><br>
+
 <div style="text-align: center;">
-	<h1>관리자 페이지</h1>
+	<h1>신고 관리</h1>
 	<hr>
 </div>
 
@@ -39,13 +50,13 @@ body
 		<tr>
 			<td style="background-color: rgb(239,239,239);">
 				<ul>
-					<li>미처리 게시물 50건</li>
-					<li>미처리 댓글 50건</li>
+					<li><a href="ReportedBoardTab.jsp" class="link">미처리 게시물 50건</a></li><br>
+					<li><a href="ReportedReplyTab.jsp" class="link">미처리 댓글 50건</a></li>
 				</ul>
 			</td>
 			<td style="background-color: rgb(208,208,208);">
 				<ul>
-					<li>미처리 게시물 50건</li>
+					<li>미처리 게시물 50건</li><br>
 					<li>미처리 댓글 50건</li>
 				</ul>
 			</td>
@@ -76,5 +87,14 @@ body
 	</table>
 </div>
 
+<br><br><br><br>
+
+<!-- 하단 회사 설명 영역 -->
+<div id="harootFooter">
+	<c:import url="MainFooter.jsp"></c:import>
+</div>
+
+</div>
+	
 </body>
 </html>

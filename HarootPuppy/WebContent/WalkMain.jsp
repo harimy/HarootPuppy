@@ -68,21 +68,17 @@ body {
 
 <script type="text/javascript">
   
-        var openWin;
-    
-        function openChild()
-        {
-            // window.name = "부모창 이름"; 
-            window.name = "parentForm";
-            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-            openWin = window.open("WalkPlaceSelect.jsp",
-                    "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
-        }
-        
-       /*  function setChildText(){
-            openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
-        }
-  */
+  function openChild() {
+	  
+	    var _width = '650';
+	    var _height = '380';
+	 
+	    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+	    var _left = Math.ceil(( window.screen.width - _width )/2);
+	    var _top = Math.ceil(( window.screen.height - _height )/2); 
+	 
+	    window.open('WalkPlaceSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+	}
 </script>
 
 
@@ -119,7 +115,7 @@ body {
 							<div id="map" style="width: 380px; height: 300px;"></div> <script
 								type="text/javascript"
 								src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c980959de9d6957591bdf2f69c03ce68"></script>
-							<script>
+							<script> 
 								var container = document.getElementById('map');
 								var options = {
 									center : new kakao.maps.LatLng(
@@ -132,7 +128,7 @@ body {
 								var map = new kakao.maps.Map(container, options);
 							</script>
 						</td>
-						<td><img class="Image" src="/HarootPuppy/images/coco.png"
+						<td><img class="Image" src="/HarootPuppy/images/jaerong.jpg"
 							style="width: 380px; height: 300px; padding-right: 40px; padding-left: 40px;">
 						</td>
 					</tr>
@@ -184,16 +180,6 @@ body {
 								</select>
 							</form>
 						</td>
-					</tr>
-					<tr>
-						<th>반려견 크기</th>
-						<td><label for="big"> <input type="checkBox"
-								name="checkGroup" id="big" value="big">&nbsp;대형견
-						</label> <label for="midium"> <input type="checkBox"
-								name="checkGroup" id="midium" value="midiun">&nbsp;중형견
-						</label> <label for="small"> <input type="checkBox"
-								name="checkGroup" id="small" value="small">&nbsp;소형견
-						</label></td>
 					</tr>
 					<tr>
 						<th>중성화 여부</th>

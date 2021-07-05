@@ -21,6 +21,9 @@
 
 	$(function()
 	{
+		var checkNum1=0;
+		var checkNum2=0;
+		var checkNum3=0;
 		
 		// js 폴더, css 폴더 파일 확인 
 		// jQuery-UI 캘린더를 불러오는 함수 처리 (datepicker())
@@ -31,14 +34,45 @@
 			, changeYear: true
 		});
 		
+		$("#idCheck").click(function(){
+			checkNum1 = checkNum1 + 1;
+			alert(checkNum1);
+			return checkNum1;
+		});
 		
 		$("#join").click(function(){
+			
+
+			
+/* 			$("#telCheck").click(function(){
+				checkNum2 =checkNum3 + 1;
+			});
+			$("#nickCheck").click(function(){
+				checkNum3 =checkNum3 + 1;
+			}); */
+			
+			if ( checkNum1<=0 )
+			{
+				alert("아이디 중복검사를 하세요.");
+				return;
+			}
+/* 			if ( checkNum2<=0 )
+			{
+				alert("닉네임 중복검사를 하세요.");
+				return;
+			}
+			if ( checkNum2<=0 )
+			{
+				alert("전화번호 중복검사를 하세요.");
+				return;
+			} */
+			
 			// 데이터 검사(공란이 있는지 없는지에 대한 여부 확인)
 			$("#errForm").css("display", "none");
 			$("#errCheck").css("display", "none");
 			$("#errOverlap").css("display", "none");
 			
-			alert($('input:checkbox[name="agree2"]:checked').val());
+			// alert($('input:checkbox[name="agree2"]:checked').val());
 	
 			if ( $("#id").val()=="" || $("#pwd").val()==""|| $("#pwdCheck").val()=="" 
 					|| $("#name").val()=="" || $("#nickName").val()=="" 
@@ -66,12 +100,7 @@
 	});
 	
 	$(function() {
-		var checkNum1=0;
-		var checkNum2=0;
-		var checkNum3=0;
-		$("#join").click(function(){
-		
-		});
+
 	});
 	
 </script>
@@ -171,7 +200,7 @@ RegisterForm의 Form이 채워지고
 	                </td>
 	                <td>
 	                    <input type="text" name="nickName" id="nickName" size="20px">
-	                    <input type="button" class="check" value="중복확인">
+	                    <input type="button" class="check" id="nickCheck" value="중복확인">
 	                    <span id="errNickName">2자 이상 15자 이내, 특수문자 사용 불가</span>
 	                </td>
 	            </tr>
@@ -184,8 +213,10 @@ RegisterForm의 Form이 채워지고
                     <label for="gender">성별</label>
                	</td>
                	<td>
-                	<input type="radio" name="gender" value="여">여
-               		<input type="radio" name="gender" value="남">남
+                	<input type="radio" name="gender" id="woman" value="여">
+                	<label for="woman">여</label>
+               		<input type="radio" name="gender" id="man" value="남">
+               		<label for="man">남</label>
                	</td>
                 </tr>
 	            <tr>
@@ -202,7 +233,7 @@ RegisterForm의 Form이 채워지고
 	                    -
 	                    <input type="text" name="phone" id="phone1" size="10">-
 	                    <input type="text" name="phone" id="phone2" size="10">
-	                    <input type="button" class="check" value="중복확인">
+	                    <input type="button" id="telCheck" class="check" value="중복확인">
 	                </td>
 	            </tr>
 	            <tr>

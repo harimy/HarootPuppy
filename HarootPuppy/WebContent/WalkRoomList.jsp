@@ -20,6 +20,27 @@
 <script type="text/javascript" src="/HarootPuppy/js/bootstrap.js"></script>
 <!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="/HarootPuppy/css/bootstrap.css">
+
+<script type="text/javascript">
+
+var openWin;
+
+function openChild()
+{
+    // window.name = "부모창 이름"; 
+    window.name = "parentForm";
+    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+    openWin = window.open("WalkRoomGuestFixOption.jsp",
+            "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
+}
+
+function setChildText(){
+    openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
+}
+
+
+</script>
+
 <style type="text/css">
 	th, td
 	{
@@ -27,6 +48,7 @@
 	}
 
 </style>
+
 </head>
 <body>
 <div>
@@ -42,7 +64,7 @@
 			<th class="time" style="width: 150px;">산책 시간</th>
 			<th class="host" style="width: 100px;">개설자</th>
 		</tr>
-		<tr id="lists"> 
+		<tr id="lists" onclick="openChild()"> 
 			<td class="num">1</td>
 			<td class="roomInfo">저녁 산책 하GO 건강 챙기GO</td>
 			<td class="memNum">저쩌구</td>
