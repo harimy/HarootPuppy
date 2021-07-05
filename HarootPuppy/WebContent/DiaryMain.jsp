@@ -101,6 +101,7 @@ h1>span {
 
 		</div>
 
+
 		<!-- 하단 회사 설명 영역 -->
 		<div>
 			<c:import url="MainFooter.jsp"></c:import>

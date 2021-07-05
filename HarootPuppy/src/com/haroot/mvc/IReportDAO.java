@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public interface IReportDAO
 {
 	// 내가 받은 신고 리스트 (사용자입장)
-	public ArrayList<ReportDTO> myReceiveReport();
+
+	public ArrayList<ReportDTO> myReceiveReport() ;
 	
 	// 내가 접수한 신고 리스트 (사용자입장)
 	public ArrayList<ReportDTO> mySendReport();
-	
 	
 	// 게시판 신고 리스트 (관리자입장)
 	public ArrayList<ReportDTO> adBoardReport();

@@ -2,6 +2,7 @@ package com.haroot.mvc;
 
 public class DiaryCommonDTO
 {
+
 	// 속성
 	private String common_code			// 공통항목코드
 				, common_start			// 시작날짜
@@ -72,9 +73,6 @@ public class DiaryCommonDTO
 		this.daily_code = daily_code;
 	}
 
-	
-	
-
-
 
 }
+
