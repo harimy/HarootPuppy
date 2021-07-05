@@ -121,7 +121,6 @@ function add_private() {
 					투여량
 					약의 효능 input text
 					처방 병원 input text
-					의료 비용 input text
 					다음 방문 일정 달력
 				 -->
 			
@@ -181,18 +180,7 @@ function add_private() {
 					<input class="" id="input5" name="input5" type="text" placeholder="내용 입력">
 				</div>
 				
-				<!-- 의료 비용 -->
-				<div>
-					<label for="input6"> 
-						<span class="" id="">의료 비용</span> 
-					</label> 
-					<input class="" id="input6" name="input6" type="text" placeholder="내용 입력">
-				</div>
-				
-				<!-- 다음 방문 일정 -->
-				<span class="" id="">다음 방문일</span> 
-				<input type="text" id="nextMeet" name="nextMeet" placeholder="다음방문일" />
-			
+				<!-- 의료비용, 다음방문일 삭제 -->
 			</div>
 
 
