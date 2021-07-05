@@ -69,6 +69,28 @@ body {
 }
 </style>
 
+
+<script type="text/javascript">
+
+$(function() {
+	$("#register").click(function()
+	{
+		// alert($('input[name="reportOption"]:checked').val());
+		if(typeof $('input[name="petAdd"]:checked').val() == 'undefined' )
+		{
+			 $("#errMsg").css("display" ,"inline");
+			 return ; 
+			//alert("됨");
+		} 
+		
+		document.replyReport.submit();
+		// form을 일단 넘기고 속성값은 나중에 받아가기
+	});
+}); 
+	
+
+</script>
+
 </head>
 <body>
  <!---------------------------------------
@@ -85,9 +107,13 @@ body {
 		<div>
 			<h3>다이어리 작성할 반려견 선택</h3>
 		</div>
+		<form action="">
 		<div style="text-align: right; margin-right: 120px;">
-			<button type="button" class="btn btn-warning">반려견 추가</button>
+			<button type="button" class="btn btn-warning"
+			id="register" name="petAdd" onclick="">반려견 추가</button>
+			<span id="errMsg">필수 선택 사항을 선택하세요</span>
 		</div>
+		</form>
 
 		<div id="cardContent">
 			<div class="card-group">
@@ -123,6 +149,8 @@ body {
 			<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
 		</div>
 	</div>
+	
+
 
 </body>
 </html>
