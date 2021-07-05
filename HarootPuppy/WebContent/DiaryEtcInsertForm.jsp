@@ -22,6 +22,9 @@
 <!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 
+<link rel="stylesheet" href="<%=cp%>/css/diary.css">
+<script type="text/javascript" src="<%=cp%>/js/diary.js"></script>
+
 </head>
 <body>
 <jsp:include page="Main.jsp" />

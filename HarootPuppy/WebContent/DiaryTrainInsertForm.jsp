@@ -31,6 +31,10 @@ String cp = request.getContextPath();
 <!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 
+<!-- 다이어리 CSS -->
+<link rel="stylesheet" href="<%=cp%>/css/diary.css">
+<script type="text/javascript" src="<%=cp%>/js/diary.js"></script>
+
 <style type="text/css">
 .form-group {
 	margin: 0px auto;

@@ -9,12 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>BoardInsertForm.jsp</title>
-<style type="text/css">
-	 body
-	 {
-	 	margin: 30px;
-	 }
-</style>
+
 </head>
 <body>
 <jsp:include page="Main.jsp" />

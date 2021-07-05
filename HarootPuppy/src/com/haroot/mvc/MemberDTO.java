@@ -226,4 +226,6 @@ public class MemberDTO
 		this.out_type_content = out_type_content;
 	}
 	
+
 }
+
