@@ -30,6 +30,7 @@ $(function() {
 		return;
 	}
 	
+	// 부모창 reload + 현재 확인창 닫기
 	$("#submit").click(function()
 	{
 		window.opener.location.reload();
