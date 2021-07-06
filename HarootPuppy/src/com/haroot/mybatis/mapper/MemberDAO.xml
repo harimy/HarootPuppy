@@ -31,7 +31,7 @@
 	</select>
 	-->
 	
-	회원 등록(회원가입, 회원용)
+	<!-- 회원 등록(회원가입, 회원용) -->
 	<insert id="add">
 		INSERT INTO TBL_MEMBER(MEM_CODE, MEM_ID, MEM_PW, MEM_NAME
 		, MEM_BIRTH, MEM_GENDER, MEM_TEL
