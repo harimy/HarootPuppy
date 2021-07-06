@@ -22,7 +22,16 @@ public class PetDTO
 				, fav_food_code									// 관심사료코드
 				, fav_food_content								// 관심사료내용
 				, inject_type_code								// 접종종류코드
+
+				, inject_type_name								// 접종종류내용
+				
+				, relation_code									// 양육관계코드
+				, sid_code										// 회원코드
+				, relation_type_code							// 양육관계종류코드
+				, relation_type_content; 						// 양육관계종류내용
+
 				, inject_type_name;								// 접종종류내용
+
 	
 	private int pet_social;										// 반려견 사회성 정도
 
@@ -338,6 +347,47 @@ public class PetDTO
 		this.inject_type_name = inject_type_name;
 	}
 
+	public String getRelation_code()
+	{
+		return relation_code;
+	}
+
+	public void setRelation_code(String relation_code)
+	{
+		this.relation_code = relation_code;
+	}
+
+	public String getSid_code()
+	{
+		return sid_code;
+	}
+
+	public void setSid_code(String sid_code)
+	{
+		this.sid_code = sid_code;
+	}
+
+	public String getRelation_type_code()
+	{
+		return relation_type_code;
+	}
+
+	public void setRelation_type_code(String relation_type_code)
+	{
+		this.relation_type_code = relation_type_code;
+	}
+
+	public String getRelation_type_content()
+	{
+		return relation_type_content;
+	}
+
+	public void setRelation_type_content(String relation_type_content)
+	{
+		this.relation_type_content = relation_type_content;
+	}
 
 	
+	
+
 }

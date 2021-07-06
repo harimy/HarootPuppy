@@ -20,5 +20,4 @@
       <property name="password" value="puppy"></property>
    </bean>
 
-
 </beans>

@@ -10,6 +10,10 @@ public interface IPetDAO
 	// 반려견 정보 리스트 출력
 	public PetDTO petInfo();
 	
+
+	// 반려견들의 리스트 출력
+	public ArrayList<PetDTO> listPets();
+	
 	// 반려견 추가
 	public int petAdd(PetDTO pet);
 	
@@ -22,5 +26,9 @@ public interface IPetDAO
 	// 반려견 수 연산
 	public int count();
 	
+	// 반려견(들) 검색 (sid)로
+	public ArrayList<PetDTO> searchPets(String sid_code);
+	
+
 
 }
