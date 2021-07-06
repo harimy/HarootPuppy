@@ -157,7 +157,7 @@ RegisterForm의 Form이 채워지고
 	<div id="content">
 		<h1>[ 회원가입 ]</h1>
 		<hr />
-	    <form action="" method="GET" id="joinForm" name="joinForm">
+	    <form action="register.action" method="POST" id="joinForm" name="joinForm">
 	        <table id="joinTbl">
 	            <tr>
 	                <td>

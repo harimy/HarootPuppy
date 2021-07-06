@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ○ mapper 엘리먼트의 『namespace="패키지경로가 포함된 인터페이스"』   -->
+<!-- - 인터페이스 내부에 메소드가 선언되어 있어야 한다 -->
+<!-- - 선언되노 메소드의 이름 (메소드명) 과 『id="식별자"』가 일치해야 한다 -->
+<mapper namespace="com.haroot.mybatis.IMemberDAO">
+
+	<!-- ○구성해야 할 쿼리문 → 조회 → SELECT 엘리먼트 구성 -->
+	<!-- ○ id="식별자" -->
+	<!-- - 인터페이스에 선언된 메소드의 이름과 일치해야 하며,
+		   호출 메소드명 역할을 수행하게 된다 -->
+	<!-- ○ resultType="패키지 경로가 포함된 자료형 클래스" 또는 "원시 래퍼 타입" -->
+
+
+	<!-- 회원 리스트 조회 -->
+	<select id="list" resultType="com.haroot.mybatis.MemberDTO">
+		SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
+		, MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
+		, PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE
+		, WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT 
+		FROM MEMBERVIEW
+	</select>
+	
+	<!-- 회원 수 조회 
+	<select id="count" resultType="java.lang.Integer">
+		SELECT COUNT (*) AS COUNT
+		FROM MEMBERVIEW
+	</select>
+	-->
+	
+	회원 등록(회원가입, 회원용)
+	<insert id="add">
+		INSERT INTO TBL_MEMBER(MEM_CODE, MEM_ID, MEM_PW, MEM_NAME
+		, MEM_BIRTH, MEM_GENDER, MEM_TEL
+		, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME)
+		VALUES ('#{mem_code}', '#{mem_id}', CRYPTPACK.ENCRYPT('#{mem_pw}', '#{mem_id}'), '#{mem_name}'
+		, TO_DATE('#{mem_birth}', 'YYYY-MM-DD'), '#{mem_gender}', '#{mem_tel}'
+		, '#{mem_addr}', TO_DATE('#{mem_gendate}', 'YYYY-MM-DD'), '#{mem_nickname}')		
+	</insert>
+	
+	
+	<!-- 
+	회원코드로 회원 조회
+	<select id="search" resultType="com.haroot.mybatis.MemberDTO">
+		SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
+    	, MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
+    	, PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE 
+    	, WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT
+		FROM MEMBERVIEW
+		WHERE MEM_CODE = '{#mem_code}'
+	</select>
+	
+	
+	회원정보 수정
+	<update id="modify">
+		UPDATE TBL_MEMBER
+		SET MEM_PW = '{#mem_pw}', MEM_TEL = '{#mem_tel}'
+		, MEM_ADDR = '{#mem_addr}', MEM_NICKNAME = '{#mem_addr}'
+		WHERE MEM_CODE = '{#mem_code}'
+	</update>
+	
+	
+	회원정보 삭제
+	<delete id="remove">
+		DELETE
+		FROM TBL_MEMBERLIST
+		WHERE MEM_CODE = '{#mem_code}'
+	</delete>
+	 --> 
+
+</mapper>

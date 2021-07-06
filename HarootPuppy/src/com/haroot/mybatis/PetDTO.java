@@ -22,12 +22,16 @@ public class PetDTO
 				, fav_food_code									// 관심사료코드
 				, fav_food_content								// 관심사료내용
 				, inject_type_code								// 접종종류코드
+
 				, inject_type_name								// 접종종류내용
 				
 				, relation_code									// 양육관계코드
 				, sid_code										// 회원코드
 				, relation_type_code							// 양육관계종류코드
 				, relation_type_content; 						// 양육관계종류내용
+
+				, inject_type_name;								// 접종종류내용
+
 	
 	private int pet_social;										// 반려견 사회성 정도
 
@@ -385,4 +389,5 @@ public class PetDTO
 
 	
 	
+
 }

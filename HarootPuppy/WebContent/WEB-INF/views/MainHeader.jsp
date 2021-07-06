@@ -22,30 +22,34 @@
 	#harootHeader
 	{
 		padding: 5px;
+
 		background-color: rgb(244,188,23);
 	}
 	
-	a.adminMain { text-decoration: none; color: black; }
-    a.adminMain:visited { text-decoration: none; }
-    a.adminMain:hover { text-decoration: none; }
-    a.adminMain:focus { text-decoration: none; }
-    a.adminMain:hover, a:active { text-decoration: none; }
+	.transparent-button
+	{
+	    background-color: transparent !important;
+	    background-image: none !important;
+	    border-color: transparent;
+	    border: none;
+	    color: #FFFFFF; 
+	}
+
 
 </style>
 </head>
 <body>
 
 <div id="harootHeader">
-	<div style="float:left;"><a href="Main.jsp" class="adminMain">로그아웃&nbsp;&nbsp;&nbsp;</a></div>
-	<div style="float:right;">ADMIN</div>
+	<div style="float:left;">로그인&nbsp;&nbsp;&nbsp;</div>
+	<div style="float:left;">회원가입</div>
+	<div style="float:right;">알림</div>
+	<div style="float:right;">환영합니다!&nbsp;&nbsp;&nbsp;</div>
 	<div id="logo" style="text-align : center;">
-		<a href="AdminMain.jsp">
-			<img alt="" src="images/mainlogo.png" width="250" height="100" border="0">
-		</a>
+		<button type="button" class="transparent-button"onclick="location.href='Main.jsp'">
+		<img alt="" src="images/mainlogo.png" width="250" height="100" border="0"></button>
 	</div>
 </div>
-
-
 
 </body>
 </html>
