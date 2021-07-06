@@ -19,7 +19,7 @@ public interface IMemberDAO
 	public ArrayList<MemberDTO> list();
 	
 	// 회원 데이터 추가
-	public int add(MemberDTO member);
+  public int add(MemberDTO member);
 	
 	// 회원 검색 - 회원번호, 이름, 아이디 로 검색 가능
 	public MemberDTO search(String searchKey, String searchValue);

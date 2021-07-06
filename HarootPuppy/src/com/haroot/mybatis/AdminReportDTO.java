@@ -1,8 +1,7 @@
 package com.haroot.mybatis;
 
-public class ReportDTO
+public class AdminReportDTO
 {
-
 	// 새로 추가한 속성이 있어서 ab_0706.ver로 모두 덮어씌울것!
    // 속성 구성
    private String rep_log_code 			// 신고내역코드					
@@ -18,6 +17,8 @@ public class ReportDTO
    , walk_comm_writer                  // 산책방 댓글작성자 (피신고자)
    , boardcomm_rep_code                // 게시판 댓글신고코드
    , board_comm_writer                 // 게시판 댓글작성자 (피신고자)
+   , board_comm_code                   // 게시판댓글코드
+   , board_comm_content                // 게시판댓글내용
    
    , board_rep_code                    // 게시물 신고코드
    , board_code                        // 게시물 코드(숫자)
@@ -31,8 +32,9 @@ public class ReportDTO
    , walkroom_words                    // 산책방 내용
    , walkroom_leader                   // 산책방 방장 (피신고자)
    , off_rep_code                      // 오프라인신고코드
-   , participants_code;                // 참여자코드(오프라인신고-피신고자)
-                                        
+   , participants_code                 // 참여자코드(오프라인신고-피신고자)
+   , walk_comm_content;						// 산책방 댓글
+
    
    // getter / setter 구성
 	public String getRep_log_code()
@@ -155,6 +157,26 @@ public class ReportDTO
 		this.board_comm_writer = board_comm_writer;
 	}
 
+	public String getBoard_comm_code()
+	{
+		return board_comm_code;
+	}
+
+	public void setBoard_comm_code(String board_comm_code)
+	{
+		this.board_comm_code = board_comm_code;
+	}
+
+	public String getBoard_comm_content()
+	{
+		return board_comm_content;
+	}
+
+	public void setBoard_comm_content(String board_comm_content)
+	{
+		this.board_comm_content = board_comm_content;
+	}
+
 	public String getBoard_rep_code()
 	{
 		return board_rep_code;
@@ -185,46 +207,6 @@ public class ReportDTO
 		this.board_writer = board_writer;
 	}
 
-	public String getWalkroom_rep_code()
-	{
-		return walkroom_rep_code;
-	}
-
-	public void setWalkroom_rep_code(String walkroom_rep_code)
-	{
-		this.walkroom_rep_code = walkroom_rep_code;
-	}
-
-	public String getWalkroom_leader()
-	{
-		return walkroom_leader;
-	}
-
-	public void setWalkroom_leader(String walkroom_leader)
-	{
-		this.walkroom_leader = walkroom_leader;
-	}
-
-	public String getOff_rep_code()
-	{
-		return off_rep_code;
-	}
-
-	public void setOff_rep_code(String off_rep_code)
-	{
-		this.off_rep_code = off_rep_code;
-	}
-
-	public String getParticipants_code()
-	{
-		return participants_code;
-	}
-
-	public void setParticipants_code(String participants_code)
-	{
-		this.participants_code = participants_code;
-	}
-
 	public String getBoard_title()
 	{
 		return board_title;
@@ -243,6 +225,16 @@ public class ReportDTO
 	public void setBoard_content(String board_content)
 	{
 		this.board_content = board_content;
+	}
+
+	public String getWalkroom_rep_code()
+	{
+		return walkroom_rep_code;
+	}
+
+	public void setWalkroom_rep_code(String walkroom_rep_code)
+	{
+		this.walkroom_rep_code = walkroom_rep_code;
 	}
 
 	public String getWalkroom_code()
@@ -275,7 +267,50 @@ public class ReportDTO
 		this.walkroom_words = walkroom_words;
 	}
 
+	public String getWalkroom_leader()
+	{
+		return walkroom_leader;
+	}
 
+	public void setWalkroom_leader(String walkroom_leader)
+	{
+		this.walkroom_leader = walkroom_leader;
+	}
+
+	public String getOff_rep_code()
+	{
+		return off_rep_code;
+	}
+
+	public void setOff_rep_code(String off_rep_code)
+	{
+		this.off_rep_code = off_rep_code;
+	}
+
+	public String getParticipants_code()
+	{
+		return participants_code;
+	}
+
+	public void setParticipants_code(String participants_code)
+	{
+		this.participants_code = participants_code;
+	}
+
+	public String getWalk_comm_content()
+	{
+		return walk_comm_content;
+	}
+
+	public void setWalk_comm_content(String walk_comm_content)
+	{
+		this.walk_comm_content = walk_comm_content;
+	}
+   
+   
+	                           
+   
+   
    
 }
 

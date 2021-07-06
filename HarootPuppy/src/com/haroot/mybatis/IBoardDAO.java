@@ -5,12 +5,13 @@
 package com.haroot.mybatis;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public interface IBoardDAO
 {
 	// 게시글 수 확인
-	//public int count();
+
+	public int count();
 	
 	// 게시글 번호의 최대값
 	public int getMaxNum();

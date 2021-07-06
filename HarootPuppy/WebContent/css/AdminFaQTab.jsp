@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ReportedRoomList.jsp</title>
+<title>AdminFaQTab.jsp</title>
 
 <!-- jQuery JS -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -44,13 +44,15 @@
 	.nav-tabs > li > a > span {display:none;}	
 	.nav-tabs > li > a {padding: 5px 5px;}
 	
+	
 </style>
 
 </head>
 <body>
 
 <!-----------------------------
-  산책메이트 온라인신고 - 방
+  reportTabForm.jsp
+  - 신고페이지 탭 폼
 ------------------------------->
 <div>
 	<!-- 메뉴영역 -->
@@ -87,7 +89,7 @@
 		--%>
 			
 		<div style="text-align: center;">
-			<h1>산책메이트 온라인신고 - 방</h1>
+			<h1>1:1 고객문의 게시판</h1>
 		</div>	
 		
 		<br><br><br><br>
@@ -114,21 +116,22 @@
 		        </ul>
 		        
 		        <!-- Tab panes -->
+		        <!-- 그냥 한글로 해놓으면 500에러 나서 산책으로 채워놓음!   -->
 		        <div class="tab-content">
 		          <div role="tabpanel" class="tab-pane active" id="reportMenu1">
-		          	<c:import url="ReportedRoomListTable.jsp"></c:import>
+		          	<c:import url="AdminAskList.jsp"></c:import>
 		          	<!-- 전체 신고 자리  -->
 		          </div>
 		          <div role="tabpanel" class="tab-pane" id="reportMenu2">
-		          	<c:import url="ReportedRoomListTable.jsp"></c:import>
+		          	<c:import url="AdminAskList.jsp"></c:import>
 		          </div>
 					<!-- 미처리 신고 자리  -->
 		          <div role="tabpanel" class="tab-pane" id="reportMenu3">
-		          	<c:import url="ReportedRoomListTable.jsp"></c:import>
+		          	<c:import url="AdminAskList.jsp"></c:import>
 		          	<!-- 신고 해제 자리 -->
 		          </div>
 		          <div role="tabpanel" class="tab-pane" id="reportMenu4">
-		          	<c:import url="ReportedRoomListTable.jsp"></c:import>
+		          	<c:import url="AdminAskList.jsp"></c:import>
 		          	<!-- 신고 완료 자리 -->
 		          </div>
 		        </div>

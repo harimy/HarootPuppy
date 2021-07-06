@@ -1,103 +1,102 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+   request.setCharacterEncoding("UTF-8");
+   String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>AdminMenu.jsp</title>
-<style type="text/css">
-	body
+<script type="text/javascript"
+   src="http://code.jquery.com/jquery.min.js"></script>
+<style>
+    /* 메뉴 수정 */
+   /* .ab >ul { list-style:none; margin:0; padding:0; width: 100%}
+   
+   .ab ol { list-style:none; margin:0; padding:0; width: 100%}
+   .ab li { list-style:none; margin:0; padding:0; width: 100%} */
+   
+   .ab ul, ol, li { list-style:none; margin:0; padding:0; width: 100%}
+   	
+   	
+    ul.myMenu {text-align: center;}
+    ul.myMenu > li { display:inline-block; width:300px; padding:5px 10px; background:rgb(244,188,23); text-align:center; position:relative; }
+    ul.myMenu > li:hover { background:rgb(244,188,23); }
+    ul.myMenu > li ul.submenu { display:none; position:absolute; top:30px; left:0; }
+    ul.myMenu > li:hover ul.submenu { display:block; }
+    ul.myMenu > li ul.submenu > li { display:inline-block; width:300px; padding:5px 10px; text-align:center; background-color: white;}
+    ul.myMenu > li ul.submenu > li:hover { background-color: rgb(250, 223, 114);  }
+    
+    a.container:link, a.container:visited
 	{
-		margin: 0px !important;
+		display: block;
+		font-weight: bold;
+		background-color: rgb(244,188,23);
+		text-align: center;
+		padding: 4px;
+		text-decoration: none;
+		text-transform: uppercase;
+		height: 30px;
+		font-size: 14pt;
 	}
-	
-	a.link { text-decoration: none; color: black; }
-    a.link:visited { text-decoration: none; }
-    a.link:hover { text-decoration: none; }
-    a.link:focus { text-decoration: none; }
-    a.link:hover, a:active { text-decoration: none; }
+
+	a.container:hover, a.container:active
+	{
+		background-color: rgb(244,188,23);
+		color: #000000;
+		height: 26px;
+	}
+
+  a.link { text-decoration: none; color: black; }
+  a.link:visited { text-decoration: none; }
+  a.link:hover { text-decoration: none; }
+  a.link:focus { text-decoration: none; }
+  a.link:hover, a:active { text-decoration: none; }
+
 </style>
+
 </head>
 <body>
 
-<div id="harootHeader">
-	<c:import url="AdminMain.jsp"></c:import>
+<jsp:include page="AdminMainHeader.jsp"></jsp:include>
+
+<div id="container" class="ab" style="background-color: rgb(244,188,23);">
+<ul class="myMenu">
+	<li class="menu1">
+        <a href="AllUserInfoList.jsp" class="link">회원 관리</a>
+        <ul class="menu1_s submenu">
+
+            <li style="margin-top: 5px;"><a href="AllUserInfoList.jsp" class="link">전체회원 정보 조회</a></li>
+            <li><a href="OutUserInfoList.jsp" class="link">탈퇴회원 정보 조회</a></li>
+            <li><a href="AdminInfoList.jsp" class="link">관리자 정보 조회</a></li>
+        </ul>   
+    </li>
+    <li class="menu2">
+    	<a href="NoticeList.jsp" class="link">공지 관리</a>	
+
+    </li>
+    <li class="menu3">
+        <a href="ReportMain.jsp" class="link">신고 관리</a>
+        <ul class="menu3_s submenu">
+
+            <li style="margin-top: 5px;"><a href="ReportedBoardTab.jsp" class="link">게시판 글 신고</a></li>
+            <li><a href="ReportedReplyTab.jsp" class="link">게시판 댓글 신고</a></li>
+            <li><a href="ReportedBoardTab.jsp" class="link">산책메이트 온라인 신고</a></li>
+            <li><a href="ReportedBoardTab.jsp" class="link">산책메이트 오프라인 신고</a></li>
+        </ul>   
+    </li>
+    <li class="menu4">
+    	<a href="AdminFaQTab.jsp" class="link">고객 지원</a>
+
+    </li>
+
+</ul>
 </div>
 
-<br><br><br><br>
 
-<div style="text-align: center;">
-	<h1>관리자 페이지</h1>
-	<hr>
-</div>
-
-<div>
-	<table style="width: 100%;" id="adminMenu">
-		<tr>
-			<th>
-				<h3>게시판 신고</h3>
-			</th>
-			<th>
-				<h3>산책메이트 신고</h3>
-			</th>
-			<th>
-				<h3>고객 지원</h3>
-			</th>
-		</tr>
-		<tr>
-			<td style="background-color: rgb(239,239,239);">
-				<ul>
-					<li><a href="ReportedBoardTab.jsp" class="link">미처리 게시물 50건</a></li><br>
-					<li><a href="ReportedReplyTab.jsp" class="link">미처리 댓글 50건</a></li>
-				</ul>
-			</td>
-			<td style="background-color: rgb(208,208,208);">
-				<h4>&nbsp;&nbsp;&nbsp;온라인 신고</h4>
-				<ul>
-					<li>미처리 게시물 50건</li><br>
-					<li>미처리 댓글 50건</li>
-				</ul>
-				<h4>&nbsp;&nbsp;&nbsp;오프라인 신고</h4>
-				<ul>
-					<li>미처리 무단결석 의견 50건</li>
-				</ul>
-			</td>
-			<td style="background-color: rgb(239,239,239);">
-				<ul>
-					<li>미처리 문의 50건</li>
-				</ul>
-			</td>
-		</tr>
-	</table>
-</div>
-<br><br><br><br>
-<div>
-	<table style="width: 100%;">
-		<tr>
-			<th>
-				>> 신고 게시물 바로가기
-				&nbsp;&nbsp;&nbsp;&nbsp;NEW 3!
-			</th>
-			<th>>> 신고된 방 바로가기&nbsp;&nbsp;&nbsp;&nbsp;NEW 3!</th>
-			<th>>> 고객 지원 바로가기&nbsp;&nbsp;&nbsp;&nbsp;NEW 3!</th>
-		</tr>
-		<tr>
-			<td style="background-color: rgb(208,208,208);">안보면 후회 지금 클릭해보세요</td>
-			<td style="background-color: rgb(239,239,239);">안보면 후회 지금 클릭해보세요</td>
-			<td style="background-color: rgb(208,208,208);">안보면 후회 지금 클릭해보세요</td>
-		</tr>
-	</table>
-</div>
-
-<br><br><br><br>
-
-<div id="harootFooter">
-	<c:import url="MainFooter.jsp"></c:import>
-</div>
 
 </body>
 </html>
