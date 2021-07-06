@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haroot.mybatis.IBoardDAO">
+
+	<select id="list" resultType="com.haroot.mybatis.BoardDTO">
+		SELECT CATE_CONTENT, NUM, TITLE, WRITER, CONTENT_DATE, VIEWNUM, LIKENUM
+		FROM BOARDVIEW
+		<!-- ORDER BY NUM -->
+	</select>
+	
+	<select id="count" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM BOARDVIEW
+	</select>
+	
+	<insert id="add">
+		INSERT INTO BOARDVIEW(NUM, WRITER, HEAD_CODE, TITLE, CONTENT, PHOTO, VIEWNUM, LIKENUM, CONTENT_DATE, CATE_CONTENT)
+		VALUES(MAX(#{num}) + 1, '#{writer}', '#{head_code}', '#{title}'
+			   , '#{content}', '#{photo}', '#{viewNum}', '#{likeNum}'
+			   , SYSDATE, '#{cate_content}')
+	</insert> 
+	
+	<select id="search" resultType="com.haroot.mybatis.BoardDTO">
+		SELECT NUM, WRITER, HEAD_CODE, TITLE, CONTENT, PHOTO, VIEWNUM, LIKENUM, CONTENT_DATE, CATE_CONTENT
+		FROM BOARDVIEW
+		WHERE NUM = #{num}
+	</select>
+
+</mapper>
