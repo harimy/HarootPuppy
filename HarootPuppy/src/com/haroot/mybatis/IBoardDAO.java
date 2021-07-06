@@ -7,6 +7,7 @@ package com.haroot.mybatis;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public interface IBoardDAO
 {
 	// 게시글 수 확인

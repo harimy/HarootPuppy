@@ -9,49 +9,16 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <context:component-scan base-package="com.haroot.mvc"/>
-    
-   
-	<bean id="testDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@211.238.142.152:1521:xe"></property>
-		<property name="username" value="htest"></property>
-		<property name="password" value="java006$"></property>
-	</bean>
-
-
-	<!-- ① 기존 코드 -->
-	<!-- ※ Annotation 표기법으로 Controller 객체를 등록한다. -->
-	<!-- com.test.mybatis 뒤져보면 클래스들이 있을텐데 컨트롤러로 표시한 것을 컨트롤러로 사용해라 -->
     <context:component-scan base-package="com.haroot.mybatis"/>
     
     <!-- ③ mybatis 설정 중 dataSource 를 등록하기 위해 생겨나는 추가 코드 -->
     <!--  ※ mybatis 를 사용하기 위한 환경 설정 추가 2 → SimpleDriverDataSource  -->
-	<bean id="localDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@211.238.142.152:1521:xe"></property>
-		<property name="username" value="haroot"></property>
-		<property name="password" value="puppy"></property>
-	</bean>
+   <bean id="localDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+      <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
+      <property name="url" value="jdbc:oracle:thin:@211.238.142.152:1521:xe"></property>
+      <property name="username" value="haroot"></property>
+      <property name="password" value="puppy"></property>
+   </bean>
 
-	<!-- ② mybatis 등록 과정에서 생겨나는 추가 코드 -->
-	<!-- ※ mybatis 를 사용하기 위한 환경설정 추가 1 → sqlSessionFactoryBean(Builder 대체) -->
-	<!-- ※ 속성 구성 → dataSource / mapperLocations -->
-	<!-- ④ localDataSource 구성 후 마저 등록해서 완성 → dataSource -->
-	<!-- ⑤ 매퍼파일 작성 후 마저 등록해서 완성 → mapperLocations -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="testDataSource"></property>
-		<property name="mapperLocations" value="classpath:com/haroot/mybatis/mapper/*.xml"></property>
-	</bean>
-    
 
-	<!-- ⑥ sqlSession 등록 과정에서 생겨나는 추가 코드 -->
-	<!-- ※ mybatis 를 사용하기 위한 환경 설정 추가 3 → SqlSessionTemplate -->
-	<!-- 의존성 주입 방법 1. setter 2. 생성자  -->
-	<!-- 지금은 생성자 이용 -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
-	</bean>
-
-	
 </beans>
