@@ -47,7 +47,11 @@
 		<tr>
 			<th>계정 상태</th>
 			<td>
-				<input type="text">
+				<!-- 드롭다운으로 수정 -->
+				<select name="accoutState">
+					<option value="1">정상</option>
+					<option value="2">일시정지</option>
+				</select>
 			</td>
 		</tr>
 		<tr>
@@ -71,7 +75,10 @@
 		<tr>
 			<th>성별</th>
 			<td>
-				<input type="text">
+				<select name="genderState">
+					<option value="female">여성</option>
+					<option value="male">남성</option>
+				</select>
 			</td>
 		</tr>
 		<tr>
@@ -89,7 +96,7 @@
 		<tr>
 			<th>회원가입 날짜</th>
 			<td>
-				<input type="text">
+				<input type="text" disabled="disabled">
 			</td>
 		</tr>
 		<tr>
@@ -101,7 +108,10 @@
 		<tr>
 			<th>산책서비스 동의 여부</th>
 			<td>
-				<input type="text">
+				<select name="walkService">
+					<option value="female">동의</option>
+					<option value="male">비동의</option>
+				</select>
 			</td>
 		</tr>
 		<tr>
@@ -113,13 +123,13 @@
 		<tr>
 			<th>게시판 신고 누적 횟수</th>
 			<td>
-				<input type="text">
+				<input type="text" value="">
 			</td>
 		</tr>
 		<tr>
 			<th>산책메이트 온라인 신고 누적 횟수</th>
 			<td>
-				<input type="text">
+				<input type="text" value="">
 			</td>
 		</tr>
 		<tr>

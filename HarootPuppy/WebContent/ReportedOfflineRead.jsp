@@ -41,7 +41,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="Main.jsp" />
+<jsp:include page="AdminMenu.jsp" />
 <div>
 <form>
 	<div style="text-align: center; font-weight: bold;">
