@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haroot.mybatis.WalkRoomDAO"><!-- implements IMemberDAO -->
+	
+	
+	<!-- 산책메이트 메인페이지에서 산책방 리스트 불러오는 메소드 -->
+	<select id="list" resultType="com.haroot.mybatis.WalkRoomDTO">
+		SELECT WALKROOM_CODE, WALKROOM_LEADER, AUTO_CODE
+		     , STYLE_CODE, BITE_CODE, DESEX_CODE, SAMESEX_CODE
+		     , WALKROOM_MIN, WALKROOM_MAX, WALKROOM_START, WALKROOM_END
+		     , WALKROOM_TITLE, WALKROOM_WORDS, WALKROOM_PLACE, WALKROOM_LATITUDE, WALKROOM_LONGITUDE, WALKROOM_GENDATE
+		FROM TBL_WALKROOM
+	</select>
+	
+	<select id="count" resultType="java.lang.Integer">
+	</select>
+	
+	<insert id="add">
+	</insert>
+	
+	<delete id="remove">
+	</delete>
+	
+	<update id="modify">
+	</update>
+	
+</mapper>
+

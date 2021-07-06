@@ -2,7 +2,7 @@
  - DiaryTrainDTO.java
 =================*/
 
-package com.haroot.mvc;
+package com.haroot.mybatis;
 
 public class DiaryTrainDTO
 {

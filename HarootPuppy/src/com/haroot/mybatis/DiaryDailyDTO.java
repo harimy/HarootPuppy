@@ -1,4 +1,4 @@
-package com.haroot.mvc;
+package com.haroot.mybatis;
 
 public class DiaryDailyDTO
 {

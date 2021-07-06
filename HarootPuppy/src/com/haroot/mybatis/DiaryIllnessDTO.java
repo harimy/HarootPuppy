@@ -3,7 +3,7 @@
   : 질환 입력
 =====================*/
 
-package com.haroot.mvc;
+package com.haroot.mybatis;
 
 public class DiaryIllnessDTO
 {

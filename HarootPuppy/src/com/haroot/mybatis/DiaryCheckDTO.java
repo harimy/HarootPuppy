@@ -3,7 +3,7 @@
   : 건강검진 입력
 =====================*/
 
-package com.haroot.mvc;
+package com.haroot.mybatis;
 
 public class DiaryCheckDTO
 {

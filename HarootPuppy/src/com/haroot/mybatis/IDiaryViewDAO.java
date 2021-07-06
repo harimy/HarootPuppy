@@ -1,6 +1,6 @@
-package com.haroot.mvc;
+package com.haroot.mybatis;
 
-public interface DiaryViewDAO
+public interface IDiaryViewDAO
 {
 	public DiaryViewDTO searchTimeline(String relation_code, String daily_date);
 }

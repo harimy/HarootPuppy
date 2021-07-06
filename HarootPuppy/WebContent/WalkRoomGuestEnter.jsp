@@ -103,14 +103,15 @@
 	    border: none;
 	    color: #FFFFFF; 
 	}
+
 </style>
 
 </head>
 <body>
 
 <!-----------------------------
-  Sample.jsp
-  - 페이지 설명
+   WalkRoomGuestEnter.jsp
+   - 일반 사용자용 산책방 페이지 
 ------------------------------->
 	<div>
 		<!-- 메뉴영역 -->
@@ -121,7 +122,7 @@
 		<!-- content 영역 -->
 		<div id="harootContent">
 			<!-- 방 개설하면서 정보 불러오기 -->
-	<div>
+		<div>
 
 		<!-- 방 제목 -->
 		<div id="walkTitle">재롱이랑 동구랑 산책하실</div>
@@ -157,8 +158,14 @@
 	<div class="row">
 		<div class="col-sm-4 col-md-3">
 			<div class="thumbnail">
-				<div id="nickName">
-					나와 재롱이와 동구<img src="images/man.png" class="icons">
+				<div class="nickName">
+					<div class="thumbLeft">나와 재롱이와 동구<img src="images/man.png" class="icons">
+					</div>
+					<div class="thumbRight">
+						<button type="button" class="menuBtn transparent-button">
+  							<span class="glyphicon glyphicon-option-vertical" style="color: #000000"></span>
+						</button>
+					</div>
 				</div>
 				<br> <img class="img-responsive"
 					src="<%=cp%>/images/jaerong.jpg">
@@ -175,8 +182,14 @@
 
 		<div class="col-sm-4 col-md-3">
 			<div class="thumbnail">
-				<div id="nickName">
-					비투더아투더뱅뱅<img src="images/man.png" class="icons">
+				<div class="nickName">
+					<div class="thumbLeft">비투더아투더뱅뱅<img src="images/man.png" class="icons">
+					</div>
+					<div class="thumbRight">
+						<button type="button" class="menuBtn transparent-button">
+  							<span class="glyphicon glyphicon-option-vertical" style="color: #000000"></span>
+						</button>
+					</div>
 				</div>
 				<br> <img class="img-responsive"
 					src="<%=cp%>/images/puppy1.png">
@@ -192,8 +205,14 @@
 
 		<div class="col-sm-4 col-md-3">
 			<div class="thumbnail">
-				<div id="nickName">
-					코코는우리코코<img src="images/girl.png" class="icons">
+				<div class="nickName">
+					<div class="thumbLeft">코코는우리코코<img src="images/girl.png" class="icons">
+					</div>
+					<div class="thumbRight">
+						<button type="button" class="menuBtn transparent-button">
+  							<span class="glyphicon glyphicon-option-vertical" style="color: #000000"></span>
+						</button>
+					</div>
 				</div>
 				<br> <img class="img-responsive"
 					src="<%=cp%>/images/jaerong.jpg">

@@ -2,7 +2,7 @@
  - IAskDAO.java
 =================*/
 
-package com.haroot.mvc;
+package com.haroot.mybatis;
 
 import java.util.ArrayList;
 

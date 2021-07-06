@@ -2,7 +2,7 @@
  - BoardDTO.java
 =================*/
 
-package com.haroot.mvc;
+package com.haroot.mybatis;
 
 public class BoardDTO
 {

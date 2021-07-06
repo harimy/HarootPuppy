@@ -55,6 +55,7 @@ function setChildText(){
 	<input type="button" value="방 만들기" style="float: right;">
 </div>
 <br><br>
+
 <div>
 	<table id="bbsList_list" class="table">
 		<tr id="title">
@@ -64,6 +65,7 @@ function setChildText(){
 			<th class="time" style="width: 150px;">산책 시간</th>
 			<th class="host" style="width: 100px;">개설자</th>
 		</tr>
+
 		<tr id="lists" onclick="openChild()"> 
 			<td class="num">1</td>
 			<td class="roomInfo">저녁 산책 하GO 건강 챙기GO</td>
@@ -71,6 +73,17 @@ function setChildText(){
 			<td class="time">1/4</td>
 			<td class="host">뚜또맘</td> 
 		</tr>
+
+		<c:forEach var="walkroom" items="${list }">
+		<tr>
+			<td>${walkroom.walkroom_code }</td>
+			<td>${walkroom.walkroom_title }</td>
+			<td>${walkroom.walkroom_min }명~${walkroom.walkroom_max }명</td>
+			<td>${walkroom.walkroom_start }~${walkroom.walkroom_end }</td>
+			<td>${walkroom.mem_nickname }</td>
+		</tr>
+		</c:forEach>
+		 
 	</table>
 </div>
 

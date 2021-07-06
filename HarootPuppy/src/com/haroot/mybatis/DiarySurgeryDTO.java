@@ -3,7 +3,7 @@
   : 수술 / 입원 입력
 =====================*/
 
-package com.haroot.mvc;
+package com.haroot.mybatis;
 
 public class DiarySurgeryDTO
 {
