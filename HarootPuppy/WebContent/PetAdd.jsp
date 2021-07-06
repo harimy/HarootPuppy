@@ -27,11 +27,16 @@
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.css">
 
 <style type="text/css">
+#errMsg
+{
+	color: red;
+	font-size: small;
+	display: none;
+}
 
 .petTable
 {
-	margin-left: 100px;
-	width : 400px;
+	width : 100%;
 	text-align: center;
 	/* border : 1px solid; */
 }
@@ -57,6 +62,17 @@
 	margin: 0px auto;
 	cursor:pointer;
 }
+
+table tr:first-child td {
+
+	width:200px;
+}
+
+ 
+table tr:second-child td {
+
+	width:	2000px;
+} 
 
 
 /* star rating CSS */
@@ -180,7 +196,7 @@ $(function()
 		<!-- content 영역 -->
 		<div class="allIn" id="harootContent">
 		<div class="inIn">
-			<div class="" style="font-weight: bold; text-align: center;">
+			<div class="form-group2" style="font-weight: bold; text-align: center;">
 				<h1>반려견 등록</h1>
 			</div>
 			
@@ -190,8 +206,8 @@ $(function()
 			<br><br>
 			
 			
-			<div class="petTable">
-				<table>
+			<div class=form-group2>
+				<table class="petTable">
 					<tr>
 						<td style="width: 20%;">이름</td>
 						<td>
@@ -214,7 +230,7 @@ $(function()
 			</div>
 			
 			<div class="petTable">
-				<table>
+				<table class="petTable">
 					<tr>
 						<td>중성화 여부</td>
 						<td>
@@ -246,24 +262,139 @@ $(function()
 					</tr>
 					<tr>
 						<td>반려견 주소</td>
+						<td>
+						<input type="text" id="sample5_address" placeholder="반려견 주소를 입력하세요">
+						<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+						<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+						
+						<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+						<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c980959de9d6957591bdf2f69c03ce68&libraries=services"></script>
+						<script>
+						    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+						        mapOption = {
+						            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+						            level: 5 // 지도의 확대 레벨
+						        };
+						
+						    //지도를 미리 생성
+						    var map = new daum.maps.Map(mapContainer, mapOption);
+						    //주소-좌표 변환 객체를 생성
+						    var geocoder = new daum.maps.services.Geocoder();
+						    //마커를 미리 생성
+						    var marker = new daum.maps.Marker({
+						        position: new daum.maps.LatLng(37.537187, 127.005476),
+						        map: map
+						    });
+						
+						
+						    function sample5_execDaumPostcode() {
+						        new daum.Postcode({
+						            oncomplete: function(data) {
+						                var addr = data.address; // 최종 주소 변수
+						
+						                // 주소 정보를 해당 필드에 넣는다.
+						                document.getElementById("sample5_address").value = addr;
+						                // 주소로 상세 정보를 검색
+						                geocoder.addressSearch(data.address, function(results, status) {
+						                    // 정상적으로 검색이 완료됐으면
+						                    if (status === daum.maps.services.Status.OK) {
+						
+						                        var result = results[0]; //첫번째 결과의 값을 활용
+						
+						                        // 해당 주소에 대한 좌표를 받아서
+						                        var coords = new daum.maps.LatLng(result.y, result.x);
+						                        // 지도를 보여준다.
+						                        mapContainer.style.display = "block";
+						                        map.relayout();
+						                        // 지도 중심을 변경한다.
+						                        map.setCenter(coords);
+						                        // 마커를 결과값으로 받은 위치로 옮긴다.
+						                        marker.setPosition(coords)
+						                    }
+						                });
+						            }
+						        }).open();
+						    }
+						    
+						    
+						</script>
+						</td>
+						
 					</tr>
 					<tr>
 						<td>자주가는 산책 장소</td>
+						<td>
+						<input type="text" id="sample5_address" placeholder="자주가는 산책 주소를 입력하세요">
+						<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+						<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+						
+						<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+						<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c980959de9d6957591bdf2f69c03ce68&libraries=services"></script>
+						<script>
+						    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+						        mapOption = {
+						            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+						            level: 5 // 지도의 확대 레벨
+						        };
+						
+						    //지도를 미리 생성
+						    var map = new daum.maps.Map(mapContainer, mapOption);
+						    //주소-좌표 변환 객체를 생성
+						    var geocoder = new daum.maps.services.Geocoder();
+						    //마커를 미리 생성
+						    var marker = new daum.maps.Marker({
+						        position: new daum.maps.LatLng(37.537187, 127.005476),
+						        map: map
+						    });
+						
+						
+						    function sample5_execDaumPostcode() {
+						        new daum.Postcode({
+						            oncomplete: function(data) {
+						                var addr = data.address; // 최종 주소 변수
+						
+						                // 주소 정보를 해당 필드에 넣는다.
+						                document.getElementById("sample5_address").value = addr;
+						                // 주소로 상세 정보를 검색
+						                geocoder.addressSearch(data.address, function(results, status) {
+						                    // 정상적으로 검색이 완료됐으면
+						                    if (status === daum.maps.services.Status.OK) {
+						
+						                        var result = results[0]; //첫번째 결과의 값을 활용
+						
+						                        // 해당 주소에 대한 좌표를 받아서
+						                        var coords = new daum.maps.LatLng(result.y, result.x);
+						                        // 지도를 보여준다.
+						                        mapContainer.style.display = "block";
+						                        map.relayout();
+						                        // 지도 중심을 변경한다.
+						                        map.setCenter(coords);
+						                        // 마커를 결과값으로 받은 위치로 옮긴다.
+						                        marker.setPosition(coords)
+						                    }
+						                });
+						            }
+						        }).open();
+						    }
+						    
+						    
+						</script>
+						</td>
 					</tr>
 				</table>
 			</div>			
 			
 			<br><br>
-			<div class="smalltext" 
-			style="font-size:13px; text-align: center;">
+			<div class="smalltext petTable" 
+			style="font-size:13px; text-align: center; font-weight: bold;">
 				선택 입력 사항
 			</div>	
 			
-			<div class="petTable">
-				<table>
+			<div class="form-group2">
+				<table class="petTable">
 					<tr>
 						<td>반려견 등록번호</td>
-						<td><input type="text" value="petNum" name="petNum"></td>
+						<td><input type="text" name="petNum" placeholder="등록번호를 입력하세요"></td>
 					</tr>
 					<tr>
 						<td>기저 질환</td>
@@ -289,39 +420,71 @@ $(function()
 			</div>	
 			
 			<br><br>
-			<div class="smalltext" 
-			style="font-size:13px; text-align: center;">
+			<div class="smalltext " 
+			style="font-size:13px; text-align: center; font-weight: bold;">
 				산책메이트 정보 (산책 메이트 서비스 이용 시 필수 입력)
 			</div>	
 			
-			<div class="form-group petTable">
-				<table>
+			<div class="form-group2">
+				<table class="petTable">
 					<tr>
-						<td>사회성정도</td>
-
-							<td><div class="form-group starsDiv">
-								<label for="focusedInput"> <span
-									class="input-group-text" id="">기호도</span>
-								</label>
-								<div class="stars">
-									<input type="radio" id="five" name="rate" value="5"> <label
-										for="five"></label> <input type="radio" id="four" name="rate"
-										value="4"> <label for="four"></label> <input
-										type="radio" id="three" name="rate" value="3"> <label
-										for="three"></label> <input type="radio" id="two" name="rate"
-										value="2"> <label for="two"></label> <input
-										type="radio" id="one" name="rate" value="1"> <label
-										for="one"></label> <span class="result"></span>
-								</div>
+						<td>사회성정보<td>
+						<td>
+						<div class="petTable form-group starsDiv">
+							<div class="stars">
+								<input type="radio" id="five" name="rate" value="5"> <label
+									for="five"></label> <input type="radio" id="four" name="rate"
+									value="4"> <label for="four"></label> <input
+									type="radio" id="three" name="rate" value="3"> <label
+									for="three"></label> <input type="radio" id="two" name="rate"
+									value="2"> <label for="two"></label> <input
+									type="radio" id="one" name="rate" value="1"> <label
+									for="one"></label> <span class="result"></span>
 							</div>
-							</td>
+						</div>
+						</td>
+					</tr>
 
-
-
+						<tr>
 							<td>성격</td>
+							<td>1. 
+		                	<input type="radio" name="sung" id="s1" value="활발">
+		                	<label for="활발">활발해요</label>
+		               		<input type="radio" name="sung" id="s2" value="얌전">
+		               		<label for="얌전">얌전해요</label>
+		               		<br>
+		               		
+		               		2. 
+		               		<input type="radio" name="sung" id="s3" value="겁">
+		                	<label for="겁">겁이많아요</label>
+		               		<input type="radio" name="sung" id="s4" value="아니요">
+		               		<label for="no">아니요</label>
+		               		<br>
+		               		
+		               		3.
+		               		<input type="radio" name="sung" id="s5" value="말">
+		                	<label for="말">말이 많아요</label>
+		               		<input type="radio" name="sung" id="s6" value="조용">
+		               		<label for="조용">조용해요</label>
+		               		<br>
+		               		
+		               		4.
+		               		<input type="radio" name="sung" id="s7" value="주인">
+		                	<label for="주인">주인바라기</label>
+		               		<input type="radio" name="sung" id="s8" value="사람">
+		               		<label for="사람">사람이면 다 좋아해요</label>
+		               		</td>
+		               		
 						</tr>
+							
 						<tr>
 							<td>입질 여부</td>
+							<td>
+		                	<input type="radio" name="bite" id="no" value="안물어요">
+		                	<label for="no">안물어요</label>
+		               		<input type="radio" name="bite" id="yes" value="물어요">
+		               		<label for="yes">물어요</label>
+		               		</td>
 						</tr>
 				</table>
 			</div>	
@@ -329,7 +492,7 @@ $(function()
 			<div class="center-table btn">
 			<input type="button" class="btn" value="등록">	
 			<input type="button" class="btn" value="취소">
-			<span id="errForm">필수 입력 항목을 입력하세요.</span>			
+			<span id="errMsg">필수 입력 항목을 입력하세요.</span>			
 			</div>
 		
 		</div>

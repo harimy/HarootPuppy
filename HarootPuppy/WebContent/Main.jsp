@@ -61,7 +61,7 @@
 <div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">
 	<li class="menu1">
-        <a href="DiarySelectPet.jsp">나의 반려견</a>  
+        <a href="diaryselectpet.action">나의 반려견</a>  
     </li>
     <li class="menu2">
     	<a href="WalkSelectPet.jsp">산책메이트</a>	
@@ -69,7 +69,7 @@
             <li style="margin-top: 5px;"><a href="WalkSelectPet.jsp">산책메이트</a></li>
             <li><a href="WalkHistoryMain.jsp">히스토리</a></li>
         </ul> 
-    </li>
+    </li>   
     <li class="menu3">
         <a href="ReportMain.jsp">자유게시판</a>
         <ul class="menu3_s submenu">
