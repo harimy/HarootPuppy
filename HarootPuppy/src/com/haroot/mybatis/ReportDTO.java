@@ -2,6 +2,7 @@ package com.haroot.mybatis;
 
 public class ReportDTO
 {
+
 	// 새로 추가한 속성이 있어서 ab_0706.ver로 모두 덮어씌울것!
    // 속성 구성
    private String rep_log_code 			// 신고내역코드					
@@ -274,8 +275,7 @@ public class ReportDTO
 		this.walkroom_words = walkroom_words;
 	}
 
-   
-   
+
    
 }
 
