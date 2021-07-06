@@ -51,7 +51,7 @@
 <div>
 	<!-- 메뉴영역 -->
 	<div id="harootHeader">
-		<c:import url="AdminMain.jsp"></c:import>
+		<c:import url="AdminMenu.jsp"></c:import>
 	</div>
 
 	<!-- content 영역 -->

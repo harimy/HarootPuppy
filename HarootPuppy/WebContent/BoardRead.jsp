@@ -28,7 +28,7 @@ body
 <div>
 <form>
 	<div>
-		<h1>강아지 우비 입혀본 후기</h1>
+		<h1>${list.title }</h1>
 		<h4>내가니별이다</h4>
 	</div>
 	

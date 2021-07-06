@@ -93,7 +93,7 @@ $(function() {
 
 </head>
 <body>
- <!---------------------------------------
+<!---------------------------------------
   DiarySelectPet.jsp
   - 반려견 다이어리 작성할 반려견 선택
 ---------------------------------------->
@@ -107,10 +107,13 @@ $(function() {
 		<div>
 			<h3>다이어리 작성할 반려견 선택</h3>
 		</div>
-		<form action="">
+
+		<form action="gotodiary.action" method="post">
 		<div style="text-align: right; margin-right: 120px;">
 			<button type="button" class="btn btn-warning"
-			id="register" name="petAdd" onclick="">반려견 추가</button>
+			id="register" name="petAdd" 
+			onclick="location.href='petadd.action'">반려견 추가</button>
+
 			<span id="errMsg">필수 선택 사항을 선택하세요</span>
 		</div>
 		</form>
@@ -125,6 +128,23 @@ $(function() {
 						<button type="button" class="btn btn-info">삭제</button>
 					</div>
 				</div>
+
+				<c:forEach var="list" items="${petList }">
+					<div class="card">
+						<div class="card-body">
+							<img class="cardImage" src=${list.pet_photo }>
+
+							<h5 class="card-title">${list.pet_name }</h5>
+
+							<button type="button" class="btn btn-warning">수정</button>
+							<button type="button" class="btn btn-info">삭제</button>
+						</div>
+					</div>
+				</c:forEach>
+
+
+
+				<!--  
 				<div class="card">
 					<img class="cardImage" src="<%=cp%>/images/puppy1.png">
 					<div class="card-body">
@@ -141,8 +161,12 @@ $(function() {
 						<button type="button" class="btn btn-info">삭제</button>
 					</div>
 				</div>
+				-->
+				
 			</div>
 		</div>
+		
+	
 
 		<!-- 하단 회사 설명 영역 -->
 		<div>

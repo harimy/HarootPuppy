@@ -9,14 +9,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminMain.jsp</title>
+<title>AdminMenu.jsp</title>
 <script type="text/javascript"
    src="http://code.jquery.com/jquery.min.js"></script>
 <style>
     /* 메뉴 수정 */
-   .ab ul, ol, li { list-style:none; margin:0; padding:0; width: 100%}
+    /* 상단메뉴에만 list-style 제거, 관리자메인페이지에서는 출력 */
+   .ab >ul { list-style:none; margin:0; padding:0; width: 100%}
    
-   
+   .ab ol { list-style:none; margin:0; padding:0; width: 100%}
+   .ab li { list-style:none; margin:0; padding:0; width: 100%}
+    
+    
+    /* .ab ul, ol, li { list-style:none; margin:0; padding:0; width: 100%} 이전 ver. */
    	
    	
     ul.myMenu {text-align: center;}

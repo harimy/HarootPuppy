@@ -51,7 +51,7 @@ String cp = request.getContextPath();
 	<div>
 		<!-- 메뉴영역 -->
 		<div id="harootHeader">
-			<c:import url="AdminMain.jsp"></c:import>
+			<c:import url="AdminMenu.jsp"></c:import>
 		</div>
 
 		<!-- content 영역 -->
@@ -109,7 +109,8 @@ String cp = request.getContextPath();
 				<div>
 					<button type="button" id="updateBtn" class="listbtn">수정</button>
 					<button type="button" id="deleteBtn" class="listbtn">삭제</button>
-					<button type="button" id="listBtn" class="listbtn">목록으로</button>
+					<button type="button" id="listBtn" class="listbtn"
+					onclick="location.href='AdminAskList.jsp'">목록으로</button>
 				</div>
 			</form>
 		</div>

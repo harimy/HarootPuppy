@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haroot.mybatis.IPetDAO"> <!-- 부모 노릇을 할 인터페이스 -->
+	
+	<!-- 특정 회원의 양육관계 리스트 검색 --> 
+	<!-- sid가 ~ 일때 양육관계 리스트 select -->
+	<select id="searchPets" resultType="com.haroot.mybatis.PetDTO">
+		SELECT SID_CODE, PET_NAME, RELATION_CODE, PET_PHOTO
+		FROM FORPETNAME_VIEW
+		WHERE SID_CODE = 'SID001'
+		<!-- WHERE SID_CODE = #{sid_code} -->
+	</select>
+
+	
+</mapper>

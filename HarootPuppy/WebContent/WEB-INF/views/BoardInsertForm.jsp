@@ -14,12 +14,12 @@
 <body>
 <jsp:include page="Main.jsp" />
 <div>
- <form>
+ <form role="form" action="boardinsertform.action" method="post">
       <table>
          <tr>
             <td>제목</td>
             <td>
-               <input type="text" id="name">
+               <input type="text" id="name" name="title">
             </td>
          </tr>
          <tr>
@@ -36,18 +36,20 @@
          <tr>
             <td>첨부파일</td>
             <td>
-              <input type="file" name="upload" multiple>
+              <input type="file" name="photo" multiple>
             </td>
          </tr>
      </table>
      <br>
-    <textarea style="width: 100%;" rows=20 placeholder="내용을 입력하세요"></textarea><br>
- </form>
- </div>
+    <textarea style="width: 100%;" rows=20 placeholder="내용을 입력하세요" name="content"></textarea><br>
+
  
  <div style="width:100%; text-align: right;">
 	  <button type="button" id="cancel" class="btn">취소</button>
 	  <button type="submit" id="register" class="btn">글 등록</button>
+ </div> 
+ 
+ </form>
  </div>
 
 </body>
