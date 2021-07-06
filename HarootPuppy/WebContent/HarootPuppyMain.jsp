@@ -13,7 +13,7 @@
 
 <!-- 핫게 CSS -->
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/menuStyle.css">
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<%-- <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css"> --%>
 
 <!-- jQuery JS -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -29,21 +29,27 @@
 
 <style type="text/css">
 
-div.HarootPuppyMain
+#HarootMainContent
 {
+	width: 100%;
 	text-align: center;
-	margin: 0px auto !important;
-	align-content: center;
-	display: inline-block;
-	margin-left: 50px;
 }
 
-
-
-.mainButton
+.mainButtonArea
 {
 	display: inline-block;	
+	margin-top : 50px;
 }
+
+.boardArea
+{
+	width: 80%;
+	display: inline-block;
+	text-align: center;
+    background-color: #ffffff;
+    background-color: rgba( 230, 230, 230, 0.4 );
+} 
+/* background-color: rgba(r, g, b, 투명도) */	
 
 #bbsList_list td, th
 {
@@ -57,14 +63,11 @@ div.HarootPuppyMain
 	font-size: 15px;
 	font-weight : bold;
 	color: #FFFFFF;
-	text-align: center;
-	
+	text-align: center;	
 	width : 350px;
 	height: 350px;
 	border-radius: 30px;
-	
-	margin-left :300px;
-	margin-top : 150px;
+	margin: 30px;
 }
 
 .button2
@@ -73,13 +76,12 @@ div.HarootPuppyMain
 	border: 1px solid #5a4080;
 	font-size: 15px;
 	font-weight : bold;
-	margin-left:20px;
 	color: #FFFFFF;
 	text-align: center;
-	margin: 0px auto;
 	width : 350px;
 	height: 350px;
 	border-radius: 30px;
+	margin: 30px;
 }
 
 .tdMain
@@ -103,9 +105,19 @@ div.HarootPuppyMain
 	z-index: -1;
 }
 
+.hotCategory
+{
+	float: left;
+}
+
+.tabContent
+{
+	width: 90%;
+	display: inline-block;
+}
+
+
 </style>
-
-
 
 </head>
 <body>
@@ -126,12 +138,10 @@ div.HarootPuppyMain
 	<div id="HarootMainContent">
 	
 		<!-- 사진 → 다이어리 / 산책메이트로 이동 -->
-		<div class="form-group HarootPuppyMain">
 		
-			<div class="form-group mainButton">	
+		<div class="mainButtonArea">	
 				
 			<button class="HarootMain button1" 
-			style="margin-right: 50px;"
 			onclick="location.href='DiaryMain.jsp'">
 			<p style="color:#FFFFFF; font-size:20px;
 			font-weight:bold;">반려견의 매일을
@@ -139,71 +149,65 @@ div.HarootPuppyMain
 			</button>						
 			
 			<button class="HarootMain button2"
-			style="margin-right: 50px;"
-			onclick="location.href='DiaryMain.jsp'">
+			onclick="location.href='WalkMain.jsp'">
 			<p style="color:#FFFFFF; font-size:20px;
 			font-weight:bold;">나의 반려견에게 
 			<br>친구를 만들어주세요✨</p>
 			</button>
 			
-			</div>
-	
 		</div>
-	
-		
-	<br><br><br>
-	<!-- HOT 게시판 영역 -->
-	<div id="bbsList" style="width:900px; margin:30px auto; text-align: left; ">
-	<div class="tab">
-	
-		<div class="tabContent">
-			<div id="tab01">
-				<div id="bbsList">
-					<div id="bbsList_title" style="text-align: center;">
-						<h1 style="font-weight: bold; color:#FFFFFF;">HOT 게시판</h1>
-					</div>
-					<div>
-					      <form action="" name="categoryForm" method="post">
-					         <select name="categoryKey" class="selectField">
-					            <option value="notic">공지</option>
-					            <option value="event">행사/할인정보</option>
-					            <option value="review">리뷰</option>
-					            <option value="talk">수다</option>
-					            <option value="used">중고장터</option>
-					         </select>
-					      </form>
-					</div><br>
-					<table id="bbsList_list" class="table" style="text-align: center;">
-						<tr id="title">
-							<th class="cate">카테고리</th>
-							<th class="num">번호</th>
-							<th class="subject">제목</th>
-							<th class="name">작성자</th>
-							<th class="created">작성일</th>
-							<th class="hitCount">조회수</th>
-							<th class="like">좋아요</th>
-						</tr>
-						<tr id="lists" style="color:#FFFFFF;"> 
-							<td class="tdMain cate">리뷰</td>
-							<td class="tdMain num">리뷰</td>
-							<td class="tdMain subject">리뷰</td>
-							<td class="tdMain name">리뷰</td>
-							<td class="tdMain created">리뷰</td>
-							<td class="tdMain hitCount">리뷰</td> 
-							<td class="tdMain like">리뷰</td>						
-						</tr>
-					</table>
-					
-					<div id="footer_number" style="text-align: center;">
-						<p class="tdMain">1 Prev 21 22 23 24 25 26 27 28 29 30 Next 63</p>
-					</div>
 
+		<br><br><br>
+		<!-- HOT 게시판 영역 -->
+		<div class="boardArea">
+		
+			<div class="tabContent" style="width: 90%">
+				<div id="tab01">
+					<div id="bbsList">
+						<div id="bbsList_title" style="text-align: center;">
+							<h1 style="font-weight: bold; color:#FFFFFF;">HOT 게시판</h1>
+						</div>
+						<div class="hotCategory">
+						      <form action="" name="categoryForm" method="post">
+						         <select name="categoryKey" class="selectField">
+						            <option value="notic">공지</option>
+						            <option value="event">행사/할인정보</option>
+						            <option value="review">리뷰</option>
+						            <option value="talk">수다</option>
+						            <option value="used">중고장터</option>
+						         </select>
+						      </form>
+						</div><br>
+						<table id="bbsList_list" class="table" style="text-align: center;">
+							<tr id="title">
+								<th class="cate">카테고리</th>
+								<th class="num">번호</th>
+								<th class="subject">제목</th>
+								<th class="name">작성자</th>
+								<th class="created">작성일</th>
+								<th class="hitCount">조회수</th>
+								<th class="like">좋아요</th>
+							</tr>
+							<tr id="lists" style="color:#FFFFFF;"> 
+								<td class="tdMain cate">리뷰</td>
+								<td class="tdMain num">리뷰</td>
+								<td class="tdMain subject">리뷰</td>
+								<td class="tdMain name">리뷰</td>
+								<td class="tdMain created">리뷰</td>
+								<td class="tdMain hitCount">리뷰</td> 
+								<td class="tdMain like">리뷰</td>						
+							</tr>
+						</table>
+						
+						<div id="footer_number" style="text-align: center;">
+							<p class="tdMain">1 Prev 21 22 23 24 25 26 27 28 29 30 Next 63</p>
+						</div>
+	
+					</div>
 				</div>
 			</div>
+	
 		</div>
-
-	</div>	
-	</div>
 	</div>		
 	
 

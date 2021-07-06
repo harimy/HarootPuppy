@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -53,21 +53,20 @@
 	{
 		$("#matchBtn").click(function()
 		{
-			if ( $(this).val() == "notMatched" )
-			{				
+			if ($(this).val() == "notMatched")
+			{
 				$(this).css("background-color", "rgb(224, 224, 224)");
 				$(this).html("CANCEL");
 				$(this).val("matched");
 				return;
-			}
-			else if ( $(this).val() == "matched" )
+			} else if ($(this).val() == "matched")
 			{
 				$(this).css("background-color", "rgb(196, 91, 36)");
 				$(this).html("MATCHING");
 				$(this).val("notMatched");
 				return;
 			}
-			
+
 		});
 	});
 </script>
@@ -77,22 +76,22 @@
 <link rel="stylesheet" type="text/css" href="css/WalkRoom.css">
 
 <!-- 산책방 태그들 관련 css : 산책메이트 특징태그, 방장태그, 레디 태그 -->
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/WalkRoomTags.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=cp%>/css/WalkRoomTags.css">
 
 <style type="text/css">
-	.transparent-button
-	{
-	    background-color: transparent !important;
-	    background-image: none !important;
-	    border-color: transparent;
-	    border: none;
-	    color: #FFFFFF; 
-	}
+.transparent-button {
+	background-color: transparent !important;
+	background-image: none !important;
+	border-color: transparent;
+	border: none;
+	color: #FFFFFF;
+}
 </style>
 
 </head>
 <body>
-<jsp:include page="Main.jsp" />
+	<jsp:include page="Main.jsp" />
 	<!-- 방 개설하면서 정보 불러오기 -->
 	<div>
 
@@ -105,12 +104,10 @@
 
 
 			<!-- 산책메이트 특징 -->
-			원하는 산책 메이트 특징<br> 
-			<span id="dogSize" class="mateOp">대형견</span> 
-			<span id="dogSize" class="mateOp">중형견</span>
-			<span id="gender" class="mateOp">동일 성별 양육자</span>
-			<span id="mouth" class="mateOp">입질하는 반려견 금지</span>
-			<span id="auto" class="mateOp">자동 확정 옵션 OFF</span>
+			원하는 산책 메이트 특징<br> <span id="dogSize" class="mateOp">대형견</span> <span
+				id="dogSize" class="mateOp">중형견</span> <span id="gender"
+				class="mateOp">동일 성별 양육자</span> <span id="mouth" class="mateOp">입질하는
+				반려견 금지</span> <span id="auto" class="mateOp">자동 확정 옵션 OFF</span>
 		</div>
 		<br>
 
@@ -133,8 +130,14 @@
 	<div class="row">
 		<div class="col-sm-4 col-md-3">
 			<div class="thumbnail">
-				<div id="nickName">
-					나와 재롱이와 동구<img src="images/man.png" class="icons">
+				<div class="nickName">
+					<div class="thumbLeft">나와 재롱이와 동구<img src="images/man.png" class="icons">
+					</div>
+					<div class="thumbRight">
+						<button type="button" class="menuBtn transparent-button">
+  							<span class="glyphicon glyphicon-option-vertical" style="color: #000000"></span>
+						</button>
+					</div>
 				</div>
 				<br> <img class="img-responsive"
 					src="<%=cp%>/images/jaerong.jpg">
@@ -151,8 +154,14 @@
 
 		<div class="col-sm-4 col-md-3">
 			<div class="thumbnail">
-				<div id="nickName">
-					비투더아투더뱅뱅<img src="images/man.png" class="icons">
+				<div class="nickName">
+					<div class="thumbLeft">비투더아투더뱅뱅<img src="images/man.png" class="icons">
+					</div>
+					<div class="thumbRight">
+						<button type="button" class="menuBtn transparent-button">
+  							<span class="glyphicon glyphicon-option-vertical" style="color: #000000"></span>
+						</button>
+					</div>
 				</div>
 				<br> <img class="img-responsive"
 					src="<%=cp%>/images/puppy1.png">
@@ -168,8 +177,14 @@
 
 		<div class="col-sm-4 col-md-3">
 			<div class="thumbnail">
-				<div id="nickName">
-					코코는우리코코<img src="images/girl.png" class="icons">
+				<div class="nickName">
+					<div class="thumbLeft">코코는우리코코<img src="images/girl.png" class="icons">
+					</div>
+					<div class="thumbRight">
+						<button type="button" class="menuBtn transparent-button">
+  							<span class="glyphicon glyphicon-option-vertical" style="color: #000000"></span>
+						</button>
+					</div>
 				</div>
 				<br> <img class="img-responsive"
 					src="<%=cp%>/images/jaerong.jpg">
@@ -184,6 +199,7 @@
 		</div>
 	</div>
 
+
 	<!-- 댓글 -->
 	<div id="walkReply">
 		<table id="replyBoard" class="table">
@@ -191,13 +207,17 @@
 				<td><span id="nickName">진수123</span></td>
 				<td>산책끝나고 치맥어떠시어요?</td>
 				<td>06/28/09:23</td>
-				<td><button type="button" class="transparent-button"><img src="images/report.jpeg" class="icons"></button></td>
+				<td><button type="button" class="transparent-button">
+						<img src="images/report.jpeg" class="icons">
+					</button></td>
 			</tr>
 			<tr id="reply">
 				<td><span id="nickName">진수사냥꾼</span></td>
 				<td>이상한 소리좀 하지마라 ㅅㅂ</td>
 				<td>06/28/14:21</td>
-				<td><button type="button" class="transparent-button"><img src="images/report.jpeg" class="icons"></button></td>
+				<td><button type="button" class="transparent-button">
+						<img src="images/report.jpeg" class="icons">
+					</button></td>
 			</tr>
 		</table>
 
@@ -210,7 +230,8 @@
 	<div id="buttonArea">
 		<button type="button" id="changeInfo"
 			onclick="location.href='WalkRoomInsertForm.jsp'">방 정보 변경</button>
-		<button type="button" id="list" onclick="location.href='WalkRoomList.jsp'">목록으로</button>
+		<button type="button" id="list"
+			onclick="location.href='WalkRoomList.jsp'">목록으로</button>
 		<button type="button" id="delete">방 삭제하기</button>
 	</div>
 </body>

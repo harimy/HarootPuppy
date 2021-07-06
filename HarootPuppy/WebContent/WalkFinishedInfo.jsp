@@ -93,8 +93,14 @@
 			<div class="row">
 				<div class="col-sm-4 col-md-3">
 					<div class="thumbnail">
-						<div id="nickName">
-							나와 재롱이와 동구<img src="images/man.png" class="icons">
+						<div class="nickName">
+							<div class="thumbLeft">나의 재롱이와 동구<img src="images/man.png" class="icons">
+							</div>
+							<div class="thumbRight">
+								<button type="button" class="menuBtn transparent-button">
+		  							<span class="glyphicon glyphicon-option-vertical" style="color: #000000"></span>
+								</button>
+							</div>
 						</div>
 						<br> <img class="img-responsive"
 							src="<%=cp%>/images/jaerong.jpg">
@@ -111,8 +117,14 @@
 
 				<div class="col-sm-4 col-md-3">
 					<div class="thumbnail">
-						<div id="nickName">
-							비투더아투더뱅뱅<img src="images/man.png" class="icons">
+						<div class="nickName">
+							<div class="thumbLeft">비투더아투더뱅뱅<img src="images/man.png" class="icons">
+							</div>
+							<div class="thumbRight">
+								<button type="button" class="menuBtn transparent-button">
+		  							<span class="glyphicon glyphicon-option-vertical" style="color: #000000"></span>
+								</button>
+							</div>
 						</div>
 						<br> <img class="img-responsive"
 							src="<%=cp%>/images/puppy1.png">
@@ -127,8 +139,14 @@
 
 				<div class="col-sm-4 col-md-3">
 					<div class="thumbnail">
-						<div id="nickName">
-							코코는우리코코<img src="images/girl.png" class="icons">
+						<div class="nickName">
+							<div class="thumbLeft">코코는우리코코<img src="images/girl.png" class="icons">
+							</div>
+							<div class="thumbRight">
+								<button type="button" class="menuBtn transparent-button">
+		  							<span class="glyphicon glyphicon-option-vertical" style="color: #000000"></span>
+								</button>
+							</div>
 						</div>
 						<br> <img class="img-responsive"
 							src="<%=cp%>/images/jaerong.jpg">

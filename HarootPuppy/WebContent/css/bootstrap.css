@@ -2488,7 +2488,7 @@ legend {
 label {
   display: inline-block;
   max-width: 100%;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */	/* 산책방 메인페이지에서 옵션 선택하는 부분 마진이 들어가서 주석처리함 */
   font-weight: bold;
 }
 input[type="search"] {

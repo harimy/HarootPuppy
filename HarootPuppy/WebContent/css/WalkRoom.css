@@ -65,3 +65,36 @@ img {
 	cursor: pointer;
 }
 
+.menuBtn
+{
+	border: none;
+	color: white;
+	text-align: center;
+	padding: 5px;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.menuBtn:active
+{
+	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.42);
+}
+
+/* 닉네임과 차단/신고 메뉴버튼 정렬 */
+.nickname
+{
+	width: 100%;
+}
+
+.thumbLeft
+{
+	float: left;
+}
+
+.thumbRight
+{
+	
+	float: right;
+}
