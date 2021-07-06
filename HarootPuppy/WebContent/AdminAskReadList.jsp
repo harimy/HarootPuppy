@@ -109,7 +109,8 @@ String cp = request.getContextPath();
 				<div>
 					<button type="button" id="updateBtn" class="listbtn">수정</button>
 					<button type="button" id="deleteBtn" class="listbtn">삭제</button>
-					<button type="button" id="listBtn" class="listbtn">목록으로</button>
+					<button type="button" id="listBtn" class="listbtn"
+					onclick="location.href='AdminAskList.jsp'">목록으로</button>
 				</div>
 			</form>
 		</div>

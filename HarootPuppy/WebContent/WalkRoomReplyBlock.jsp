@@ -37,6 +37,11 @@
 		document.replyReport.submit();
 		// form을 일단 넘기고 속성값은 나중에 받아가기
 	});
+	
+	$("#cancel").click(function()
+		{
+			window.close();
+		});
 }); 
 
 
