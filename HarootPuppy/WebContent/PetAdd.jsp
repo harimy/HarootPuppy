@@ -139,6 +139,13 @@
 	content: "I hate it ";
 }
 
+
+table tr:first-child td {
+
+	width:200px;
+}
+
+
 </style>
 
 

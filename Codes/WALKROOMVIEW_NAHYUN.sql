@@ -74,9 +74,6 @@ SELECT WR.WALKROOM_CODE AS WALKROOM_CODE
 , D.DESEX_CONTENT AS DESEX_CONTENT
 , SS.SAMESEX_CODE AS SAMESEX_CODE
 , SS.SAMESEX_CONTENT AS SAMESEX_CONTENT
-, E.EVAL_WRITER AS EVAL_WRITER
-, E.EVAL_TARGET AS EVAL_TARGET
-, WS.EVAL_CODE AS EVAL_CODE
 FROM TBL_WALKROOM WR
 LEFT JOIN TBL_PARTICIPANTS P   
 ON WR.WALKROOM_CODE = P.WALKROOM_CODE
@@ -98,14 +95,10 @@ ON WR.WALKROOM_CODE = P.WALKROOM_CODE
                                 ON WR.SAMESEX_CODE = SS.SAMESEX_CODE
                                     LEFT JOIN TBL_MATCH M
                                     ON WR.WALKROOM_CODE = M.WALKROOM_CODE
-                                        LEFT JOIN TBL_EVALUATION E
-                                        ON M.MATCH_CODE = E.MATCH_CODE AND E.EVAL_WRITER=P.PARTICIPANTS_CODE
                                             LEFT JOIN TBL_PET PET
                                             ON REL.PET_CODE = PET.PET_CODE
                                                 LEFT JOIN TBL_PET_INFO PI
-                                                ON PET.PET_CODE = PI.PET_CODE
-                                                    LEFT JOIN TBL_WALK_SCORE WS
-                                                    ON E.EVAL_CODE = WS.EVAL_CODE  AND E.EVAL_TARGET=P.PARTICIPANTS_CODE
+                                                ON PET.PET_CODE = PI.PET_CODE                                          
 ORDER BY WR.WALKROOM_CODE;   
         
         
@@ -238,6 +231,6 @@ SELECT *
 FROM TBL_REWARD;
 
 
-
+COMMIT;
 
 
