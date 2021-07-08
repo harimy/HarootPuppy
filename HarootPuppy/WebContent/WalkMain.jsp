@@ -279,16 +279,17 @@
 					</td>
 				</tr>
 			</table>
+			<br>
 			<div>
-			<input type="button" value="검색" style="float: right;"> <label
-				for="onlyAble" style="float: right;"> <input
-				type="checkBox" name="able" id="onlyAble" value="onlyAble">&nbsp;참여가능한 방만 보기&nbsp;&nbsp;
-			</label>
-		</div>
+			 	<label for="onlyAble" style="float: right;">
+			 		<input type="checkBox" name="able" id="onlyAble" value="onlyAble">&nbsp;참여가능한 방만 보기&nbsp;&nbsp;
+			 		<input type="button" value="검색" style="float: right;">
+				</label>
+			</div>
 		</div>
 		<br>
 	
-		<br><br><br>
+		<br><br><br><br>
 		
 		<div class="walkRoomListArea">
 			<jsp:include page="walkroomlist.action" />
