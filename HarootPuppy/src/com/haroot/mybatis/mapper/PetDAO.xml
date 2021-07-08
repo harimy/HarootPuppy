@@ -7,11 +7,28 @@
 	
 	<!-- 특정 회원의 양육관계 리스트 검색 --> 
 	<!-- sid가 ~ 일때 양육관계 리스트 select -->
-	<select id="searchPets" resultType="com.haroot.mybatis.PetDTO">
-		SELECT SID_CODE, PET_NAME, RELATION_CODE, PET_PHOTO
+	<select id="searchPets" parameterType="java.lang.String"  resultType="com.haroot.mybatis.PetDTO">
+		SELECT SID_CODE, PET_CODE, PET_NAME, RELATION_CODE, PET_PHOTO
 		FROM FORPETNAME_VIEW
 		WHERE SID_CODE = 'SID001'
-		<!-- WHERE SID_CODE = #{sid_code} -->
+		<!-- WHERE SID_CODE = #{SID_CODE} -->
+	</select>
+	
+	<!-- 특정회원의 특정 반려견 정보 (pet_code 기반 -->
+	<select id="petInfo" parameterType="java.lang.String" resultType="com.haroot.mybatis.PetDTO">
+		SELECT PET_CODE, PET_NAME, SID_CODE, RELATION_CODE
+		FROM FORPETNAME_VIEW
+		WHERE PET_CODE = #{PET_CODE}
+		<!-- WHERE SID_CODE = #{PET_CODE} -->
+	</select>
+	
+	<!-- 다이어리 내 반려견 정보 조회  -->
+	<select id="petInfo2" parameterType="java.lang.String" resultType="com.haroot.mybatis.PetDTO">
+		SELECT PET_NAME, PET_SEX, PET_REGNUM, PET_BIRTH, PET_TYPE_NAME, PET_SIZE
+		    	, DISEASE_CONTENT, FAV_FOOD_CONTENT, INJECT_TYPE_NAME
+		FROM PETVIEW
+		WHERE PET_CODE = #{PET_CODE}
+		<!-- WHERE SID_CODE = #{PET_CODE} -->
 	</select>
 
 	
