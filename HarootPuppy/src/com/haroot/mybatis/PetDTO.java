@@ -1,5 +1,9 @@
 package com.haroot.mybatis;
 
+/**
+ * @author joohee
+ *
+ */
 public class PetDTO
 {
 	// 속성 구성
@@ -22,8 +26,6 @@ public class PetDTO
 				, fav_food_code									// 관심사료코드
 				, fav_food_content								// 관심사료내용
 				, inject_type_code								// 접종종류코드
-
-
 				, inject_type_name								// 접종종류내용
 				
 				, relation_code									// 양육관계코드

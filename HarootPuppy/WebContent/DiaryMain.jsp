@@ -41,7 +41,40 @@ h1>span {
 	width: 900px;
 	margin: 0px auto;
 }
+
+
+/* 탭 관련 css */
+	.nav-tabs { border-bottom: 2px solid #DDD; }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+    .nav-tabs > li > a { border: none; color: #ffffff; background: #F7819F; }
+        .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none;  color: #F7819F !important; background: #fff; }
+        .nav-tabs > li > a::after { content: ""; background: #F7819F; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+	.tab-nav > li > a::after { background: #F7819F none repeat scroll 0% 0%; color: #fff; }
+	.tab-pane { padding: 15px 0; }
+	.tab-content{padding:20px}
+	.nav-tabs > li  {width:20%; text-align:center;}
+	.card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; }
+	
+	@media all and (max-width:724px){
+	.nav-tabs > li > a > span {display:none;}	
+	.nav-tabs > li > a {padding: 5px 5px;}
+	
 </style>
+
+
+<script type="text/javascript">
+	
+$(function()
+	{
+		$("#menu1").click(function()
+		{
+			$("#timeline").load("DiaryTrainInsertForm.jsp");	
+		});
+		
+	});
+
+</script>
 
 </head>
 <body>
@@ -62,18 +95,18 @@ h1>span {
 			<div>
 				<h1 class="badge-parent">
 					<br>
-					<br> <span class="badge badge-pill badge-warning">재롱이</span>
+					<br> <span class="badge badge-pill badge-warning">${list.pet_name }</span>
 				</h1>
 				<br>
 			</div>
 			<!-- 정보보기 버튼 -->
 			<div style="text-align: right; margin-right: 500px;">
-				<button type="button" class="btn btn-success">
+				<button type="button" class="btn btn-success" id="petInfo" value="${list.pet_code }">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 						fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-              <path
+              		<path
 							d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z" />
-            </svg>
+            		</svg>
 					정보 보기
 				</button>
 			</div>
@@ -84,15 +117,35 @@ h1>span {
 				<c:import url="DiaryCalendarArea.jsp"></c:import>
 			</div>
 			<!-- 기본관리 / 특별관리 탭 영역-->
-			<div>
-				<!-- 메뉴 구성(기본관리/특별관리) -->
-				<div>
-					<c:import url="DiaryBasicMenu.jsp"></c:import>
-				</div>
-				<div>
-					<!-- 타임라인 -->
-					<c:import url="DiaryTimeLine.jsp"></c:import>
-				</div>
+			<div class="container">
+			  <div class="row">			
+			    <div class="col-md-12" style="width:80%; margin-left :10%;">
+			    
+			      <!-- Nav tabs -->
+			      <div class="card">
+			        <ul class="nav nav-tabs nav-justified" role="tablist">
+			          <li role="presentation" class="active"><a href="#menu1" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-home"></i>  <span>기본관리</span></a></li>
+			          <li role="presentation"><a href="#menu2" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i>  <span>특별관리</span></a></li>
+			        </ul>
+			        
+			        <!-- Tab panes -->
+			        <div class="tab-content">
+			          <div role="tabpanel" class="tab-pane active" id="menu1">
+			          	<c:import url="DiaryBasicMenu.jsp"></c:import>
+			          </div>
+			          <div role="tabpanel" class="tab-pane" id="menu2">
+			          	<c:import url="DiarySpecialMenu.jsp"></c:import>
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			
+			<!-- 타임라인 -->
+			<div id="timeline">
+			<c:import url="DiaryTimeLine.jsp"></c:import>
+			</div>
 
 
 			</div>
@@ -100,6 +153,7 @@ h1>span {
 
 
 		</div>
+		
 
 
 		<!-- 하단 회사 설명 영역 -->

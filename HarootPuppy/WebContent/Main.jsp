@@ -61,7 +61,9 @@
 <div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">
 	<li class="menu1">
-        <a href="diaryselectpet.action">나의 반려견</a>  
+        <a href="diaryselectpet.action">나의 반려견
+        <input type="hidden" id="sid_code" name="sid_code">
+        </a>  
     </li>
     <li class="menu2">
     	<a href="WalkSelectPet.jsp">산책메이트</a>	
