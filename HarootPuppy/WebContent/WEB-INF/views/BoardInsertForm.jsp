@@ -14,7 +14,7 @@
 <body>
 <jsp:include page="Main.jsp" />
 <div>
- <form role="form" action="boardinsertform.action" method="post">
+ <form role="form" action="boardinsert.action" method="post">
       <table>
          <tr>
             <td>제목</td>

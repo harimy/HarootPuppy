@@ -25,6 +25,7 @@
 	{
 		$("#list").css({"color":"red", "font-weight":"bold"});
 	});
+	
 
 </script>
 </head>
@@ -76,8 +77,10 @@
         <tr id="list">
            <td>${list.cate_content }</td>
            <td>${list.num }</td>
-           <td><a href="">${list.title }</a></td>
-           <td>${list.writer }</td>
+           <td>
+			<a href="boardview.action?num=${list.num }">${list.title }</a>
+		   </td>
+           <td>${list.nickname }</td>
            <td>${list.content_date }</td>
            <td>${list.viewNum }</td>
            <td>${list.likeNum }</td>
@@ -101,7 +104,7 @@
       
          <div id="rightHeader">
             <input type="button" value="글쓰기" class="btn2"
-            onclick="javascript:location.href='/WEB-INF/views/BoardInsertForm.jsp'">         
+            onclick="javascript:location.href='boardinsertform.action'">         
          </div>
       
    </div><!-- #bbsList_header -->

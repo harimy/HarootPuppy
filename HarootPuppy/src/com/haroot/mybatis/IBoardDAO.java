@@ -5,7 +5,11 @@
 package com.haroot.mybatis;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
 
 public interface IBoardDAO
 {
@@ -18,6 +22,10 @@ public interface IBoardDAO
 	// 게시글 리스트 확인
 	public ArrayList<BoardDTO> list();
 	
+	// 게시글 조회
+//	public BoardDTO view(HashMap<String, Object> map);
+	public BoardDTO view(@Param("num") int num, @Param("nickname") String nickname);
+
 	// 게시글 추가
 	public int add(BoardDTO board);
 	
