@@ -27,8 +27,24 @@
 <script type="text/javascript" src="<%=cp%>/js/diary.js"></script>
 
 
+
 <style type="text/css">
 </style>
+
+
+
+<script type="text/javascript">
+	
+$(function()
+	{
+		$("#mood").click(function()
+		{
+			$("#timeline").load("DiaryTrainInsertForm.jsp");	
+		});
+		
+	});
+
+</script>
 
 
 </head>
@@ -43,7 +59,7 @@
 	<!-- 상태, 식사, 간식, 산책, 청결
 		 진료, 미용, 영양제, 훈련, 기타 -->
 	<div class="diaryMenu">
-		<label for="mood" class="icons" onclick="">
+		<label for="mood" class="icons" >
 			<img class="diaryIcon" src="<%=cp%>/images/icons/main/mood.png"
 			alt="mood" id="mood" title="상태">
 			<br>상태
@@ -58,39 +74,39 @@
 			alt="snack" id="snack" title="간식">
 			<br>간식
 		</label>
-		<label for="walk" class="icons">
+		<label for="walk" class="icons" >
 			<img class="diaryIcon" src="<%=cp%>/images/icons/main/walk.png"
 			alt="walk" id="walk" title="산책">
 			<br>산책
 		</label>
-		<label for="clean" class="icons">
+		<label for="clean" class="icons" >
 			<img class="diaryIcon" src="<%=cp%>/images/icons/main/clean.png"
 			alt="clean" id="clean" title="청결">
 			<br>청결
 		</label>
 		<br><br>
 	
-		<label for="check" class="icons">
+		<label for="check" class="icons" >
 			<img class="diaryIcon" src="<%=cp%>/images/icons/main/check.png"
 			alt="check" id="check" title="진료">
 			<br>진료
 		</label>
-		<label for="beauty" class="icons">
+		<label for="beauty" class="icons" >
 			<img class="diaryIcon" src="<%=cp%>/images/icons/main/beauty.png"
 			alt="beauty" id="beauty" title="미용">
 			<br>미용
 		</label>
-		<label for="nutrients" class="icons">
+		<label for="nutrients" class="icons" >
 			<img class="diaryIcon" src="<%=cp%>/images/icons/main/nutrients.png"
 			alt="nutrients" id="nutrients" title="영양제">
 			<br>영양제
 		</label>
-		<label for="train" class="icons">
+		<label for="train" class="icons" >
 			<img class="diaryIcon" src="<%=cp%>/images/icons/main/train.png"
 			alt="train" id="train" title="훈련">
 			<br>훈련
 		</label>
-		<label for="etc" class="icons">
+		<label for="etc" class="icons" >
 			<img class="diaryIcon" src="<%=cp%>/images/icons/main/etc.png"
 			alt="etc" id="etc" title="기타">
 			<br>기타

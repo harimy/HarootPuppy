@@ -27,13 +27,14 @@
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.css">
 
 <style type="text/css">
-<<<<<<< HEAD
+
 
 .petTable
 {
 	margin-left: 100px;
 	width : 400px;
-=======
+}
+
 #errMsg
 {
 	color: red;
@@ -44,7 +45,7 @@
 .petTable
 {
 	width : 100%;
->>>>>>> 05c92bfcb95933ab60a8c51588e1de4d89f4c09d
+
 	text-align: center;
 	/* border : 1px solid; */
 }
@@ -71,8 +72,7 @@
 	cursor:pointer;
 }
 
-<<<<<<< HEAD
-=======
+
 table tr:first-child td {
 
 	width:200px;
@@ -84,7 +84,7 @@ table tr:second-child td {
 	width:	2000px;
 } 
 
->>>>>>> 05c92bfcb95933ab60a8c51588e1de4d89f4c09d
+
 
 /* star rating CSS */
 @import
@@ -166,8 +166,6 @@ table tr:second-child td {
 	content: "I hate it ";
 }
 
-<<<<<<< HEAD
-=======
 
 table tr:first-child td {
 
@@ -175,7 +173,6 @@ table tr:first-child td {
 }
 
 
->>>>>>> 05c92bfcb95933ab60a8c51588e1de4d89f4c09d
 </style>
 
 
@@ -196,6 +193,10 @@ $(function()
 				, changeYear: true
 			});
 		});
+		
+		
+
+
 
 </script>
 
@@ -215,29 +216,43 @@ $(function()
 		<br><br><br><br>
 		
 		<!-- content 영역 -->
+		<form action="petAddUpload.jsp" method="post" enctype="multipart/form-data">
 		<div class="allIn" id="harootContent">
 		<div class="inIn">
-<<<<<<< HEAD
-			<div class="" style="font-weight: bold; text-align: center;">
-=======
 			<div class="form-group2" style="font-weight: bold; text-align: center;">
->>>>>>> 05c92bfcb95933ab60a8c51588e1de4d89f4c09d
+
 				<h1>반려견 등록</h1>
 			</div>
 			
 			<div class="petPhoto">
-				<img class="cardImage" src="<%=cp%>/images/puppy1.png">
+			<table class="petTable">
+			<tr>
+				<td>반려견 사진 선택</td>
+			</tr>
+			<tr>
+				<td><input type="file" value="파일 선택" name="petFile" id="petFile"/>
+				 <div class="select_img"><img src="" /></div>
+				 <!-- 등록한 사진 미리보는 script -->
+				 <script type="text/javascript">
+					$("#petFile").change(function(){
+						 if(this.files && this.files[0]) {
+						  var reader = new FileReader;
+						  reader.onload = function(data) {
+						   $(".select_img img").attr("src", data.target.result).width(250);        
+						  }
+						  reader.readAsDataURL(this.files[0]);
+						 }
+						});
+				 </script>
+				</td>
+			</tr>
+			</table>
 			</div>	
 			<br><br>
 			
 			
-<<<<<<< HEAD
-			<div class="petTable">
-				<table>
-=======
 			<div class=form-group2>
 				<table class="petTable">
->>>>>>> 05c92bfcb95933ab60a8c51588e1de4d89f4c09d
 					<tr>
 						<td style="width: 20%;">이름</td>
 						<td>
@@ -260,11 +275,7 @@ $(function()
 			</div>
 			
 			<div class="petTable">
-<<<<<<< HEAD
-				<table>
-=======
 				<table class="petTable">
->>>>>>> 05c92bfcb95933ab60a8c51588e1de4d89f4c09d
 					<tr>
 						<td>중성화 여부</td>
 						<td>
@@ -296,11 +307,9 @@ $(function()
 					</tr>
 					<tr>
 						<td>반려견 주소</td>
-<<<<<<< HEAD
 					</tr>
 					<tr>
 						<td>자주가는 산책 장소</td>
-=======
 						<td>
 						<input type="text" id="sample5_address" placeholder="반려견 주소를 입력하세요">
 						<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
@@ -419,26 +428,15 @@ $(function()
 						    
 						</script>
 						</td>
->>>>>>> 05c92bfcb95933ab60a8c51588e1de4d89f4c09d
+
 					</tr>
 				</table>
 			</div>			
 			
 			<br><br>
-<<<<<<< HEAD
+
 			<div class="smalltext" 
 			style="font-size:13px; text-align: center;">
-				선택 입력 사항
-			</div>	
-			
-			<div class="petTable">
-				<table>
-					<tr>
-						<td>반려견 등록번호</td>
-						<td><input type="text" value="petNum" name="petNum"></td>
-=======
-			<div class="smalltext petTable" 
-			style="font-size:13px; text-align: center; font-weight: bold;">
 				선택 입력 사항
 			</div>	
 			
@@ -447,7 +445,7 @@ $(function()
 					<tr>
 						<td>반려견 등록번호</td>
 						<td><input type="text" name="petNum" placeholder="등록번호를 입력하세요"></td>
->>>>>>> 05c92bfcb95933ab60a8c51588e1de4d89f4c09d
+
 					</tr>
 					<tr>
 						<td>기저 질환</td>
@@ -473,41 +471,7 @@ $(function()
 			</div>	
 			
 			<br><br>
-<<<<<<< HEAD
-			<div class="smalltext" 
-			style="font-size:13px; text-align: center;">
-				산책메이트 정보 (산책 메이트 서비스 이용 시 필수 입력)
-			</div>	
 			
-			<div class="form-group petTable">
-				<table>
-					<tr>
-						<td>사회성정도</td>
-
-							<td><div class="form-group starsDiv">
-								<label for="focusedInput"> <span
-									class="input-group-text" id="">기호도</span>
-								</label>
-								<div class="stars">
-									<input type="radio" id="five" name="rate" value="5"> <label
-										for="five"></label> <input type="radio" id="four" name="rate"
-										value="4"> <label for="four"></label> <input
-										type="radio" id="three" name="rate" value="3"> <label
-										for="three"></label> <input type="radio" id="two" name="rate"
-										value="2"> <label for="two"></label> <input
-										type="radio" id="one" name="rate" value="1"> <label
-										for="one"></label> <span class="result"></span>
-								</div>
-							</div>
-							</td>
-
-
-
-							<td>성격</td>
-						</tr>
-						<tr>
-							<td>입질 여부</td>
-=======
 			<div class="smalltext " 
 			style="font-size:13px; text-align: center; font-weight: bold;">
 				산책메이트 정보 (산책 메이트 서비스 이용 시 필수 입력)
@@ -573,23 +537,21 @@ $(function()
 		               		<input type="radio" name="bite" id="yes" value="물어요">
 		               		<label for="yes">물어요</label>
 		               		</td>
->>>>>>> 05c92bfcb95933ab60a8c51588e1de4d89f4c09d
+
 						</tr>
 				</table>
 			</div>	
 			
 			<div class="center-table btn">
-			<input type="button" class="btn" value="등록">	
+			<button type="submit" class="btn" value="등록">등록</button>	
 			<input type="button" class="btn" value="취소">
-<<<<<<< HEAD
-			<span id="errForm">필수 입력 항목을 입력하세요.</span>			
-=======
+
 			<span id="errMsg">필수 입력 항목을 입력하세요.</span>			
->>>>>>> 05c92bfcb95933ab60a8c51588e1de4d89f4c09d
 			</div>
 		
 		</div>
 		</div>
+		</form>
 
 		<br><br><br><br>
 

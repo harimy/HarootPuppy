@@ -16,6 +16,12 @@ public class WalkRoomListMain
 	@Autowired
 	private SqlSession sqlSession;
 	
+	@RequestMapping(value = "walkroommain.action", method = RequestMethod.GET)
+	public String WalkRoomMain(ModelMap model)
+	{
+		return "/WalkMain.jsp";
+	}
+	
 	// /memberList.action 으로 요청이 들어오면 아래의 메소드가 일을 처리
 	@RequestMapping(value = "/walkroomlist.action", method = RequestMethod.GET)
 	public String walkRoomList(ModelMap model) throws SQLException	// Model, ModelMap 둘 다 사용 가능
@@ -23,25 +29,21 @@ public class WalkRoomListMain
 		// 기존의 방식
 		// IMemberDAO dao = MemberDAO 객체 생성
 		// 이걸 이제는 마이바티스가 수행해줌(아래 코드)
-		IWalkRoomViewDAO dao = sqlSession.getMapper(IWalkRoomViewDAO.class);
+		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
 	    
 	    model.addAttribute("list", dao.list());
 	      
 	    return "/WalkRoomList.jsp";
 	}
 	
-	/*
-	@RequestMapping(value = "memberinsert.action", method = RequestMethod.POST)
-	public String memberInsert(MemberDTO m)
+	
+	@RequestMapping(value = "walkroominsertform.action", method = RequestMethod.GET)
+	public String WalkRoomInserForm(ModelMap model)
 	{
-		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-
-		
-		dao.add(m);
-		
-		return "redirect:memberlist.action";
+		return "/WalkRoomInsertForm.jsp";
 	}
 	
+	/*
 	@RequestMapping(value = "memberdelete.action", method = RequestMethod.GET)
 	public String memberDelete(MemberDTO m)
 	{

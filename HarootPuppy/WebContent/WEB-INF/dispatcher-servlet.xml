@@ -34,10 +34,12 @@
    </bean>
     
 
-   <!-- ⑥ sqlSession 등록 과정에서 생겨나는 추가 코드-->
+
+   <!--   ⑥ sqlSession 등록 과정에서 생겨나는 추가 코드 -->
    <!-- ※ mybatis 를 사용하기 위한 환경 설정 추가 3 → SqlSessionTemplate -->
    <!-- 의존성 주입 방법 1. setter 2. 생성자 -->
-   <!-- 지금은 생성자 이용 -->
+   <!--지금은 생성자 이용 -->
+
    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
       <constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
    </bean>
