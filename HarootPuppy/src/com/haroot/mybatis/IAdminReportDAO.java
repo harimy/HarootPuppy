@@ -39,16 +39,15 @@ public interface IAdminReportDAO
 	// 산책메이트 방신고(온라인) 리스트 (관리자입장) 조회
 	public ArrayList<AdminReportDTO> adWalkroomReportList() throws SQLException;
 	
-	// 고객지원(고객문의) 리스트 조회 // 여기서 할게 아니다!!!
-	//public ArrayList<AdminReportDTO> adAskList() throws SQLException;
+	// 읽지않은 게시판 > 신고된 게시물 수 조회
+	public int boardNotRead() throws SQLException;
+	
+	// 읽지 않은 산책방 > 신고된 산책방 수 조회
+	public int walkNotRead() throws SQLException;
+	
+	// 읽지 않은 오프라인신고 의견 수 조회
+	public int offNotRead() throws SQLException;
 	
 	
-	/*
-	// 게시판댓글 신고 리스트 (관리자입장)
-	public ArrayList<AdminReportDTO> adBoardCommReport() throws SQLException;
-	
-	// 산책메이트 오프라인신고 리스트 (관리자입장)
-	public ArrayList<AdminReportDTO> adWalkOfflineReport() throws SQLException;
-	*/
 
 }

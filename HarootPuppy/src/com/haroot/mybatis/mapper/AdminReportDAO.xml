@@ -101,34 +101,28 @@
 		ORDER BY REP_LOG_CODE
 	</select>
 	
-	<!-- 고객문의(고객지원) 리스트 출력 --> 
-	<!-- 이건..ReportDAO에서 해야할 일이군.. -->
-	
-	<!-- 
-	<select id="adAskList" resultType="com.haroot.mybatis.AdminReportDTO">
-		SELECT ASK_CODE
-		    , ASK_CATE_CODE 
-		    ,ASK_CATE_CONTENT
-		    , SID_CODE
-		    , MEM_NICKNAME
-		    , ASK_DATE
-		    , ASK_TITLE
-		    , ASK_CONTENT
-		    , ASK_PHOTO
-		    , ASK_STATE_CODE
-		    , ASK_STATE_CONTENT
-		    , ASK_READ
-		FROM ASKVIEW
-		ORDER BY ASK_CODE
-	</select> 
-	-->
-	
-	
-	<!-- 
-	<select id="" resultType="com.haroot.mybatis.AdminReportDTO">
-		
+	<!-- 읽지않은 게시판 > 신고된 게시물 수 조회 -->
+	<select id="boardNotRead" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM REPORTVIEW
+		WHERE REP_LOG_READ IS NULL
+		  AND REP_TYPE_CODE = 1
 	</select>
-	 -->
+	
+	<!-- 읽지 않은 산책방 > 신고된 산책방 수 조회 -->
+	<select id="walkNotRead" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM REPORTVIEW
+		WHERE REP_LOG_READ IS NULL
+		  AND REP_TYPE_CODE = 3
+	</select>
+	
+	<select id="offNotRead" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM REPORTVIEW
+		WHERE REP_LOG_READ IS NULL
+		  AND REP_TYPE_CODE = 4
+	</select>
 	 
 	 
 	<!-- 
