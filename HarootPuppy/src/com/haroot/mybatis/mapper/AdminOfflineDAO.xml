@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 부모 노릇을 할 인터페이스를 지정 -->
+<!-- implements IAdminOfflineDAO -->
+<mapper namespace="com.haroot.mybatis.IAdminOfflineDAO">
+	<!-- select 쿼리 →<select id="메소드 이름"></select> -->
+	<!-- 고유해야 하기 때문에(식별가능해야하기때문에 id 속성) -->
+	<!-- resultType 은 각각 하나씩 바인딩 되는 곳 -->	
+	
+	
+	
+	
+	<!-- 무단결석의견 리스트 출력 -->
+	<select id="list" resultType="com.haroot.mybatis.AdminOfflineDTO">
+		SELECT REP_LOG_CODE         
+		    , MATCH_CODE            
+		    , PARTICIPANTS_CODE     
+		    , OFFOPINION_CODE       
+		    , OFFOPINION_DATE       
+		    , OFFOPINION_TITLE      
+		    , OFFOPINION_CONTENT    
+		    , OFFOPINION_PHOTO      
+		FROM OFFLINEVIEW
+	</select>
+	
+	
+	 
+	 
+	<!-- 
+	<insert id="add"> memberDTO 클래스의 #{ 속성 } 으로 넘김
+		INSERT INTO TBL_MEMBERLIST(MID, NAME, TELEPHONE)
+		VALUES(MEMBERLISTSEQ.NEXTVAL, #{name}, #{telephone}) 
+	</insert>
+	
+	<delete id="remove">
+		DELETE 
+		FROM TBL_MEMBERLIST
+		WHERE MID = #{mid}
+	</delete>
+	
+	<update id="modify">
+		UPDATE TBL_MEMBERLIST
+		SET NAME = #{name}, TELEPHONE = #{telephone }
+		WHERE MID = #{mid}
+	</update> 
+	-->
+</mapper>

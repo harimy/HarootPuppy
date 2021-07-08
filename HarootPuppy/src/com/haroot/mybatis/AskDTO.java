@@ -6,24 +6,31 @@ package com.haroot.mybatis;
 
 public class AskDTO
 {
+	// 닉네임 속성 추가
 	/*
-	 	ASK_CODE  ASK_CATE_CODE ASK_CATE_CONTENT SID_CODE ASK_DATE ASK_TITLE  ASK_CONTENT
- 		ASK_PHOTO ASK_STATE_CODE ASK_STATE_CONTENT ASK_READ
+	 	ASK_CODE, ASK_CATE_CODE, ASK_CATE_CONTENT, SID_CODE, MEM_NICKNAME, ASK_DATE
+	, ASK_TITLE, ASK_CONTENT, ASK_PHOTO, ASK_STATE_CODE, ASK_STATE_CONTENT, ASK_READ  
 	 */
 	
-	private int ask_code;
-	
-	private String ask_cate_code, ask_cate_content, sid_code, ask_date, ask_title
-				 , ask_content, ask_photo, ask_state_code, ask_state_content, ask_read;
-	
-	
-	// getter / setter
-	public int getAsk_code()
+	private String ask_code // 고객문의코드
+   , ask_cate_code         // 문의카테고리코드
+   , ask_cate_content      // 문의카테고리내용
+   , sid_code              // 작성자(회원코드)
+   , mem_nickname          // 작성자닉네임
+   , ask_date              // 문의날짜
+   , ask_title             // 문의제목
+   , ask_content           // 문의내용
+   , ask_photo             // 문의사진
+   , ask_state_code        // 문의처리상태코드
+   , ask_state_content     // 문의처리상태내용 (미처리, 답변완료)
+   , ask_read;              // 열람날짜
+
+	public String getAsk_code()
 	{
 		return ask_code;
 	}
 
-	public void setAsk_code(int ask_code)
+	public void setAsk_code(String ask_code)
 	{
 		this.ask_code = ask_code;
 	}
@@ -56,6 +63,16 @@ public class AskDTO
 	public void setSid_code(String sid_code)
 	{
 		this.sid_code = sid_code;
+	}
+
+	public String getMem_nickname()
+	{
+		return mem_nickname;
+	}
+
+	public void setMem_nickname(String mem_nickname)
+	{
+		this.mem_nickname = mem_nickname;
 	}
 
 	public String getAsk_date()

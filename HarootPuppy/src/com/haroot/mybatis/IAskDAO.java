@@ -4,10 +4,14 @@
 
 package com.haroot.mybatis;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface IAskDAO
 {
+	// 관리자용 안읽은 고객문의 수 확인
+	public int askNotRead() throws SQLException;
+	
 	// 게시글 수 확인
 	public int count();
 	

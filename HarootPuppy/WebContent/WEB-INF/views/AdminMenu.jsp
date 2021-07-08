@@ -81,7 +81,7 @@
 
     </li>
     <li class="menu3">
-        <a href="ReportMain.jsp" class="link">신고 관리</a>
+        <a href="reportmain.action" class="link">신고 관리</a>
         <ul class="menu3_s submenu">
 
             <li style="margin-top: 5px;"><a href="ReportedBoardTab.jsp" class="link">게시판 글 신고</a></li>
