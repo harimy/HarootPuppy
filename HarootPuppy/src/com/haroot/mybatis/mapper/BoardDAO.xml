@@ -6,7 +6,7 @@
 <mapper namespace="com.haroot.mybatis.IBoardDAO">
 
 	<select id="list" resultType="com.haroot.mybatis.BoardDTO">
-		SELECT CATE_CONTENT, NUM, TITLE, WRITER, CONTENT_DATE, VIEWNUM, LIKENUM
+		SELECT CATE_CONTENT, NUM, TITLE, WRITER, NICKNAME, CONTENT_DATE, VIEWNUM, LIKENUM
 		FROM BOARDVIEW
 		<!-- ORDER BY NUM -->
 	</select>
@@ -16,17 +16,28 @@
 		FROM BOARDVIEW
 	</select>
 	
+	
+	<!-- BOARD_CODE	BOARD_WRITER BOARD_CATE_CODE BOARD_TITLE BOARD_CONTENT BOARD_PHOTO BOARD_VIEW BOARD_LIKE BOARD_DATE -->
 	<insert id="add">
-		INSERT INTO BOARDVIEW(NUM, WRITER, HEAD_CODE, TITLE, CONTENT, PHOTO, VIEWNUM, LIKENUM, CONTENT_DATE, CATE_CONTENT)
-		VALUES(MAX(#{num}) + 1, '#{writer}', '#{head_code}', '#{title}'
-			   , '#{content}', '#{photo}', '#{viewNum}', '#{likeNum}'
-			   , SYSDATE, '#{cate_content}')
+		INSERT INTO TBL_BOARD(BOARD_CODE, BOARD_WRITER, BOARD_CATE_CODE, BOARD_TITLE
+		                    , BOARD_CONTENT, BOARD_PHOTO, BOARD_VIEW, BOARD_LIKE, BOARD_DATE)
+		VALUES(MAX(#{board_code}) + 1, '#{board_writer}', '#{board_cate_code}', '#{board_title}'
+			   , '#{board_content}', '#{board_photo}', '#{board_view}', '#{board_like}'
+			   , SYSDATE)
 	</insert> 
 	
-	<select id="search" resultType="com.haroot.mybatis.BoardDTO">
+	<select id="search" parameterType="java.lang.Integer" resultType="com.haroot.mybatis.BoardDTO">
 		SELECT NUM, WRITER, HEAD_CODE, TITLE, CONTENT, PHOTO, VIEWNUM, LIKENUM, CONTENT_DATE, CATE_CONTENT
 		FROM BOARDVIEW
 		WHERE NUM = #{num}
+	</select>
+	
+	<!-- parameterType="java.lang.Integer"  -->
+	
+	<select id="view" parameterType="map" resultType="com.haroot.mybatis.BoardDTO">
+		SELECT TITLE, NICKNAME 
+		FROM BOARDVIEW
+		WHERE NUM = #{num} AND NICKNAME = #{nickname, jdbcType=VARCHAR}
 	</select>
 
 </mapper>

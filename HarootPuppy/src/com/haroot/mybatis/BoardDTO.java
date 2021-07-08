@@ -18,7 +18,7 @@ public class BoardDTO
 	private String writer, head_code, title, content, photo, content_date, cate_content;	
 	
 	private String  board_writer, board_cate_code, board_title, board_content
-				 , board_photo, board_date, board_cate_content;
+				 , board_photo, board_date, board_cate_content, nickname, name;
 	
 	private int board_code, board_view, board_like;
 
@@ -222,6 +222,26 @@ public class BoardDTO
 	public void setBoard_like(int board_like)
 	{
 		this.board_like = board_like;
+	}
+
+	public String getNickname()
+	{
+		return nickname;
+	}
+
+	public void setNickname(String nickname)
+	{
+		this.nickname = nickname;
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 	
 	
