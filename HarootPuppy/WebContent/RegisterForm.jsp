@@ -86,7 +86,7 @@
 
 			if ( $("input:checkbox[name='agree2']").is(":checked") == false )
 			{
-				alert("된다노");
+				alert("된다");
 				$("#errCheck").css("display" ,"inline");
 				return;
 			}

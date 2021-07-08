@@ -5,7 +5,7 @@ public class WalkRoomDTO
 
 	/*
 	WALKROOM_CODE, WALKROOM_LEADER, AUTO_CODE
-     , STYLE_CODE, BITE_CODE, DESEX_CODE, SAMESEX_CODE
+     , STYLE_CONTENT, BITE_CONTENT, DESEX_CONTENT, SAMESEX_CONTENT
      , WALKROOM_MIN, WALKROOM_MAX, WALKROOM_START, WALKROOM_END
      , WALKROOM_TITLE, WALKROOM_WORDS, WALKROOM_PLACE, WALKROOM_LATITUDE, WALKROOM_LONGITUDE, WALKROOM_GENDATE
 	*/
@@ -14,9 +14,11 @@ public class WalkRoomDTO
 	private int walkroom_code, walkroom_min, walkroom_max;
 	
 	private String walkroom_leader, auto_code
-    , style_code, bite_code, desex_code, samesex_code
-    , walkroom_start, walkroom_end, walkroom_title, walkroom_words
-    , walkroom_place, walkroom_latitude, walkroom_longitude, walkroom_gendate;
+	, style_content, bite_content, desex_content, samesex_content
+    , walkroom_start, walkroom_end, start_time, end_time
+    , walkroom_title, walkroom_words
+    , walkroom_place, walkroom_latitude, walkroom_longitude
+    , walkroom_gendate, mem_nickname, parti_count;
 
 	// getter / setter 구성
 	public int getWalkroom_code()
@@ -69,44 +71,44 @@ public class WalkRoomDTO
 		this.auto_code = auto_code;
 	}
 
-	public String getStyle_code()
+	public String getStyle_content()
 	{
-		return style_code;
+		return style_content;
 	}
 
-	public void setStyle_code(String style_code)
+	public void setStyle_content(String style_content)
 	{
-		this.style_code = style_code;
+		this.style_content = style_content;
 	}
 
-	public String getBite_code()
+	public String getBite_content()
 	{
-		return bite_code;
+		return bite_content;
 	}
 
-	public void setBite_code(String bite_code)
+	public void setBite_content(String bite_content)
 	{
-		this.bite_code = bite_code;
+		this.bite_content = bite_content;
 	}
 
-	public String getDesex_code()
+	public String getDesex_content()
 	{
-		return desex_code;
+		return desex_content;
 	}
 
-	public void setDesex_code(String desex_code)
+	public void setDesex_content(String desex_content)
 	{
-		this.desex_code = desex_code;
+		this.desex_content = desex_content;
 	}
 
-	public String getSamesex_code()
+	public String getSamesex_content()
 	{
-		return samesex_code;
+		return samesex_content;
 	}
 
-	public void setSamesex_code(String samesex_code)
+	public void setSamesex_content(String samesex_content)
 	{
-		this.samesex_code = samesex_code;
+		this.samesex_content = samesex_content;
 	}
 
 	public String getWalkroom_start()
@@ -127,6 +129,26 @@ public class WalkRoomDTO
 	public void setWalkroom_end(String walkroom_end)
 	{
 		this.walkroom_end = walkroom_end;
+	}
+
+	public String getStart_time()
+	{
+		return start_time;
+	}
+
+	public void setStart_time(String start_time)
+	{
+		this.start_time = start_time;
+	}
+
+	public String getEnd_time()
+	{
+		return end_time;
+	}
+
+	public void setEnd_time(String end_time)
+	{
+		this.end_time = end_time;
 	}
 
 	public String getWalkroom_title()
@@ -189,5 +211,26 @@ public class WalkRoomDTO
 		this.walkroom_gendate = walkroom_gendate;
 	}
 
+	public String getMem_nickname()
+	{
+		return mem_nickname;
+	}
+
+	public void setMem_nickname(String mem_nickname)
+	{
+		this.mem_nickname = mem_nickname;
+	}
+
+	public String getParti_count()
+	{
+		return parti_count;
+	}
+
+	public void setParti_count(String parti_count)
+	{
+		this.parti_count = parti_count;
+	}
+
+	
 	
 }
