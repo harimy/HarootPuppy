@@ -122,13 +122,13 @@ input:focus, input:not(:placeholder-shown)
 				
 				<!-- 아이디 / 비밀번호 입력창 -->
 				<div class="form-group id input-box">					
-					<input id="id" type="text" name="id" placeholder="아이디를 입력해주세요"
+					<input id="id" type="text" name="mem_id" placeholder="아이디를 입력해주세요"
 					required="required"> 
 					<label for="id">아이디</label>
 				</div>
 				
 				<div class="form-group pw input-box">				
-					<input id="password" type="password" name="password" placeholder="비밀번호를 입력해주세요"
+					<input id="password" type="password" name="mem_pw" placeholder="비밀번호를 입력해주세요"
 					required="required"> 
 					<label for="password">비밀번호</label>
 
