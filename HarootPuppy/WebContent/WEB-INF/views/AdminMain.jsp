@@ -195,30 +195,13 @@
 		 <table class="table table-hover table-striped table-condensed " style="width:480px; ">
 		 	<tr>
 		 		<th>>> 신고된 게시물 바로가기</th>
-		 		<th style="text-align: right">NEW 3!</th>
+		 		<th style="text-align: right">
+		 			NEW <span class="spanSt1">${boardNotRead }</span>
+		 		</th>
 		 	</tr>
-			<!-- c:forEach 로 한.. 5개까지만 출력 해주자-->
-		 	<!-- 
-		 	<tr>
-		 		<td>
-		 			야이 바보들아!
-		 		</td>
-		 		<td>
-		 			2021.05.20
-		 		</td>
-		 	</tr>
-		 	<tr>
-		 		<td>
-		 			우리집 멍이가 젤 귀여움ㅡㅡ
-		 		</td>
-		 		<td>
-		 			2021.05.20
-		 		</td>
-		 	</tr>
-		 	 -->
-		 	 <!-- c:test? 조건문으로 5개까지만 출력.. -->
 		 	 <!-- 게시판 > 게시물 -->
-		 	 <c:forEach var="a1" items="${list1}">
+		 	 <!-- c:forEach end 속성으로 일단 2개만 출력(0,1) -->
+		 	 <c:forEach var="a1" items="${list1}" end="1">
 		 	 	<tr>
 		 	 		<!-- 게시물 제목 -->
 		 	 		<td>${a1.board_title }</td>
@@ -232,11 +215,14 @@
 		 <table class="table table-hover table-striped table-condensed" style="width:480px; ">
 		 	<tr>
 		 		<th>>> 신고된 산책방 바로가기</th>
-		 		<th style="text-align: right">NEW 3!</th>
+		 		<th style="text-align: right">
+		 			NEW <span class="spanSt1">${walkNotRead }</span>
+		 		</th>
 		 	</tr>
 		 	
 			<!-- c:forEach 반복 출력-->
-			<c:forEach var="a2" items="${list2}">
+			<!-- end 속성 부여 -->
+			<c:forEach var="a2" items="${list2}" end="1">
 				<tr>
 					<!-- 산책방 제목 -->
 					<td>${a2.walkroom_title }</td>
@@ -250,25 +236,20 @@
 		 <table class="table table-hover table-striped table-condensed" style="width:480px; ">
 		 	<tr>
 		 		<th>>> 고객 문의 바로가기</th>
-		 		<th style="text-align: right">NEW 3!</th>
+		 		<th style="text-align: right">
+		 			NEW <span class="spanSt1">${askNotRead }</span>
+		 		</th>
 		 	</tr>
-			<!-- c:forEach 로 한.. 5개까지만 출력 해주자-->
-		 	<tr>
-		 		<td>
-		 			야이 바보들아!
-		 		</td>
-		 		<td>
-		 			2021.05.20
-		 		</td>
-		 	</tr>
-		 	<tr>
-		 		<td>
-		 			우리집 멍이가 젤 귀여움ㅡㅡ
-		 		</td>
-		 		<td>
-		 			2021.05.20
-		 		</td>
-		 	</tr>
+		 	 
+		 	 <c:forEach var="a3" items="${list3}" end="1">
+				<tr>
+					<!-- 산책방 제목 -->
+					<td>${a3.ask_title }</td>
+					<!-- 신고날짜 -->
+					<td>${a3.ask_date }</td>
+				</tr>
+			</c:forEach>
+		 	
 		</table>
 	</div>
 </div>	

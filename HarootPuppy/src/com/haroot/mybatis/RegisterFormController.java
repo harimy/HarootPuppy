@@ -15,8 +15,6 @@ public class RegisterFormController
 	private SqlSession sqlSession;
 
 	
-
-	
 	// 테스트용 리스트 출력
 	@RequestMapping(value = "/memberlist.action", method = RequestMethod.POST)
 	public String list(Model model) 
@@ -39,8 +37,7 @@ public class RegisterFormController
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		
 		dao.add(m);
-
-		return "redirect:memberlist.action";
-
+		
+		return "/HarootPuppyMain.jsp";
 	}
 }

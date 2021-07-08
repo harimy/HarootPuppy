@@ -182,7 +182,7 @@ max-width: 30px;
     				</tr>
 					<tr>
 						<td>이름</td>
-						<td>재롱이</td>
+						<td>${list.pet_name }</td>
 					</tr>
 					<tr>
 						<td>생일</td>

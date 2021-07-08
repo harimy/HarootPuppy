@@ -7,9 +7,10 @@ public class AdminReportDTO
    private String rep_log_code 			// 신고내역코드					
    , rep_type_code							// 신고유형코드
    , rep_type_content						// 신고유형내용 
-   , sid_code									// 신고회원식별번호
+   , sid_code									// 신고회원식별번호(신고자)
+   , reporter_nickname						// 신고자 닉네임
    , rep_log_date								// 신고날짜
-   ,rep_state_code							// 신고처리상태코드
+   , rep_state_code							// 신고처리상태코드
    , rep_state_content						// 신고처리상태내용
    , rep_log_read                      // 열람날짜
    
@@ -37,6 +38,7 @@ public class AdminReportDTO
 
    
    // getter / setter 구성
+	
 	public String getRep_log_code()
 	{
 		return rep_log_code;
@@ -75,6 +77,16 @@ public class AdminReportDTO
 	public void setSid_code(String sid_code)
 	{
 		this.sid_code = sid_code;
+	}
+
+	public String getReporter_nickname()
+	{
+		return reporter_nickname;
+	}
+
+	public void setReporter_nickname(String reporter_nickname)
+	{
+		this.reporter_nickname = reporter_nickname;
 	}
 
 	public String getRep_log_date()
@@ -306,7 +318,8 @@ public class AdminReportDTO
 	{
 		this.walk_comm_content = walk_comm_content;
 	}
-   
+
+ 
    
 	                           
    

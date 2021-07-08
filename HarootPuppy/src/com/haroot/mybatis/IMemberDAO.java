@@ -39,4 +39,12 @@ public interface IMemberDAO
 	// 회원 삭제
 	public int remove(MemberDTO member);
 	
+	
+	
+	// sid 테이블 추가
+	public int addSid(String mem_code);
+	
+	// WALK_AGREE 테이블 추가
+	public int agree(String mem_code);
+	
 }

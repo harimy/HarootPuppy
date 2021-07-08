@@ -227,25 +227,19 @@
 		 <table class="table table-hover table-striped table-condensed" style="width:480px; ">
 		 	<tr>
 		 		<th>>> 오프라인신고 의견 바로가기</th>
-		 		<th style="text-align: right">NEW 3!</th>
+		 		<th style="text-align: right">
+		 			NEW <span class="spanSt1">${offNotRead }</span>
+		 		</th>
 		 	</tr>
 			<!-- c:forEach 로 한.. 5개까지만 출력 해주자-->
-		 	<tr>
-		 		<td>
-		 			억울하여요
-		 		</td>
-		 		<td>
-		 			2021.05.20
-		 		</td>
-		 	</tr>
-		 	<tr>
-		 		<td>
-		 			결백을 주장합니다
-		 		</td>
-		 		<td>
-		 			2021.05.20
-		 		</td>
-		 	</tr>
+			<c:forEach var="a3" items="${list3}" end="1">
+				<tr>
+					<!-- 오프라인신고 의견 제목 -->
+					<td>${a3.offopinion_title }</td>
+					<!-- 신고날짜 -->
+					<td>${a3.offopinion_date }</td>
+				</tr>
+			</c:forEach>
 		</table>
 	</div>
 </div>	

@@ -87,7 +87,23 @@ $(function() {
 		// form을 일단 넘기고 속성값은 나중에 받아가기
 	});
 }); 
-	
+
+
+ $(function()
+	{
+	 $(".final_btn").click(function()
+		{
+		 // alert($(this).val());
+		 $(location).attr("href", "diarymain.action?pet_code="+ $(this).val());
+		
+		});
+	 
+	});
+
+
+
+
+ 
 
 </script>
 
@@ -108,7 +124,8 @@ $(function() {
 			<h3>다이어리 작성할 반려견 선택</h3>
 		</div>
 
-		<form action="gotodiary.action" method="post">
+		<form action="diarymain.action" id="selectPetForm">
+		
 		<div style="text-align: right; margin-right: 120px;">
 			<button type="button" class="btn btn-warning"
 			id="register" name="petAdd" 
@@ -116,7 +133,7 @@ $(function() {
 
 			<span id="errMsg">필수 선택 사항을 선택하세요</span>
 		</div>
-		</form>
+		
 
 		<div id="cardContent">
 			<div class="card-group">
@@ -126,22 +143,38 @@ $(function() {
 						<h5 class="card-title">코코</h5>
 						<button type="button" class="btn btn-warning">수정</button>
 						<button type="button" class="btn btn-info">삭제</button>
+						<input type="radio" name="radioGroup" id="a" value="0">
 					</div>
 				</div>
 
-				<c:forEach var="list" items="${petList }">
-					<div class="card">
-						<div class="card-body">
-							<img class="cardImage" src=${list.pet_photo }>
 
-							<h5 class="card-title">${list.pet_name }</h5>
+				<c:forEach var="list" items="${petList }" varStatus="theCount">
+						<div id="cardContent">
+							<div class="card-group">
+								<div class="card">
+									<div class="card-body">
 
-							<button type="button" class="btn btn-warning">수정</button>
-							<button type="button" class="btn btn-info">삭제</button>
+										<img class="cardImage" src="${list.pet_photo }"> 
+										<%-- <input type="hidden" value="${list.pet_code }" 
+										name="pet_code" > --%>
+
+
+										<h5 class="card-title">${list.pet_name }</h5>
+
+										<button type="button" class="btn btn-warning">수정${list.pet_code }</button>
+										<button type="button" class="btn btn-info">삭제</button>
+										<br>
+										<button type="button" class="btn final_btn" 
+										value="${list.pet_code}">다이어리</button>
+										
+										
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
-				</c:forEach>
-
+					</c:forEach>
+				
+				
 
 
 				<!--  
@@ -165,7 +198,7 @@ $(function() {
 				
 			</div>
 		</div>
-		
+	</form>	
 	
 
 		<!-- 하단 회사 설명 영역 -->
