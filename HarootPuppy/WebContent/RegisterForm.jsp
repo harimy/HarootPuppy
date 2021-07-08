@@ -34,15 +34,15 @@
 			, changeYear: true
 		});
 		
+		
 		$("#idCheck").click(function(){
 			checkNum1 = checkNum1 + 1;
-			alert(checkNum1);
+			// alert(checkNum1);
 			return checkNum1;
 		});
 		
 		$("#join").click(function(){
 			
-
 			
 /* 			$("#telCheck").click(function(){
 				checkNum2 =checkNum3 + 1;
@@ -74,34 +74,32 @@
 			
 			// alert($('input:checkbox[name="agree2"]:checked').val());
 	
-			if ( $("#id").val()=="" || $("#pwd").val()==""|| $("#pwdCheck").val()=="" 
-					|| $("#name").val()=="" || $("#nickName").val()=="" 
-					|| $("#phone").val()=="" || $("#birthday").val()=="" 
-					|| $("#address").val()==""
-					|| $('input[name="gender"]:checked').val() == 'undefined' )
+			if ( $("#mem_id").val()=="" || $("#mem_pw").val()==""|| $("#pwdCheck").val()=="" 
+					|| $("#mem_name").val()=="" || $("#mem_nickName").val()=="" 
+					|| $("#mem_tel").val()=="" || $("#mem_birth").val()=="" 
+					|| $("#mem_addr").val()==""
+					|| $('input[name="mem_gender"]:checked').val() == 'undefined' )
 			{
 				$("#errForm").css("display" ,"inline");
 				return;
 			} 
 
-			if ( $("input:checkbox[name='agree2']").is(":checked") == false )
+			if ( $("input:checkbox[name='terms_agree']").is(":checked") == false )
 			{
-				alert("된다노");
+				// alert("된다");
 				$("#errCheck").css("display" ,"inline");
 				return;
 			}
 			
 			$("#joinForm").submit();
-
+			alert("회원가입이 완료되었습니다.");
 		});
 		
 		
 		
 	});
 	
-	$(function() {
 
-	});
 	
 </script>
 
@@ -158,13 +156,16 @@ RegisterForm의 Form이 채워지고
 		<h1>[ 회원가입 ]</h1>
 		<hr />
 	    <form action="register.action" method="POST" id="joinForm" name="joinForm">
+	        
+	        <input type="hidden" id="mem_code" name="mem_code">
+	        
 	        <table id="joinTbl">
 	            <tr>
 	                <td>
 	                    <label for="id">아이디</label>
 	                </td>
 	                <td>
-	                    <input type="text" name="id" id="id" size="20px">
+	                    <input type="text" name="mem_id" id="mem_id" size="20px">
 	                    <input type="button" id="idCheck" class="check" value="중복확인">
 	                </td>
 	            </tr>
@@ -173,7 +174,7 @@ RegisterForm의 Form이 채워지고
 	                    <label for="pwd">비밀번호</label>
 	                </td>
 	                <td>
-	                    <input type="text" name="pwd" id="pwd" size="20px"> 
+	                    <input type="text" name="mem_pw" id="pwd" size="20px"> 
 	                    <span id="errPw">4자 이상~15자 이내</span>
 	                </td>
 	            </tr>
@@ -191,7 +192,7 @@ RegisterForm의 Form이 채워지고
 	                    <label for="name">이름</label>
 	                </td>
 	                <td>
-	                    <input type="text" name="name" id="name" size="20px"> 
+	                    <input type="text" name="mem_name" id="name" size="20px"> 
 	                </td>
 	            </tr>
 	            <tr>
@@ -199,23 +200,23 @@ RegisterForm의 Form이 채워지고
 	                    <label for="nickName">닉네임</label>
 	                </td>
 	                <td>
-	                    <input type="text" name="nickName" id="nickName" size="20px">
+	                    <input type="text" name="mem_nickname" id="nickname" size="20px">
 	                    <input type="button" class="check" id="nickCheck" value="중복확인">
 	                    <span id="errNickName">2자 이상 15자 이내, 특수문자 사용 불가</span>
 	                </td>
 	            </tr>
 	            <tr>
                    <td>생년월일</td>
-                    <td><input type="text" id="birthday" name="birthday" placeholder="생년월일" /></td>
+                    <td><input type="text" id="birthday" name="mem_birth" placeholder="생년월일" /></td>
                </tr>
                <tr>
        		   	<td>
                     <label for="gender">성별</label>
                	</td>
                	<td>
-                	<input type="radio" name="gender" id="woman" value="여">
+                	<input type="radio" name="mem_gender" id="woman" value="F">
                 	<label for="woman">여</label>
-               		<input type="radio" name="gender" id="man" value="남">
+               		<input type="radio" name="mem_gender" id="man" value="M">
                		<label for="man">남</label>
                	</td>
                 </tr>
@@ -224,15 +225,15 @@ RegisterForm의 Form이 채워지고
 	                    <label for="phone">휴대폰번호</label>
 	                </td>
 	                <td>
-	                    <select id="phone">
+	                    <select id="phone" name="mem_tel"> 
 	                        <option value=""></option>
 	                        <option value="010">010</option>
 	                        <option value="011">011</option>
 	                        <option value="019">019</option>
 	                    </select>
 	                    -
-	                    <input type="text" name="phone" id="phone1" size="10">-
-	                    <input type="text" name="phone" id="phone2" size="10">
+	                    <input type="text" name="mem_tel" id="phone1" size="10">-               
+	                    <input type="text" name="mem_tel" id="phone2" size="10">
 	                    <input type="button" id="telCheck" class="check" value="중복확인">
 	                </td>
 	            </tr>
@@ -241,7 +242,7 @@ RegisterForm의 Form이 채워지고
 	                    <label for="home">주소 검색</label>
 	                </td>
 	                <td>
-	                    <input type="text" name="dong" id="dong" size="35">
+	                    <input type="text" name="mem_addr" id="dong" size="35">
 	                    <input type="button" id="address" value="주소 검색">
 		                <br><br>
 	                </td>
@@ -257,7 +258,7 @@ RegisterForm의 Form이 채워지고
 					<td colspan="2">
 						<textarea name="" id="" cols="30" rows="10">이용약관</textarea><br />
 						<label>
-							<input type="checkbox" name="agree1" value="agree1">
+							<input type="checkbox" id="walk_agree_check" name="walk_agree_check" value="N">
 							<span class="span">위 사항에 동의합니다.</span>
 						</label>
 					</td>
@@ -271,7 +272,7 @@ RegisterForm의 Form이 채워지고
 					<td colspan="2">
 						<textarea name="agree1" id="agree1" cols="30" rows="10">이용약관</textarea><br />
 						<label>
-							<input type="checkbox" id="agree2" name="agree2" value="agree2">
+							<input type="checkbox" id="terms_agree" name="terms_agree" value="N">
 							<span class="span">위 사항에 동의합니다.</span>
 						</label>
 					<br /><br />
