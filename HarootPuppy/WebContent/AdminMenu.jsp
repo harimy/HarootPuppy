@@ -96,7 +96,13 @@
 </ul>
 </div>
 
-
+<c:if test="${message == 'success' }"> 
+<h2>
+    ${sessionScope.admin_name}
+    (${sessionScope.admin_userid})님 환영합니다.
+    <!--sessionScope는 세션에 담은 setAttribute()메소드 안에 있는 값을 jsp에서 JSTL로 간단히 사용하고 싶을때 사용하면 된다. -->
+    <!--ex) dlgkstjq12(이한섭)님 환영합니다. 와 같이 출력됨.  --></h2>
+    </c:if>
 
 </body>
 </html>

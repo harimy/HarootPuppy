@@ -23,6 +23,27 @@ String cp = request.getContextPath();
 <!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 
+<script type="text/javascript">
+
+$(function()
+{
+	$("#login").click(function()
+	{
+		if ($('input[name="admin_check"]:checked').val() == 'admin' )
+		{
+			$("#mem_id").attr("name","admin_id");
+			$("#mem_pw").attr("name","admin_pw");
+		}
+		
+		//$("#loginForm").action = "${path}/login_check.do";  //밑에 form1 폼을 Controller의 login_check에 맵핑하도록 한다.
+        $(loginForm).submit(); //자료를 선송
+	});
+	
+
+});
+
+</script>
+
 
 <style type="text/css">
 .login {
@@ -36,15 +57,15 @@ String cp = request.getContextPath();
 
 .form-group2
 {
-	display:inline-block;
-	foat:left;
-	text-align: center;
+   display:inline-block;
+   foat:left;
+   text-align: center;
 }
 
 .harootContent
 {
-	width:100%;
-	text-align: center;
+   width:100%;
+   text-align: center;
 }
 
 
@@ -83,7 +104,7 @@ input:placeholder-shown+label {
 input:focus+label, label {
    color: #8aa1a1;
    font-size: 10pt;
-  /*  pointer-events: none; */
+   /* pointer-events: none; */+
    /*  position: absolute; */   
    left: 0px;
    top: 0px;
@@ -102,7 +123,7 @@ input:focus, input:not (:placeholder-shown ) {
 </head>
 <body>
 
-   <!-----------------------------
+<!-----------------------------
   LoginForm.jsp
   - 로그인 폼 페이지
 ------------------------------->
@@ -115,7 +136,7 @@ input:focus, input:not (:placeholder-shown ) {
       <!-- content 영역 -->
       <div id="harootContent">
 
-         <form action="login.action" method="post">
+         <form name="loginForm" action="login_check.action">
 
             <!-- 로그인 글씨 -->
             <div class="form-group login">로그인</div>
@@ -123,23 +144,20 @@ input:focus, input:not (:placeholder-shown ) {
             <!-- 아이디 / 비밀번호 입력창 -->
             <div class="form-group id input-box">
                <input id="mem_id" type="text" name="mem_id"
-                  placeholder="아이디를 입력해주세요" required="required"> <label
-                  for="id">아이디</label>
+                  placeholder="아이디를 입력해주세요" required> 
+                  <label for="id">아이디</label>
             </div>
 
             <div class="form-group pw input-box">
                <input id="mem_pw" type="password" name="mem_pw"
-                  placeholder="비밀번호를 입력해주세요" required="required"> <label
-                  for="password">비밀번호</label>
+                  placeholder="비밀번호를 입력해주세요" required>
+                  <label for="password">비밀번호</label>
             </div>
-
-
-
+            
 
             <!-- 로그인 / IdPw찾기 / 회원가입 버튼 -->
             <div class="form-group2">
-               <input type="button" value="로그인" class="btn"
-                  onclick="location.href='로그인완료후페이지'">
+               <input type="button" id="login" value="로그인" class="btn">
             </div>
 
             <div class="form-group2">
@@ -148,8 +166,9 @@ input:focus, input:not (:placeholder-shown ) {
             </div>
 
             <div class="form-group2">
-               <input type="button" value="회원가입" class="btn" onclick="회원가입페이지'">
+               <input type="button" value="회원가입" class="btn" onclick="location.href='registerform.action'">
             </div>
+
 
             <div class= "form-group2">
                <label id="admincheck" > 관리자 
