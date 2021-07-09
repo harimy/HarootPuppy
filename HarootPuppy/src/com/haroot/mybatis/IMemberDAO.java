@@ -1,3 +1,4 @@
+
 /*================
  - IMemberDAO.java
 =================*/
@@ -53,3 +54,4 @@ public interface IMemberDAO
 	public MemberDTO login(@Param("mem_id") String mem_id, @Param("mem_pw") String mem_pw) throws SQLException;
 	
 }
+

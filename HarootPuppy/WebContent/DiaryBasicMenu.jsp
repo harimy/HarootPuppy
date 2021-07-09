@@ -35,14 +35,6 @@
 
 <script type="text/javascript">
 	
-$(function()
-	{
-		$("#mood").click(function()
-		{
-			$("#timeline").load("DiaryTrainInsertForm.jsp");	
-		});
-		
-	});
 
 </script>
 

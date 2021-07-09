@@ -3,9 +3,9 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.haroot.mybatis.IBoardDAO">
+<mapper namespace="com.haroot.mybatis.IBoardViewDAO">
 
-	<select id="list" resultType="com.haroot.mybatis.BoardDTO">
+	<select id="list" resultType="com.haroot.mybatis.BoardViewDTO">
 		SELECT CATE_CONTENT, NUM, TITLE, WRITER, NICKNAME, CONTENT_DATE, VIEWNUM, LIKENUM
 		FROM BOARDVIEW
 		<!-- ORDER BY NUM -->
@@ -21,12 +21,11 @@
 	<insert id="add">
 		INSERT INTO TBL_BOARD(BOARD_CODE, BOARD_WRITER, BOARD_CATE_CODE, BOARD_TITLE
 		                    , BOARD_CONTENT, BOARD_PHOTO, BOARD_VIEW, BOARD_LIKE, BOARD_DATE)
-		VALUES(MAX(#{board_code}) + 1, '#{board_writer}', '#{board_cate_code}', '#{board_title}'
-			   , '#{board_content}', '#{board_photo}', '#{board_view}', '#{board_like}'
-			   , SYSDATE)
+		VALUES(MAX(#{board_code}) + 1, 'SID002', '#{board_cate_code}', '#{board_title}'
+			   , '#{board_content}', '#{board_photo}', 0, 0, SYSDATE)
 	</insert> 
 	
-	<select id="search" parameterType="java.lang.Integer" resultType="com.haroot.mybatis.BoardDTO">
+	<select id="search" parameterType="java.lang.Integer" resultType="com.haroot.mybatis.BoardViewDTO">
 		SELECT NUM, WRITER, HEAD_CODE, TITLE, CONTENT, PHOTO, VIEWNUM, LIKENUM, CONTENT_DATE, CATE_CONTENT
 		FROM BOARDVIEW
 		WHERE NUM = #{num}
@@ -34,10 +33,13 @@
 	
 	<!-- parameterType="java.lang.Integer"  -->
 	
-	<select id="view" parameterType="map" resultType="com.haroot.mybatis.BoardDTO">
-		SELECT TITLE, NICKNAME 
+	<select id="view" parameterType="map" resultType="com.haroot.mybatis.BoardViewDTO">
+		SELECT *
 		FROM BOARDVIEW
 		WHERE NUM = #{num} AND NICKNAME = #{nickname, jdbcType=VARCHAR}
 	</select>
 
+	
 </mapper>
+
+

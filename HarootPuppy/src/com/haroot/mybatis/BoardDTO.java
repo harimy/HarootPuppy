@@ -4,6 +4,8 @@
 
 package com.haroot.mybatis;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardDTO
 {
 	/*
@@ -21,6 +23,8 @@ public class BoardDTO
 				 , board_photo, board_date, board_cate_content, nickname, name;
 	
 	private int board_code, board_view, board_like;
+	
+	private MultipartFile uploadFile;
 
 	
 	// getter / setter
@@ -242,6 +246,16 @@ public class BoardDTO
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+
+	public MultipartFile getUploadFile()
+	{
+		return uploadFile;
+	}
+
+	public void setUploadFile(MultipartFile uploadFile)
+	{
+		this.uploadFile = uploadFile;
 	}
 	
 	

@@ -1,13 +1,13 @@
+
 /*=====================
  * LoginController.java
  * - 로그인 처리
 ======================*/
 
 package com.haroot.mybatis;
-
 import java.sql.SQLException;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,4 +49,35 @@ public class LoginController
 	
 		return result;
 	}
+   
+	@RequestMapping(value="login_check.action", method=RequestMethod.GET)
+	public String login_check(HttpServletRequest request, HttpSession session) 
+	{
+		
+		String result="";
+		
+		String id = request.getParameter("admin_id");
+		String pw = request.getParameter("admin_pw");
+		
+		AdminDTO dto = new AdminDTO();
+		dto.setAdmin_id(id);
+		dto.setAdmin_pw(pw);
+		
+		IAdminDAO dao = sqlSession.getMapper(IAdminDAO.class);
+		String name = dao.loginCheck(dto);
+		
+		System.out.println(dto.toString());
+		 if( name != null) { //로그인 성공 (그러니까 loginCheck()메소드 안에 이름이 저장되어있다는 뜻)
+          
+         result = "AdminMenu.jsp";
+		 }
+		 else {
+          
+         
+          result = "LoginForm.jsp";
+      }
+      return result; 
+	}
+	
+
 }

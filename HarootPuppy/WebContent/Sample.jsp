@@ -39,7 +39,7 @@ String cp = request.getContextPath();
 	<div>
 		<!-- 메뉴영역 -->
 		<div id="harootHeader">
-			<c:import url="MainTest.jsp"></c:import>
+			<c:import url="Main.jsp"></c:import>
 		</div>
 		
 		<br><br><br><br>

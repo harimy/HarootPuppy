@@ -8,6 +8,10 @@ package com.haroot.mybatis;
 
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +28,20 @@ public class AdminMain
 	
 	// 관리자 계정 로그인시 , 관리자용 메인 페이지 요청
 	@RequestMapping(value="/adminmain.action", method=RequestMethod.GET)
-	public String adminMain(ModelMap model) throws SQLException
+	public String adminMain(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws SQLException
 	{
+		HttpSession session = request.getSession();
+		
+		if(session.getAttribute("a")==null) //-- 로그인이 되어있지 않은 상황
+		{
+			return "LoginForm.jsp";
+		}
+		else
+		{
+			return "redirect:adminmain.action";
+		}
+		
+		/*
 		// 관리자용 신고 DAO 
 		IAdminReportDAO dao = sqlSession.getMapper(IAdminReportDAO.class);
 		
@@ -71,6 +87,7 @@ public class AdminMain
 		
 		
 		return "/WEB-INF/views/AdminMain.jsp";
+		*/
 	}
 	
 	@RequestMapping(value="/reportmain.action", method=RequestMethod.GET)

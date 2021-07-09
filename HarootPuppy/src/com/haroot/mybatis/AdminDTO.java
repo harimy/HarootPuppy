@@ -60,5 +60,10 @@ public class AdminDTO
 		this.admin_regdate = admin_regdate;
 	}
 	
+	@Override
+   public String toString() {
+       return "AdminDTO [admin_code=" + admin_code + ", admin_id=" + admin_id + ", admin_pw=" + admin_pw 
+      		 + ", admin_name=" + admin_name + ", admin_regdate=" + admin_regdate + "]";
+   }
 	
 }
