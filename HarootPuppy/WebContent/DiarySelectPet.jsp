@@ -94,7 +94,8 @@ $(function() {
 	 $(".final_btn").click(function()
 		{
 		 // alert($(this).val());
-		 $(location).attr("href", "diarymain.action?pet_code="+ $(this).val());
+		 $(location).attr("href", "diarymain.action?pet_code="+ $(this).val() );
+		 
 		
 		});
 	 
@@ -147,7 +148,11 @@ $(function() {
 					</div>
 				</div>
 
-
+				<div>
+					<input type="hidden" value="${daily_code }"
+					id="daily_code" class="daily_code" name="daily_code">
+				</div>
+				
 				<c:forEach var="list" items="${petList }" varStatus="theCount">
 						<div id="cardContent">
 							<div class="card-group">
@@ -166,8 +171,7 @@ $(function() {
 										<br>
 										<button type="button" class="btn final_btn" 
 										value="${list.pet_code}">다이어리</button>
-										
-										
+
 									</div>
 								</div>
 							</div>

@@ -27,7 +27,7 @@
 
 </head>
 <body>
-<jsp:include page="Main.jsp" />
+<%-- <jsp:include page="Main.jsp" /> --%>
 
 	<!-----------------------------
   Sample.jsp
@@ -36,9 +36,9 @@
 
 	<div>
 		<!-- 메뉴영역 -->
-		<div>
+		<%-- <div>
 			<c:import url="DiaryMain2.jsp"></c:import>
-		</div>
+		</div> --%>
 		
 		
 		<br><br>

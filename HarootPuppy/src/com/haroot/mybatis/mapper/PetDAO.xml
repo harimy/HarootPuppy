@@ -30,6 +30,11 @@
 		WHERE PET_CODE = #{PET_CODE}
 		<!-- WHERE SID_CODE = #{PET_CODE} -->
 	</select>
+	
+	<!-- 반려견 추가 -->
+	<insert id="petAdd">
+	
+	</insert>
 
 	
 </mapper>
