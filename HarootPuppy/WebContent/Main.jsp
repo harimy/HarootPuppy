@@ -80,7 +80,11 @@
         </ul>   
     </li>
     <li class="menu4">
-    	<a href="AllUserInfoList.jsp">고객 지원</a>
+    	<a href="FaqList.jsp">고객 지원</a>
+    	<ul class="menu4_s submenu">
+            <li style="margin-top: 5px;"><a href="FaqList.jsp">자주하는 질문</a></li>
+            <li><a href="AskList.jsp">1:1 질문</a></li>
+        </ul> 
     </li>
 
 </ul>

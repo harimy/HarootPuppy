@@ -36,39 +36,39 @@ body
 </head>
 <body>
 <jsp:include page="Main.jsp" />
-<div>
+<div style="text-align: center;">
 <form>
 	<div>
+		<h5>${view.cate_content }</h5>
 		<h1>${view.title }</h1>
-		<h4></h4>
+		<h4>${view.nickname }</h4>
 	</div>
-	<div>
-	<table>
-		<tr>
-			<td>21.06.26 13:34&nbsp;&nbsp;</td>
-			<td>조회수 45&nbsp;&nbsp;</td>
-			<td>좋아요 35&nbsp;&nbsp;</td>
-			<td style="float: right;">
-				<img alt="" src="images/like2.png" width="35" height="35" border="0" id="like">
-				<img alt="" src="images/report2.png" width="35" height="35" border="0" id="report">
-			</td>
-		</tr>
-	</table>
+	<div style="display: inline-block;">
+			<div style="float: left">${view.content_date}&nbsp;&nbsp;</div>
+			<div style="display: inline-block;">조회수 ${viewnum }&nbsp;&nbsp;</div>
+			<div style="display: inline-block;">좋아요 ${likenum }&nbsp;&nbsp;</div>
+			<div style="float: right; display: inline-block;">
+				<img alt="" src="images/like2.png" width="35" height="35" id="like">
+				<img alt="" src="images/report2.png" width="35" height="35" id="report">
+			</div>
 	</div>
 	
 	<div>
-		<textarea rows="30" cols="120" readonly="readonly">내용 불러오기</textarea>
+		<textarea rows="30" cols="120" readonly="readonly" style="padding: 30px;">${view.content }</textarea>
 	</div><br>
-	
 	<div>
+		<div>
+			댓글
+		</div>
+		<div>
 		<table>
-			<tr>
-				<th>댓글</th>
-			</tr>
+		<c:forEach var="view" items="${commView }">
+		<tr>
+			<td>${view.board_comm_content }</td>
+		</tr>
+		</c:forEach>
 		</table>
-	</div>
-	<div>
-		<textarea rows="10" cols="120" readonly="readonly">댓글 내용 불러와야됨</textarea>
+		</div>
 	</div>
 	<br>
 	<div>

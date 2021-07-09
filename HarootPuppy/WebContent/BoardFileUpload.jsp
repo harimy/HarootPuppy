@@ -1,11 +1,14 @@
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="java.io.File"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+	// Test4.jsp
+
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-%>
-<%
+	
 	/* String root = request.getRealPath("/"); → 예전 방식 */
 	String root = pageContext.getServletContext().getRealPath("/");
 	
@@ -29,7 +32,7 @@
 	String encType = "UTF-8";
 	int maxFileSize = 5*1024*1024;	//전송 최대 사이즈 5M 
 	
-	/* try
+	try
 	{
 		MultipartRequest req = null;
 		req = new MultipartRequest(request, path, maxFileSize, encType, new DefaultFileRenamePolicy());
@@ -49,55 +52,5 @@
 	catch(Exception e)
 	{
 		System.out.println(e.toString());
-	} */
+	}
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>BoardInsertForm.jsp</title>
-
-</head>
-<body>
-<jsp:include page="Main.jsp" />
-<div>
- <form role="form" action="boardinsert.action" method="post" enctype="multipart/form-data">
-      <table>
-         <tr>
-            <td>제목</td>
-            <td>
-               <input type="text" id="name" name="title">
-            </td>
-         </tr>
-         <tr>
-            <td>카테고리 선택</td>
-            <td>
-               <select id="selectcate" name="cate">
-                  <option value="1" selected="selected">행사/할인정보</option>
-                  <option value="2">리뷰</option>
-                  <option value="3">수다</option>
-                  <option value="4">중고장터</option>
-               </select>
-            </td>
-         </tr>
-         <tr>
-            <td>첨부파일</td>
-            <td>
-              <input type="file" name="uploadFile">
-            </td>
-         </tr>
-     </table>
-     <br>
-    <textarea style="width: 100%;" rows=20 placeholder="내용을 입력하세요" name="content"></textarea><br>
-
- 
- <div style="width:100%; text-align: right;">
-	  <button type="button" id="cancel" class="btn">취소</button>
-	  <button type="submit" id="register" class="btn">글 등록</button>
- </div> 
- 
- </form>
- </div>
-
-</body>
-</html>
