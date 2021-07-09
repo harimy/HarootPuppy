@@ -11,6 +11,9 @@ public interface IWalkRoomDAO
 	// 산책방 개수 조회 메소드
 	public int count() throws SQLException;
 	
+	// 산책방 코드 최대값 조회 메소드
+	public int max() throws SQLException;
+	
 	// 산책방 추가 메소드
 	public int add(WalkRoomDTO dto) throws SQLException;
 	

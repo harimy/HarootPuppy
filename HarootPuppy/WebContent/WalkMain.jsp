@@ -220,7 +220,7 @@
 		</div>
 	</div> -->
 
-		<br> <br>
+		<br><br>
 
 		<div class="walkOptionArea">
 			<table border="1" style="text-align: center; width:100%; height:100%;">

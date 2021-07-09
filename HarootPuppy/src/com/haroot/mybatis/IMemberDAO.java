@@ -1,12 +1,16 @@
+
 /*================
  - IMemberDAO.java
 =================*/
 
 package com.haroot.mybatis;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 
 
 public interface IMemberDAO
@@ -33,15 +37,11 @@ public interface IMemberDAO
 	public MemberDTO search(String searchKey, String searchValue);
 
 	
-	// 로그인용(아이디, 비밀번호로 검색)
-	public MemberDTO loginMem(String mem_id, String mem_pw);
-	
 	// 회원 수정 
 	public int modify(MemberDTO member);
 	
 	// 회원 삭제
 	public int remove(MemberDTO member);
-	
 	
 	
 	// sid 테이블 추가
@@ -50,4 +50,8 @@ public interface IMemberDAO
 	// WALK_AGREE 테이블 추가
 	public int agree(String mem_code);
 	
+	// 로그인
+	public MemberDTO login(@Param("mem_id") String mem_id, @Param("mem_pw") String mem_pw) throws SQLException;
+	
 }
+

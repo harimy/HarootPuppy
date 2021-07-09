@@ -14,6 +14,7 @@ public class WalkRoomDTO
 	private int walkroom_code, walkroom_min, walkroom_max;
 	
 	private String walkroom_leader, auto_code
+	, style_code, bite_code, desex_code, samesex_code
 	, style_content, bite_content, desex_content, samesex_content
     , walkroom_start, walkroom_end, start_time, end_time
     , walkroom_title, walkroom_words
@@ -69,6 +70,46 @@ public class WalkRoomDTO
 	public void setAuto_code(String auto_code)
 	{
 		this.auto_code = auto_code;
+	}
+
+	public String getStyle_code()
+	{
+		return style_code;
+	}
+
+	public void setStyle_code(String style_code)
+	{
+		this.style_code = style_code;
+	}
+
+	public String getBite_code()
+	{
+		return bite_code;
+	}
+
+	public void setBite_code(String bite_code)
+	{
+		this.bite_code = bite_code;
+	}
+
+	public String getDesex_code()
+	{
+		return desex_code;
+	}
+
+	public void setDesex_code(String desex_code)
+	{
+		this.desex_code = desex_code;
+	}
+
+	public String getSamesex_code()
+	{
+		return samesex_code;
+	}
+
+	public void setSamesex_code(String samesex_code)
+	{
+		this.samesex_code = samesex_code;
 	}
 
 	public String getStyle_content()

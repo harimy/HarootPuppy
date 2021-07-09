@@ -27,12 +27,13 @@ String cp = request.getContextPath();
 
 $(function()
 {
-	$("#login").click(function()
+	$("#loginBtn").click(function()
 	{
 		if ($('input[name="admin_check"]:checked').val() == 'admin' )
 		{
 			$("#mem_id").attr("name","admin_id");
 			$("#mem_pw").attr("name","admin_pw");
+      // form action 변경하는 코드 추가 필요
 		}
 		
 		//$("#loginForm").action = "${path}/login_check.do";  //밑에 form1 폼을 Controller의 login_check에 맵핑하도록 한다.
@@ -114,11 +115,32 @@ input:focus+label, label {
    -o-transition: all 0.2s ease;
 }
 
+.loginForm
+{
+	display: inline-block;
+	margin-top: 250px;
+}
+
+
 input:focus, input:not (:placeholder-shown ) {
    border-bottom: solid 1px #8aa1a1;
    outline: none;
 }
 </style>
+<script type="text/javascript">
+	$(function()
+	{
+		$("#loginBtn").click(function()
+		{
+			//alert($("#mem_id").val());
+			
+			//alert($("#mem_pw").val());
+			
+			$(loginForm).submit();
+		})
+		
+	});
+</script>
 
 </head>
 <body>
@@ -127,37 +149,52 @@ input:focus, input:not (:placeholder-shown ) {
   LoginForm.jsp
   - 로그인 폼 페이지
 ------------------------------->
-   <div>
-      <!-- 메뉴영역 -->
-      <div id="harootHeader">
-         <c:import url="Main.jsp"></c:import>
-      </div>
 
-      <!-- content 영역 -->
-      <div id="harootContent">
+	<div>
+		<!-- 메뉴영역 -->
+		<div id="harootHeader">
+			<c:import url="Main.jsp"></c:import>
+		</div>
 
-         <form name="loginForm" action="login_check.action">
+		<!-- content 영역 -->
+		<div id="harootContent" style="height: 700px; width: 100%; text-align: center;">
 
-            <!-- 로그인 글씨 -->
-            <div class="form-group login">로그인</div>
+			<form role="form" action="loginMem.action" method="post" class="loginForm" name="loginForm">
+					
+				<!-- 로그인 글씨 -->
+				<div class="form-group login">
+					로그인
+				</div>
+				
+				<!-- 아이디 / 비밀번호 입력창 -->
+				<div class="form-group id input-box">					
+				
+					<input id="mem_id" type="text" name="mem_id" placeholder="아이디를 입력해주세요" required>
+					<label for="id">아이디</label>
+				</div>
+				
+				<div class="form-group pw input-box">				
+					<input id="mem_pw" type="password" name="mem_pw" placeholder="비밀번호를 입력해주세요" required> 
+					<label for="password">비밀번호</label>
 
-            <!-- 아이디 / 비밀번호 입력창 -->
-            <div class="form-group id input-box">
-               <input id="mem_id" type="text" name="mem_id"
-                  placeholder="아이디를 입력해주세요" required> 
-                  <label for="id">아이디</label>
-            </div>
+				</div>
 
-            <div class="form-group pw input-box">
-               <input id="mem_pw" type="password" name="mem_pw"
-                  placeholder="비밀번호를 입력해주세요" required>
-                  <label for="password">비밀번호</label>
-            </div>
-            
+				
+			</form>
+			
+		</div>
+
+
+		<!-- 하단 회사 설명 영역 -->
+		<div id="harootFooter">
+		
+			<c:import url="MainFooter.jsp"></c:import>
+		</div>
+	</div>
 
             <!-- 로그인 / IdPw찾기 / 회원가입 버튼 -->
             <div class="form-group2">
-               <input type="button" id="login" value="로그인" class="btn">
+               <input type="button" value="로그인" class="btn" id="loginBtn">
             </div>
 
             <div class="form-group2">
@@ -187,6 +224,7 @@ input:focus, input:not (:placeholder-shown ) {
          <c:import url="MainFooter.jsp"></c:import>
       </div>
    </div>
+
 
 
 </body>
