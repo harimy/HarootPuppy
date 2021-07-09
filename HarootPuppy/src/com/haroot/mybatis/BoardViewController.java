@@ -1,9 +1,3 @@
-/*===============================
-   BoardContorller.java
-   - 사용자 정의 컨트롤러 클래스
-================================*/
-
-/*
 package com.haroot.mybatis;
 
 import java.io.File;
@@ -19,21 +13,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-
 @Controller
-public class BoardController
+public class BoardViewController
 {
 
 	@Autowired
 	private SqlSession sqlSession;
-
+	
+	
+	@RequestMapping(value="/boardlist.action", method=RequestMethod.GET)
+	public String boardList(Model model)
+	{
+		String result = null;
+		
+		IBoardViewDAO dao = sqlSession.getMapper(IBoardViewDAO.class);
+		
+		//model.addAttribute("count", dao.count());
+		model.addAttribute("list", dao.list());
+		
+		result = "/WEB-INF/views/BoardList.jsp";
+		
+		return result;
+	}
 	
 	@RequestMapping(value="boardinsertform.action", method=RequestMethod.GET)
 	public String boardInsertForm(Model model)
 	{
 		String result = null;
 		
-		IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+		IBoardViewDAO dao = sqlSession.getMapper(IBoardViewDAO.class);
 		
 		result = "/WEB-INF/views/BoardInsertForm.jsp";
 		
@@ -41,14 +49,15 @@ public class BoardController
 	}
 	
 	@RequestMapping(value="/boardinsert.action", method=RequestMethod.POST)
-	public String boardInsert(BoardDTO board) throws IOException
+	public String boardInsert(BoardViewDTO board) throws IOException
 	{
-		IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
-//		
-//		dao.add(board);
+		IBoardViewDAO dao = sqlSession.getMapper(IBoardViewDAO.class);
+			
+		dao.add(board);
 		
-//		return "redirect:boardview.action";
+		//return "redirect:boardview.action";
 		
+		/*
 		String photo = null;
 		
 		MultipartFile uploadFile = board.getUploadFile();
@@ -66,6 +75,7 @@ public class BoardController
 		board.setPhoto(photo);
 		
 		dao.add(board);
+		*/
 		
 		return "redirect:boardlist.action";
 		
@@ -76,17 +86,13 @@ public class BoardController
 	{
 		String result = null;
 		
-		IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
-		IBoardCommentDAO commDao = sqlSession.getMapper(IBoardCommentDAO.class);
+		IBoardViewDAO dao = sqlSession.getMapper(IBoardViewDAO.class);
 		
 		model.addAttribute("view", dao.view(num, nickname));
-		model.addAttribute("commView", commDao.commView(num, nickname));
+		model.addAttribute("commView", dao.commView(num, nickname));
 		
 		result = "/WEB-INF/views/BoardRead.jsp";
 		
 		return result;
 	}
-	
-	
 }
-*/

@@ -78,7 +78,7 @@
            <td>${list.cate_content }</td>
            <td>${list.num }</td>
            <td>
-			<a href="boardview.action?num=${list.num }">${list.title }</a>
+			<a href="boardview.action?num=${list.num }&nickname=${list.nickname}">${list.title }</a>
 		   </td>
            <td>${list.nickname }</td>
            <td>${list.content_date }</td>

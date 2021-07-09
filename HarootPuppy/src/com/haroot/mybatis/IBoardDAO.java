@@ -23,7 +23,7 @@ public interface IBoardDAO
 	public ArrayList<BoardDTO> list();
 	
 	// 게시글 조회
-//	public BoardDTO view(HashMap<String, Object> map);
+	//	public BoardDTO view(HashMap<String, Object> map);
 	public BoardDTO view(@Param("num") int num, @Param("nickname") String nickname);
 
 	// 게시글 추가
@@ -55,5 +55,7 @@ public interface IBoardDAO
 	
 	// 다음 게시물 번호
 	public int getNextNum(int num);
+	
+
 	
 }

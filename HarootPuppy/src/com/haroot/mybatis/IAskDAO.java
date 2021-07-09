@@ -19,7 +19,7 @@ public interface IAskDAO
 	public int getMaxNum();
 	
 	// 게시글 리스트 확인
-	public ArrayList<AskDTO> list();
+	public ArrayList<AskDTO> askList();
 	
 	// 게시글 추가
 	public int add(AskDTO ask);
@@ -28,10 +28,10 @@ public interface IAskDAO
 	public AskDTO search(String searchKey, String searchValue);
 	
 	// 게시글 수정 
-	public int modify(AskDTO board);
+	public int modify(AskDTO ask);
 	
 	// 게시글 삭제
-	public int remove(AskDTO board);
+	public int remove(AskDTO ask);
 	
 	// 특정 영역(시작번호 ~ 끝번호)의 게시물의 목록을 읽어오는 메소드 정의 
 	public ArrayList<AskDTO> getLists(int start, int end, String searchKey, String searchValue);
