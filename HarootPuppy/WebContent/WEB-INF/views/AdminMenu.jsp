@@ -68,10 +68,10 @@
 <div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">
 	<li class="menu1">
-        <a href="AllUserInfoList.jsp" class="link">회원 관리</a>
+        <a href="adminmanagemember.action" class="link">회원 관리</a>
         <ul class="menu1_s submenu">
 
-            <li style="margin-top: 5px;"><a href="AllUserInfoList.jsp" class="link">전체회원 정보 조회</a></li>
+            <li style="margin-top: 5px;"><a href="adminmanagemember.action" class="link">전체회원 정보 조회</a></li>
             <li><a href="OutUserInfoList.jsp" class="link">탈퇴회원 정보 조회</a></li>
             <li><a href="AdminInfoList.jsp" class="link">관리자 정보 조회</a></li>
         </ul>   
@@ -91,7 +91,7 @@
         </ul>   
     </li>
     <li class="menu4">
-    	<a href="AdminFaQTab.jsp" class="link">고객 지원</a>
+    	<a href="AdminAskList.jsp" class="link">고객 지원</a>
 
     </li>
 

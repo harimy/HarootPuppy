@@ -89,7 +89,7 @@
         </ul>   
     </li>
     <li class="menu4">
-    	<a href="AdminFaQTab.jsp" class="link">고객 지원</a>
+    	<a href="AdminAskList.jsp" class="link">고객 지원</a>
 
     </li>
 

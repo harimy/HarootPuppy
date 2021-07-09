@@ -92,14 +92,5 @@ public class AdminOfflineDTO
 		this.offopinion_photo = offopinion_photo;
 	}
 	
-	 
-    
-    
-    
-    
-    
-    
-    
-
 	
 }
