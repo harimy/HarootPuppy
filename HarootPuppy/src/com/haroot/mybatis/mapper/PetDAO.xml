@@ -10,15 +10,15 @@
 	<select id="searchPets" parameterType="java.lang.String"  resultType="com.haroot.mybatis.PetDTO">
 		SELECT SID_CODE, PET_CODE, PET_NAME, RELATION_CODE, PET_PHOTO
 		FROM FORPETNAME_VIEW
-		WHERE SID_CODE = 'SID001'
-		<!-- WHERE SID_CODE = #{SID_CODE} -->
+		WHERE SID_CODE = #{sid_code}
+		<!-- WHERE SID_CODE = 'SID001' -->
 	</select>
 	
 	<!-- 특정회원의 특정 반려견 정보 (pet_code 기반 -->
 	<select id="petInfo" parameterType="java.lang.String" resultType="com.haroot.mybatis.PetDTO">
 		SELECT PET_CODE, PET_NAME, SID_CODE, RELATION_CODE
 		FROM FORPETNAME_VIEW
-		WHERE PET_CODE = #{PET_CODE}
+		WHERE PET_CODE = #{pet_code}
 		<!-- WHERE SID_CODE = #{PET_CODE} -->
 	</select>
 	
@@ -27,7 +27,7 @@
 		SELECT PET_NAME, PET_SEX, PET_REGNUM, PET_BIRTH, PET_TYPE_NAME, PET_SIZE
 		    	, DISEASE_CONTENT, FAV_FOOD_CONTENT, INJECT_TYPE_NAME
 		FROM PETVIEW
-		WHERE PET_CODE = #{PET_CODE}
+		WHERE PET_CODE = #{pet_code}
 		<!-- WHERE SID_CODE = #{PET_CODE} -->
 	</select>
 	

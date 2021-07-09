@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>WalkDogSelect.jsp</title>
+<title>WalkSelectSelect.jsp</title>
 
 <!-- jQuery JS -->
 <script type="text/javascript"

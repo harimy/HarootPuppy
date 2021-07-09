@@ -13,16 +13,26 @@ public class MemberDTO
 	 WALK_AGREE_DATE OUT_TYPE_CONTENT
 	*/ 
 	
-	private String sid_code, mem_code, mem_id, mem_pw, mem_name, mem_birth
-	             , mem_gender, mem_tel, mem_addr, mem_regdate, mem_nickname;
-	
-	private String pause_code, pause_start;
-	
-	private String out_code, out_type_code, out_date;
-	
-	private String walk_agree_code, walk_agree_check, walk_agree_date;
-	
-	private String out_type_content;
+	private String sid_code		// 회원식별코드
+	, mem_code						// 멤버코드
+	, mem_id							// 아이디
+	, mem_pw							// 비밀번호
+	, mem_name						// 이름
+	, mem_birth						// 생년월일
+	, mem_gender					// 성별
+	, mem_tel						// 전화번호
+	, mem_addr						// 주소
+	, mem_regdate					// 회원가입날짜
+	, mem_nickname					// 닉네임
+	, pause_code					// 계정일시정지코드
+	, pause_start					// 일시정지날짜
+	, out_code						// 탈퇴코드
+	, out_type_code				// 탈퇴유형(강제탈퇴, 자진탈퇴)
+	, out_date						// 탈퇴날짜
+	, walk_agree_code				// 산메서비스동의코드
+	, walk_agree_check			// 산책메이트 서비스 동의여부(Y,N)
+	, walk_agree_date				// 산메서비스 동의날짜
+	, out_type_content;			// 탈퇴유형
 
 	
 	// getter / setter

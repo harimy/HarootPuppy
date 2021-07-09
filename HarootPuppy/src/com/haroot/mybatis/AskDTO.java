@@ -6,6 +6,7 @@ package com.haroot.mybatis;
 
 public class AskDTO
 {
+	// 고객지원(고객문의) 
 	// 닉네임 속성 추가
 	/*
 	 	ASK_CODE, ASK_CATE_CODE, ASK_CATE_CONTENT, SID_CODE, MEM_NICKNAME, ASK_DATE
