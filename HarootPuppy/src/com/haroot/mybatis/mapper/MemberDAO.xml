@@ -39,6 +39,15 @@
 	</insert>
 	
 	
+	<!-- 로그인 용 조회 -->
+	<select id='loginMem' resultType = "com.haroot.mybatis.MemberDTO">
+		SELECT MEM_NICKNAME
+		FROM TBL_MEMBER
+		WHERE MEM_ID={#mem_id}
+		AND MEM_PW=CRYPTPACK.ENCRYPT(#{mem_id}, #{mem_pw});
+	</select>
+	
+	
 	<!-- 
 	회원코드로 회원 조회
 	<select id="search" resultType="com.haroot.mybatis.MemberDTO">
