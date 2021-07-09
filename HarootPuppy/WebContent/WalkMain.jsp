@@ -100,7 +100,7 @@
 
 <script type="text/javascript">
   
-  function openChild() 
+  function openAddressChild() 
   {
 	    var _width = '650';
 	    var _height = '380';
@@ -135,7 +135,7 @@
 		<div class="walkUserInfo">
 			<div class="walkHotPlace">
 				<div>내 주변 산책 핫플레이스
-					<input type="button" value="위치 재설정" onclick="openChild()"><br>
+					<input type="button" value="위치 재설정" onclick="openAddressChild()"><br>
 				</div>
 				<div style="width: 350px; height: 300px;">
 					<div id="map" style="width: 350px; height: 300px;"></div> 
@@ -220,7 +220,7 @@
 		</div>
 	</div> -->
 
-		<br> <br>
+		<br><br>
 
 		<div class="walkOptionArea">
 			<table border="1" style="text-align: center; width:100%; height:100%;">

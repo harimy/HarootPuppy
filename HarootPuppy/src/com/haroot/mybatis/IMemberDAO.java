@@ -4,9 +4,12 @@
 
 package com.haroot.mybatis;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 
 
 public interface IMemberDAO
@@ -40,11 +43,13 @@ public interface IMemberDAO
 	public int remove(MemberDTO member);
 	
 	
-	
 	// sid 테이블 추가
 	public int addSid(String mem_code);
 	
 	// WALK_AGREE 테이블 추가
 	public int agree(String mem_code);
+	
+	// 로그인
+	public MemberDTO login(@Param("mem_id") String mem_id, @Param("mem_pw") String mem_pw) throws SQLException;
 	
 }

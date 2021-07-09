@@ -22,6 +22,11 @@
 		FROM WALKROOMLISTVIEW
 	</select>
 	
+	<select id="max" resultType="java.lang.Integer">
+		SELECT MAX(WALKROOM_CODE) AS MAX_NUM
+		FROM WALKROOMLISTVIEW
+	</select>
+	
 	<insert id="add">
 		INSERT INTO TBL_WALKROOM(WALKROOM_CODE, WALKROOM_LEADER
 		, AUTO_CODE, STYLE_CODE, BITE_CODE, DESEX_CODE, SAMESEX_CODE
@@ -29,12 +34,12 @@
 		, WALKROOM_START, WALKROOM_END
 		, WALKROOM_TITLE, WALKROOM_WORDS, WALKROOM_PLACE, WALKROOM_LATITUDE, WALKROOM_LONGITUDE
 		, WALKROOM_GENDATE)
-		VALUES(1, 'SID001'
-		, '1', '2', '0', '1', '0'
-		, 2, 4
-		, TO_DATE('2021-06-27 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2021-06-27 19:00:00', 'YYYY-MM-DD HH24:MI:SS')
-		, '함께 산책 하실 분?', '같이가요ㅎ', '안양천 철산-가산 돌다리 앞', '37.475694', '126.876208'
-		, TO_DATE('2021-06-27 13:15:24', 'YYYY-MM-DD HH24:MI:SS'));
+		VALUES(#{walkroom_code, jdbcType=NUMERIC}, 'SID001'
+		, #{auto_code}, #{style_code}, #{bite_code}, #{desex_code}, #{samesex_code}
+		, #{walkroom_min}, #{walkroom_max}
+		, TO_DATE(#{walkroom_start}, 'YYYY-MM-DD HH24:MI'), TO_DATE(#{walkroom_end}, 'YYYY-MM-DD HH24:MI')
+		, #{walkroom_title}, #{walkroom_words, jdbcType=VARCHAR}, #{walkroom_place}, '35.046863', '128.966306'
+		, TO_DATE(#{walkroom_gendate}, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	
 	<delete id="remove">

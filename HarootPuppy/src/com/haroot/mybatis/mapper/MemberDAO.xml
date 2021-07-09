@@ -38,6 +38,22 @@
 	    }
 	</insert>
 	
+	<!-- 로그인 -->
+	<select id="login" parameterType="java.lang.String" resultType="com.haroot.mybatis.MemberDTO">
+		SELECT S.SID_CODE AS SID_CODE
+		     , M.MEM_CODE AS MEM_CODE
+		     , M.MEM_ID AS MEM_ID
+		     , M.MEM_NAME AS MEM_NAME
+		FROM TBL_SID S,
+		(
+		    SELECT MEM_CODE, MEM_ID, MEM_NAME
+		    FROM TBL_MEMBER
+		    WHERE MEM_ID = #{mem_id}
+		    AND MEM_PW = CRYPTPACK.ENCRYPT(#{mem_pw}, #{mem_id})
+		)M
+		WHERE S.MEM_CODE = M.MEM_CODE
+	</select>
+	
 	
 	<!-- 
 	회원코드로 회원 조회

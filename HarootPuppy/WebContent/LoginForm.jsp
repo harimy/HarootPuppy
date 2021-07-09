@@ -93,9 +93,28 @@ input:focus, input:not(:placeholder-shown)
 	outline:none; 
 }
 
+.loginForm
+{
+	display: inline-block;
+	margin-top: 250px;
+}
 
 
 </style>
+<script type="text/javascript">
+	$(function()
+	{
+		$("#loginBtn").click(function()
+		{
+			//alert($("#mem_id").val());
+			
+			//alert($("#mem_pw").val());
+			
+			$(loginForm).submit();
+		})
+		
+	});
+</script>
 
 </head>
 <body>
@@ -111,9 +130,9 @@ input:focus, input:not(:placeholder-shown)
 		</div>
 
 		<!-- content 영역 -->
-		<div id="harootContent">
+		<div id="harootContent" style="height: 700px; width: 100%; text-align: center;">
 
-			<form action="" method="">
+			<form role="form" action="loginMem.action" method="post" class="loginForm" name="loginForm">
 					
 				<!-- 로그인 글씨 -->
 				<div class="form-group login">
@@ -122,13 +141,14 @@ input:focus, input:not(:placeholder-shown)
 				
 				<!-- 아이디 / 비밀번호 입력창 -->
 				<div class="form-group id input-box">					
-					<input id="id" type="text" name="mem_id" placeholder="아이디를 입력해주세요"
-					required="required"> 
+				
+					<input id="mem_id" type="text" name="mem_id" placeholder="아이디를 입력해주세요"
+					required="required">
 					<label for="id">아이디</label>
 				</div>
 				
 				<div class="form-group pw input-box">				
-					<input id="password" type="password" name="mem_pw" placeholder="비밀번호를 입력해주세요"
+					<input id="mem_pw" type="password" name="mem_pw" placeholder="비밀번호를 입력해주세요"
 					required="required"> 
 					<label for="password">비밀번호</label>
 
@@ -137,8 +157,7 @@ input:focus, input:not(:placeholder-shown)
 				
 				<!-- 로그인 / IdPw찾기 / 회원가입 버튼 -->
 				<div class="form-group buttones" >
-					<input type="button" value="로그인" class="btn" 
-					onclick="location.href='로그인완료후페이지'">
+					<input type="button" value="로그인" class="btn" id="loginBtn" >
 				</div>
 					
 				<div class="form-group buttones" >
@@ -151,15 +170,14 @@ input:focus, input:not(:placeholder-shown)
 					onclick="회원가입페이지'">
 				</div>
 				
-					
 			</form>
+			
 		</div>
-			
-			
 
-		
+
 		<!-- 하단 회사 설명 영역 -->
 		<div id="harootFooter">
+		
 			<c:import url="MainFooter.jsp"></c:import>
 		</div>
 	</div>

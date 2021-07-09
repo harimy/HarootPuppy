@@ -2,6 +2,8 @@ package com.haroot.mybatis;
 
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,22 +40,30 @@ public class WalkRoomListMain
 	
 	
 	@RequestMapping(value = "walkroominsertform.action", method = RequestMethod.GET)
-	public String WalkRoomInserForm(ModelMap model)
+	public String walkRoomInsertForm(ModelMap model) throws SQLException
 	{
+		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
+		
+		int nextNum = dao.max() + 1;
+		
+		model.addAttribute("nextNum", nextNum);
+		
 		return "/WalkRoomInsertForm.jsp";
 	}
 	
-	/*
-	@RequestMapping(value = "memberdelete.action", method = RequestMethod.GET)
-	public String memberDelete(MemberDTO m)
+	
+	@RequestMapping(value = "walkroominsert.action", method = RequestMethod.POST)
+	public String memberInsert(WalkRoomDTO w) throws SQLException
 	{
-		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
 		
-		dao.remove(m);
+		dao.add(w);
 		
-		return "redirect:memberlist.action";
+		// 나중에 생성한 산책방으로 이동하게 변경하기
+		return "redirect:walkroommain.action";
 	}
 	
+	/*
 	@RequestMapping(value = "memberupdate.action", method = RequestMethod.POST)
 	public String memberUpdate(MemberDTO m)
 	{
