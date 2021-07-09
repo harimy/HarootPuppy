@@ -2,15 +2,13 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="com.haroot.mybatis.IAdminMainDAO">
-
+<mapper namespace="com.haroot.mybatis.IAdminDAO">
 	<!-- 로그인 용 조회 -->
-	<select id='loginAdmin' resultType = "java.lang.String">
+	<select id="loginCheck" parameterType="com.haroot.mybatis.AdminDTO" resultType ="java.lang.String">
 		SELECT ADMIN_NAME
 		FROM TBL_ADMIN
-		WHERE ADMIN_ID={#admin_id}
-		AND ADMIN_PW=CRYPTPACK.ENCRYPT({#admin_id}, {#admin_pw});
+		WHERE ADMIN_ID=#{admin_id} 
+		AND ADMIN_PW=CRYPTPACK.ENCRYPT(#{admin_pw}, #{admin_id})
 	</select>
-	
+	 
 </mapper>

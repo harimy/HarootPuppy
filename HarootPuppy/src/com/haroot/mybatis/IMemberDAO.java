@@ -33,6 +33,9 @@ public interface IMemberDAO
 	public MemberDTO search(String searchKey, String searchValue);
 
 	
+	// 로그인용(아이디, 비밀번호로 검색)
+	public MemberDTO loginMem(String mem_id, String mem_pw);
+	
 	// 회원 수정 
 	public int modify(MemberDTO member);
 	
