@@ -6,7 +6,10 @@ import java.util.ArrayList;
 public interface IDiaryDailyDAO
 {
 	// 일일 입력 (추가)
-	public int addDaily(DiaryDailyDTO dailyDto) throws SQLException;
+	public int addDaily(String pet_code) throws SQLException;
+	
+	// daily_code 검색 (pet_code로)
+	public String search_dailyCode(String pet_code) throws SQLException;
 	
 	// 일일 수정
 	public int modifyDaily(DiaryDailyDTO dailyDto) throws SQLException;

@@ -27,7 +27,7 @@
    
    
    // 확인
-   System.out.println(path);
+   //  System.out.println(path);
    //--==>> C:\SpringMVC\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\FileSystemApp03\pds\File.separatorsaveData
    
 		   
@@ -54,13 +54,35 @@
          if(file != null)
             out.println("파일길이 : "+ file.length() + "<br>");
 
-   }
+   } 
    catch(Exception e)
    {
       System.out.println("e.toString()");
    }
+   
+   
 %>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NoticeRead.jsp</title>
+
+<script type="text/javascript">
+	
+</script>
+
+</head>
+<body>
+	<form action="diaryselectpet.action" >
+	등록하시겠습니까?
+		<button type="submit" >확인</button>
+	</form>
+
+
+</body>
+</html>
 
 
 

@@ -1,9 +1,5 @@
 package com.haroot.mybatis;
 
-/**
- * @author joohee
- *
- */
 public class PetDTO
 {
 	// 속성 구성

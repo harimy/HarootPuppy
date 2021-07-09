@@ -5,6 +5,8 @@ public class DiaryDailyDTO
 	// 속성
 	private String daily_code			// 일일관리코드
 				, relation_code			// 양육관게코드
+				, pet_code
+				, sid_code
 				, daily_date;			// 관리일자
 
 	// getter / setter 생성
@@ -37,7 +39,28 @@ public class DiaryDailyDTO
 	{
 		this.daily_date = daily_date;
 	}
-				
+
+	public String getPet_code()
+	{
+		return pet_code;
+	}
+
+	public void setPet_code(String pet_code)
+	{
+		this.pet_code = pet_code;
+	}
+
+	public String getSid_code()
+	{
+		return sid_code;
+	}
+
+	public void setSid_code(String sid_code)
+	{
+		this.sid_code = sid_code;
+	}
+	
+	
 				
 		
 }

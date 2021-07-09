@@ -60,6 +60,31 @@ h1>span {
 	.nav-tabs > li > a > span {display:none;}	
 	.nav-tabs > li > a {padding: 5px 5px;}
 	
+/* 기본, 특별관리 관련 css */
+.diaryIcon
+{
+	width: 50px;
+	height: 50px;
+	margin: 0px auto;
+
+}
+
+.diarySpan
+{
+
+	text-align: center;
+}
+
+label
+{
+	text-align: center;
+	cursor:pointer;
+	/* 아이콘 사이 간격 */
+	margin-top: 5px;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+	
 </style>
 
 
@@ -67,11 +92,213 @@ h1>span {
 	
 $(function()
 	{
-		$("#menu1").click(function()
+	
+// 상태 ~ 출산 까지의 메뉴 버튼 클릭 시 AJAX 처리로 InsertForm 가져오기
+		$("#mood").click(function()
+		{
+			$("#timeline").load("DiaryStateMoodInsertForm.jsp");	
+		});
+		
+		$("#meal").click(function()
+		{
+			$("#timeline").load("DiaryMealInsertForm.jsp");	
+		});
+
+		$("#snack").click(function()
+		{
+			$("#timeline").load("DiarySnackInsertForm.jsp");	
+		});
+		
+		$("#walk").click(function()
+		{
+			$("#timeline").load("DiaryWalkInsertForm.jsp");	
+		});
+		
+		$("#clean").click(function()
+		{
+			$("#allMenu").load("DiaryClean.jsp");
+		});
+		
+		$("#check").click(function()
+		{
+			$("#allMenu").load("DiaryClinic.jsp");	
+		});
+		
+		$("#beauty").click(function()
+		{
+			$("#timeline").load("DiaryBeautyInsertForm.jsp");	
+		});
+		
+		$("#nutrients").click(function()
+		{
+			$("#timeline").load("DiaryNutrientsInsertForm.jsp");	
+		});
+		
+		$("#train").click(function()
 		{
 			$("#timeline").load("DiaryTrainInsertForm.jsp");	
 		});
 		
+		$("#etc").click(function()
+		{
+			$("#timeline").load("DiaryEtcInsertForm.jsp");	
+		});
+		
+		$("#poop").click(function()
+		{
+			$("#timeline").load("DiaryToiletInsertForm.jsp");	
+		});
+		
+		$("#phil").click(function()
+		{
+			$("#timeline").load("DiaryMedicineInsertForm.jsp");	
+		});
+		
+		$("#birth").click(function()
+		{
+			$("#timeline").load("DiaryBirthInsertForm.jsp");	
+		});
+		
+
+// 기본관리, 특별관리 탭 클릭 시 timeline 보이지 않게 하기
+		$("#basicForm").click(function()
+		{
+			if($("#timeline").css("display") != "none")
+			{
+				$("#timeline").hide();
+			}
+		
+		});
+		
+		$("#specialForm").click(function()
+				{
+					if($("#timeline").css("display") != "none")
+					{
+						$("#timeline").hide();
+					}
+				
+				});
+		
+		$("#clean").click(function()
+				{
+					if($("#timeline").css("display") != "none")
+					{
+						$("#timeline").hide();
+					}
+				
+				});
+		
+		$("#check").click(function()
+				{
+					if($("#timeline").css("display") != "none")
+					{
+						$("#timeline").hide();
+					}
+				
+				});
+		
+// 기본관리, 특별관리 탭 클릭 후 (timeline이 아예 안보여짐)
+// timeline div에 insertform이 (AJAX) 보이도록 하기
+		$("#mood").click(function()
+				{
+					if($("#timeline").css("display") == "none")
+					{
+						$("#timeline").show();
+					}
+				
+				});
+				
+		$("#meal").click(function()
+				{
+					if($("#timeline").css("display") == "none")
+					{
+						$("#timeline").show();
+					}
+				
+				});
+		
+		$("#snack").click(function()
+				{
+					if($("#timeline").css("display") == "none")
+					{
+						$("#timeline").show();
+					}
+				
+				});
+		
+		$("#walk").click(function()
+				{
+					if($("#timeline").css("display") == "none")
+					{
+						$("#timeline").show();
+					}
+				
+				});
+		
+			
+		$("#beauty").click(function()
+				{
+					if($("#timeline").css("display") == "none")
+					{
+						$("#timeline").show();
+					}
+				
+				});
+		
+		$("#nutrients").click(function()
+				{
+					if($("#timeline").css("display") == "none")
+					{
+						$("#timeline").show();
+					}
+				
+				});
+		
+		$("#train").click(function()
+				{
+					if($("#timeline").css("display") == "none")
+					{
+						$("#timeline").show();
+					}
+				
+				});
+		
+		$("#etc").click(function()
+				{
+					if($("#timeline").css("display") == "none")
+					{
+						$("#timeline").show();
+					}
+				
+				});
+		
+		$("#poop").click(function()
+				{
+					if($("#timeline").css("display") == "none")
+					{
+						$("#timeline").show();
+					}
+				
+				});
+		
+		$("#phil").click(function()
+				{
+					if($("#timeline").css("display") == "none")
+					{
+						$("#timeline").show();
+					}
+				
+				});
+		
+		$("#birth").click(function()
+				{
+					if($("#timeline").css("display") == "none")
+					{
+						$("#timeline").show();
+					}
+				
+				});
+	
 	});
 
 </script>
@@ -116,16 +343,17 @@ $(function()
 			<div id="calendarArea" style="background-color: pink; height: 800px;">
 				<c:import url="DiaryCalendarArea.jsp"></c:import>
 			</div>
+			
 			<!-- 기본관리 / 특별관리 탭 영역-->
-			<div class="container">
+			<div class="container" id="allMenu">
 			  <div class="row">			
 			    <div class="col-md-12" style="width:80%; margin-left :10%;">
 			    
 			      <!-- Nav tabs -->
 			      <div class="card">
 			        <ul class="nav nav-tabs nav-justified" role="tablist">
-			          <li role="presentation" class="active"><a href="#menu1" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-home"></i>  <span>기본관리</span></a></li>
-			          <li role="presentation"><a href="#menu2" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i>  <span>특별관리</span></a></li>
+			          <li role="presentation" class="active" id="basicForm"><a href="#menu1" aria-controls="home" role="tab" data-toggle="tab"><i class="fa "></i>  <span>기본관리</span></a></li>
+			          <li role="presentation" id="specialForm"><a href="#menu2" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i>  <span>특별관리</span></a></li>
 			        </ul>
 			        
 			        <!-- Tab panes -->
@@ -141,18 +369,21 @@ $(function()
 			    </div>
 			  </div>
 			</div>
+			</div> 
+			
+			
+			
 			
 			<!-- 타임라인 -->
 			<div id="timeline">
 			<c:import url="DiaryTimeLine.jsp"></c:import>
 			</div>
-
-
+			
 			</div>
 			<!-- 기본관리 / 특별관리 탭 영역 끝 -->
 
 
-		</div>
+
 		
 
 
