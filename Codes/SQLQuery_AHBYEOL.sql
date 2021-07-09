@@ -938,4 +938,214 @@ WHERE OFFOPINION_DATE IS NULL
 --==>> 1
 
 
+--============================================================================================================21.07.08 회원관리 
+
+SELECT *
+FROM MEMBERVIEW
+;
+--==>>
+/*
+14개 레코드
+
+SID_CODE	MEM_CODE	MEM_ID	MEM_PW	MEM_NAME	MEM_BIRTH	MEM_GENDER	MEM_TEL	MEM_ADDR	MEM_REGDATE	MEM_NICKNAME	PAUSE_CODE	PAUSE_START	OUT_CODE	OUT_TYPE_CODE	OUT_DATE	WALK_AGREE_CODE	WALK_AGREE_CHECK	WALK_AGREE_DATE	OUT_TYPE_CONTENT
+SID001	MEM001	joohee	"nb�	정주희	1997-12-24	F	010-1111-1111	경기도 광명시 철산동	2021-05-24	주리짱						AGR001	Y	2021-06-24	
+SID002	MEM002	hyeyeon	3F&�F	선혜연	1995-11-02	F	010-2222-2222	경기도 고양시 일산서구 주엽로98	2021-06-20	사공혜연						AGR002	Y	2021-06-25	
+SID003	MEM003	harim	-0��	이하림	1997-10-22	F	010-3333-3333	서울 금천구 가산동	2021-06-01	뚜또집사						AGR003	Y	2021-06-25	
+SID004													OUT001	2	2021-07-07	AGR004	Y	2021-06-25	강제탈퇴
+SID005													OUT002	1	2021-07-07	AGR005	Y	2021-06-25	자진탈퇴
+SID006	MEM006	hyerim	��� W	한혜림	1997-10-06	F	010-6666-6666	경기도 수원시 세류동	2021-06-19	혜림냥냥	PAU001	21/06/27				AGR006	Y	2021-06-26	
+SID007	MEM007	dongwon	gM� L	강동원	1981-01-18	M	010-7777-7777	경상남도 거창군 거창읍	2021-06-20	맛있는참치						AGR007	Y	2021-06-26	
+SID008	MEM008	kangjun	�X親*�	서강준	1993-10-12	M	010-8888-8888	서울 강남구 자곡동	2021-06-22	바싹말린강준						AGR008	Y	2021-06-26	
+SID009	MEM009	moonbin	�:6�	문빈	1998-01-26	M	010-9999-9999	인천 연수구 송도동	2021-06-23	니가내별이다						AGR009	Y	2021-06-23	
+SID010	MEM010	eunwoo	�Yϓ��	차은우	1997-03-30	M	010-1997-0330	경기도 군포시 수리산로 37	2021-06-26	연기연습하는은우						AGR010	Y	2021-06-26	
+SID011	MEM011	jinsootasty	֕},)r�	국진수	2002-06-14	M	010-1231-1231	서울 성북구 길음동	2021-07-06	밥진수						AGR011	Y	2021-07-06	
+SID012	MEM012	real_bae	�Y��	윤진배	1974-04-17	M	010,8282,8282	서울 구로구 구로동 23	2021-07-07	진배없다						AGR012	Y	2021-07-07	
+SID13	MEM13	purple	-V��	황보혜연	0097-07-16	F	010-1231,5675678	경기 일산시 동구	2021-07-08	보라노랑						AGR13	N	2021-07-08	
+SID14	MEM14	milky_bboy	"UK
+_D"	백도준	0098-07-09	M	010-6745,3573574	인천 연수구 송도동 12	2021-07-08	백설기123						AGR14	N	2021-07-08	
+*/
+
+
+-- 일시정지회원 : 한혜림, 탈퇴회원:SID004,SID005 제외하여 계정상태가 정상인 회원 리스트 출력
+
+SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
+		, MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
+		, PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE
+		, WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT
+FROM MEMBERVIEW
+WHERE PAUSE_CODE IS NULL
+  AND OUT_TYPE_CODE IS NULL
+; 
+--==>>
+/*
+SID_CODE	MEM_CODE	MEM_ID	MEM_PW	MEM_NAME	MEM_BIRTH	MEM_GENDER	MEM_TEL	MEM_ADDR	MEM_REGDATE	MEM_NICKNAME	PAUSE_CODE	PAUSE_START	OUT_CODE	OUT_TYPE_CODE	OUT_DATE	WALK_AGREE_CODE	WALK_AGREE_CHECK	WALK_AGREE_DATE	OUT_TYPE_CONTENT
+SID001	MEM001	joohee	"nb�	정주희	1997-12-24	F	010-1111-1111	경기도 광명시 철산동	2021-05-24	주리짱						AGR001	Y	2021-06-24	
+SID002	MEM002	hyeyeon	3F&�F	선혜연	1995-11-02	F	010-2222-2222	경기도 고양시 일산서구 주엽로98	2021-06-20	사공혜연						AGR002	Y	2021-06-25	
+SID003	MEM003	harim	-0��	이하림	1997-10-22	F	010-3333-3333	서울 금천구 가산동	2021-06-01	뚜또집사						AGR003	Y	2021-06-25	
+SID007	MEM007	dongwon	gM� L	강동원	1981-01-18	M	010-7777-7777	경상남도 거창군 거창읍	2021-06-20	맛있는참치						AGR007	Y	2021-06-26	
+SID008	MEM008	kangjun	�X親*�	서강준	1993-10-12	M	010-8888-8888	서울 강남구 자곡동	2021-06-22	바싹말린강준						AGR008	Y	2021-06-26	
+SID009	MEM009	moonbin	�:6�	문빈	1998-01-26	M	010-9999-9999	인천 연수구 송도동	2021-06-23	니가내별이다						AGR009	Y	2021-06-23	
+SID010	MEM010	eunwoo	�Yϓ��	차은우	1997-03-30	M	010-1997-0330	경기도 군포시 수리산로 37	2021-06-26	연기연습하는은우						AGR010	Y	2021-06-26	
+SID011	MEM011	jinsootasty	֕},)r�	국진수	2002-06-14	M	010-1231-1231	서울 성북구 길음동	2021-07-06	밥진수						AGR011	Y	2021-07-06	
+SID012	MEM012	real_bae	�Y��	윤진배	1974-04-17	M	010,8282,8282	서울 구로구 구로동 23	2021-07-07	진배없다						AGR012	Y	2021-07-07	
+SID13	MEM13	purple	-V��	황보혜연	0097-07-16	F	010-1231,5675678	경기 일산시 동구	2021-07-08	보라노랑						AGR13	N	2021-07-08	
+SID14	MEM14	milky_bboy	"UK
+_D"	백도준	0098-07-09	M	010-6745,3573574	인천 연수구 송도동 12	2021-07-08	백설기123						AGR14	N	2021-07-08	
+*/
+
+
+-- 특정 회원 검색
+SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
+		, MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
+		, PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE
+		, WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT
+FROM MEMBERVIEW
+WHERE SID_CODE = 'SID001'
+;
+
+SELECT *
+FROM TBL_PET;
+
+-- 강아지 이름 조회
+SELECT *
+FROM TBL_PET_INFO;
+
+SELECT RELATION_CODE, SID_CODE, PET_CODE
+FROM TBL_RELATION
+WHERE SID_CODE = 'SID001';
+
+SELECT *
+FROM PETVIEW;
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--○ 쿼리문 준비
+--1. 특정 회원의 양육관계 리스트 검색
+SELECT SID_CODE, PET_CODE, PET_NAME, RELATION_CODE, PET_PHOTO
+FROM FORPETNAME_VIEW
+WHERE SID_CODE = 'SID001';
+
+--2. 특정회원의 특정 반려견 정보 (pet_code 기반)
+SELECT PET_CODE, PET_NAME, SID_CODE, RELATION_CODE
+FROM FORPETNAME_VIEW
+WHERE PET_CODE = 'PET003';
+
+
+--3. 반려견 정보보기 버튼을 위한 (반려견정보) 쿼리문 
+SELECT PET_NAME, PET_SEX, PET_REGNUM, PET_BIRTH, PET_TYPE_NAME, PET_SIZE
+    , DISEASE_CONTENT, FAV_FOOD_CONTENT, INJECT_TYPE_NAME
+FROM PETVIEW
+WHERE PET_CODE = 'PET003';
+
+
+---------------------------------------------------------------------------------
+-- 회원정보 수정 
+
+SELECT *
+FROM TBL_MEMBER;
+--==>>
+/*
+MEM001	joohee	"nb�	정주희	97/12/24	F	010-1111-1111	경기도 광명시 철산동	21/05/24	주리짱
+MEM002	hyeyeon	3F&�F	선혜연	95/11/02	F	010-2222-2222	경기도 고양시 일산서구 주엽로98	21/06/20	사공혜연
+MEM003	harim	-0��	이하림	97/10/22	F	010-3333-3333	서울 금천구 가산동	21/06/01	뚜또집사
+MEM012	real_bae	�Y��	윤진배	74/04/17	M	010,8282,8282	서울 구로구 구로동 23	21/07/07	진배없다
+MEM13	purple	-V��	황보혜연	97/07/16	F	010-1231,5675678	경기 일산시 동구	21/07/08	보라노랑
+MEM006	hyerim	��� W	한혜림	97/10/06	F	010-6666-6666	경기도 수원시 세류동	21/06/19	혜림냥냥
+MEM007	dongwon	gM� L	강동원	81/01/18	M	010-7777-7777	경상남도 거창군 거창읍	21/06/20	맛있는참치
+MEM008	kangjun	�X親*�	서강준	93/10/12	M	010-8888-8888	서울 강남구 자곡동	21/06/22	바싹말린강준
+MEM009	moonbin	�:6�	문빈	98/01/26	M	010-9999-9999	인천 연수구 송도동	21/06/23	니가내별이다
+MEM010	eunwoo	�Yϓ��	차은우	97/03/30	M	010-1997-0330	경기도 군포시 수리산로 37	21/06/26	연기연습하는은우
+MEM011	jinsootasty	֕},)r�	국진수	02/06/14	M	010-1231-1231	서울 성북구 길음동	21/07/06	밥진수
+MEM14	milky_bboy	"UK
+_D"	백도준	98/07/09	M	010-6745,3573574	인천 연수구 송도동 12	21/07/08	백설기123
+*/
+
+
+-- 회원정보 수정 쿼리문 
+UPDATE TBL_MEMBER
+SET MEM_ID = 'joohee'
+  , MEM_NAME = '정쭈희'
+  , MEM_NICKNAME = '쭈희짱'
+  , MEM_GENDER = 'F'
+  , MEM_BIRTH = TO_DATE('2020-06-20','YYYY-MM-DD')
+  , MEM_TEL = '010-1111-1111'
+  , MEM_ADDR = '경기도 광명시 철산동'
+WHERE MEM_CODE = 'MEM001'
+;
+
+SELECT *
+FROM TBL_MEMBER;
+
+DELETE
+FROM TBL_MEMBER
+WHERE MEM_CODE = 'MEM001'
+;
+
+ROLLBACK;
+
+COMMIT;
+--==>> 롤백 완료.
+--커밋 완료.
+
+DESC TBL_MEMBER;
+
+--------------------------------------------------------------------------------
+
+--○ PRC_MEMBER_INSERT
+/*
+CREATE OR REPLACE PROCEDURE PRC_MEMBER_INSERT
+( V_MEM_ID              IN TBL_MEMBER.MEM_ID%TYPE
+, V_MEM_PW              IN TBL_MEMBER.MEM_PW%TYPE
+, V_MEM_NAME            IN TBL_MEMBER.MEM_NAME%TYPE
+, V_MEM_BIRTH           IN TBL_MEMBER.MEM_BIRTH%TYPE
+, V_MEM_GENDER          IN TBL_MEMBER.MEM_GENDER%TYPE
+, V_MEM_TEL             IN TBL_MEMBER.MEM_TEL%TYPE
+, V_MEM_ADDR            IN TBL_MEMBER.MEM_ADDR%TYPE
+, V_MEM_NICKNAME        IN TBL_MEMBER.MEM_NICKNAME%TYPE
+, V_WALK_AGREE_CHECK    IN TBL_WALK_AGREE.WALK_AGREE_CHECK%TYPE
+)
+IS
+    V_MEM_CODE            TBL_MEMBER.MEM_CODE%TYPE;
+    V_SID_CODE            TBL_SID.SID_CODE%TYPE;
+    V_WALK_AGREE_CODE     TBL_WALK_AGREE.WALK_AGREE_CODE%TYPE;
+    USER_DEFINE_ERROR   EXCEPTION;
+    
+BEGIN
+    -- MEM_CODE 자동입력
+    SELECT CONCAT('MEM', NVL(MAX(TO_NUMBER(SUBSTR(MEM_CODE, 4, 6))), 0) + 1) INTO V_MEM_CODE
+    FROM TBL_MEMBER;
+    
+    -- INSERT MEMBER 쿼리문
+    INSERT INTO TBL_MEMBER(MEM_CODE, MEM_ID, MEM_PW, MEM_NAME
+    , MEM_BIRTH, MEM_GENDER, MEM_TEL
+    , MEM_ADDR, MEM_REGDATE, MEM_NICKNAME)
+    VALUES (V_MEM_CODE, V_MEM_ID, CRYPTPACK.ENCRYPT(V_MEM_PW, V_MEM_ID), V_MEM_NAME
+    , TO_DATE(V_MEM_BIRTH, 'YYYY-MM-DD'),  V_MEM_GENDER
+    , (SUBSTR(V_MEM_TEL, 1, 3) || '-' || SUBSTR(V_MEM_TEL, 5, 8) || SUBSTR(V_MEM_TEL, 10, 13))
+    , V_MEM_ADDR
+    , TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')
+    , V_MEM_NICKNAME);
+    
+    
+    -- SID_CODE 자동입력
+    SELECT CONCAT('SID', NVL(MAX(TO_NUMBER(SUBSTR(SID_CODE, 4, 6))),0) + 1) INTO V_SID_CODE
+    FROM TBL_SID;   
+    
+    -- INSERT SID 쿼리문
+    INSERT INTO TBL_SID(SID_CODE, MEM_CODE)
+    VALUES(V_SID_CODE, V_MEM_CODE);
+    
+    
+     -- WALK_AGREE_CODE 자동입력
+    SELECT CONCAT('AGR', NVL(MAX(TO_NUMBER(SUBSTR(WALK_AGREE_CODE, 4, 6))), 0) + 1) INTO V_WALK_AGREE_CODE
+    FROM TBL_WALK_AGREE;   
+    
+    -- INSERT WALK_AGREE 쿼리문
+    INSERT INTO TBL_WALK_AGREE(WALK_AGREE_CODE, SID_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE)
+    VALUES(V_WALK_AGREE_CODE, V_SID_CODE, V_WALK_AGREE_CHECK
+    , TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS'));
+    
+END;
+*/
 

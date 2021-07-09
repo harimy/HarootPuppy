@@ -113,7 +113,7 @@ $(function()
 			<br>
 
 			<!-- 달력영역 -->
-			<div id="calendarArea" style="background-color: pink; height: 800px;">
+			<div id="calendarArea" style="background-color: RGB(253,239,142); height: 800px;">
 				<c:import url="DiaryCalendarArea.jsp"></c:import>
 			</div>
 			<!-- 기본관리 / 특별관리 탭 영역-->
