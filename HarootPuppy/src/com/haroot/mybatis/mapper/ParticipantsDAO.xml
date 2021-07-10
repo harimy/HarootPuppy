@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haroot.mybatis.IParticipantsDAO"><!-- implements IMemberDAO -->
+	
+	<insert id="add" parameterType="com.haroot.mybatis.ParticipantsDTO">
+		INSERT INTO TBL_PARTICIPANTS(PARTICIPANTS_CODE, WALKROOM_CODE, RELATION_CODE, PARTICIPANTS_START)
+		VALUES(#{participants_code}, #{walkroom_code}, 'REL003', SYSDATE)
+	</insert>
+	
+	<select id="max_code" resultType="java.lang.String">
+		SELECT S.PARTICIPANTS_CODE
+		FROM TBL_PARTICIPANTS S,
+		(
+		    SELECT ROWNUM AS NUMS, PARTICIPANTS_CODE
+		    FROM TBL_PARTICIPANTS
+		)R
+		WHERE S.PARTICIPANTS_CODE = R.PARTICIPANTS_CODE
+		  AND R.NUMS=(SELECT MAX(ROWNUM)
+              	  	  FROM TBL_PARTICIPANTS)
+	</select>
+	
+</mapper>
+

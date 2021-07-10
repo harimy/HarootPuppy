@@ -33,7 +33,7 @@ String cp = request.getContextPath();
 
 	});
 	
-	function openChild()
+	function openCommReportChild()
 	{
 	    // window.name = "부모창 이름"; 
 	    window.name = "parentForm";
@@ -79,14 +79,13 @@ body {
 			<br>
 			<h3>※ [Ready] 고정 옵션 활성화 시, 방 옵션 또는 다른 참여자의 Ready 상태 변화에 상관 없이
 				[Ready] 상태를 유지하게 됩니다.</h3>
-			<input type="radio" name="autoOption" class="autoOption"
-				id="deactive"> <label for="deactivate">비활성화</label> <input
-				type="radio" name="autoOption" class="autoOption" id="active">
-			<label for="active">활성화</label><br> <br>
-
+			<input type="radio" name="autoOption" class="autoOption" id="deactive"> 
+			<label for="deactive">비활성화</label> 
+			<input type="radio" name="autoOption" class="autoOption" id="active">
+			<label for="active">활성화</label><br><br>
 			<button type="button" id="cancel" onclick="window.close()">취소</button>
-			<button type="button" id="enter">입장</button>
-			<span id="errMsg">필수 선택 사항을 선택하세요</span> <br> <br>
+			<button type="button" id="enter" onclick="location.href='walkroomview.action'">입장</button>
+			<span id="errMsg">필수 선택 사항을 선택하세요</span><br><br>
 		</form>
 	</div>
 	<div class="replyReport">
@@ -94,7 +93,7 @@ body {
 			<details>
 				<summary>이 방에 대한 문제를 제기하겠습니까?</summary>
 				<div>
-					<button type="button" id="report" onclick="openChild()">신고하기</button>
+					<button type="button" id="report" onclick="openCommReportChild()">신고하기</button>
 				</div>
 			</details>
 		</form>

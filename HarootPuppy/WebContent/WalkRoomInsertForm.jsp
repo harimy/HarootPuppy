@@ -375,7 +375,7 @@
 			<th>방 제목</th>
 			<td>
 				<input type="hidden" id="walkroom_code" name="walkroom_code" value="${nextNum }">
-				<input type="hidden" id="walkroom_gendate" name="walkroom_gendate" value="">
+				<input type="hidden" id="walkroom_gendate" name="walkroom_gendate" value=""> <!-- 현재시간 담아 보내도록 ajax 처리 -->
 				<input type="text" placeholder="산책방 제목을 입력해주세요." id="walkroom_title" name="walkroom_title"
 				style="width: 30%;">
 				<span id="errRoomTitle">산책방 제목을 입력해주세요.</span>
@@ -470,8 +470,8 @@
 			<td>
 				<input type="radio" name="desex_code" id="desex_dontcare" value="0">
 				<label for="desex_dontcare">상관없음</label>
-				<input type="radio" name="desex_code" id="desex_neccessay" value="1">
-				<label for="desex_neccessay">필수</label>
+				<input type="radio" name="desex_code" id="desex_neccessary" value="1">
+				<label for="desex_neccessary">필수</label>
 				<span id="errDesex">중성화 여부 옵션을 선택해주세요.</span>
 			</td>
 		</tr>
@@ -481,7 +481,7 @@
 				<input type="radio" name="bite_code" id="bite_dontcare" value="0">
 				<label for="bite_dontcare">상관없음</label>
 				<input type="radio" name="bite_code" id="bite_ban" value="1">
-				<label for="ban">금지</label>
+				<label for="bite_ban">금지</label>
 				<span id="errBite">입질하는 반려견 옵션을 선택해주세요.</span>
 			</td>
 		</tr>
@@ -491,7 +491,7 @@
 				<input type="radio" name="samesex_code" id="gender_dontcare" value="0">
 				<label for="gender_dontcare">상관없음</label>
 				<input type="radio" name="samesex_code" id="gender_same" value="1">
-				<label for="same">동일 성별만</label>
+				<label for="gender_same">동일 성별만</label>
 				<span id="errGender">양육자 성별 옵션을 선택해주세요.</span>
 			</td>
 		</tr>

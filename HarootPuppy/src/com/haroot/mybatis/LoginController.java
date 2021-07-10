@@ -22,8 +22,8 @@ public class LoginController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@RequestMapping(value="loginMem.action", method=RequestMethod.POST)
-	public String hello(HttpServletRequest request, Model model) throws SQLException
+	@RequestMapping(value="loginmem.action", method=RequestMethod.POST)
+	public String loginM(HttpServletRequest request, HttpSession session, Model model) throws SQLException
 	{
 		String result = null;
 	
@@ -31,14 +31,15 @@ public class LoginController
 		String mem_pw = request.getParameter("mem_pw");
 
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		MemberDTO dto = dao.login(mem_id, mem_pw);
+		MemberDTO dto = dao.loginMem(mem_id, mem_pw);
 		//String sid_code = null;
 		//sid_code = dto.getSid_code();
 		
-		if(dto.getSid_code() != null)
+		if(dto != null)
 		{
 			model.addAttribute("sid_code", dto.getSid_code());
-			result = "/HarootPuppyMain.jsp";
+			session.setAttribute("sid_code", dto.getSid_code());
+			result = "mainheader.action";
 			//System.out.println(sid_code);
 		}
 		else
@@ -50,31 +51,28 @@ public class LoginController
 		return result;
 	}
    
-	@RequestMapping(value="login_check.action", method=RequestMethod.GET)
-	public String login_check(HttpServletRequest request, HttpSession session) 
+	@RequestMapping(value="loginadmin.action", method=RequestMethod.POST)
+	public String loginA(HttpServletRequest request, HttpSession session, Model model) throws SQLException 
 	{
 		
-		String result="";
+		String result= null;
 		
-		String id = request.getParameter("admin_id");
-		String pw = request.getParameter("admin_pw");
-		
-		AdminDTO dto = new AdminDTO();
-		dto.setAdmin_id(id);
-		dto.setAdmin_pw(pw);
+		String admin_id = request.getParameter("admin_id");
+		String admin_pw = request.getParameter("admin_pw");
 		
 		IAdminDAO dao = sqlSession.getMapper(IAdminDAO.class);
-		String name = dao.loginCheck(dto);
+		AdminDTO dto = dao.loginAdmin(admin_id, admin_pw);
 		
-		System.out.println(dto.toString());
-		 if( name != null) { //로그인 성공 (그러니까 loginCheck()메소드 안에 이름이 저장되어있다는 뜻)
+		 if( dto != null) 
+		 { 
           
-         result = "AdminMenu.jsp";
+			model.addAttribute("admin_code", dto.getAdmin_code());
+         result = "/adminmain.action";
 		 }
-		 else {
-          
+		 else 
+		 {
          
-          result = "LoginForm.jsp";
+         result = "/LoginForm.jsp";
       }
       return result; 
 	}
