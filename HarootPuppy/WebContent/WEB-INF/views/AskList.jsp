@@ -29,11 +29,35 @@
 
 	 .askList
 	 {
-	 	font-size: 25pt;
+	 	font-size: 20pt;
 	 	float: center;
 	 }
+	 
+	table {
+    width: 80% !important; 
+    margin: auto;
+    height: 100px !important;
+	}
+	
+	table, td, th {
+	    font-size: 13pt;
+	};
+	
+	.td
+	{
+		text-align: right !important;
+	}
+
 
 </style>
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$("span:contains('답변완료')").css({color:"orange"});
+	});
+
+
+</script>
 </head>
 <body>
 
@@ -47,33 +71,39 @@
 	<h1>1:1 문의</h1>
 	<hr>
 </div>
-<br>
 <div style="margin: 100px;">
-	<div>
+	<div style="width: 80%; margin: auto;">
+	<div style="float: left;">
 	  <form action="" name="categoryForm" method="post">
-	     <select name="categoryKey" class="selectField">
-	        <option value="walk">산책</option>
-	        <option value="diary">다이어리</option>
-	        <option value="board">게시판</option>
-	        <option value="account">계정</option>
-	        <option value="etc">기타</option>
-	     </select>
+	    카테고리 선택&nbsp; <select name="categoryKey" class="selectField">
+	        <option value="1">산책</option>
+	        <option value="2">다이어리</option>
+	        <option value="3">게시판</option>
+	        <option value="4">계정</option>
+	        <option value="5">기타</option>
+	     </select>                          
 	  </form>
+	  </div>
+	  <div style="float: right;">
+	  <span>총 게시글 : ${count }</span>
+	  </div>
 	</div>
-	<br><br>
+	<br><br><br>
 	<div>
-		<table>
+		<table class="table table-striped table-condensed table-hover" id="userTable" style="text-align: center;">
 		<c:forEach var="ask" items="${askList }">
 		<tr>
-			<th style="border-bottom: 1px solid gray;"><a href="">Q.&nbsp;${ask.ask_title }</a></th>
-			<td style="border-bottom: 1px solid gray; text-align: right;"><a href="">${ask.ask_state_content }</a></td>
+			<th><a href="askread.action?ask_code=${ask.ask_code }">Q.&nbsp;${ask.ask_title }</a></th>
+			<td id="state" style="text-align: right;">
+				<a href="askcomplete.action"><span>${ask.ask_state_content }</span></a>
+			</td>
 		</tr>
 		</c:forEach>
 		</table>
 	</div>
-	
-	<div style="width:100%; text-align: right;">
-		<button type="button" id="insertAsk">글 등록</button>
+	<br><br>
+	<div style="width: 80%; margin: auto; text-align: right;">
+		<button class="btn btn-primary btn-sm" type="button" id="insertAsk" onclick="location.href='askinsertform.action'">글 등록</button>
 	</div>
 </div>
 
