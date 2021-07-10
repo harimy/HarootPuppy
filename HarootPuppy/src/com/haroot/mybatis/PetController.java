@@ -38,23 +38,19 @@ public class PetController
 	
 	// 사용자의 반려견 다이어리로 이동 메소드
 	@RequestMapping(value="/diarymain.action", method=RequestMethod.GET)
-	public String StartPetDiary(HttpServletRequest req, ModelMap model) throws SQLException
+	public String petInfo(HttpServletRequest req, ModelMap model) throws SQLException
 	{
 		IPetDAO petDao = sqlSession.getMapper(IPetDAO.class);
-		IDiaryDailyDAO dailyDAO = sqlSession.getMapper(IDiaryDailyDAO.class);
-		
+
 		String pet_code = req.getParameter("pet_code");
 		model.addAttribute("list", petDao.petInfo(pet_code));
-		dailyDAO.addDaily(pet_code);
-		// model.addAttribute("daily_code", dailyDAO.addDaily(pet_code));
-		
-		
+
 		return "/DiaryMain.jsp";
 	}
 	
 	// 다이어리 내 (반려견) 정보보기 
 	@RequestMapping(value="/diaryinfo.action", method=RequestMethod.GET)
-	public String petInfo(HttpServletRequest req, ModelMap model)
+	public String petInfo2(HttpServletRequest req, ModelMap model)
 	{
 		IPetDAO petDao = sqlSession.getMapper(IPetDAO.class);
 		

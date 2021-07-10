@@ -27,10 +27,25 @@ String cp = request.getContextPath();
 <script type="text/javascript" src="<%=cp%>/js/diary.js"></script>
 
 <script type="text/javascript">
-function add_private() {
-	var inputString = prompt('즐겨찾기 이름을 입력하세요'); 
-	alert(inputString)
+	function add_private() 
+	{
+		var inputString = prompt('즐겨찾기 이름을 입력하세요'); 
+		alert(inputString)
 	};
+	
+	$(function()
+	{
+	 $(".final_btn").click(function()
+		{
+		 alert($(this).val());
+		 $(location).attr("href", "addtodiary.action?pet_code="+ $(this).val() );
+		 
+		
+		});
+	 
+	});
+
+	
 </script>
 <style type="text/css">
 .form-control, #focusedInput {
@@ -235,8 +250,9 @@ function add_private() {
 			<br>
 			<br>
 			<br> <input type="reset" value="취소"
-				class="btn btn-outline-secondary"> <input type="button"
-				value="저장" class="btn btn-secondary" onclick="">
+				class="btn btn-outline-secondary"> 
+				<button type="submit"
+				value="${pet_code }" class="btn btn-secondary final_btn" >저장</button>
 
 		</form>
 	</div>
