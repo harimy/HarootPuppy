@@ -7,6 +7,8 @@ package com.haroot.mybatis;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
+
 public interface IAskDAO
 {
 	// 관리자용 안읽은 고객문의 수 확인
@@ -54,4 +56,5 @@ public interface IAskDAO
 	// 아별 추가
 	// 관리자용 미처리된 고객문의 리스트 출력
 	public ArrayList<AskDTO> notHandledList();
+
 }

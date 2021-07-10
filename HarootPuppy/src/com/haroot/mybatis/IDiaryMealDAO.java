@@ -19,4 +19,7 @@ public interface IDiaryMealDAO
 	   
 	// 식사 데이터 확인(bath_code를 활용하여 배변 정보 검색)
 	public DiaryMealDTO searchMeal(String mealDto) throws SQLException;
+	
+	// pet_code 찾기
+	public String search_petCode (String pet_code) throws SQLException;
 }

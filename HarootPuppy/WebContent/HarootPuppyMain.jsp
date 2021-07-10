@@ -144,7 +144,7 @@
 			<button class="HarootMain button1" 
 			onclick="location.href='DiaryMain.jsp'">
 			<p style="color:#FFFFFF; font-size:20px;
-			font-weight:bold;">반려견의 매일을
+			font-weight:bold;">${ nickname}님! 반려견의 매일을
 			<br>기록해보세요💌</p>
 			</button>						
 			

@@ -27,7 +27,7 @@ public class AdminController
 	private SqlSession sqlSession;
 	
 	// 관리자 계정 로그인시 , 관리자용 메인 페이지 요청
-	@RequestMapping(value="/adminmain.action", method=RequestMethod.GET)
+	@RequestMapping(value="/adminmain.action", method=RequestMethod.POST)
 	public String adminMain(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws SQLException
 	{
 

@@ -9,7 +9,7 @@
 		SELECT *
 		FROM ASKVIEW
 		WHERE SID_CODE='SID001'
-	</select>
+ 	</select>
 	
 	<!-- 관리자 : askNotRead, 관리자가 안읽은 고객문의 수 조회 -->
 	<select id="askNotRead" resultType="java.lang.Integer">
@@ -67,6 +67,31 @@
 	, ASK_READ
 	FROM ASKVIEW
 	WHERE ASK_READ IS NULL
+	
+	<select id="getReadData" parameterType="java.lang.Integer" resultType="com.haroot.mybatis.AskDTO">
+		SELECT *
+		FROM ASKVIEW
+		WHERE ASK_CODE=#{ask_code}
+	</select>
+	
+	<select id="count" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM ASKVIEW
+		WHERE SID_CODE='SID001'
+	</select>
+	
+	<insert id="add">	
+		INSERT INTO TBL_ASK(ASK_CODE, ASK_CATE_CODE, SID_CODE, ASK_DATE
+                , ASK_TITLE, ASK_CONTENT, ASK_STATE_CODE)
+		VALUES(#{ask_code, jdbcType=NUMERIC}, 3, 'SID003'
+				, TO_DATE(#{ask_date}, 'YYYY-MM-DD HH24:MI:SS')
+				, #{ask_title}, #{ask_content}, 1)
+	</insert>
+	
+	<select id="getMaxNum" resultType="java.lang.Integer">
+		SELECT MAX(ASK_CODE) AS MAX_NUM
+		FROM ASKVIEW
+
 	</select>
 
 </mapper>

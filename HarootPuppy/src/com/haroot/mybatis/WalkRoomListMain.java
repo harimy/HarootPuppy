@@ -56,8 +56,23 @@ public class WalkRoomListMain
 	public String memberInsert(WalkRoomDTO w) throws SQLException
 	{
 		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
+		IParticipantsDAO partDao = sqlSession.getMapper(IParticipantsDAO.class);
+		ParticipantsDTO partDto = new ParticipantsDTO();
+		
+		// 참여자 코드 구성
+		String participants_code = partDao.max_code();
+		participants_code = "PAR" + (Integer.parseInt(participants_code.substring(3))+1);
+		partDto.setParticipants_code(participants_code);
+		System.out.println(participants_code);
+		
+		// 산책방 코드 구성
+		int walkroom_code = dao.max() + 1;
+		partDto.setWalkroom_code(walkroom_code);
+		
+		// 양육관계 코드 구성 → sid 구성 후 값 가져오기
 		
 		dao.add(w);
+		partDao.add(partDto);
 		
 		// 나중에 생성한 산책방으로 이동하게 변경하기
 		return "redirect:walkroommain.action";
