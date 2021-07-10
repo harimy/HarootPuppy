@@ -34,6 +34,7 @@
 		FROM MEMBERVIEW
 		WHERE PAUSE_CODE IS NULL
 		  AND OUT_TYPE_CODE IS NULL
+		  AND MEM_CODE IS NOT NULL
 	</select>
 	
 	
@@ -71,31 +72,18 @@
 	
 	<!-- 회원코드로 회원 조회 -->
 	<select id="search" resultType="com.haroot.mybatis.MemberDTO">
-		<!-- 
-		SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
-    	, MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
-    	, PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE 
-    	, WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT
-		FROM MEMBERVIEW
-		WHERE MEM_CODE = '{#mem_code}'
-		 -->
 		 SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
 		, MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
 		, PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE
 		, WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT
 		FROM MEMBERVIEW
 		WHERE SID_CODE = #{sid_code}
+		
 	</select>
 	
 	
 	<!-- 회원정보 수정 -->
 	<update id="modify">
-		<!-- 
-		UPDATE TBL_MEMBER
-		SET MEM_PW = '{#mem_pw}', MEM_TEL = '{#mem_tel}'
-		, MEM_ADDR = '{#mem_addr}', MEM_NICKNAME = '{#mem_addr}'
-		WHERE MEM_CODE = '{#mem_code}'
-		 -->
 		<!-- 아별 수정 -->
 		UPDATE TBL_MEMBER
 		SET MEM_ID = #{mem_id}
@@ -117,7 +105,6 @@
 		WHERE MEM_CODE = #{mem_code, jdbcType=VARCHAR}
 	</delete>
 	 
-
 	<!-- 로그인 후 화면에서 보여줄 이름 조회 -->
 	<select id="searchNickName" parameterType="java.lang.String" resultType ="java.lang.String">
 		SELECT MEM_NICKNAME
@@ -125,5 +112,4 @@
 		WHERE SID_CODE=#{sid_code} 
 	</select>
 	 
-
 </mapper>

@@ -345,6 +345,25 @@ WHERE ASK_STATE_CODE = 1
 ;
 --==>> 1
 
+
+-- 안읽은 고객문의 리스트 조회
+SELECT ASK_CODE
+, ASK_CATE_CODE
+, ASK_CATE_CONTENT
+, SID_CODE
+, MEM_NICKNAME
+, ASK_DATE
+, ASK_TITLE
+, ASK_CONTENT
+, ASK_PHOTO
+, ASK_STATE_CODE
+, ASK_STATE_CONTENT
+, ASK_READ
+FROM ASKVIEW
+WHERE ASK_READ IS NULL
+;
+--==>> 3	2	다이어리	SID001	주리짱	2021-06-27 00:00:00	다이어리 중복	다이어리 중복 작성하면 어케되나여?		1	미처리	
+
 SELECT *
 FROM TBL_REPORT_TYPE;
 --==>>
@@ -1148,4 +1167,153 @@ BEGIN
     
 END;
 */
+
+
+
+SELECT *
+FROM TBL_MEMBER;
+
+
+
+-- 계정상태가 정상인 회원 리스트 출력 쿼리문 수정 
+SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
+		, MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
+		, PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE
+		, WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT
+		FROM MEMBERVIEW
+        WHERE MEM_CODE IS NOT NULL
+;
+
+---------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------21.07.10
+
+SELECT *
+FROM REPORTVIEW;
+/*
+REP_LOG_CODE	REP_TYPE_CODE	REP_TYPE_CONTENT	SID_CODE	REP_LOG_DATE	REP_STATE_CODE	REP_STATE_CONTENT	REP_LOG_READ	WALKCOMM_REP_CODE	WALK_COMM_WRITER	BOARDCOMM_REP_CODE	BOARD_COMM_WRITER	BOARD_REP_CODE	BOARD_CODE	BOARD_WRITER	BOARD_TITLE	BOARD_CONTENT	WALKROOM_REP_CODE	WALKROOM_CODE	WALKROOM_TITLE	WALKROOM_WORDS	WALKROOM_LEADER	OFF_REP_CODE	PARTICIPANTS_CODE	BOARD_COMM_CODE	BOARD_COMM_CONTENT	WALK_COMM_CONTENT	REPORTER_NICKNAME
+REP001	1	게시글	SID003	2021-06-27	2	신고해제	2021-06-28					BREP001	7	SID001	샘플사료무나	안양천돌다리로 오실분											뚜또집사
+REP002	1	게시글	SID007	2021-06-27	1	미처리	2021-06-28					BREP002	3	SID001	오늘 뜨거운 밤	뜨거운밤..어쩌고..신고당할만한 이야기											맛있는참치
+REP003	1	게시글	SID002	2021-06-27	1	미처리	2021-06-28					BREP003	3	SID001	오늘 뜨거운 밤	뜨거운밤..어쩌고..신고당할만한 이야기											사공혜연
+REP004	5	산책방/댓글	SID001	2021-06-27	1	미처리		WCREP001	SID002								WRREP003	1	함께 산책 하실 분?	같이가요ㅎ	SID001					왜아무도안들어오지..	주리짱짱걸
+REP005	5	산책방/댓글	SID001	2021-06-27	2	신고해제	2021-06-28	WCREP002	SID001																	오늘5분만 늦춰도될까요?	주리짱짱걸
+REP006	2	댓글	SID003	2021-06-27	2	신고해제	2021-06-28			BCREP001	SID002													2	진짜웃기죠?		뚜또집사
+REP007	2	댓글	SID003	2021-06-27	2	신고해제	2021-06-28			BCREP002	SID010													5	구매완		뚜또집사
+REP008	3	산책방/게시물	SID002	2021-06-27	1	미처리											WRREP001	1	함께 산책 하실 분?	같이가요ㅎ	SID001						사공혜연
+REP009	3	산책방/게시물	SID010	2021-06-27	2	신고해제	2021-06-28										WRREP002	2	가취가욥~!	프로산책러입니다	SID002						연기연습하는은우
+REP010	4	오프라인	SID003	2021-06-28	2	신고해제	2021-06-29															OFFREP001	PAR001				뚜또집사
+REP011	4	오프라인	SID001	2021-06-28	1	미처리																OFFREP002	PAR004				주리짱짱걸
+
+*/
+
+
+
+--○ 게시판 게시물 신고 전체 조회
+SELECT REP_LOG_CODE
+    , REP_TYPE_CODE
+    , REP_TYPE_CONTENT
+    , SID_CODE
+    , reporter_nickname
+    , REP_LOG_DATE
+    , REP_STATE_CODE
+    , REP_STATE_CONTENT
+    , REP_LOG_READ
+    , BOARD_REP_CODE
+    , BOARD_CODE
+    , BOARD_WRITER
+    , BOARD_TITLE
+    , BOARD_CONTENT
+FROM REPORTVIEW
+WHERE REP_TYPE_CODE = 1
+;
+--==>>
+/*
+REP001	1	게시글	SID003	뚜또집사	2021-06-27	2	신고해제	2021-06-28	BREP001	7	SID001	샘플사료무나	안양천돌다리로 오실분
+REP002	1	게시글	SID007	맛있는참치	2021-06-27	1	미처리	2021-06-28	BREP002	3	SID001	오늘 뜨거운 밤	뜨거운밤..어쩌고..신고당할만한 이야기
+REP003	1	게시글	SID002	사공혜연	2021-06-27	1	미처리	2021-06-28	BREP003	3	SID001	오늘 뜨거운 밤	뜨거운밤..어쩌고..신고당할만한 이야기
+*/
+
+-- 같은 게시물이 여러 번 신고될시 BOARD_CODE 로 식별, 한번 신고처리된 게시물은 신고처리가 똑같이 나와야된다. 
+
+/*
+TBL_REPORT_LOG 에서 REP_STATE_CODE 를 변경
+1 미처리
+2 신고해제
+3 신고확정
+*/
+
+UPDATE TBL_REPORT_LOG
+SET REP_STATE_CODE = 1
+--WHERE BOARD_CODE = 3;
+
+-- 신고내역 테이블 컬럼 조회
+SELECT *
+FROM TBL_REPORT_LOG;
+--==>>
+/*
+REP_LOG_CODE	REP_TYPE_CODE	REP_LOG_WRITER	REP_LOG_DATE	REP_STATE_CODE	REP_LOG_READ
+    REP001  1	SID003	21/06/27	2	21/06/28
+    REP002	1	SID007	21/06/27	1	21/06/28
+    REP003	1	SID002	21/06/27	1	21/06/28
+    REP004	5	SID001	21/06/27	1	
+    REP005	5	SID001	21/06/27	2	21/06/28
+    REP006	2	SID003	21/06/27	2	21/06/28
+    REP007	2	SID003	21/06/27	2	21/06/28
+    REP008	3	SID002	21/06/27	1	
+    REP009	3	SID010	21/06/27	2	21/06/28
+    REP010	4	SID003	21/06/28	2	21/06/29
+    REP011	4	SID001	21/06/28	1	
+*/
+
+
+SELECT *
+FROM TBL_BOARD_REPORT;
+
+SELECT BOARD_REP_CODE    -- 게시물신고번호
+    , REP_LOG_CODE       -- 신고내역번호
+    , BOARD_CODE         -- 게시판 게시물번호
+FROM TBL_BOARD_REPORT
+WHERE BOARD_CODE = 3;
+
+
+SELECT REP_LOG_CODE       -- 신고내역번호
+FROM TBL_BOARD_REPORT
+WHERE BOARD_CODE = 3;
+--==>>
+/*
+REP002
+REP003
+*/
+
+--○ 게시물 신고처리(신고처리상태 변경) 쿼리문
+UPDATE TBL_REPORT_LOG
+SET REP_STATE_CODE = 1
+WHERE REP_LOG_CODE IN (SELECT REP_LOG_CODE       -- 신고내역번호
+                         FROM TBL_BOARD_REPORT
+                        WHERE BOARD_CODE = 3)
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

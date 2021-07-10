@@ -33,13 +33,46 @@
 		FROM TBL_STUDENT
 		WHERE SID= #{sid} -->
 	</select>
+
+	<!-- 아별 추가 -->
+	<!-- 관리자가 읽지않은 고객문의 리스트 -->
+	<select id="notHandledList" resultType="com.haroot.mybatis.AskDTO">
+	<!-- 
+	SELECT ASK_CODE
+	, ASK_CATE_CODE
+	, ASK_CATE_CONTENT
+	, SID_CODE
+	, MEM_NICKNAME
+	, ASK_DATE
+	, ASK_TITLE
+	, ASK_CONTENT
+	, ASK_PHOTO
+	, ASK_STATE_CODE
+	, ASK_STATE_CONTENT
+	, ASK_READ
+	FROM ASKVIEW
+	WHERE ASK_STATE_CODE = 1 
+	-->
+	SELECT ASK_CODE
+	, ASK_CATE_CODE
+	, ASK_CATE_CONTENT
+	, SID_CODE
+	, MEM_NICKNAME
+	, ASK_DATE
+	, ASK_TITLE
+	, ASK_CONTENT
+	, ASK_PHOTO
+	, ASK_STATE_CODE
+	, ASK_STATE_CONTENT
+	, ASK_READ
+	FROM ASKVIEW
+	WHERE ASK_READ IS NULL
 	
 	<select id="getReadData" parameterType="java.lang.Integer" resultType="com.haroot.mybatis.AskDTO">
 		SELECT *
 		FROM ASKVIEW
 		WHERE ASK_CODE=#{ask_code}
 	</select>
-	
 	
 	<select id="count" resultType="java.lang.Integer">
 		SELECT COUNT(*) AS COUNT
@@ -58,6 +91,7 @@
 	<select id="getMaxNum" resultType="java.lang.Integer">
 		SELECT MAX(ASK_CODE) AS MAX_NUM
 		FROM ASKVIEW
+
 	</select>
 
 </mapper>

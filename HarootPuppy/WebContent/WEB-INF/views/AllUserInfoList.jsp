@@ -32,22 +32,20 @@
 		var _width = '570';
 	    var _height = '600';
 	    
-	   
 	    //alert(sid_code);
 	    //--==>> SID001
-	    
 	    
 	    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
 	    var _left = Math.ceil(( window.screen.width - _width )/2);
 	    var _top = Math.ceil(( window.screen.height - _height )/2); 
 		
 	    // window.name = "부모창 이름"; 
-	    //window.name = "parentForm";
+	    window.name = "parentForm";
 	    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
 	    /* openWin = window.open("memberdetailinfo.action?sid_code=",
 	            "childForm", "width=570, height=600, resizable = no");   */ 
 	    openWin = window.open("memberdetailinfo.action?sid_code=" + sid_code
-	   		 , "childForm", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top +', resizable=no');   
+	   		 , "childForm1", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top +', resizable=no');   
 	    
 	}
 	
@@ -63,15 +61,33 @@
 	    var _top = Math.ceil(( window.screen.height - _height )/2); 
 		
 	    // window.name = "부모창 이름"; 
-	    //window.name = "parentForm";
+	   	window.name = "parentForm";
+	   	
+	   	
 	    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
 	    /* openWin = window.open("UserInfoUpdateForm.jsp",
 	            "childForm", "width=570, height=600, resizable = no, scrollbars = no"); */   
 	    openWin = window.open("adminmemberupdateform.action?sid_code=" + sid_code
-	   		 , "childForm", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top +', resizable=no');   
+	   		 , "childForm2", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top +', resizable=no');   
 	    
 	}
 
+	$(function()
+	{
+		$(".btnDelete").click(function()
+		{
+			//alert("삭제되라고~~");
+			
+			if (confirm("정말 삭제하시겠습니까?")) 
+			{
+				// alert($(this).val());
+				 
+				$(location).attr("href", "adminmemberdelete.action?mem_code=" + $(this).val());
+				//$(location).attr("href", "https://loomio.kr");
+			}
+			
+		});
+	});
 
 </script>
 </head>
@@ -143,7 +159,10 @@
 				 <c:forEach var="mem" items="${normalList}">
 		 	 	<tr>
 		 	 		<!-- 회원번호 -->
-		 	 		<td>${mem.sid_code }</td>
+		 	 		<td>
+		 	 			${mem.sid_code }
+		 	 			<input type="hidden" name="mem_code" value="${mem.mem_code }">
+		 	 		</td>
 		 	 		<!-- 아이디 -->
 		 	 		<td>${mem.mem_id }</td>
 		 	 		<!-- 이름 -->
@@ -168,7 +187,9 @@
 						</button>
 					</td>
 					<td>
-						<button type="button" class="btnDelete" value="${mem.sid_code }" id="delete" onclick="location.href='memberdelete.action?sid_code=${mem.sid_code }'">
+						<%-- <button type="button" class="btnDelete" value="${mem.sid_code }" 
+						id="delete" onclick="location.href='adminmemberdelete.action?sid_code=${mem.sid_code }'"> --%>
+						<button type="button" class="btnDelete" value="${mem.mem_code }" id="delete" onclick="">
 							삭제
 						</button>
 					</td>

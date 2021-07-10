@@ -33,9 +33,18 @@ String cp = request.getContextPath();
 	{
 		opener.parent.location.reload();
 		window.close();
-		
-		
 	} 
+	
+
+	function goSubmit() 
+	{
+		f = document.getElementById("adminMemberUdpateForm");
+		f.target = "parentForm";
+		f.action= "<%=cp%>/adminmemberupdate.action";
+		f.submit();
+		self.close();
+		
+	}
 
 </script>
 </head>
@@ -46,7 +55,8 @@ String cp = request.getContextPath();
 	</div>
 
 	<div>
-		<form action="adminmemberupdate.action" method="POST">
+		<!-- <form action="adminmemberupdate.action" method="POST"> -->
+		<form name="adminMemberUdpateForm" id="adminMemberUdpateForm" method="POST">
 			<table id="tbl_userRead" style="text-align: left;">
 				<tr> 
 					<th style="width: 230px;">회원식별번호</th>
@@ -58,7 +68,7 @@ String cp = request.getContextPath();
 				<tr>
 					<th>회원번호</th>
 					<td>
-						<!-- 히든타입으로 mem_code 전송 -->
+						<!-- 히든타입으로 mem_code 전송, disabled는 값이 전송이 안된다  -->
 						<input type="hidden" name="mem_code" value="${search.mem_code }">
 						<input type="text" name="mem_code1" class="info" value="${search.mem_code }" disabled="disabled"/>
 					</td>
@@ -66,7 +76,8 @@ String cp = request.getContextPath();
 				<tr>
 					<th>아이디</th>
 					<td>
-						<input type="text" name="mem_id" class="info" value="${search.mem_id }" />
+						<input type="hidden" name="mem_id" value="${search.mem_id }">
+						<input type="text" name="mem_id" class="info" value="${search.mem_id }" disabled="disabled"/>
 					</td>
 				</tr>
 				<tr>
@@ -138,14 +149,14 @@ String cp = request.getContextPath();
 					<th>산책메이트 서비스 동의 여부</th>
 					<td>
 					 	<input type="text" class="info" value="${search.walk_agree_check }" disabled="disabled"/>
-					<br><br>
 					</td>
 				</tr>
 			</table>
+			<br><br>
 		
 			 <div style="width: 496px; text-align: right; display: inline-block;">
 				<button type="button" class="" onclick="closeUserRead()" style="float: left;">취소</button>
-				<button type="submit" class="" onclick="" style="float: right;">수정</button>
+				<input type="button" onclick="goSubmit()" value="수정" style="float: right;">
 				<button type="reset" class="" style="float: right;">초기화</button>
 			</div>
 		</form>	
