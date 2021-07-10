@@ -50,4 +50,8 @@ public interface IAskDAO
 	
 	// 다음 게시물 번호
 	public int getNextNum(int ask_code);
+	
+	// 아별 추가
+	// 관리자용 미처리된 고객문의 리스트 출력
+	public ArrayList<AskDTO> notHandledList();
 }

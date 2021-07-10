@@ -34,5 +34,39 @@
 		WHERE SID= #{sid} -->
 	</select>
 
+	<!-- 아별 추가 -->
+	<!-- 관리자가 읽지않은 고객문의 리스트 -->
+	<select id="notHandledList" resultType="com.haroot.mybatis.AskDTO">
+	<!-- 
+	SELECT ASK_CODE
+	, ASK_CATE_CODE
+	, ASK_CATE_CONTENT
+	, SID_CODE
+	, MEM_NICKNAME
+	, ASK_DATE
+	, ASK_TITLE
+	, ASK_CONTENT
+	, ASK_PHOTO
+	, ASK_STATE_CODE
+	, ASK_STATE_CONTENT
+	, ASK_READ
+	FROM ASKVIEW
+	WHERE ASK_STATE_CODE = 1 
+	-->
+	SELECT ASK_CODE
+	, ASK_CATE_CODE
+	, ASK_CATE_CONTENT
+	, SID_CODE
+	, MEM_NICKNAME
+	, ASK_DATE
+	, ASK_TITLE
+	, ASK_CONTENT
+	, ASK_PHOTO
+	, ASK_STATE_CODE
+	, ASK_STATE_CONTENT
+	, ASK_READ
+	FROM ASKVIEW
+	WHERE ASK_READ IS NULL
+	</select>
 
 </mapper>

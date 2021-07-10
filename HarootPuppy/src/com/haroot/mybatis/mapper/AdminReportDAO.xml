@@ -10,8 +10,6 @@
 	<!-- 고유해야 하기 때문에(식별가능해야하기때문에 id 속성) -->
 	<!-- resultType 은 각각 하나씩 바인딩 되는 곳 -->	
 	
-	
-	
 	<!-- 미처리 게시판 게시물 수 -->
 	<select id="boardNotHandled" resultType="java.lang.Integer">
 		SELECT COUNT(*)
@@ -62,10 +60,11 @@
 	<!-- 게시판 게시물 신고리스트 출력 -->
 	<select id="adBoardReportList" resultType="com.haroot.mybatis.AdminReportDTO">
 		
-		SELECT REP_LOG_CODE 
+		SELECT REP_LOG_CODE
 		    , REP_TYPE_CODE
 		    , REP_TYPE_CONTENT
 		    , SID_CODE
+		    , REPORTER_NICKNAME
 		    , REP_LOG_DATE
 		    , REP_STATE_CODE
 		    , REP_STATE_CONTENT

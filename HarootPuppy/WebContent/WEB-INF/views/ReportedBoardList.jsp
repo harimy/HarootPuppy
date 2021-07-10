@@ -90,7 +90,20 @@
 				</tr>
 				 -->
 				
-				
+				<!-- 게시판 > 게시물 리스트 출력 -->
+				 
+				<%-- 
+				<c:forEach var="a" items="list">
+					<tr>
+						<td>
+							<input type="checkbox" class="processReport">
+						</td>
+						<td>
+
+						</td>
+					</tr> 		
+				</c:forEach>
+				 --%>
 			</table>
 		</div>
 	</div>
