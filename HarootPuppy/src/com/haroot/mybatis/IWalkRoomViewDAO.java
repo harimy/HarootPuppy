@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public interface IWalkRoomViewDAO {
 	
-	public ArrayList<WalkRoomViewDTO> list() throws SQLException;
+	// 각 방 참여자들 정보 조회 메소드
+	public ArrayList<WalkRoomViewDTO> list() throws SQLException;	
 
 }
