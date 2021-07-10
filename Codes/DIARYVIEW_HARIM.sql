@@ -496,6 +496,20 @@ FROM DIARYVIEW
 WHERE DAILY_DATE = TO_CHAR(TO_DATE('2021-06-30'), 'YYYY-MM-DD')
   AND RELATION_CODE = 'REL006';
 
+
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+--● 뷰 추가
+
+-- TIMELINE에 보여주기 위한 데이터들 저장 VIEW → TIMELINE_VIEW
+
+CREATE OR REPLACE VIEW TIMELINE_VIEW
+AS
+SELECT MEAL_NAME
+FROM TBL_MEAL_TYPE
+;
+
+
 -----------------------------------------------------------------------------
 ----------------------------------------------------------------------------
 --○ 쿼리문
@@ -531,3 +545,9 @@ WHERE RELATION_CODE =
 FROM TBL_RELATION
 WHERE PET_CODE = 'PET003'
 );
+
+
+--4. PET_CODE 로 PET_CODE 찾기
+SELECT PET_CODE
+FROM TBL_PET
+WHERE PET_CODE = 'PET003';
