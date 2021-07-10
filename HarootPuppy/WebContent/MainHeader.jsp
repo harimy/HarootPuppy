@@ -44,12 +44,13 @@
 	<div style="float:left;">로그아웃&nbsp;&nbsp;&nbsp;</div>
 	<div style="float:left;">마이페이지</div>
 	<div style="float:right;">알림</div>
-	<div style="float:right;">환영합니다!&nbsp;&nbsp;&nbsp;</div>
+	<div style="float:right;">${nickname} 님 환영합니다!&nbsp;&nbsp;&nbsp;</div>
 	<div id="logo" style="text-align : center;">
 		<button type="button" class="transparent-button"onclick="location.href='main.action'">
 		<img alt="" src="images/mainlogo.png" width="250" height="100" border="0"></button>
 	</div>
 </div>
+
 
 </body>
 </html>

@@ -52,7 +52,7 @@
 	</insert>
 	
 	<!-- 로그인 -->
-	<select id="login" parameterType="java.lang.String" resultType="com.haroot.mybatis.MemberDTO">
+	<select id="loginMem" parameterType="java.lang.String" resultType="com.haroot.mybatis.MemberDTO">
 		SELECT S.SID_CODE AS SID_CODE
 		     , M.MEM_CODE AS MEM_CODE
 		     , M.MEM_ID AS MEM_ID
@@ -116,5 +116,12 @@
 		FROM TBL_MEMBER
 		WHERE MEM_CODE = #{mem_code, jdbcType=VARCHAR}
 	</delete>
-
+	 
+	<!-- 로그인 후 화면에서 보여줄 이름 조회 -->
+	<select id="searchNickName" parameterType="java.lang.String" resultType ="java.lang.String">
+		SELECT MEM_NICKNAME
+		FROM MEMBERVIEW
+		WHERE SID_CODE=#{sid_code} 
+	</select>
+	 
 </mapper>
