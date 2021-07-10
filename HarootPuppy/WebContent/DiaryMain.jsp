@@ -336,6 +336,7 @@ $(function()
             		</svg>
 					정보 보기
 				</button>
+				<input type="hidden" value="${list.pet_code }" name="pet_code" id="pet_code">
 			</div>
 			<br>
 

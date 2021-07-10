@@ -25,12 +25,12 @@
 
 var openWin;
 
-function openChild()
+function openChild(walkroom_code)
 {
     // window.name = "부모창 이름"; 
     window.name = "parentForm";
     // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-    openWin = window.open("WalkRoomGuestFixOption.jsp",
+    openWin = window.open("WalkRoomGuestFixOption.jsp?num=" + walkroom_code,
             "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
 }
 
@@ -82,7 +82,7 @@ function setChildText(){
 		-->
 
 		<c:forEach var="walkroom" items="${list }">
-		<tr id="lists" onclick="openChild()">
+		<tr id="lists" onclick="openChild(${walkroom.walkroom_code})">
 			<td style="vertical-align: middle;">${walkroom.walkroom_code }</td>
 			<td style="vertical-align: middle;">
 				<img style="border-radius: 100px;" src="images/jaerong.jpg" width=80 height=80></img>

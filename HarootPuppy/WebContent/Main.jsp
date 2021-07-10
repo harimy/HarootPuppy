@@ -62,8 +62,8 @@
 <ul class="myMenu">
 	<li class="menu1">
         <a href="diaryselectpet.action">나의 반려견
-        <input type="hidden" id="sid_code" name="sid_code">
-        </a>  
+        <input type="hidden" value="${sid_code }" name="sid_code"> 
+        </a>
     </li>
     <li class="menu2">
     	<a href="WalkSelectPet.jsp">산책메이트</a>	

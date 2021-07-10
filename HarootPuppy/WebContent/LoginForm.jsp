@@ -33,16 +33,17 @@ $(function()
 		{
 			$("#mem_id").attr("name","admin_id");
 			$("#mem_pw").attr("name","admin_pw");
-      // form action 변경하는 코드 추가 필요
-		}
+      		// form action 변경하는 코드
+			$("#loginForm").attr("action", "loginadmin.action");
+      	}
 		
 		//$("#loginForm").action = "${path}/login_check.do";  //밑에 form1 폼을 Controller의 login_check에 맵핑하도록 한다.
         $(loginForm).submit(); //자료를 선송
 	});
 	
+	// 로그인 실패시 알림창 필요
 
 });
-
 </script>
 
 
@@ -118,7 +119,7 @@ input:focus+label, label {
 .loginForm
 {
 	display: inline-block;
-	margin-top: 250px;
+	margin-top: 200px;
 }
 
 
@@ -127,20 +128,7 @@ input:focus, input:not (:placeholder-shown ) {
    outline: none;
 }
 </style>
-<script type="text/javascript">
-	$(function()
-	{
-		$("#loginBtn").click(function()
-		{
-			//alert($("#mem_id").val());
-			
-			//alert($("#mem_pw").val());
-			
-			$(loginForm).submit();
-		})
-		
-	});
-</script>
+
 
 </head>
 <body>
@@ -159,8 +147,13 @@ input:focus, input:not (:placeholder-shown ) {
 		<!-- content 영역 -->
 		<div id="harootContent" style="height: 700px; width: 100%; text-align: center;">
 
-			<form role="form" action="loginMem.action" method="post" class="loginForm" name="loginForm">
-					
+			<form role="form" action="loginmem.action" method="post" class="loginForm" id="loginForm" name="loginForm">
+				<div class= "form-group2" style="float: right;">
+	               <label id="admincheck" > 관리자 
+	               <input type="checkbox" id="admin_check" name="admin_check" value="admin">
+	               </label>
+	            </div>	
+	            
 				<!-- 로그인 글씨 -->
 				<div class="form-group login">
 					로그인
@@ -179,41 +172,24 @@ input:focus, input:not (:placeholder-shown ) {
 
 				</div>
 
-				
-			</form>
-			
-		</div>
+				<br><br>
 
-
-		<!-- 하단 회사 설명 영역 -->
-		<div id="harootFooter">
-		
-			<c:import url="MainFooter.jsp"></c:import>
-		</div>
-	</div>
-
-            <!-- 로그인 / IdPw찾기 / 회원가입 버튼 -->
-            <div class="form-group2">
-               <input type="button" value="로그인" class="btn" id="loginBtn">
-            </div>
-
-            <div class="form-group2">
-               <input type="button" value="Id/Pw 찾기" class="btn"
-                  onclick="location.href='Id/pw찾는 페이지'">
-            </div>
-
-            <div class="form-group2">
-               <input type="button" value="회원가입" class="btn" onclick="location.href='registerform.action'">
-            </div>
-
-
-            <div class= "form-group2">
-               <label id="admincheck" > 관리자 
-               <input type="checkbox" id="admin_check" name="admin_check" value="admin">
-               </label>
-            </div> 
+	            <!-- 로그인 / IdPw찾기 / 회원가입 버튼 -->
+	            <div class="form-group2">
+	               <input type="button" value="로그인" class="btn" id="loginBtn">
+	            </div>
+	
+	            <div class="form-group2">
+	               <input type="button" value="Id/Pw 찾기" class="btn"
+	                  onclick="location.href='Id/pw찾는 페이지'">
+	            </div>
+	
+	            <div class="form-group2">
+	               <input type="button" value="회원가입" class="btn" onclick="location.href='registerform.action'">
+	            </div>
+	 
             
-         </form>
+         	</form>
       </div>
 
 

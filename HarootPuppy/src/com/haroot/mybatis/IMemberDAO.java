@@ -7,8 +7,6 @@ package com.haroot.mybatis;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 
@@ -52,11 +50,15 @@ public interface IMemberDAO
 	public int agree(String mem_code);	
 
 	// 로그인
-	public MemberDTO login(@Param("mem_id") String mem_id, @Param("mem_pw") String mem_pw) throws SQLException;
+	public MemberDTO loginMem(@Param("mem_id") String mem_id, @Param("mem_pw") String mem_pw) throws SQLException;
 
 	// 아별 추가
 	// 계정상태가 정상인 회원 리스트 조회(강제탈퇴, 일시정지 제외)
 	public ArrayList<MemberDTO> normalList();
+	
+	
+	// 나현  로그인 후 화면에서 닉네임 노출
+	public String searchNickName(String sid_code);
 		
 }
 
