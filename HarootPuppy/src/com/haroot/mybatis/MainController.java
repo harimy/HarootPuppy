@@ -27,6 +27,8 @@ public class MainController
 		// System.out.println(sid_code);
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		model.addAttribute("nickname", dao.searchNickName(sid_code));
+		model.addAttribute("sid_code", sid_code);
+		// sid_code 넘김
 		
 		if(sid_code!=null)
 		{
@@ -38,4 +40,9 @@ public class MainController
 		}
 
 	}
+	
+
+	
+	
+	
 }

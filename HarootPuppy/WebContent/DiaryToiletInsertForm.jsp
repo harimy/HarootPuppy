@@ -52,6 +52,17 @@ String cp = request.getContextPath();
 	display: none;
 }
 
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -104,7 +115,8 @@ $(window).load(function(){
 
 
 	<!-- content 영역 -->
-	<div>
+	<div class="out">
+	<div class="in">
 		<form action="" id="">
 
 			<!-- 공통항목 (시작 시간/ 종료 시간) -->
@@ -178,7 +190,7 @@ $(window).load(function(){
 
 		</form>
 	</div>
-
+	</div>
 
 </body>
 </html>

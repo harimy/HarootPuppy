@@ -28,6 +28,20 @@ public class MainHeaderController
 		model.addAttribute("nickname", dao.searchNickName(sid_code));
 		session.setAttribute("sid_code", sid_code);
 		
+		return "mainmenu.action";
+
+	}
+	
+	@RequestMapping(value="mainmenu.action", method=RequestMethod.POST)
+	public String goToMain2(Model model, HttpServletRequest request, HttpServletResponse response)
+	{
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		
+		// System.out.println(sid_code);
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		session.setAttribute("sid_code", sid_code);
+		
 		return "main.action";
 
 	}

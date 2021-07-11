@@ -41,12 +41,23 @@ function add_private() {
 
 #focusedInput 
 {
-	width: 80px !important;
+	width: 20% !important;
 }
 
 .form-group 
 {
 	margin: 0px auto;
+}
+
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
 }
 </style>
 
@@ -60,7 +71,8 @@ function add_private() {
 
 
 	<!-- content 영역 -->
-	<div>
+	<div class="out">
+	<div class="in">
 		<form action="" id="">
 
 			<!-- 공통항목 (시작 시간/ 종료 시간) -->
@@ -86,7 +98,7 @@ function add_private() {
 				<div class="form-group">
 					<label for="focusedInput"> <span class="input-group-text">제품명</span>
 					</label>
-					 <input class="form-control" id="focusedInput" name="" type="text" placeholder="">
+					 <input class="form-control" id="focusedInput" name="" type="text" >
 				</div>
 				
 			</div>
@@ -115,7 +127,7 @@ function add_private() {
 
 		</form>
 	</div>
-
+	</div>
 
 </body>
 </html>

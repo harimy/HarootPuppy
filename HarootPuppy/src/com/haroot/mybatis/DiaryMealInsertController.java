@@ -1,31 +1,39 @@
 package com.haroot.mybatis;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class DiaryMealController
+public class DiaryMealInsertController
 {
+
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 식사 입력 후 다시 DiaryMain으로 가기
-	@RequestMapping(value="addtodiary.action" , method=RequestMethod.GET)
-	public String addMeal(HttpServletRequest req, ModelMap model)
+	
+	@RequestMapping(value="diaryinsertmeal.action", method = RequestMethod.GET)
+	public String insertmeal(DiaryMealDTO mealDto) throws SQLException 
 	{
 		IDiaryMealDAO mealDao = sqlSession.getMapper(IDiaryMealDAO.class);
 		
-		String pet_code = req.getParameter("pet_code");
-		model.addAttribute("pet_code", pet_code);
+		mealDao.addMeal(mealDto);
+		System.out.println(mealDto);
 		
 		return "redirect:diarymain.action";
 	}
-	
 }

@@ -27,6 +27,17 @@
     margin: 0px auto;
 }
 
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
+}
+
 </style>
 
 <!-- jQuery JS -->
@@ -74,14 +85,14 @@
   - 다이어리 진료(수술) 부분 
 ------------------------------->
 
-<div>
+<div class="out">
 	
 
 	<!-- content 영역 -->
-	<div>
+	<div class="in">
 		<!-- 즐겨찾기 영역 (form 영역 바깥) -->
 		<form action="" id="">
-
+		
 			<!-- 공통항목 (시작 시간) -->
 			<div class="form-time">
 				<label for="focusedtime">시작 시간</label> 
@@ -157,7 +168,8 @@
 			<br><br><br> 
 			<input type="reset" value="취소" class="btn btn-outline-secondary"> 
 			<input type="button" value="저장" class="btn btn-secondary" onclick="">
-
+		
+		</div>
 		</form>
 	</div>
 
@@ -165,7 +177,7 @@
 	<div>
 		<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
 	</div>
-</div>
+
 
 
 </body>

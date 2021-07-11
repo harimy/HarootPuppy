@@ -11,7 +11,6 @@ String cp = request.getContextPath();
 <title>DiaryNutrientsInsertForm.jsp</title>
 <style type="text/css">
 .container-fluid {
-	border: 1px solid;
 	border-width: 2px;
 	background-color: #E6E6E6;
 	padding: 50px;
@@ -44,6 +43,17 @@ String cp = request.getContextPath();
 	flex-direction: row;
 	flex-wrap: wrap;
 	align-content: space-between;
+}
+
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
 }
 </style>
 
@@ -103,10 +113,10 @@ String cp = request.getContextPath();
   - 다이어리 영양제 입력폼
 ------------------------------->
 
-	<div>
+	<div class="out">
 
 		<!-- content 영역 -->
-		<div>
+		<div class="in">
 			<!-- 즐겨찾기 영역 (form 영역 바깥) -->
 			<form action="" id="">
 
@@ -136,7 +146,8 @@ String cp = request.getContextPath();
 
 				<!-- content 영역 -->
 				<!-- 즐겨찾기 -->
-				<div class="container-fluid favorite" id="privateBlock">
+				<div class="container-fluid favorite" id="privateBlock" 
+				style="background-color: powderblue; width: 600px; height: 300px;">
 					즐겨찾기&nbsp; <select name="favorite">
 						<option value="mirivogi">미리보기</option>
 					</select> <br> <br>

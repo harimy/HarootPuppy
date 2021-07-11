@@ -18,16 +18,6 @@
 		WHERE ASK_READ IS NULL
 	</select>
 	
-	<insert id="add">
-	<!-- 
-	INSERT INTO TBL_STUDENT(SID, NAME, TEL)
-	VALUES(#{sid}, #{name}, #{tel});
-	 -->
-	<!-- INSERT INTO TBL_STUDENT(SID, NAME, TEL)
-	VALUES(#{sid}, '#{name}', '#{tel}') --> 
-	<!-- 홀따옴표로 감싸주는 것이 안전하다 -->
-	</insert>	
-
 	<select id="search" resultType="com.haroot.mybatis.AskDTO">
 		<!-- SELECT SID, NAME, TEL
 		FROM TBL_STUDENT
@@ -67,6 +57,7 @@
 	, ASK_READ
 	FROM ASKVIEW
 	WHERE ASK_READ IS NULL
+	</select>
 	
 	<select id="getReadData" parameterType="java.lang.Integer" resultType="com.haroot.mybatis.AskDTO">
 		SELECT *

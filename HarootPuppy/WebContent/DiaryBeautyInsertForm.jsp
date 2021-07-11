@@ -12,7 +12,6 @@ String cp = request.getContextPath();
 <style type="text/css">
 .container-fluid 
 {
-	border: 1px solid;
 	border-width: 2px;
 	background-color: #E6E6E6;
 	padding: 50px;
@@ -47,6 +46,16 @@ String cp = request.getContextPath();
 	align-content: space-between;
 }
 
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
+}
 
 </style>
 
@@ -103,7 +112,8 @@ String cp = request.getContextPath();
   - 다이어리 미용 입력폼
 ------------------------------->
 
-<div>
+<div class="out">
+<div class="in">
 
 	<!-- content 영역 -->
 	<div>
@@ -159,7 +169,8 @@ String cp = request.getContextPath();
 		
 			<!-- content 영역 -->
 			<!-- 즐겨찾기 -->
-			<div class="container-fluid favorite" id="privateBlock">
+			<div class="container-fluid favorite" id="privateBlock"
+			style="background-color: powderblue; width: 600px; height: 300px;">
 				즐겨찾기&nbsp; <select name="favorite">
 					<option value="mirivogi">미리보기</option>
 				</select> <br>
@@ -216,7 +227,7 @@ String cp = request.getContextPath();
 		<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
 	</div>
 </div>
-
+</div>
 
 
 

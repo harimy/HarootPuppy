@@ -53,7 +53,16 @@ label
 	/* 아이콘 사이 간격 */
 	margin: 100px;
 }
+.diaryMenu
+{
+	width:100%;
+	text-align: center;
+}
 
+.in
+{
+	display:inline-block;
+}
 </style>
 
 </head>
@@ -62,6 +71,7 @@ label
 	<!-- 기본관리 > 상태 메인 -->
 	<!-- 체중, 기분 -->
 	<div class="diaryMenu">
+	<div class="in">
 		<label for="weight" class="icons" onclick="">
 			<img class="diaryIcon" src="<%=cp%>/images/icons/main/scale.png"
 			alt="weight" id="weight" title="체중">
@@ -74,7 +84,7 @@ label
 		</label>
 		
 	</div>
-
+	</div>
 
 </body>
 </html>

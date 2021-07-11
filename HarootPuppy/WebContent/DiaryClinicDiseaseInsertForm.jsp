@@ -27,6 +27,17 @@
     margin: 0px auto;
 }
 
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
+}
+
 </style>
 
 <!-- jQuery JS -->
@@ -78,7 +89,8 @@
 	
 
 	<!-- content 영역 -->
-	<div>
+	<div class="out">
+	<div class="in">
 		<!-- 즐겨찾기 영역 (form 영역 바깥) -->
 		<form action="" id="">
 
@@ -158,6 +170,7 @@
 			<input type="reset" value="취소" class="btn btn-outline-secondary"> 
 			<input type="button" value="저장" class="btn btn-secondary" onclick="">
 
+		</div>
 		</form>
 	</div>
 
@@ -166,7 +179,6 @@
 		<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
 	</div>
 </div>
-
 
 </body>
 </html>

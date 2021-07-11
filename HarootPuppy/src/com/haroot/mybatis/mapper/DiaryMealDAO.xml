@@ -3,22 +3,18 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.haroot.mybatis.IPetDAO"> <!-- 부모 노릇을 할 인터페이스 -->
+<mapper namespace="com.haroot.mybatis.IDiaryMealDAO"> <!-- 부모 노릇을 할 인터페이스 -->
 	
-	<!-- 다이어리 식사 입력 프로시저 호출 -->
+	<!-- 다이어리 식사 (meal) 등록 프로시저 호출 -->
 	<insert id="addMeal" statementType="CALLABLE">
 		{
-       	 	call PRC_DIARY_MEAL_INSERT(#{FAVORITE_NAME}, #{MEAL_NAME}, #{MEAL_AMOUNT}, #{MEAL_TYPE}
-       	 								, #{COMMON_MEMO}, #{COMMON_PHOTO}, #{SID_CODE}, #{PET_CODE}
-       	 								, #{COMMON_START}, #{COMMON_END})
-	    }
+       	 	call PRC_DIARY_MEAL_INSERT(#{favorite_name,jdbcType=VARCHAR},#{common_start},#{common_end},#{meal_name},#{meal_amount},#{meal_type},#{common_memo,jdbcType=VARCHAR},#{common_photo,jdbcType=VARCHAR},#{sid_code},#{pet_code})
+       	}
 	</insert>
 	
+<!-- <select id="timelineView" resultType="com.haroot.mybatis.DiaryMealDTO">
 	
-	<select id="search_petCode" parameterType = "java.lang.String" resultType="java.lang.String">
-		SELECT PET_CODE
-		FROM TBL_PET
-		WHERE PET_CODE = ${PET_CODE}
 	</select>
+ -->
 	
 </mapper>

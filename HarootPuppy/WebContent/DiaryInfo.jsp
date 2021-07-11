@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	request.setCharacterEncoding("UTF-8");
+   request.setCharacterEncoding("UTF-8");
 String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ String cp = request.getContextPath();
 
 <!-- jQuery JS -->
 <script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
+   src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <!-- jQuery-UI CSS -->
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
@@ -39,13 +39,14 @@ String cp = request.getContextPath();
 
 
 
-ul, li{
+.timeLineUl, .timeLineLi
+{
   list-style: none;
   padding: 0;
 }
 
 
-li:before {
+.timeLineLi:before {
     content: "";
     width: 15px;
     height: 15px;
@@ -57,7 +58,7 @@ li:before {
     top: 0px;
 }
 
-.container{
+.timeContainer{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,22 +67,24 @@ li:before {
   
   padding: 3rem 0;
 }
-.wrapper{
+.timeWrapper{
   background: #eaf6ff;
   padding: 2rem;
   border-radius: 15px;
   width: 500px;
 }
-h1{
+
+#h1Time{
   font-size: 1.1rem;
   font-family: sans-serif;
 }
+
 .sessions{
   margin-top: 2rem;
   border-radius: 12px;
   position: relative;
 }
-li{
+li.timeLineLi{
   border-left: 3px solid #fed22f;
   padding-bottom: 1.5rem;
   position: relative;
@@ -126,28 +129,31 @@ li{
   @include mobile-only{
     font-size: .9rem;
   }
+}  
+  
+  
 }
 
-.cardImage {
-	border: 5px solid #ffc107;
-	-webkit-border-radius: 50px;
-	max-width: 200px;
-	height: 200px;
-	margin: 0px auto;
+.cardImage1 {
+   border: 5px solid #ffc107;
+   -webkit-border-radius: 50px;
+   max-width: 200px;
+   height: 200px;
+   margin: 0px auto;
 }
 
 #print
 {
 text-align: right;
 max-width: 30px;
-	height: 30px;
-	cursor:pointer;
+   height: 30px;
+   cursor:pointer;
 }
 
 .table
 {
-	width: 50%;
-	margin: 0px auto;
+   width: 50%;
+   margin: 0px auto;
 }
 </style>
 
@@ -156,108 +162,110 @@ max-width: 30px;
 <body>
 <jsp:include page="Main.jsp" />
 
-	<!-----------------------------
+   <!-----------------------------
   DiaryInfo.jsp
   - 반려견 정보 보기 페이지
 ------------------------------->
 
-	<div>
-		<!-- 메뉴영역 -->
-		<div>
-			<%-- <c:import url="상단메뉴.jsp"></c:import> --%>
-		</div>
+   <div>
+      <!-- 메뉴영역 -->
+      <div>
+         <%-- <c:import url="상단메뉴.jsp"></c:import> --%>
+      </div>
 
-		<!-- content 영역 -->
-		<div>
-			<!-- 반려견 요약 정보 -->
-			<div style="text-align: center;">
-				<img id="print" src="<%=cp%>/images/icons/main/print.png" onclick="window.print()"><br>
-				<h2>재롱이 정보</h2>
-				<img class="cardImage" src="<%=cp%>/images/puppy1.png"><br>
-				<br><br>
-				<table class="table table-sm">
-					<tr>
-      					<th scope="col">#</th>
-      					<th scope="col">내용</th>
-    				</tr>
-					<tr>
-						<td>이름</td>
-						<td>${list.pet_name }</td>
-					</tr>
-					<tr>
-						<td>생일</td>
-						<td>남</td>
-					</tr>
-					<tr>
-						<td>성별</td>
-						<td>수컷</td>
-					</tr>
-					<tr>
-						<td>성격</td>
-						<td>활발해요 / 사람좋아 / ...  </td>
-					</tr>
-					<tr>
-						<td>반려견등록번호</td>
-						<td>4234234</td>
-					</tr>
-					<tr>
-						<td>품종</td>
-						<td>리트리버</td>
-					</tr>
-					<tr>
-						<td>접종내역</td>
-						<td>광견병 ...</td>
-					</tr>
-					<tr>
-						<td>기저질환</td>
-						<td>없음 </td>
-					</tr>
-				</table>
-				
-				
-				
-			</div>
-			<!-- 타임라인 영역 -->
-			<div class="container">
-				<div class="wrapper">
-					<h1 style="text-align: center;">2021.06.29</h1>
-					<ul class="sessions">
-						<li>
-							<div class="time">09:00 AM</div>
-							<span>산책</span><br>
-							<span>날씨 : 좋음</span><br>
-							<span class="memo">산책하다가 귀여운 강아지 만남!</span>
-						</li>
-						<li>
-							<div class="time">09:30 AM</div>
-							<span>관리명</span><br>
-							<span>관리내용</span><br>
-							<span class="memo">메모</span>
-						</li>
-						<li>
-							<div class="time">09:30 AM</div>
-							<span>관리명</span><br>
-							<span>관리내용</span><br>
-							<span class="memo">메모</span>
-						</li>
-						<li>
-							<div class="time">09:30 AM</div>
-							<span>관리명</span><br>
-							<span>관리내용</span><br>
-							<span class="memo">메모</span>
-						</li>
-						<li></li>
-					</ul>
-				</div>
-			</div>
-			
-		</div>
+      <!-- content 영역 -->
+      <br><br><br><br>
+      <div>
+         <!-- 반려견 요약 정보 -->
+         <div style="text-align: center;">
+            <img id="print" src="<%=cp%>/images/icons/main/print.png" onclick="window.print()"><br>
+            <h2>재롱이 정보</h2>
+            <img style="   border: 5px solid #ffc107;-webkit-border-radius: 50px;
+            max-width: 200px; height: 200px; margin: 0px auto;" src="<%=cp%>/images/puppy1.png"><br>
+            <br><br>
+            <table class="table table-sm">
+               <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">내용</th>
+                </tr>
+               <tr>
+                  <td>이름</td>
+                  <td>${list.pet_name }</td>
+               </tr>
+               <tr>
+                  <td>생일</td>
+                  <td>남</td>
+               </tr>
+               <tr>
+                  <td>성별</td>
+                  <td>수컷</td>
+               </tr>
+               <tr>
+                  <td>성격</td>
+                  <td>활발해요 / 사람좋아 / ...  </td>
+               </tr>
+               <tr>
+                  <td>반려견등록번호</td>
+                  <td>4234234</td>
+               </tr>
+               <tr>
+                  <td>품종</td>
+                  <td>리트리버</td>
+               </tr>
+               <tr>
+                  <td>접종내역</td>
+                  <td>광견병 ...</td>
+               </tr>
+               <tr>
+                  <td>기저질환</td>
+                  <td>없음 </td>
+               </tr>
+            </table>
+            
+            
+            
+         </div>
+         <!-- 타임라인 영역 -->
+         <div class="container timeContainer">
+            <div class="wrapper timeWrapper">
+               <h1 style="text-align: center;" id="h1Time">2021.06.29</h1>
+               <ul class="sessions timeLineUl">
+                  <li class="timeLineLi">
+                     <div class="time">09:00 AM</div>
+                     <span>산책</span><br>
+                     <span>날씨 : 좋음</span><br>
+                     <span class="memo">산책하다가 귀여운 강아지 만남!</span>
+                  </li>
+                  <li class="timeLineLi">
+                     <div class="time">09:30 AM</div>
+                     <span>관리명</span><br>
+                     <span>관리내용</span><br>
+                     <span class="memo">메모</span>
+                  </li>
+                  <li class="timeLineLi">
+                     <div class="time">09:30 AM</div>
+                     <span>관리명</span><br>
+                     <span>관리내용</span><br>
+                     <span class="memo">메모</span>
+                  </li>
+                  <li class="timeLineLi">
+                     <div class="time">09:30 AM</div>
+                     <span>관리명</span><br>
+                     <span>관리내용</span><br>
+                     <span class="memo">메모</span>
+                  </li>
+                  <li class="timeLineLi"></li>
+               </ul>
+            </div>
+         </div><!-- div.container -->
+         
+      </div>
 
-		<!-- 하단 회사 설명 영역 -->
-		<div>
-			<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
-		</div>
-	</div>
+      <!-- 하단 회사 설명 영역 -->
+      <div>
+         <%-- <c:import url="하단메뉴.jsp"></c:import> --%>
+      </div>
+   </div>
 
 </body>
 </html>

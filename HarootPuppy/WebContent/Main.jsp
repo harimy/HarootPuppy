@@ -53,16 +53,19 @@
     a:hover, a:active { text-decoration: none; }
 </style>
 
+
 </head>
 <body>
 
 <jsp:include page="MainHeader.jsp"></jsp:include>
 
+<form action="mainmenu.action" method="post">
+
 <div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">
+
 	<li class="menu1">
-        <a href="diaryselectpet.action">나의 반려견
-        <input type="hidden" value="${sid_code }" name="sid_code"> 
+        <a href="selectpet.action">나의 반려견 
         </a>
     </li>
     <li class="menu2">
@@ -84,12 +87,15 @@
     	<ul class="menu4_s submenu">
             <li style="margin-top: 5px;"><a href="FaqList.jsp">자주하는 질문</a></li>
             <li><a href="AskList.jsp">1:1 질문</a></li>
+            
         </ul> 
     </li>
-
+    
 </ul>
-</div>
 
+
+</div>
+</form>
 
 
 </body>

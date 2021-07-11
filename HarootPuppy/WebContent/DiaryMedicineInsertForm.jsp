@@ -35,7 +35,16 @@ function add_private() {
 
 <style type="text/css">
 
+.out
+{
+	width:100%;
+	text-align: center;
+}
 
+.in
+{
+	display:inline-block;
+}
 
 </style>
 
@@ -89,7 +98,8 @@ function add_private() {
 
 
 
-	<div>
+	<div class="out">
+	<div class="in">
 		<form action="" id="">
 
 			<!-- 공통항목 (시작 시간) -->
@@ -209,6 +219,7 @@ function add_private() {
 			<input type="submit" id="submitBtn" name="submitBtn" value="저장" class="btn btn-secondary" onclick="">
 			
 		</form>
+	</div>
 	</div>
 
 

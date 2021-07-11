@@ -62,15 +62,26 @@
 	text-align:center;
 }
 
+.out
+{
+	width:100%;
+	text-align: center;
+}
 
+.in
+{
+	display:inline-block;
+}
 
 </style>
 
 
 </head>
 <body>
-<div>
+<div class="out">
+<div class="in">
 	<form>
+
 		 	<!-- 공통항목 (시작 시간) -->
 		    <div class="form-time">
 		      <label for="focusedtime">시작 시간</label>
@@ -87,6 +98,7 @@
 		    </div>
 		    
 		    <br><br><br>
+		    
 		    <!-- 공통항목 (메모) -->
 			    <div class="form-floating">
 				  <label for="floatingTextarea"></label>
@@ -112,6 +124,7 @@
 		    <input type="button" value="저장" class="btn btn-secondary" onclick="">
 		    </div>
   </form>
+</div>
 </div>
 
 </body>
