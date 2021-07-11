@@ -94,14 +94,14 @@ $(function()
    width: 100%;
 }
 
-input::placeholder {
+input:placeholder {
    color: transparent;
 }
 
 input:placeholder-shown+label {
    color: #aaa;
    font-size: 14pt;
-   top: 15px;
+   /* top: 15px; */
 }
 
 input:focus+label, label {

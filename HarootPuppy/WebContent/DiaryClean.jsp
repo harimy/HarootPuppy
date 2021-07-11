@@ -27,6 +27,17 @@
 <script type="text/javascript" src="<%=cp%>/js/diary.js"></script>
 
 <style type="text/css">
+
+.container
+{
+	width:100%;
+	text-align: center;
+}
+
+.row
+{
+	display:inline-block;
+}
 </style>
 
 <script type="text/javascript">

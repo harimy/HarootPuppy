@@ -24,7 +24,18 @@
 }
 
 .form-group {
-    margin: 0px auto;
+    margin: 0px 0px 0px;
+}
+
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
 }
 
 </style>
@@ -78,22 +89,22 @@
 	
 
 	<!-- content 영역 -->
-	<div>
+	<div class="out">
+	<div class="in">
 		<!-- 즐겨찾기 영역 (form 영역 바깥) -->
-		<form action="" id="">
 
 			<!-- 공통항목 (시작 시간) -->
 			<div class="form-time">
 				<label for="focusedtime">시작 시간</label> 
 				<input type="time" class="focusedInput form-time-control" id="start1">
 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp; <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
 				<!-- 공통항목 (종료 시간) -->
 				<label for="focusedtime">종료 시간</label> 
 				<input type="time" class="focusedInput form-time-control" id="end1">
 			</div>
-			
+		
 			<!-- 병원명  -->
 			<div class="form-group hospitalName">
 				<label for="focusedInput"> 
@@ -150,14 +161,14 @@
 			<input type="reset" value="취소" class="btn btn-outline-secondary"> 
 			<input type="button" value="저장" class="btn btn-secondary" onclick="">
 
-		</form>
+		</div>
 	</div>
 
 	<!-- 하단 회사 설명 영역 -->
 	<div>
 		<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
 	</div>
-</div>
+	</div>
 
 
 </body>

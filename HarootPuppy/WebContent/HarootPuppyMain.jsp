@@ -142,11 +142,12 @@
 		<div class="mainButtonArea">	
 				
 			<button class="HarootMain button1" 
-			onclick="location.href='DiaryMain.jsp'">
+			onclick="location.href='diaryselectpet.action'">
 			<p style="color:#FFFFFF; font-size:20px;
 			font-weight:bold;">${ nickname}님! 반려견의 매일을
 			<br>기록해보세요💌</p>
-			</button>						
+			</button>
+									
 			
 			<button class="HarootMain button2"
 			onclick="location.href='WalkMain.jsp'">

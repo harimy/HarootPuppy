@@ -59,6 +59,17 @@ label
 	margin: 100px;
 }
 
+.container
+{
+	width:100%;
+	text-align: center;
+}
+
+.row
+{
+	display:inline-block;
+}
+
 
 /* 탭 관련 css */
 	.nav-tabs { border-bottom: 2px solid #DDD; }

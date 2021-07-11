@@ -17,7 +17,7 @@
 		SELECT COUNT(*)
 		FROM ASKVIEW
 		WHERE ASK_READ IS NULL
-  </select>
+    </select>
 
 	<select id="search" resultType="com.haroot.mybatis.AskDTO">
 		SELECT SID, NAME, TEL
@@ -43,6 +43,7 @@
 	FROM ASKVIEW
 	WHERE ASK_READ IS NULL
 	</select>
+    
 	<select id="getReadData" parameterType="java.lang.Integer" resultType="com.haroot.mybatis.AskDTO">
 		SELECT *
 		FROM ASKVIEW

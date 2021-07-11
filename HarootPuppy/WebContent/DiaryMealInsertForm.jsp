@@ -29,11 +29,12 @@ String cp = request.getContextPath();
 <script type="text/javascript">
 	function add_private() 
 	{
-		var inputString = prompt('즐겨찾기 이름을 입력하세요'); 
-		alert(inputString)
+		var favorite_name = prompt('즐겨찾기 이름을 입력하세요'); 
+		alert(favorite_name);
+
 	};
 	
-	$(function()
+/* 	$(function()
 	{
 	 $(".final_btn").click(function()
 		{
@@ -43,11 +44,13 @@ String cp = request.getContextPath();
 		
 		});
 	 
-	});
+	}); */
 
 	
 </script>
 <style type="text/css">
+
+
 .form-control, #focusedInput {
 	display: inline !important;
 }
@@ -127,25 +130,17 @@ String cp = request.getContextPath();
 	display: block;
 }
 
-.stars #five:checked ~ .result:before {
-	content: "I love it ";
+.out
+{
+	width:100%;
+	text-align: center;
 }
 
-.stars #four:checked ~ .result:before {
-	content: "I like it ";
+.in
+{
+	display:inline-block;
 }
 
-.stars #three:checked ~ .result:before {
-	content: "It's good ";
-}
-
-.stars #two:checked ~ .result:before {
-	content: "I don't like it ";
-}
-
-.stars #one:checked ~ .result:before {
-	content: "I hate it ";
-}
 </style>
 
 
@@ -155,16 +150,14 @@ String cp = request.getContextPath();
   DiaryMealInsertForm.jsp
   - 페이지 설명
 ------------------------------->
-
-
-
-
-	<div>
-		<form action="" id="">
+	<div class="out">
+	<div class="in">
+	<!-- <form action="" id="" method="post"> -->	
 
 			<!-- 공통항목 (시작 시간) -->
 			<div class="form-time">
-				<label for="focusedtime">시작 시간</label> <input type="time"
+				<label for="focusedtime">시작 시간</label> 
+				<input type="time" name="common_start"
 					class="focusedInput form-time-control" id="start1">
 
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -172,7 +165,8 @@ String cp = request.getContextPath();
 
 				<!-- 공통항목 (종료 시간) -->
 
-				<label for="focusedtime">종료 시간</label> <input type="time"
+				<label for="focusedtime">종료 시간</label> 
+				<input type="time" name="common_end"
 					class="focusedInput form-time-control" id="end1">
 			</div>
 			
@@ -184,22 +178,26 @@ String cp = request.getContextPath();
 			<!-- 즐겨찾기 영역 -->
 			<div style="background-color: powderblue; width: 450px; height: 200px;">
 				<div class="form-group">
+				<input class="form-control" name="favorite_name" type="hidden" >
+				</div>
+				
+				<div class="form-group">
 				<label for="focusedInput"> <span class="input-group-text" id="">사료이름</span> </label> 
-				<input class="form-control" id="focusedInput" type="text" placeholder="">
+				<input class="form-control" id="focusedInput" name="meal_name" type="text" placeholder="사료 이름">
 				</div>
 				<div class="form-group">
 				<label for="focusedInput"> 
-				<span class="input-group-text" id="">사료양</span>
+				<span class="input-group-text" id="meal_amount">사료양</span>
 				</label> <input class="form-control" id="focusedInput" type="text"
-					placeholder="숫자만 입력하세요">g
+					placeholder="숫자만 입력하세요" name="meal_amount">g
 				</div>
 				
 				<span class="input-group-text form-control" id="">사료 종류</span>
-				<input type="radio" name="mealKind" id="dryMeal" >
+				<input type="radio" name="meal_type" id="dryMeal" >
 				<label for="dryMeal">건식</label>
-				<input type="radio" name="mealKind" id="wetMeal" >
+				<input type="radio" name="meal_type" id="wetMeal" >
 				<label for="wetMeal">습식</label>
-				<input type="radio" name="mealKind" id="freshMeal" >
+				<input type="radio" name="meal_type" id="freshMeal" >
 				<label for="freshMeal">생식</label>
 				
 			</div>
@@ -233,7 +231,7 @@ String cp = request.getContextPath();
 			<div style="display: block !important;">
 				<div>
 					<label for="floatingTextarea"></label>
-					<textarea class="form-control" placeholder="특이사항(메모)"
+					<textarea class="form-control" placeholder="특이사항(메모)" name="common_memo"
 						id="floatingTextarea" style="width: 300px; height: 100px;"></textarea>
 					<br>
 				</div>
@@ -241,7 +239,8 @@ String cp = request.getContextPath();
 
 			<!-- 공통항목 (사진 첨부) -->
 			<input type="file" name="profile_pt" id="profile_pt"
-				onchange="previewImage(this,'View_area')">
+				onchange="previewImage(this,'View_area')" 
+				name="common_photo">
 			<!-- 사진 미리보기 -->
 			<div id="View_area"></div>
 
@@ -252,11 +251,20 @@ String cp = request.getContextPath();
 			<br> <input type="reset" value="취소"
 				class="btn btn-outline-secondary"> 
 				<button type="submit"
-				value="${pet_code }" class="btn btn-secondary final_btn" >저장</button>
+				onclick="location.href='diaryinsertmeal.action'" 
+				class="btn btn-secondary final_btn" >저장</button> 
+				
+			<div>
+				<input type="hidden" value="sid_code" name="sid_code">
+			</div>
+			
+			<div>
+				<input type="hidden" value="pet_code" name="pet_code">
+			</div>
 
-		</form>
+		<!-- </form> -->
 	</div>
-
+	</div>
 
 </body>
 </html>

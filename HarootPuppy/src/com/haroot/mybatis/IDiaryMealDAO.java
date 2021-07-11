@@ -16,10 +16,7 @@ public interface IDiaryMealDAO
 	
 	// 식사 데이터 리스트 출력
 	public ArrayList<DiaryMealDTO> list() throws SQLException;
-	   
-	// 식사 데이터 확인(bath_code를 활용하여 배변 정보 검색)
-	public DiaryMealDTO searchMeal(String mealDto) throws SQLException;
-	
-	// pet_code 찾기
-	public String search_petCode (String pet_code) throws SQLException;
+	  	
+	// timeline에 출력하기 위한 정보들 정리
+	public DiaryMealDTO timelineView() throws SQLException;
 }

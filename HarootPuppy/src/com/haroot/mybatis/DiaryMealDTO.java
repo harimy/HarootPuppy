@@ -11,8 +11,34 @@ public class DiaryMealDTO
 				, meal_name				// 사료명
 				, unit_code				// 급여단위코드
 				, unit_content			// 급여단위내용
-				, meal_code;				// 사료입력코드
+				, meal_code				// 사료입력코드
 				
+				, favorite_name			// 즐겨찾기 이름
+				, favorite_date 		// 즐찾 생성 날짜
+				, common_start			// 공통 시작시간
+				, common_end;			// 공통 끝 시간
+	
+				
+	public String getCommon_start()
+	{
+		return common_start;
+	}
+
+	public void setCommon_start(String common_start)
+	{
+		this.common_start = common_start;
+	}
+
+	public String getCommon_end()
+	{
+		return common_end;
+	}
+
+	public void setCommon_end(String common_end)
+	{
+		this.common_end = common_end;
+	}
+
 	private int meal_amount;			// 사료양
 	
 	
@@ -115,6 +141,26 @@ public class DiaryMealDTO
 	public void setCommonDto(DiaryCommonDTO commonDto)
 	{
 		this.commonDto = commonDto;
+	}
+
+	public String getFavorite_name()
+	{
+		return favorite_name;
+	}
+
+	public void setFavorite_name(String favorite_name)
+	{
+		this.favorite_name = favorite_name;
+	}
+
+	public String getFavorite_date()
+	{
+		return favorite_date;
+	}
+
+	public void setFavorite_date(String favorite_date)
+	{
+		this.favorite_date = favorite_date;
 	}
 	
 	

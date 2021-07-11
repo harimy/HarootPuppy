@@ -45,6 +45,17 @@
     margin: 0px auto;
 }
 
+.container
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
+}
+
 </style>
 
 </head>
@@ -59,6 +70,7 @@
 		<!-- content 영역 -->
 		
 		<div class="container">
+		<div class="in">
 		  <form action="" id="">
 		  	
 		  	<!-- input -->
@@ -90,7 +102,7 @@
 		    
 		  </form>
 		</div>
-
+		</div>
 
 </body>
 </html>

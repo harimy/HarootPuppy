@@ -53,6 +53,17 @@ function add_private() {
 	align-content: space-between;
 }
 
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
+}
+
 /* star rating CSS */
 @import
 	url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap')
@@ -158,7 +169,8 @@ function add_private() {
 
 
 
-	<div>
+	<div class="out">
+	<div class="in">
 		<form action="" id="">
 
 			<!-- 공통항목 (시작 시간) -->
@@ -251,6 +263,7 @@ function add_private() {
 			<input type="button" id="submitBtn" name="submitBtn" value="저장" class="btn btn-secondary" onclick="">
 			
 		</form>
+	</div>
 	</div>
 
 

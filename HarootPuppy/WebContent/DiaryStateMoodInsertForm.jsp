@@ -39,6 +39,16 @@ String cp = request.getContextPath();
 	margin: 0px auto;
 }
 
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
+}
 
 </style>
 
@@ -57,7 +67,8 @@ String cp = request.getContextPath();
 
 
 	<!-- input -->
-	<div>
+	<div class="out">
+	<div class="in">
 		<form action="" id="">
 			
 			<!-- 기분 상태 나열, 이모지와 글자 클릭하면 라디오버튼 체크 -->
@@ -143,7 +154,7 @@ String cp = request.getContextPath();
 
 		</form>
 	</div>
-
+	</div>
 
 </body>
 </html>
