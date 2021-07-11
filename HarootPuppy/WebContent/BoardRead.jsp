@@ -71,10 +71,11 @@ body
 		</div>
 	</div>
 	<br>
-	<div>
+	<div style="display: inline-block;">
 		<textarea rows="3" cols="112" style="float: left; width: 807px;">댓글을 입력해주세요.</textarea>
 		<input type="button" value="등록" id="submitBtn" class="submitbtn">
 	</div>
+	
 	<br>
 	
 	<div class="bbsArticle_bottomLine" style="width: 80%;">

@@ -22,10 +22,11 @@
 <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 
 <style type="text/css">
-	body
+	/* body
 	{
 		margin: 0px !important;
-	}
+	} 
+	*/
 	 
 	a.link { text-decoration: none; color: black; }
     a.link:visited { text-decoration: none; }
@@ -73,12 +74,7 @@
     	display: inline-block;
     	margin: 20px;
     }
-    
-    #bodyCss
-    {
-    	font-size: 16px;
-    }
-    
+  
     .bold
     {
     	font-weight: bold;
@@ -150,7 +146,7 @@
 						<ul>
 							
 							<li>
-								<a href="" class="link">
+								<a href="adminreportboardlist.action" class="link">
 								미처리 게시물 <span class="spanSt1">${walkNotHandled }</span>건
 								</a>
 							</li>
@@ -195,7 +191,9 @@
 		 	 <c:forEach var="a1" items="${list1}" end="1">
 		 	 	<tr>
 		 	 		<!-- 게시물 제목 -->
-		 	 		<td>${a1.board_title }</td>
+		 	 		<td>
+		 	 			<a class="link" href="adminreportboardview.action?rep_log_code=${a1.rep_log_code }">${a1.board_title }</a>
+		 	 		</td>
 		 	 		<!-- 신고날짜 -->
 		 	 		<td>${a1.rep_log_date }</td>
 		 	 	</tr>
@@ -216,7 +214,9 @@
 			<c:forEach var="a2" items="${list2}" end="1">
 				<tr>
 					<!-- 산책방 제목 -->
-					<td>${a2.walkroom_title }</td>
+					<td>
+					<a class="link" href="">${a2.walkroom_title }</a>
+					</td>
 					<!-- 신고날짜 -->
 					<td>${a2.rep_log_date }</td>
 				</tr>

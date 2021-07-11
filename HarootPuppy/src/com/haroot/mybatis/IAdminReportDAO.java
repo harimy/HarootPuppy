@@ -33,8 +33,14 @@ public interface IAdminReportDAO
 	// 답변 대기중인 고객지원(고객문의) 게시물 수 조회
 	public int askNotHandled() throws SQLException;
 	
-	// 게시판 신고 리스트 (관리자입장) 조회
+	// 게시판 신고 리스트 (관리자입장) 조회 - 전체
 	public ArrayList<AdminReportDTO> adBoardReportList() throws SQLException;
+	// 게시판 신고 리스트 (관리자입장) 조회 - 미처리
+	public ArrayList<AdminReportDTO> adBoardReportList1() throws SQLException;
+	// 게시판 신고 리스트 (관리자입장) 조회 - 신고해제
+	public ArrayList<AdminReportDTO> adBoardReportList2() throws SQLException;
+	// 게시판 신고 리스트 (관리자입장) 조회 - 신고확정
+	public ArrayList<AdminReportDTO> adBoardReportList3() throws SQLException;
 	
 	// 산책메이트 방신고(온라인) 리스트 (관리자입장) 조회
 	public ArrayList<AdminReportDTO> adWalkroomReportList() throws SQLException;
@@ -47,6 +53,12 @@ public interface IAdminReportDAO
 	
 	// 읽지 않은 오프라인신고 의견 수 조회
 	public int offNotRead() throws SQLException;
+	
+	// 특정 신고번호 데이터 조회
+	public AdminReportDTO search(String rep_log_code) throws SQLException;
+	
+	//-- 신고 처리
+	public int handleReport(AdminReportDTO dto) throws SQLException;
 	
 	
 

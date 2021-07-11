@@ -22,10 +22,11 @@
 <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 
 <style type="text/css">
-	body
+	/* body
 	{
 		margin: 0px !important;
-	}
+	} 
+	*/
 	 
 	a.link { text-decoration: none; color: black; }
     a.link:visited { text-decoration: none; }
@@ -73,12 +74,7 @@
     	display: inline-block;
     	margin: 20px;
     }
-    
-    #bodyCss
-    {
-    	font-size: 16px;
-    }
-    
+  
     .bold
     {
     	font-weight: bold;
@@ -150,7 +146,7 @@
 						<ul>
 							
 							<li>
-								<a href="" class="link">
+								<a href="adminreportboardlist.action" class="link">
 								미처리 게시물 <span class="spanSt1">${walkNotHandled }</span>건
 								</a>
 							</li>
@@ -195,7 +191,9 @@
 		 	 <c:forEach var="a1" items="${list1}" end="1">
 		 	 	<tr>
 		 	 		<!-- 게시물 제목 -->
-		 	 		<td>${a1.board_title }</td>
+		 	 		<td>
+		 	 			<a class="link" href="adminreportboardview.action?rep_log_code=${a1.rep_log_code }">${a1.board_title }</a>
+		 	 		</td>
 		 	 		<!-- 신고날짜 -->
 		 	 		<td>${a1.rep_log_date }</td>
 		 	 	</tr>
@@ -216,7 +214,9 @@
 			<c:forEach var="a2" items="${list2}" end="1">
 				<tr>
 					<!-- 산책방 제목 -->
-					<td>${a2.walkroom_title }</td>
+					<td>
+					<a class="link" href="">${a2.walkroom_title }</a>
+					</td>
 					<!-- 신고날짜 -->
 					<td>${a2.rep_log_date }</td>
 				</tr>
@@ -227,25 +227,19 @@
 		 <table class="table table-hover table-striped table-condensed" style="width:480px; ">
 		 	<tr>
 		 		<th>>> 오프라인신고 의견 바로가기</th>
-		 		<th style="text-align: right">NEW 3!</th>
+		 		<th style="text-align: right">
+		 			NEW <span class="spanSt1">${offNotRead }</span>
+		 		</th>
 		 	</tr>
 			<!-- c:forEach 로 한.. 5개까지만 출력 해주자-->
-		 	<tr>
-		 		<td>
-		 			억울하여요
-		 		</td>
-		 		<td>
-		 			2021.05.20
-		 		</td>
-		 	</tr>
-		 	<tr>
-		 		<td>
-		 			결백을 주장합니다
-		 		</td>
-		 		<td>
-		 			2021.05.20
-		 		</td>
-		 	</tr>
+			<c:forEach var="a3" items="${list3}" end="1">
+				<tr>
+					<!-- 오프라인신고 의견 제목 -->
+					<td>${a3.offopinion_title }</td>
+					<!-- 신고날짜 -->
+					<td>${a3.offopinion_date }</td>
+				</tr>
+			</c:forEach>
 		</table>
 	</div>
 </div>	

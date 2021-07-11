@@ -59,31 +59,7 @@ h1>span {
 	@media all and (max-width:724px){
 	.nav-tabs > li > a > span {display:none;}	
 	.nav-tabs > li > a {padding: 5px 5px;}
-	
-/* 기본, 특별관리 관련 css */
-.diaryIcon
-{
-	width: 50px;
-	height: 50px;
-	margin: 0px auto;
 
-}
-
-.diarySpan
-{
-
-	text-align: center;
-}
-
-label
-{
-	text-align: center;
-	cursor:pointer;
-	/* 아이콘 사이 간격 */
-	margin-top: 5px;
-	margin-left: 15px;
-	margin-right: 15px;
-}
 	
 </style>
 
@@ -160,7 +136,7 @@ $(function()
 		});
 		
 
-// 기본관리, 특별관리 탭 클릭 시 timeline 보이지 않게 하기
+		// 기본관리, 특별관리 탭 클릭 시 timeline 보이지 않게 하기
 		$("#basicForm").click(function()
 		{
 			if($("#timeline").css("display") != "none")
@@ -197,8 +173,8 @@ $(function()
 				
 				});
 		
-// 기본관리, 특별관리 탭 클릭 후 (timeline이 아예 안보여짐)
-// timeline div에 insertform이 (AJAX) 보이도록 하기
+		// 기본관리, 특별관리 탭 클릭 후 (timeline이 아예 안보여짐)
+		// timeline div에 insertform이 (AJAX) 보이도록 하기
 		$("#mood").click(function()
 				{
 					if($("#timeline").css("display") == "none")
@@ -328,7 +304,7 @@ $(function()
 			</div>
 			<!-- 정보보기 버튼 -->
 			<div style="text-align: right; margin-right: 500px;">
-				<button type="button" class="btn btn-success" id="petInfo" value="${list.pet_code }">
+				<button type="button" class="btn btn-success" id="petInfo" value="${list.pet_code }" onclick="location.href='DiaryInfo.jsp'">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 						fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
               		<path

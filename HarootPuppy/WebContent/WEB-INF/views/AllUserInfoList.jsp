@@ -76,7 +76,6 @@
 	{
 		$(".btnDelete").click(function()
 		{
-			//alert("삭제되라고~~");
 			
 			if (confirm("정말 삭제하시겠습니까?")) 
 			{

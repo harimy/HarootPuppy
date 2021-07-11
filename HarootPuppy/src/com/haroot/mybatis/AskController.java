@@ -17,7 +17,7 @@ public class AskController
 	private SqlSession sqlSession;
 	
 	@RequestMapping(value="/asklist.action", method=RequestMethod.GET)
-	public String askList(Model model)
+	public String askList(Model model) throws SQLException
 	{
 		String result = null;
 		
@@ -32,7 +32,7 @@ public class AskController
 	}
 	
 	@RequestMapping(value="/askread.action", method=RequestMethod.GET)
-	public String askView(Model model, int ask_code)
+	public String askView(Model model, int ask_code) throws SQLException
 	{
 		String result = null;
 		
@@ -58,7 +58,7 @@ public class AskController
 	}
 	
 	@RequestMapping(value="/askinsert.action", method=RequestMethod.POST)
-	public String askInsert(AskDTO ask)
+	public String askInsert(AskDTO ask) throws SQLException
 	{
 		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
 		

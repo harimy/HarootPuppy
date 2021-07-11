@@ -77,7 +77,7 @@
         </ul>   
     </li>
     <li class="menu2">
-    	<a href="NoticeList.jsp" class="link">공지 관리</a>	
+    	<a href="adminnoticelist.action" class="link">공지 관리</a>	
 
     </li>
     <li class="menu3">
@@ -91,7 +91,7 @@
         </ul>   
     </li>
     <li class="menu4">
-    	<a href="AdminAskList.jsp" class="link">고객 지원</a>
+    	<a href="adminasklist.action" class="link">고객 지원</a>
 
     </li>
 

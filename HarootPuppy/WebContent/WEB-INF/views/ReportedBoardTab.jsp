@@ -30,11 +30,11 @@
 	/* 탭 관련 css */
 	.nav-tabs { border-bottom: 2px solid #DDD; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
-    .nav-tabs > li > a { border: none; color: #ffffff; background: #5a4080; }
-        .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none;  color: #5a4080 !important; background: #fff; }
-        .nav-tabs > li > a::after { content: ""; background: #5a4080; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+    .nav-tabs > li > a { border: none; color: #ffffff; background: #0e6bca; }
+        .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none;  color: #0e6bca !important; background: #fff; }
+        .nav-tabs > li > a::after { content: ""; background: #0e6bca; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
     .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
-	.tab-nav > li > a::after { background: #5a4080 none repeat scroll 0% 0%; color: #fff; }
+	.tab-nav > li > a::after { background: #0e6bca none repeat scroll 0% 0%; color: #fff; }
 	.tab-pane { padding: 15px 0; }
 	.tab-content{padding:20px}
 	.nav-tabs > li  {width:20%; text-align:center;}
@@ -61,31 +61,7 @@
 
 	<!-- content 영역 -->
 	<div id="harootContent">
-	<!-- 기존 파란색 탭 디자인 -->
-		<%-- 
-		<ul class="nav nav-pills nav-justified">
-			<li class="nav-item">
-				<a class="nav-link" data-toggle="tab" href="#home" id="#home">신청완료</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" data-toggle="tab" href="#menu1" id="#menu1">산책예정</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" data-toggle="tab" href="#menu2" id="#menu2">산책완료</a>
-			</li>
-		</ul>
-		<div class="tab-content">
-			<div class="tab-pane container active" id="home">
-				<c:import url="WalkApplyDone.jsp"></c:import>
-			</div>
-			<div class="tab-pane container" id="menu1">
-				<c:import url="WalkScheduled.jsp"></c:import>
-			</div>
-			<div class="tab-pane container" id="menu2">
-				<c:import url="WalkFinished.jsp"></c:import>
-			</div>
-		</div>
-		--%>
+	
 			
 		<div style="text-align: center;">
 			<h1>게시판신고 - 신고된 게시물</h1>
@@ -110,28 +86,34 @@
 		          	<span>신고 해제</span></a>
 		          </li>
 		          <li role="presentation"><a href="#reportMenu4" aria-controls="reportMenu4" role="tab" data-toggle="tab"><i class="fa fa-complete"></i>
-		          	<span>신고 완료</span></a>
+		          	<span>신고 확정</span></a>
 		          </li>
 		        </ul>
 		        
 		        <!-- Tab panes -->
-		        <!-- 그냥 한글로 해놓으면 500에러 나서 산책으로 채워놓음!   -->
 		        <div class="tab-content">
 		          <div role="tabpanel" class="tab-pane active" id="reportMenu1">
-		          	<c:import url="ReportedBoardList.jsp"></c:import>
 		          	<!-- 전체 신고 자리  -->
+		          	<%-- 
+		          	무한로딩 걸림 ㅠ
+		          	<jsp:include page="/adminreportboardlist.action">
+		          		<jsp:param value="1" name="test"/>
+		          	</jsp:include> 
+		          	 --%>
+		          	<c:import url="ReportedBoardList.jsp"></c:import>
 		          </div>
 		          <div role="tabpanel" class="tab-pane" id="reportMenu2">
-		          	<c:import url="ReportedBoardList.jsp"></c:import>
-		          </div>
 					<!-- 미처리 신고 자리  -->
+		          	<c:import url="ReportedBoardList1.jsp"></c:import>
+		          </div>
 		          <div role="tabpanel" class="tab-pane" id="reportMenu3">
-		          	<c:import url="ReportedBoardList.jsp"></c:import>
 		          	<!-- 신고 해제 자리 -->
+		          	<c:import url="ReportedBoardList2.jsp"></c:import>
 		          </div>
 		          <div role="tabpanel" class="tab-pane" id="reportMenu4">
-		          	<c:import url="ReportedBoardList.jsp"></c:import>
 		          	<!-- 신고 완료 자리 -->
+		          	<c:import url="ReportedBoardList3.jsp"></c:import>
+		          	
 		          </div>
 		        </div>
 		      </div>

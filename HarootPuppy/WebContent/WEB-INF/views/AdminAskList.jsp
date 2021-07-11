@@ -100,8 +100,95 @@
 					<td>읽음</td>
 					<td>답변대기</td>
 				</tr>	
+				<tr>
+					<td>다이어리</td>
+					<td><a href="AdminAskReadList.jsp">강아지 정보를 수정하고싶으면 어떻게 하죠?</a></td>
+					<td>뚜냐사랑</td>
+					<td>2021-07-03</td>
+					<td>안읽음</td>
+					<td>답변대기</td>
+				</tr>	
+				<tr>
+					<td>산책</td>
+					<td>산책점수를 높이러면 어떻게 해야 하나요?</td>
+					<td>콩이엄마</td>
+					<td>2021-07-02</td>
+					<td>읽음</td>
+					<td>답변대기</td>
+				</tr>	
+				<tr>
+					<td>다이어리</td>
+					<td><a href="AdminAskReadList.jsp">강아지 정보를 수정하고싶으면 어떻게 하죠?</a></td>
+					<td>뚜냐사랑</td>
+					<td>2021-07-03</td>
+					<td>안읽음</td>
+					<td>답변대기</td>
+				</tr>	
+				<tr>
+					<td>산책</td>
+					<td>산책점수를 높이러면 어떻게 해야 하나요?</td>
+					<td>콩이엄마</td>
+					<td>2021-07-02</td>
+					<td>읽음</td>
+					<td>답변대기</td>
+				</tr>	
+				<tr>
+					<td>다이어리</td>
+					<td><a href="AdminAskReadList.jsp">강아지 정보를 수정하고싶으면 어떻게 하죠?</a></td>
+					<td>뚜냐사랑</td>
+					<td>2021-07-03</td>
+					<td>안읽음</td>
+					<td>답변대기</td>
+				</tr>	
+				<tr>
+					<td>산책</td>
+					<td>산책점수를 높이러면 어떻게 해야 하나요?</td>
+					<td>콩이엄마</td>
+					<td>2021-07-02</td>
+					<td>읽음</td>
+					<td>답변대기</td>
+				</tr>	
+				<tr>
+					<td>다이어리</td>
+					<td><a href="AdminAskReadList.jsp">강아지 정보를 수정하고싶으면 어떻게 하죠?</a></td>
+					<td>뚜냐사랑</td>
+					<td>2021-07-03</td>
+					<td>안읽음</td>
+					<td>답변대기</td>
+				</tr>	
+				<tr>
+					<td>산책</td>
+					<td>산책점수를 높이러면 어떻게 해야 하나요?</td>
+					<td>콩이엄마</td>
+					<td>2021-07-02</td>
+					<td>읽음</td>
+					<td>답변대기</td>
+				</tr>	
+				<tr>
+					<td>다이어리</td>
+					<td><a href="AdminAskReadList.jsp">강아지 정보를 수정하고싶으면 어떻게 하죠?</a></td>
+					<td>뚜냐사랑</td>
+					<td>2021-07-03</td>
+					<td>안읽음</td>
+					<td>답변대기</td>
+				</tr>	
+				<tr>
+					<td>산책</td>
+					<td>산책점수를 높이러면 어떻게 해야 하나요?</td>
+					<td>콩이엄마</td>
+					<td>2021-07-02</td>
+					<td>읽음</td>
+					<td>답변대기</td>
+				</tr>	
 			</table>
+			
 		</div>
+		
+		<div id="footer" style="text-align: center;">
+			<!-- <p>1 Prev 21 22 23 24 25 26 27 28 29 30 Next 63</p> -->
+			<p><span style="font-weight: bold;">1</span> 2 3 4 5 6 7 8 9 10</p>
+		</div>
+		
 	</div>
 
 		<!-- 하단 회사 설명 영역 -->

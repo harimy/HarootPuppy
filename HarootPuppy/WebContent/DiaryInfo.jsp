@@ -39,13 +39,14 @@ String cp = request.getContextPath();
 
 
 
-ul, li{
+.timeLineUl, .timeLineLi
+{
   list-style: none;
   padding: 0;
 }
 
 
-li:before {
+.timeLineLi:before {
     content: "";
     width: 15px;
     height: 15px;
@@ -57,7 +58,7 @@ li:before {
     top: 0px;
 }
 
-.container{
+.timeContainer{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,22 +67,24 @@ li:before {
   
   padding: 3rem 0;
 }
-.wrapper{
+.timeWrapper{
   background: #eaf6ff;
   padding: 2rem;
   border-radius: 15px;
   width: 500px;
 }
-h1{
+
+#h1Time{
   font-size: 1.1rem;
   font-family: sans-serif;
 }
+
 .sessions{
   margin-top: 2rem;
   border-radius: 12px;
   position: relative;
 }
-li{
+li.timeLineLi{
   border-left: 3px solid #fed22f;
   padding-bottom: 1.5rem;
   position: relative;
@@ -126,9 +129,12 @@ li{
   @include mobile-only{
     font-size: .9rem;
   }
+}  
+  
+  
 }
 
-.cardImage {
+.cardImage1 {
 	border: 5px solid #ffc107;
 	-webkit-border-radius: 50px;
 	max-width: 200px;
@@ -168,12 +174,14 @@ max-width: 30px;
 		</div>
 
 		<!-- content 영역 -->
+		<br><br><br><br>
 		<div>
 			<!-- 반려견 요약 정보 -->
 			<div style="text-align: center;">
 				<img id="print" src="<%=cp%>/images/icons/main/print.png" onclick="window.print()"><br>
 				<h2>재롱이 정보</h2>
-				<img class="cardImage" src="<%=cp%>/images/puppy1.png"><br>
+				<img style="	border: 5px solid #ffc107;-webkit-border-radius: 50px;
+				max-width: 200px; height: 200px; margin: 0px auto;" src="<%=cp%>/images/puppy1.png"><br>
 				<br><br>
 				<table class="table table-sm">
 					<tr>
@@ -218,38 +226,38 @@ max-width: 30px;
 				
 			</div>
 			<!-- 타임라인 영역 -->
-			<div class="container">
-				<div class="wrapper">
-					<h1 style="text-align: center;">2021.06.29</h1>
-					<ul class="sessions">
-						<li>
+			<div class="container timeContainer">
+				<div class="wrapper timeWrapper">
+					<h1 style="text-align: center;" id="h1Time">2021.06.29</h1>
+					<ul class="sessions timeLineUl">
+						<li class="timeLineLi">
 							<div class="time">09:00 AM</div>
 							<span>산책</span><br>
 							<span>날씨 : 좋음</span><br>
 							<span class="memo">산책하다가 귀여운 강아지 만남!</span>
 						</li>
-						<li>
+						<li class="timeLineLi">
 							<div class="time">09:30 AM</div>
 							<span>관리명</span><br>
 							<span>관리내용</span><br>
 							<span class="memo">메모</span>
 						</li>
-						<li>
+						<li class="timeLineLi">
 							<div class="time">09:30 AM</div>
 							<span>관리명</span><br>
 							<span>관리내용</span><br>
 							<span class="memo">메모</span>
 						</li>
-						<li>
+						<li class="timeLineLi">
 							<div class="time">09:30 AM</div>
 							<span>관리명</span><br>
 							<span>관리내용</span><br>
 							<span class="memo">메모</span>
 						</li>
-						<li></li>
+						<li class="timeLineLi"></li>
 					</ul>
 				</div>
-			</div>
+			</div><!-- div.container -->
 			
 		</div>
 

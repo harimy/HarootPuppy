@@ -24,7 +24,7 @@ public class AskDTO
    , ask_photo             // 문의사진
    , ask_state_code        // 문의처리상태코드
    , ask_state_content     // 문의처리상태내용 (미처리, 답변완료)
-   , ask_read;              // 열람날짜
+   , ask_read;             // 열람날짜
 
 	public String getAsk_code()
 	{

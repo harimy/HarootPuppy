@@ -68,7 +68,7 @@
 		    , REP_LOG_DATE
 		    , REP_STATE_CODE
 		    , REP_STATE_CONTENT
-		    , REP_LOG_READ
+            , LOG_READ_STATE
 		    , BOARD_REP_CODE
 		    , BOARD_CODE
 		    , BOARD_WRITER
@@ -76,7 +76,79 @@
 		    , BOARD_CONTENT
 		FROM REPORTVIEW
 		WHERE REP_TYPE_CODE = 1
-		ORDER BY REP_LOG_CODE 
+		ORDER BY REP_LOG_CODE DESC
+		
+	</select>
+	
+	<!-- 게시판 게시물 신고리스트 출력 : 미처리 상태 1 -->
+	<select id="adBoardReportList1" resultType="com.haroot.mybatis.AdminReportDTO">
+		
+		SELECT REP_LOG_CODE
+		    , REP_TYPE_CODE
+		    , REP_TYPE_CONTENT
+		    , SID_CODE
+		    , REPORTER_NICKNAME
+		    , REP_LOG_DATE
+		    , REP_STATE_CODE
+		    , REP_STATE_CONTENT
+            , LOG_READ_STATE
+		    , BOARD_REP_CODE
+		    , BOARD_CODE
+		    , BOARD_WRITER
+		    , BOARD_TITLE
+		    , BOARD_CONTENT
+		FROM REPORTVIEW
+		WHERE REP_TYPE_CODE = 1
+          AND REP_STATE_CODE = 1
+		ORDER BY REP_LOG_CODE DESC
+		
+	</select>
+	
+	<!-- 게시판 게시물 신고리스트 출력 : 신고해제 상태 2 -->
+	<select id="adBoardReportList2" resultType="com.haroot.mybatis.AdminReportDTO">
+		
+		SELECT REP_LOG_CODE
+		    , REP_TYPE_CODE
+		    , REP_TYPE_CONTENT
+		    , SID_CODE
+		    , REPORTER_NICKNAME
+		    , REP_LOG_DATE
+		    , REP_STATE_CODE
+		    , REP_STATE_CONTENT
+            , LOG_READ_STATE
+		    , BOARD_REP_CODE
+		    , BOARD_CODE
+		    , BOARD_WRITER
+		    , BOARD_TITLE
+		    , BOARD_CONTENT
+		FROM REPORTVIEW
+		WHERE REP_TYPE_CODE = 1
+          AND REP_STATE_CODE = 2
+		ORDER BY REP_LOG_CODE DESC
+		
+	</select>
+	
+	<!-- 게시판 게시물 신고리스트 출력 : 신고확정 상태 3 -->
+	<select id="adBoardReportList3" resultType="com.haroot.mybatis.AdminReportDTO">
+		
+		SELECT REP_LOG_CODE
+		    , REP_TYPE_CODE
+		    , REP_TYPE_CONTENT
+		    , SID_CODE
+		    , REPORTER_NICKNAME
+		    , REP_LOG_DATE
+		    , REP_STATE_CODE
+		    , REP_STATE_CONTENT
+            , LOG_READ_STATE
+		    , BOARD_REP_CODE
+		    , BOARD_CODE
+		    , BOARD_WRITER
+		    , BOARD_TITLE
+		    , BOARD_CONTENT
+		FROM REPORTVIEW
+		WHERE REP_TYPE_CODE = 1
+          AND REP_STATE_CODE = 3
+		ORDER BY REP_LOG_CODE DESC
 		
 	</select>
 	
@@ -116,14 +188,14 @@
 		  AND REP_TYPE_CODE = 3
 	</select>
 	
+	<!-- 읽지않은 오프라인 신고 수 조회 -->
 	<select id="offNotRead" resultType="java.lang.Integer">
 		SELECT COUNT(*)
 		FROM REPORTVIEW
 		WHERE REP_LOG_READ IS NULL
 		  AND REP_TYPE_CODE = 4
 	</select>
-	 
-	 
+	
 	<!-- 
 	<insert id="add"> memberDTO 클래스의 #{ 속성 } 으로 넘김
 		INSERT INTO TBL_MEMBERLIST(MID, NAME, TELEPHONE)
@@ -142,4 +214,36 @@
 		WHERE MID = #{mid}
 	</update> 
 	-->
+	
+	<!-- 신고내역코드로 특정 신고 조회 -->
+	<select id="search" resultType="com.haroot.mybatis.AdminReportDTO">
+		
+		SELECT REP_LOG_CODE
+		    , REP_TYPE_CODE
+		    , REP_TYPE_CONTENT
+		    , SID_CODE
+		    , REPORTER_NICKNAME
+		    , REP_LOG_DATE
+		    , REP_STATE_CODE
+		    , REP_STATE_CONTENT
+            , LOG_READ_STATE
+		    , BOARD_REP_CODE
+		    , BOARD_CODE
+		    , BOARD_WRITER
+		    , BOARD_TITLE
+		    , BOARD_CONTENT
+		FROM REPORTVIEW
+		WHERE REP_LOG_CODE = #{rep_log_code}
+		
+	</select>
+	
+	<!-- 신고 처리 (미처리 → 신고해제, 신고확정) -->
+	<update id="handleReport">
+		UPDATE TBL_REPORT_LOG
+		SET REP_STATE_CODE = #{rep_state_code, jdbcType=VARCHAR}
+		WHERE REP_LOG_CODE IN (SELECT REP_LOG_CODE
+		                         FROM TBL_BOARD_REPORT
+		                        WHERE BOARD_CODE = #{board_code, jdbcType=VARCHAR})
+	</update> 
+	
 </mapper>
