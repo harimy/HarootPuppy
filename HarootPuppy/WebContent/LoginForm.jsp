@@ -137,7 +137,6 @@ input:focus, input:not (:placeholder-shown ) {
   LoginForm.jsp
   - 로그인 폼 페이지
 ------------------------------->
-
 	<div>
 		<!-- 메뉴영역 -->
 		<div id="harootHeader">
@@ -145,9 +144,10 @@ input:focus, input:not (:placeholder-shown ) {
 		</div>
 
 		<!-- content 영역 -->
+		
 		<div id="harootContent" style="height: 700px; width: 100%; text-align: center;">
-
-			<form role="form" action="loginmem.action" method="post" class="loginForm" id="loginForm" name="loginForm">
+		<form role="form" action="loginmem.action" method="POST" class="loginForm" id="loginForm" name="loginForm">
+		
 				<div class= "form-group2" style="float: right;">
 	               <label id="admincheck" > 관리자 
 	               <input type="checkbox" id="admin_check" name="admin_check" value="admin">
@@ -176,8 +176,8 @@ input:focus, input:not (:placeholder-shown ) {
 
 	            <!-- 로그인 / IdPw찾기 / 회원가입 버튼 -->
 	            <div class="form-group2">
-	               <input type="button" value="로그인" class="btn" id="loginBtn">
-	            </div>
+	            <input type="button" value="로그인" class="btn" id="loginBtn">
+	            </div >
 	
 	            <div class="form-group2">
 	               <input type="button" value="Id/Pw 찾기" class="btn"
@@ -189,9 +189,10 @@ input:focus, input:not (:placeholder-shown ) {
 	            </div>
 	 
             
-         	</form>
+      </form>
       </div>
-
+	
+	
 
 
 
@@ -200,7 +201,6 @@ input:focus, input:not (:placeholder-shown ) {
          <c:import url="MainFooter.jsp"></c:import>
       </div>
    </div>
-
 
 
 </body>

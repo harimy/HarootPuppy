@@ -107,7 +107,7 @@
 <br><br>
 
 <div style="text-align: center;">
-	<h1 class="bold">관리자 페이지</h1>
+	<h1 class="bold">${ name} 님의 관리자 페이지</h1>
 	<hr>
 </div>
 

@@ -156,7 +156,7 @@ RegisterForm의 Form이 채워지고
 	<div id="content">
 		<h1>[ 회원가입 ]</h1>
 		<hr />
-	    <form action="memberlist.action" method="POST" id="joinForm" name="joinForm">
+	    <form action="register.action" method="POST" id="joinForm" name="joinForm">
 	        
 	        <input type="hidden" id="mem_code" name="mem_code">
 	        
