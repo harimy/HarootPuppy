@@ -139,3 +139,40 @@ SELECT PARTICIPANTS_CODE
 FROM TBL_PARTICIPANTS
 WHERE ROWNUM=1
 ORDER BY PARTICIPANTS_CODE DESC;
+
+
+-- 반경 계산
+SELECT count(*)
+FROM (
+SELECT ( 6371 * acos( cos( radians( 37.4097995 ) ) * cos( radians( lat) ) * cos( radians( lot ) - radians(127.128697) ) + sin( radians(37.4097995) ) * sin( radians(lat) ) ) ) AS distance
+FROM cf_location
+) DATA
+WHERE DATA.distance < 3;
+
+SELECT count(*)
+FROM (
+SELECT ( 6371 * acos( cos( radians( 37.4097995 ) ) * cos( radians( PET_FAV_LAT ) ) * cos( radians( PET_FAV_LNG ) - radians(127.128697) ) + sin( radians(37.4097995) ) * sin( radians(PET_FAV_LNG) ) ) ) AS distance
+FROM TBL_PET
+) DATA
+WHERE DATA.distance < 3;
+
+SELECT *
+FROM TBL_PET;
+
+SELECT *
+FROM TBL_WALKROOM
+WHERE WALKROOM_CODE = 1;
+
+-- 업데이트 쿼리문
+UPDATE TBL_WALKROOM
+SET AUTO_CODE=1, STYLE_CODE=2, BITE_CODE=0, DESEX_CODE=1, SAMESEX_CODE=0
+  , WALKROOM_MIN=2, WALKROOM_MAX=4
+  , WALKROOM_START=TO_DATE('2021-06-27', 'YYYY-MM-DD')
+  , WALKROOM_END=TO_DATE('2021-06-27', 'YYYY-MM-DD')
+  , WALKROOM_TITLE='함께 산책하실 분?'
+  , WALKROOM_WORDS='같이? 가요?'
+  , WALKROOM_PLACE='안양천 돌다리'
+  , WALKROOM_LATITUE='37. 475694'
+  , WALKROOM_LONGITUDE='126.876209'
+WHERE WALKROOM_CODE=1;
+

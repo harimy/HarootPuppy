@@ -67,7 +67,7 @@
         </a>
     </li>
     <li class="menu2">
-    	<a href="WalkSelectPet.jsp">산책메이트</a>	
+    	<a href="walkroomselect.action">산책메이트</a>	
     	<ul class="menu3_s submenu">
             <li style="margin-top: 5px;"><a href="WalkSelectPet.jsp">산책메이트</a></li>
             <li><a href="WalkHistoryMain.jsp">히스토리</a></li>

@@ -32,6 +32,7 @@
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.css">
 <script type="text/javascript">
 
+
 	$(function()
 	{
 		var checkNum1=0;
@@ -62,12 +63,6 @@
 		    var open = window.open('WalkPlaceSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );	 		
 	 		
 	  }
-
-	
-
-		 
-	 
-
 
 </script>
 
@@ -187,6 +182,7 @@
 	width: 80%;
 	height: 900px;
 	display: inline-block;
+
 }
 
 .petRegisterTable tr
@@ -208,11 +204,8 @@
 
 </style>
 
-
-
-
 </head>
-<body>
+<body onload="initialize()">
 
 <!-----------------------------
    PetAdd.jsp
@@ -237,8 +230,25 @@
 				<th>반려견 사진 선택</th>
 				<td>
 					<div class="petPhoto">
+            /*
+						<input type="file" value="파일 선택" name="petFile" id="petFile"/>
+					 	<div class="select_img"><img src="" /></div>
+					 	<!-- 등록한 사진 미리보는 script -->
+					 	<script type="text/javascript">
+						$("#petFile").change(function(){
+							 if(this.files && this.files[0]) {
+							  var reader = new FileReader;
+							  reader.onload = function(data) {
+							   $(".select_img img").attr("src", data.target.result).width(250);        
+							  }
+							  reader.readAsDataURL(this.files[0]);
+							 }
+						});
+					 	</script>
+             */
 						<input type="file" value="파일 선택" name="upload" id="pet_photo"/>
 					 	<div class="select_img"><img id="img"/></div>					 
+
 					 </div>
 				</td>
 			</tr>
@@ -411,7 +421,7 @@
 	             	<input type="radio" name="bite" id="yes" value="물어요">
 	             	<label for="yes">물어요</label>
 		        </td>
-			</tr>
+			</tr>     
 		</table>
 		
 		<br>
@@ -427,7 +437,7 @@
 
 <br><br><br><br>
 
-<!— 하단 회사 설명 영역 —>
+<!-- 하단 회사 설명 영역 -->
 <div id="harootFooter">
 	<c:import url="MainFooter.jsp"></c:import>
 </div>

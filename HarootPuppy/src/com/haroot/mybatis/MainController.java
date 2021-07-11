@@ -52,7 +52,7 @@ public class MainController
 		}
 
 	}
-	
+
 	@RequestMapping(value="beforemain.action", method=RequestMethod.GET)
 	public String goToMainBefore(Model model)
 	{

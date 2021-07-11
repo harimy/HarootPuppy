@@ -10,7 +10,7 @@
 	<select id="searchPets" parameterType="java.lang.String"  resultType="com.haroot.mybatis.PetDTO">
 		SELECT SID_CODE, PET_CODE, PET_NAME, RELATION_CODE, PET_PHOTO
 		FROM FORPETNAME_VIEW
-		WHERE SID_CODE = 'SID001' 
+		WHERE SID_CODE = #{sid_code}
 		<!-- WHERE SID_CODE =  #{SID_CODE} -->
 	</select>
 	
@@ -18,7 +18,7 @@
 	<select id="petInfo" parameterType="java.lang.String" resultType="com.haroot.mybatis.PetDTO">
 		SELECT PET_CODE, PET_NAME, SID_CODE, RELATION_CODE
 		FROM FORPETNAME_VIEW
-		WHERE PET_CODE = #{PET_CODE}
+		WHERE PET_CODE = #{pet_code}
 		<!-- WHERE SID_CODE = #{PET_CODE} -->
 	</select>
 	

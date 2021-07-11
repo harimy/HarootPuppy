@@ -198,10 +198,10 @@
 			</div>
 			<div class="walkPet">
 				<div>산책할 반려견
-					<input type="button" value="수정">
+					<input type="button" value="수정" onclick="location.href='walkroommain.action'">
 				</div>
 				<div><img class="petImage" src="/HarootPuppy/images/jaerong.jpg"></div>
-				<div>재롱이</div>
+				<div>${pet.pet_name }</div>
 			</div>
 		</div>
 		
@@ -337,6 +337,7 @@
 
 	</div>      
 	
+
 <!-- 하단 회사 설명 영역-->
 <div id="harootFooter">
 	<c:import url="MainFooter.jsp"></c:import>
