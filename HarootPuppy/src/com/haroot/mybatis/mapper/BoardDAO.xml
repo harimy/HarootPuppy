@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haroot.mybatis.IBoardDAO">
+
+	<select id="list" resultType="com.haroot.mybatis.BoardDTO">
+		SELECT *
+		FROM BOARDVIEW
+		<!-- ORDER BY NUM DESC -->
+	</select>
+	
+	<select id="count" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM BOARDVIEW
+	</select>
+	
+	<select id="getMaxNum" resultType="java.lang.Integer">
+		SELECT MAX(BOARD_CODE) AS MAX_NUM
+		FROM TBL_BOARD
+	</select>
+	
+	<!-- BOARD_CODE	BOARD_WRITER BOARD_CATE_CODE BOARD_TITLE BOARD_CONTENT BOARD_PHOTO BOARD_VIEW BOARD_LIKE BOARD_DATE -->
+	<insert id="add">
+		INSERT INTO TBL_BOARD(BOARD_CODE, BOARD_WRITER, BOARD_CATE_CODE, BOARD_TITLE
+		                    , BOARD_CONTENT, BOARD_VIEW, BOARD_LIKE, BOARD_DATE)
+		VALUES(#{board_code}, 'SID006', #{board_cate_code}, #{board_title}
+		       ,#{board_content}, 0, 0, SYSDATE)
+	</insert> 
+	
+	<select id="search" parameterType="map" resultType="com.haroot.mybatis.BoardDTO">
+		SELECT BOARD_CATE_CODE, BOARD_DATE, BOARD_TITLE, BOARD_CONTENT, BOARD_PHOTO
+		FROM BOARDVIEW
+		WHERE BOARD_CODE = #{board_code} AND BOARD_WRITER = #{board_writer}
+	</select>
+	
+	<!-- parameterType="java.lang.Integer"  -->
+	
+	<select id="view" parameterType="map" resultType="com.haroot.mybatis.BoardDTO">
+		SELECT *
+		FROM BOARDVIEW
+		WHERE BOARD_CODE = #{board_code} AND BOARD_WRITER = #{board_writer}
+	</select>
+	
+	<select id="getReadData" parameterType="map" resultType="com.haroot.mybatis.BoardDTO">
+		SELECT *
+		FROM BOARDVIEW
+		WHERE BOARD_CODE = #{board_code} AND BOARD_WRITER = #{board_writer}
+	</select> 
+
+	<update id="modify" parameterType="map">
+		UPDATE TBL_BOARD
+		SET BOARD_CATE_CODE = #{board_cate_code}
+		  , BOARD_DATE = SYSDATE
+		  , BOARD_TITLE = #{board_title}
+		  , BOARD_CONTENT = #{board_content}
+		  , BOARD_PHOTO = #{board_photo, jdbcType=VARCHAR}
+		WHERE BOARD_CODE = #{board_code} AND BOARD_WRITER = #{board_writer}
+	</update>
+	
+	<select id="next">
+		SELECT BOARD_CODE
+		FROM BOARDVIEW
+		WHERE BOARD_CODE = #{board_code} AND BOARD_WRITER = #{board_writer}
+	</select>
+</mapper>
+
+

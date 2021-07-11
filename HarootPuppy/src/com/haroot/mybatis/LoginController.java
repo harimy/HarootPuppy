@@ -16,12 +16,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 @Controller
 public class LoginController
 {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	
+	@RequestMapping(value="login.action", method=RequestMethod.GET)
+	public String login(HttpServletRequest request, HttpSession session, Model model) throws SQLException
+	{
+		String result = "LoginForm.jsp";
+		return result;
+	}
 	@RequestMapping(value="loginmem.action", method=RequestMethod.POST)
 	public String loginM(HttpServletRequest request, HttpSession session, Model model) throws SQLException
 	{
@@ -64,9 +72,10 @@ public class LoginController
 		AdminDTO dto = dao.loginAdmin(admin_id, admin_pw);
 		
 		 if( dto != null) 
-		 {
+		 { 
 			model.addAttribute("admin_code", dto.getAdmin_code());
-			result = "/adminmain.action";
+			session.setAttribute("admin_code", dto.getAdmin_code());
+         result = "/adminheader.action";
 		 }
 		 else 
 		 {
@@ -76,5 +85,23 @@ public class LoginController
       return result; 
 	}
 	
+	@RequestMapping(value="logoutmem.action", method=RequestMethod.GET)
+	public String logoutM(HttpServletRequest request, HttpSession session, Model model) throws SQLException 
+	{
+		
+		String sibal = (String)session.getAttribute("sid_code");
+		System.out.println(sibal);
+      session.removeAttribute("sid_code");
+      return "HarootPuppyMain.jsp";
+	}
+	
+	@RequestMapping(value="logoutadmin.action", method=RequestMethod.GET)
+	public String logoutA(HttpServletRequest request, HttpSession session, Model model) throws SQLException 
+	{
+		
+      session.removeAttribute("amdin_code");
+     
+      return "HarootPuppyMain.jsp";
+	}
 
 }

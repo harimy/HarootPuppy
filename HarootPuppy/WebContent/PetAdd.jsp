@@ -1,9 +1,15 @@
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="javax.servlet.jsp.tagext.TryCatchFinally"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+
 %>
 <!DOCTYPE html>
 <html>
@@ -24,13 +30,43 @@
 <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/menuStyle.css">
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.css">
+<script type="text/javascript">
 
-<!-- 지도 관련 -->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c980959de9d6957591bdf2f69c03ce68&libraries=services"></script>
+
+	$(function()
+	{
+		var checkNum1=0;
+		var checkNum2=0;
+		var checkNum3=0;
+		
+		// js 폴더, css 폴더 파일 확인 
+		// jQuery-UI 캘린더를 불러오는 함수 처리 (datepicker())
+		$("#birthday").datepicker(
+		{
+			dateFormat: "yy-mm-dd"
+			, changeMonth: true
+			, changeYear: true
+		});
+	});
+
+	
+	  
+	 function openAddressChild() 
+	  {
+		    var _width = '650';
+		    var _height = '380';
+		 
+		    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+		    var _left = Math.ceil(( window.screen.width - _width )/2);
+		    var _top = Math.ceil(( window.screen.height - _height )/2); 
+		 
+		    var open = window.open('WalkPlaceSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );	 		
+	 		
+	  }
+
+</script>
 
 <style type="text/css">
-
 #errMsg
 {
 	color: red;
@@ -146,6 +182,7 @@
 	width: 80%;
 	height: 900px;
 	display: inline-block;
+
 }
 
 .petRegisterTable tr
@@ -167,79 +204,6 @@
 
 </style>
 
-
-<script type="text/javascript">
-
-	$(function()
-	{
-		var checkNum1=0;
-		var checkNum2=0;
-		var checkNum3=0;
-		
-		// js 폴더, css 폴더 파일 확인 
-		// jQuery-UI 캘린더를 불러오는 함수 처리 (datepicker())
-		$("#birthday").datepicker(
-		{
-			dateFormat: "yy-mm-dd"
-			, changeMonth: true
-			, changeYear: true
-		});
-	});
-		
-
-    function sample5_execDaumPostcode() {
-        new daum.Postcode
-        ({
-            oncomplete: function(data) 
-            {
-                var addr = data.address; // 최종 주소 변수
-
-                // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("sample5_address").value = addr;
-                // 주소로 상세 정보를 검색
-                geocoder.addressSearch(data.address, function(results, status) 
-                {
-                    // 정상적으로 검색이 완료됐으면
-                    if (status === daum.maps.services.Status.OK) 
-                    {
-                        var result = results[0]; //첫번째 결과의 값을 활용
-
-                        // 해당 주소에 대한 좌표를 받아서
-                        var coords = new daum.maps.LatLng(result.y, result.x);
-                        // 지도를 보여준다.
-                        mapContainer.style.display = "block";
-                        map.relayout();
-                        // 지도 중심을 변경한다.
-                        map.setCenter(coords);
-                        // 마커를 결과값으로 받은 위치로 옮긴다.
-                        marker.setPosition(coords)
-             	 	}
-          		});
-            }
-        }).open();
-    }		
-
-    function initialize()
-	{
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-            level: 5 // 지도의 확대 레벨
-        };
-
-	    //지도를 미리 생성
-	    var map = new daum.maps.Map(mapContainer, mapOption);
-	    //주소-좌표 변환 객체를 생성
-	    var geocoder = new daum.maps.services.Geocoder();
-	    //마커를 미리 생성
-	    var marker = new daum.maps.Marker({
-	        position: new daum.maps.LatLng(37.537187, 127.005476),
-	        map: map
-	    });
-	}
-    
-</script>
-
 </head>
 <body onload="initialize()">
 
@@ -256,7 +220,7 @@
 		
 <!-- content 영역 -->
 <div id="harootContent">
-	<form action="petAddUpload.jsp" method="post" enctype="multipart/form-data" class="petRegisterForm">
+	<form action="photoTest02.jsp" method="post" enctype="multipart/form-data" class="petRegisterForm">
 		<div>
 			<h1>반려견 등록</h1>
 		</div>
@@ -266,6 +230,7 @@
 				<th>반려견 사진 선택</th>
 				<td>
 					<div class="petPhoto">
+            /*
 						<input type="file" value="파일 선택" name="petFile" id="petFile"/>
 					 	<div class="select_img"><img src="" /></div>
 					 	<!-- 등록한 사진 미리보는 script -->
@@ -280,6 +245,10 @@
 							 }
 						});
 					 	</script>
+             */
+						<input type="file" value="파일 선택" name="upload" id="pet_photo"/>
+					 	<div class="select_img"><img id="img"/></div>					 
+
 					 </div>
 				</td>
 			</tr>
@@ -335,9 +304,12 @@
 			<tr>
 				<th>반려견 주소</th>
 				<td>
-					<input type="text" id="sample5_address1" placeholder="반려견 주소를 입력하세요">
-					<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+					<input type="text" id="pet_addr" placeholder="반려견 주소를 입력하세요">
+					<input type="button" onclick="openAddressChild()" value="주소 검색"><br>
 					<div id="addrMap" style="width:300px; height:300px; margin-top:10px; display:none"></div>
+					<input type="hidden" id="pet_addr_lat" name="pet_addr_lat" value="">
+					<input type="hidden" id="pet_addr_lng" name="pet_addr_lng" value="">
+					<button type="button" onclick="check()"></button>
 				</td>
 			</tr>
 			<tr>

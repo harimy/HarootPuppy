@@ -23,9 +23,9 @@
 <style type="text/css">
 	body
 	{
-		margin: 30px;
+		/* margin: 30px; */
 	}
-	
+
 
 </style>
 
@@ -37,21 +37,17 @@
 	<c:import url="Main.jsp"></c:import>
 </div>
 
-<div>
-	<form style="margin: 20px auto;">
+<div id="content" style="width: 85%; margin: auto;">
+	<form >
+	<input type="hidden" id="ask_code" name="ask_code" value="${read.ask_code }">
+	<div style="width: 85%; margin: auto;">
 		<div>
 			<h1>${read.ask_title }</h1>
 		</div>
-
-		<div>
-			<h5>${view.cate_content }</h5>
-			<h1>${view.title }</h1>
-			<h4>${view.nickname }</h4>
-		</div>
 		<div style="display: inline-block;">
-				<div style="float: left; font-weight: bold;">${read.mem_nickname }&nbsp;&nbsp;</div>
-				<div style="display: inline-block;">${read.ask_date }&nbsp;&nbsp;</div>
-				<div style="display: inline-block; color: orange;">${read.ask_state_content }&nbsp;&nbsp;</div>
+			<div style="float: left; font-weight: bold;">${read.mem_nickname }&nbsp;&nbsp;</div>
+			<div style="display: inline-block;">${read.ask_date }&nbsp;&nbsp;</div>
+			<div style="display: inline-block; color: green;">${read.ask_state_content }&nbsp;&nbsp;</div>
 		</div>
 		<br>
 		<div>
@@ -62,15 +58,16 @@
 			<div style="float: left; font-weight: bold;">첨부파일 &nbsp;&nbsp;</div>
 			<div style="display: inline-block;">${read.ask_photo}</div>
 		</div>
+	</div>
 		<br>
-		<div style="width: 70%; height: 300px; background-color: rgb(231, 229, 235); font-size: 13pt;">
-			${read.ask_content }
+		<div style="width: 85%; margin: auto;">
+		<textarea rows=20 class="form-control" id="ask_content" name="ask_content" disabled="disabled">${read.ask_content }</textarea>
 		</div><br>
 		
-		<div>
-			<button type="button" class="" value="">수정</button>
-			<button type="button" class="" value="">삭제</button>
-			<button type="button" class="" value="">목록으로</button>
+		<div style="width: 85%; margin: auto; text-align: right;">
+			<button type="button" class="btn btn-warning" value="" onclick="location.href='askupdateform.action?ask_code=${read.ask_code }'">수정</button>
+			<button type="button" class="btn btn-danger" value="" onclick="location.href='askdelete.action?ask_code=${read.ask_code }'">삭제</button>
+			<button type="button" class="btn btn-success" value="" onclick="location.href='asklist.action'">목록으로</button>
 		</div>
 	</form>
 </div>

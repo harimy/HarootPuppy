@@ -58,6 +58,7 @@
 
 <jsp:include page="MainHeader.jsp"></jsp:include>
 
+<form method="GET">
 <div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">
 	<li class="menu1">
@@ -90,7 +91,7 @@
 </ul>
 </div>
 
-
+</form>
 
 </body>
 </html>

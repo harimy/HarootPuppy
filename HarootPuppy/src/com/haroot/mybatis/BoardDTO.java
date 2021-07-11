@@ -20,7 +20,7 @@ public class BoardDTO
 	private String writer, head_code, title, content, photo, content_date, cate_content;	
 	
 	private String  board_writer, board_cate_code, board_title, board_content
-				 , board_photo, board_date, board_cate_content, nickname, name;
+				 , board_photo, board_content_date, board_cate_content, nickname, name;
 	
 	private int board_code, board_view, board_like;
 	
@@ -178,14 +178,15 @@ public class BoardDTO
 		this.board_photo = board_photo;
 	}
 
-	public String getBoard_date()
+
+	public String getBoard_content_date()
 	{
-		return board_date;
+		return board_content_date;
 	}
 
-	public void setBoard_date(String board_date)
+	public void setBoard_content_date(String board_content_date)
 	{
-		this.board_date = board_date;
+		this.board_content_date = board_content_date;
 	}
 
 	public String getBoard_cate_content()

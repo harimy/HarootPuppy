@@ -10,5 +10,12 @@
 		WHERE ADMIN_ID=#{admin_id} 
 		AND ADMIN_PW=CRYPTPACK.ENCRYPT(#{admin_pw}, #{admin_id})
 	</select>
+	
+	
+	<select id="searchName" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT ADMIN_NAME
+		FROM TBL_ADMIN
+		WHERE ADMIN_CODE=#{admin_code}	
+	</select>
 	 
 </mapper>

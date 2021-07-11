@@ -1,3 +1,4 @@
+ <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -34,7 +35,7 @@
 	 }
 	 
 	table {
-    width: 80% !important; 
+    width: 85% !important; 
     margin: auto;
     height: 100px !important;
 	}
@@ -68,11 +69,11 @@
 
 
 <div style="text-align: center;">
-	<h1>1:1 문의</h1>
+	<h1>[ 1:1 문의 ]</h1>
 	<hr>
 </div>
 <div style="margin: 100px;">
-	<div style="width: 80%; margin: auto;">
+	<div style="width: 85%; margin: auto;">
 	<div style="float: left;">
 	  <form action="" name="categoryForm" method="post">
 	    카테고리 선택&nbsp; <select name="categoryKey" class="selectField">
@@ -102,7 +103,7 @@
 		</table>
 	</div>
 	<br><br>
-	<div style="width: 80%; margin: auto; text-align: right;">
+	<div style="width: 85%; margin: auto; text-align: right;">
 		<button class="btn btn-primary btn-sm" type="button" id="insertAsk" onclick="location.href='askinsertform.action'">글 등록</button>
 	</div>
 </div>

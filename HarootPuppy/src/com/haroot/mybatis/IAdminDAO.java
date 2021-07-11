@@ -28,6 +28,8 @@ public interface IAdminDAO
 	// 관리자 로그인용(아이디, 비밀번호로 검색)
 	public AdminDTO loginAdmin(@Param("admin_id") String admin_id, @Param("admin_pw") String admin_pw) throws SQLException;
 
+	
+	public String searchName(String admin_code);
 }
 
 

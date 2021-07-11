@@ -24,7 +24,7 @@ public interface IBoardDAO
 	
 	// 게시글 조회
 	//	public BoardDTO view(HashMap<String, Object> map);
-	public BoardDTO view(@Param("num") int num, @Param("nickname") String nickname);
+	public BoardDTO view(@Param("board_code") int board_code, @Param("board_writer") String board_writer);
 
 	// 게시글 추가
 	public int add(BoardDTO board);
@@ -48,7 +48,7 @@ public interface IBoardDAO
 	public int updateView(int num);
 	
 	// 특정 게시물의 내용을 읽어오는 메소드 정의
-	public BoardDTO getReadData(int num);
+	public BoardDTO getReadData(@Param("board_code") int board_code, @Param("board_writer") String board_writer);
 	
 	// 이전 게시물 번호
 	public int getBeforeNum(int num);
