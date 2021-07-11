@@ -20,8 +20,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     
+    <!-- style.css 주석처리 해도 똑같이 나옴 -->
     <!-- Style -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
 
     <title>Calendar #9</title>
 </head>
@@ -45,7 +46,8 @@
       document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    var calendar = new FullCalendar
+    .Calendar(calendarEl, {
       plugins: [ 'interaction', 'dayGrid' ],
       editable: true,
       eventLimit: true, // allow "more" link when too many events
@@ -88,16 +90,16 @@
           start: '2020-02-12T14:30:00'
         },
         {
-          title: 'Happy Hour',
-          start: '2020-02-12T17:30:00'
+          title: '식사',
+          start: '2020-07-02T17:30:00'
         },
         {
-          title: 'Dinner',
-          start: '2020-02-12T20:00:00'
+          title: '진료',
+          start: '2020-08-03T20:00:00'
         },
         {
-          title: 'Birthday Party',
-          start: '2020-02-13T07:00:00'
+          title: '산책',
+          start: '2021-07-11T07:00:00'
         },
         {
           title: 'Click for Google',

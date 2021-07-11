@@ -160,9 +160,9 @@ max-width: 30px;
 
 </head>
 <body>
-<jsp:include page="Main.jsp" />
 
-   <!-----------------------------
+
+<!-----------------------------
   DiaryInfo.jsp
   - 반려견 정보 보기 페이지
 ------------------------------->
@@ -170,7 +170,7 @@ max-width: 30px;
    <div>
       <!-- 메뉴영역 -->
       <div>
-         <%-- <c:import url="상단메뉴.jsp"></c:import> --%>
+         <jsp:include page="Main.jsp" />
       </div>
 
       <!-- content 영역 -->

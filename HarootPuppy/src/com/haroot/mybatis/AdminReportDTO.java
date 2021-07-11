@@ -13,6 +13,9 @@ public class AdminReportDTO
    , rep_state_code							// 신고처리상태코드
    , rep_state_content						// 신고처리상태내용
    , rep_log_read                      // 열람날짜
+
+   // 아별 추가 
+   , log_read_state                    // 게시물 열람유무 (○,Ⅹ)
    
    , walkcomm_rep_code                 // 산책방 댓글신고코드
    , walk_comm_writer                  // 산책방 댓글작성자 (피신고자)
@@ -319,10 +322,15 @@ public class AdminReportDTO
 		this.walk_comm_content = walk_comm_content;
 	}
 
- 
-   
-	                           
-   
+	public String getLog_read_state()
+	{
+		return log_read_state;
+	}
+
+	public void setLog_read_state(String log_read_state)
+	{
+		this.log_read_state = log_read_state;
+	}
    
    
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 부모 노릇을 할 인터페이스를 지정 -->
+<mapper namespace="com.haroot.mybatis.IAdminNoticeDAO">
+	<!-- select 쿼리 →<select id="메소드 이름"></select> -->
+	<!-- 고유해야 하기 때문에(식별가능해야하기때문에 id 속성) -->
+	<!-- resultType 은 각각 하나씩 바인딩 되는 곳 -->	
+	
+	<!-- 공지코드 최대숫자 구하기 -->
+	<select id="getMaxNum" resultType="java.lang.Integer">
+		SELECT MAX(NOTICE_CODE)+1 AS MAX_NUM
+		FROM TBL_NOTICE
+	</select>
+
+	<!-- 공지글 입력 -->	
+	<insert id="add">
+		INSERT INTO TBL_NOTICE(NOTICE_CODE, NOTICE_WRITER
+		, NOTICE_HEAD_CODE, NOTICE_TITLE, NOTICE_PHOTO, NOTICE_CONTENT
+		, NOTICE_VIEW, NOTICE_LIKE, NOTICE_DATE) 
+		VALUES(#{notice_code, jdbcType=NUMERIC}, 'ADM001'
+		, #{notice_head_code}, #{notice_title}, null
+		, #{notice_content}, 0, 0, SYSDATE)
+	</insert>
+	
+	<!-- 공지글 전체 출력 -->
+	<select id="list" resultType="com.haroot.mybatis.AdminNoticeDTO">
+	SELECT NOTICE_CODE, NOTICE_WRITER, NOTICE_HEAD_CODE
+	    , NOTICE_CATE_CONTENT, NOTICE_TITLE, NOTICE_PHOTO
+	    , NOTICE_CONTENT, NOTICE_VIEW, NOTICE_LIKE, NOTICE_DATE
+		FROM NOTICEVIEW
+		ORDER BY NOTICE_CODE
+	</select>
+	
+	
+</mapper>

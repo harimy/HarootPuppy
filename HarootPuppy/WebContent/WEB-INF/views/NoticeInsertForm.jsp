@@ -22,42 +22,70 @@
 <!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 
+<script type="text/javascript">
+
+	$(function()
+	{
+		$("#submitBtn").click(function()
+		{
+			// 데이터 검사(공란이 있는지 없는지에 대한 여부 확인)
+			if ($("#notice_title").val() == "")
+			{
+				alert("제목을 입력하세요");
+				$("#notice_title").focus();
+				return;
+			}
+			if ($("#notice_content").val() == "")
+			{
+				alert("내용을 입력하세요");
+				$("#notice_content").focus();
+				return;
+			}
+
+			// 폼 submit 액션 처리 수행
+			$("#noticeForm").submit();
+		});
+
+	});
+	
+</script>
+
+
 
 </head>
 <body>
 
 <!-----------------------------------
-  NoticeRead.jsp
-  - 관리자가 공지 한 개 자세히 읽기
+  NoticeInsertForm.jsp
+  공지 입력 페이지
 ------------------------------------->
 <div>
 	<!-- 메뉴영역 -->
 	<div id="harootHeader">
-		<c:import url="AdminMain.jsp"></c:import>
+		<c:import url="AdminMenu.jsp"></c:import>
 	</div>
 
 	<!-- content 영역 -->
-	<div id="harootContent">
+	<div id="">
 	
 		<!-- 관리자 공지 게시글 쓰기 title -->
-		<div class="from-group titleNotice">
-			<h1 style="font-weight: bold; text-align: center">
-			공지 관리</h1>
+		<div class="">
+			<h1 style="font-weight: bold; text-align: center">공지 작성</h1>
 		</div>
 		<br>
 		
 		<!-- 글쓰기 폼 -->
-			<div class="form-group writeNotice">
+			<div style="width: 900px; margin: 0px auto;">
 				<div>
-					<form>
+					<form id="noticeForm" action="adminnoticeinsert.action">
 						<table>
-							<tr>
-								<td>제목</td>
-								<td><input type="text" id="name"></td>
+							<tr style="width:100%">
+								<td style="width: 30%;">제목</td>
+								<td><input type="text" id="notice_title" name="notice_title" placeholder="제목을 입력하세요"></td>
 							</tr>
 							<tr>
 								<td>카테고리 선택</td>
-								<td><select id="selectcate">
+								<td><select id="notice_head_code" name="notice_head_code">
 										<option value="1" selected="selected">안내</option>
 										<option value="2">필독</option>
 										<option value="3">공지</option>
@@ -65,22 +93,26 @@
 							</tr>
 							<tr>
 								<td>첨부파일</td>
-								<td><input type="file" name="upload" multiple></td>
+								<td><input type="file" name="notice_photo" multiple></td>
+								<td><input type="hidden" name="notice_code" value="${getMaxNum }"></td>
 							</tr>
 						</table>
 						<br>
-						<textarea style="width: 100%;" rows=20 placeholder="내용을 입력하세요"></textarea>
+						<textarea id="notice_content" name="notice_content" style="width: 800px; resize: none;" rows=20
+						 placeholder="내용을 입력하세요"></textarea>
 						<br>
 					</form>
 				</div>
 
-				<div style="width: 100%; text-align: right;">
-					<button type="button" id="cancel" class="btn">취소</button>
-					<button type="submit" id="register" class="btn">글 등록</button>
+				<div style="width: 800px; text-align: right;">
+					<button type="button" id="cancelBtn" class="btn">취소</button>
+					<button type="submit" id="submitBtn" class="btn">글 등록</button>
 				</div>
 			</div><!-- end writeNotice -->
 
 		</div><!-- end harootContent -->
+		
+		<br><br><br><br>
 
 	<!-- 하단 회사 설명 영역 -->
 	<div id="harootFooter">

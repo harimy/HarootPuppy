@@ -44,6 +44,24 @@
 	WHERE ASK_READ IS NULL
 	</select>
     
+	<!-- 아별 추가 -->
+	<!-- 관리자 : 고객문의 리스트 -->
+	<select id="adminAskList" resultType="com.haroot.mybatis.AskDTO">
+		SELECT ASK_CODE
+		, ASK_CATE_CODE
+		, ASK_CATE_CONTENT
+		, SID_CODE
+		, MEM_NICKNAME
+		, ASK_DATE
+		, ASK_TITLE
+		, ASK_CONTENT
+		, ASK_PHOTO
+		, ASK_STATE_CODE
+		, ASK_STATE_CONTENT
+		, ASK_READ
+		FROM ASKVIEW
+	</select>
+
 	<select id="getReadData" parameterType="java.lang.Integer" resultType="com.haroot.mybatis.AskDTO">
 		SELECT *
 		FROM ASKVIEW

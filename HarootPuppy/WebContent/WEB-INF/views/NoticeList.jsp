@@ -11,9 +11,7 @@
 <meta charset="UTF-8">
 <title>AdminNotice.jsp</title>
 
-<!-- 게시판 CSS -->
-<link rel="stylesheet" type="text/css" href="<%=cp %>/css/style.css">
-<link rel="stylesheet" type="text/css" href="<%=cp %>/css/list.css">
+
 
 <!-- jQuery JS -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -34,10 +32,6 @@
 	text-align: center;
 }
 
-#bbsList_list td, th
-{
-	text-align: center;
-}
 
 
 </style>
@@ -61,63 +55,77 @@
 	<div id="harootAdminNoticeList">
 
 		<!-- 관리자 공지 title -->
-		<div class="from-group titleNotice">
+		<div class="form-group titleNotice">
 			<h1 style="font-weight: bold;">공지 관리</h1>
 		</div>
 		<br>
 
 		<!-- 게시판  -->
-		<div id="bbsList" style="width:900px; margin:30px auto; text-align: left; ">
+		<div id="bbsList1" style="width:900px; margin:30px auto; text-align: left; ">
 			<div>
 		      <form action="" name="categoryForm" method="post">
-		         <select name="categoryKey" class="selectField">
-		            <option value="guidance">안내</option>
-		            <option value="mustRead">필독</option>
-		            <option value="notice">공지</option>
+		         <select name="categoryKey" style="width: 70px; height: 28px;">
+		            <option value="1">안내</option>
+		            <option value="2">필독</option>
+		            <option value="3">공지</option>
 		         </select>
+		         
 		      </form>
 		    </div>
 		    <br>
 			
-			<table id="bbsList_list" class="table"
+			<table class="table table-striped table-condensed table-hover"
 				style="text-align: center; width: 100%;">
 				<tr id="title">
-					<th class="cate">카테고리</th>
-					<th class="num">번호</th>
-					<th class="subject">제목</th>
-					<th class="name">작성자</th>
-					<th class="created">작성일</th>
-					<th class="hitCount">조회수</th>
-					<th class="like">좋아요</th>
+					<th class="cate" style="text-align: center;">카테고리</th>
+					<th class="num" style="text-align: center;">공지번호</th>
+					<th class="subject" style="text-align: center;">제목</th>
+					<th class="name" style="text-align: center;">작성자</th>
+					<th class="" style="text-align: center;">작성일</th>
+					<!-- <th class="hitCount" style="text-align: center;">조회수</th>
+					<th class="like" style="text-align: center;">좋아요</th> -->
 				</tr>
-				<tr id="lists">
+				<!-- 
+				<tr id="lists1">
 					<td class="cate">공지</td>
 					<td class="num">001</td>
 					<td class="subject">리뷰관련건</td>
 					<td class="name">관리자001</td>
-					<td class="created">2021-07-03</td>
+					<td class="">2021-07-03</td>
 					<td class="hitCount">10</td>
 					<td class="like">1</td>
 				</tr>
+				 -->
+				<c:forEach var="list" items="${list }">
+					<tr>
+						<td>${list.notice_cate_content }</td>					
+						<td>${list.notice_code }</td>					
+						<td>${list.notice_title }</td>					
+						<td>관리자</td>					
+						<td>${list.notice_date }</td>					
+						<%-- <td>${list.notice_view }</td>	 --%>		
+						<%-- <td>${list.notice_like }</td> --%>					
+					</tr>
+				</c:forEach>
 			</table>
 	
 			<br>
-			<div id="bbsList_header">
+			<div>
 				<br>
-				<div id="leftHeader">
+				<div style="display: inline-block; width:360px;">
 					<form action="" name="searchForm" method="post">
-						<select name="searchKey" class="selectField">
+						<select name="searchKey" style="width: 70px; height: 28px;">
 							<option value="subject">제목</option>
 							<option value="name">작성자</option>
 						</select> <input type="text" name="searchValue" class="textField">
-						<input type="button" value="검색" class="btn2" onclick="sendIt()">
+						<input type="button" value="검색" class="btn btn-secondary" onclick="sendIt()">
 					</form>
 				</div>
 				<!-- #leftHeader -->
 	
-				<div id="rightHeader">
-					<input type="button" value="글쓰기" class="btn2"
-						onclick="javascript:location.href='<%=cp%>/NoticeInsertForm.jsp'">
+				<div style="display: inline-block; float: right;">
+					<input type="button" value="글쓰기" class="btn btn-secondary"
+						onclick="location.href='adminnoticeinsertform.action'">
 				</div>
 	
 			</div>
@@ -125,7 +133,7 @@
 			<br>
 			<br>
 			<div id="footer_number" style="text-align: center;">
-				<p>1 Prev 21 22 23 24 25 26 27 28 29 30 Next 63</p>
+				<p><span style="font-weight: bold;">1</span> 2 3 4 5 6 7 8 9 10</p>
 			</div>
 		</div>
 	</div>
