@@ -168,7 +168,7 @@
 							<h1 style="font-weight: bold; color:#FFFFFF;">HOT 게시판</h1>
 						</div>
 						<div class="hotCategory">
-						      <form action="" name="categoryForm" method="post">
+						      <form action="" name="categoryForm" method="POST">
 						         <select name="categoryKey" class="selectField">
 						            <option value="notic">공지</option>
 						            <option value="event">행사/할인정보</option>

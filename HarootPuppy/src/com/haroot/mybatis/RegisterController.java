@@ -1,5 +1,7 @@
 package com.haroot.mybatis;
 
+import java.sql.SQLException;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,7 @@ public class RegisterController
 	
 	// 테스트용 리스트 출력
 	@RequestMapping(value = "/memberlist.action", method = RequestMethod.POST)
-	public String list(Model model) 
+	public String list(Model model) throws SQLException 
 	{
 		String result = null;
 
@@ -38,7 +40,7 @@ public class RegisterController
 	
 	
 	@RequestMapping(value = "/register.action", method = RequestMethod.POST)
-	public String add(MemberDTO m) 
+	public String add(MemberDTO m) throws SQLException 
 	{
 
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);

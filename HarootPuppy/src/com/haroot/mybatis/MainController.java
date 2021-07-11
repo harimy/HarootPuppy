@@ -17,6 +17,20 @@ public class MainController
 	@Autowired
 	private SqlSession sqlSession;
 	
+	@RequestMapping(value="mainheader.action", method=RequestMethod.POST)
+	public String mainHeader(Model model, HttpServletRequest request, HttpServletResponse response)
+	{
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		
+		// System.out.println(sid_code);
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		model.addAttribute("nickname", dao.searchNickName(sid_code));
+		session.setAttribute("sid_code", sid_code);
+		
+		return "main.action";
+
+	}
 
 	@RequestMapping(value="main.action", method=RequestMethod.POST)
 	public String goToMain(Model model, HttpServletRequest request, HttpServletResponse response)
@@ -26,7 +40,7 @@ public class MainController
 		
 		// System.out.println(sid_code);
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		model.addAttribute("nickname", dao.searchNickName(sid_code));
+		model.addAttribute("nickname", dao.searchNickName(sid_code));	// 테스트용, 
 		
 		if(sid_code!=null)
 		{
@@ -38,4 +52,11 @@ public class MainController
 		}
 
 	}
+	
+	@RequestMapping(value="beforemain.action", method=RequestMethod.GET)
+	public String goToMainBefore(Model model)
+	{
+			return "HarootPuppyMain.jsp";
+	}
+	
 }
