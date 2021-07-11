@@ -384,6 +384,5 @@ public class PetDTO
 	{
 		this.relation_type_content = relation_type_content;
 	}
-
 	
 }

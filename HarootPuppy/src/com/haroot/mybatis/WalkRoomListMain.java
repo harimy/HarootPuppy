@@ -1,8 +1,10 @@
 package com.haroot.mybatis;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,28 +20,74 @@ public class WalkRoomListMain
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@RequestMapping(value = "walkroommain.action", method = RequestMethod.GET)
-	public String WalkRoomMain(ModelMap model)
+	@RequestMapping(value = "/walkroomselect.action", method = RequestMethod.GET)
+	public String WalkRoomMain(HttpServletRequest request, ModelMap model)
 	{
-		return "/WalkMain.jsp";
+		String result = null;
+		
+		// 세션 처리 --------------------------------------------------
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		IPetDAO dao = sqlSession.getMapper(IPetDAO.class);
+		ArrayList<PetDTO> petlist = dao.searchPets(sid_code);
+		
+		if (sid_code == null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			result = "/WalkSelectPet.jsp";
+			model.addAttribute("sid_code", sid_code);
+			model.addAttribute("petlist", petlist);
+		}
+		
+		return result;
 	}
 	
-	// /memberList.action 으로 요청이 들어오면 아래의 메소드가 일을 처리
-	@RequestMapping(value = "/walkroomlist.action", method = RequestMethod.GET)
-	public String walkRoomList(ModelMap model) throws SQLException	// Model, ModelMap 둘 다 사용 가능
+	// walkroommain.action 으로 요청이 들어오면 아래의 메소드가 일을 처리
+	@RequestMapping(value = "/walkroommain.action", method = RequestMethod.GET)
+	public String walkRoomList(HttpServletRequest request, ModelMap model) throws SQLException	// Model, ModelMap 둘 다 사용 가능
 	{
-		// 기존의 방식
-		// IMemberDAO dao = MemberDAO 객체 생성
-		// 이걸 이제는 마이바티스가 수행해줌(아래 코드)
+		HttpSession session = request.getSession();
+		String pet_code = (String)session.getAttribute("pet_code");
+		if(pet_code==null)
+		{
+			pet_code = request.getParameter("pet_code"); 
+			session.setAttribute("pet_code", pet_code);
+		}
+		//System.out.println(pet_code);
+		
 		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
-	    
+	    IPetDAO petdao = sqlSession.getMapper(IPetDAO.class);
+		
 	    model.addAttribute("list", dao.list());
-	      
+	    model.addAttribute("pet", petdao.petInfo(pet_code));
+	    
+	    return "/WalkMain.jsp";
+	}
+	
+	
+	@RequestMapping(value = "/walkroomlist.action", method = RequestMethod.GET)
+	public String l(HttpServletRequest request, ModelMap model) throws SQLException	// Model, ModelMap 둘 다 사용 가능
+	{
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		String pet_code = request.getParameter("pet_code"); 
+		//System.out.println(pet_code);
+		
+		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
+	    IPetDAO petdao = sqlSession.getMapper(IPetDAO.class);
+		
+	    model.addAttribute("list", dao.list());
+	    model.addAttribute("sid_code", sid_code);
+	    model.addAttribute("pet", petdao.petInfo(pet_code));
+	    
 	    return "/WalkRoomList.jsp";
 	}
 	
 	
-	@RequestMapping(value = "walkroominsertform.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/walkroominsertform.action", method = RequestMethod.GET)
 	public String walkRoomInsertForm(ModelMap model) throws SQLException
 	{
 		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
@@ -52,7 +100,7 @@ public class WalkRoomListMain
 	}
 	
 	
-	@RequestMapping(value = "walkroominsert.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/walkroominsert.action", method = RequestMethod.POST)
 	public String memberInsert(WalkRoomDTO w) throws SQLException
 	{
 		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
@@ -63,14 +111,13 @@ public class WalkRoomListMain
 		String participants_code = partDao.max_code();
 		participants_code = "PAR" + (Integer.parseInt(participants_code.substring(3))+1);
 		partDto.setParticipants_code(participants_code);
-		System.out.println(participants_code);
+		//System.out.println(participants_code);
 		
 		// 산책방 코드 구성
 		int walkroom_code = dao.max() + 1;
 		partDto.setWalkroom_code(walkroom_code);
 		
 		// 양육관계 코드 구성 → sid 구성 후 값 가져오기
-		
 		dao.add(w);
 		partDao.add(partDto);
 		
@@ -78,15 +125,16 @@ public class WalkRoomListMain
 		return "redirect:walkroommain.action";
 	}
 	
-	/*
-	@RequestMapping(value = "memberupdate.action", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "walkroomupdateform.action", method = RequestMethod.POST)
 	public String memberUpdate(MemberDTO m)
 	{
-		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		WalkRoomDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		dao.
 		
-		dao.modify(m);
+		//dao.modify(m);
 		
-		return "redirect:memberlist.action";
+		return "WalkRoomUpdateForm.jsp";
 	}
-	*/
+	
 }

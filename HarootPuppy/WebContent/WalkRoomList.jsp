@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -23,22 +24,37 @@
 
 <script type="text/javascript">
 
-var openWin;
+/* 
+$(function()
+{
+	$("#lists").click(function()
+	{
+		alert("눌렀다");
+		
+		if($("#sid_code").value() == $("#walkroom_leader").value())
+		{
+			alert("같음");
+		}
+		else
+		{
+			alert("다름");
+		}
+	
+	});
 
+});
+*/
+
+var openWin;
 function openChild(walkroom_code)
 {
     // window.name = "부모창 이름"; 
     window.name = "parentForm";
+    
     // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-    openWin = window.open("WalkRoomGuestFixOption.jsp?num=" + walkroom_code,
-            "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
+    openWin = window.open("walkroomenter.action?num=" + walkroom_code,
+            "childForm", "width=570, height=350, resizable = no, scrollbars = no");
 }
-
-function setChildText(){
-    openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
-}
-
-
 </script>
 
 <style type="text/css">
@@ -51,7 +67,6 @@ function setChildText(){
 	{
 		font-weight: bold;
 	}
-
 </style>
 
 </head>
@@ -71,19 +86,13 @@ function setChildText(){
 			<th style="width: 10%;">개설자</th>
 		</tr>
 
-		<!-- 
-		<tr > 
-			<td class="num">1</td>
-			<td class="roomInfo">저녁 산책 하GO 건강 챙기GO</td>
-			<td class="memNum">저쩌구</td>
-			<td class="time">1/4</td>
-			<td class="host">뚜또맘</td> 
-		</tr>
-		-->
-
 		<c:forEach var="walkroom" items="${list }">
-		<tr id="lists" onclick="openChild(${walkroom.walkroom_code})">
-			<td style="vertical-align: middle;">${walkroom.walkroom_code }</td>
+		<tr class="lists" onclick="openChild(${walkroom.walkroom_code})">
+			<td style="vertical-align: middle;">
+				${walkroom.walkroom_code }
+				<input type="hidden" name="walkroom_code" value="${walkroom.walkroom_code }">
+				<input type="hidden" name="sid_code" value="${sid_code }">
+			</td>
 			<td style="vertical-align: middle;">
 				<img style="border-radius: 100px;" src="images/jaerong.jpg" width=80 height=80></img>
 			</td>
@@ -106,7 +115,9 @@ function setChildText(){
 				최소 인원 ${walkroom.walkroom_min } 명<br>
 			</td>
 			<td style="vertical-align: middle;">${walkroom.walkroom_start }<br> ~ <br>${walkroom.walkroom_end }</td>
-			<td style="vertical-align: middle;">${walkroom.mem_nickname }</td>
+			<td style="vertical-align: middle;">
+				${walkroom.mem_nickname }
+			</td>
 		</tr>
 		</c:forEach>
 		 

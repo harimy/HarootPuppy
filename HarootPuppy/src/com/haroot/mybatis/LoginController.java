@@ -64,10 +64,9 @@ public class LoginController
 		AdminDTO dto = dao.loginAdmin(admin_id, admin_pw);
 		
 		 if( dto != null) 
-		 { 
-          
+		 {
 			model.addAttribute("admin_code", dto.getAdmin_code());
-         result = "/adminmain.action";
+			result = "/adminmain.action";
 		 }
 		 else 
 		 {

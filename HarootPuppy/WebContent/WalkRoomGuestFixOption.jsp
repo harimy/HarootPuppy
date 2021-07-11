@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
+	
+	int walkroom_code = Integer.parseInt(request.getParameter("num"));
 %>
 <!DOCTYPE html>
 <html>
@@ -17,6 +19,7 @@ String cp = request.getContextPath();
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
 <script type="text/javascript">
 	$(function() {
+
 		$("#enter").click(function() {
 			$("#errMsg").css("display", "none");
 			if ($("input:radio[name='autoOption']").is(":checked") == false) {
@@ -25,7 +28,7 @@ String cp = request.getContextPath();
 			}
 
 			// $("input:radio[name='autoOption']:checked").val() 넘겨주며
-			window.opener.location.href = "WalkRoomGuestEnter.jsp";
+			window.opener.location.href = "walkroomguest.action?num=" + walkroom_code;
 			//자식 창 닫기
 			window.close();
 		});
@@ -43,7 +46,7 @@ String cp = request.getContextPath();
 	    
 	    close.window();
 	  
-	} 
+	}
 	
 	/* $("#enter").click(function() {
 		
@@ -52,6 +55,10 @@ String cp = request.getContextPath();
 		window.close();
 	}); */
 
+	function get()
+	{
+		 /* document.getElementById("walkroom_code").value = opener.document.getElementsByName("walkroom_code")[0].value; */
+	}
 
 </script>
 <style>
@@ -67,14 +74,14 @@ body {
 </style>
 </head>
 <body>
-	<!-----------------------------
+<!-----------------------------
   WalkRoomGuestFixOption.jsp
   
   일반회원이 산책방 입장 시 뜨는 
   자동 선택 옵션 창
 ------------------------------->
 	<div>
-		<form action="WalkRoomGuestEnter.jsp">
+		<form action="walkroomguest.action">
 			<h1>[Ready] 고정 옵션을 활성화 하시겠습니까?</h1>
 			<br>
 			<h3>※ [Ready] 고정 옵션 활성화 시, 방 옵션 또는 다른 참여자의 Ready 상태 변화에 상관 없이
@@ -84,7 +91,8 @@ body {
 			<input type="radio" name="autoOption" class="autoOption" id="active">
 			<label for="active">활성화</label><br><br>
 			<button type="button" id="cancel" onclick="window.close()">취소</button>
-			<button type="button" id="enter" onclick="location.href='walkroomview.action'">입장</button>
+			<button type="submit" id="enter">입장</button>
+			<input type="hidden" name="walkroom_code" value="<%=walkroom_code%>">
 			<span id="errMsg">필수 선택 사항을 선택하세요</span><br><br>
 		</form>
 	</div>

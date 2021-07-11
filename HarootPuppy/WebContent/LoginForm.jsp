@@ -14,7 +14,8 @@ String cp = request.getContextPath();
 <!-- jQuery JS -->
 <script type="text/javascript"
    src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
+<script type="text/javasc
+ript" src="<%=cp%>/js/jquery-ui.js"></script>
 <!-- jQuery-UI CSS -->
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
 
@@ -27,7 +28,7 @@ String cp = request.getContextPath();
 
 $(function()
 {
-	$("#loginBtn").click(function()
+	$("#loginBtn").click(function()                                                                                                               
 	{
 		if ($('input[name="admin_check"]:checked').val() == 'admin' )
 		{
@@ -137,7 +138,6 @@ input:focus, input:not (:placeholder-shown ) {
   LoginForm.jsp
   - 로그인 폼 페이지
 ------------------------------->
-
 	<div>
 		<!-- 메뉴영역 -->
 		<div id="harootHeader">
@@ -151,7 +151,8 @@ input:focus, input:not (:placeholder-shown ) {
 				<div class= "form-group2" style="float: right;">
 	               <label id="admincheck" > 관리자 
 	               <input type="checkbox" id="admin_check" name="admin_check" value="admin">
-	               </label>
+	               </label>	       
+	            
 	            </div>	
 	            
 				<!-- 로그인 글씨 -->
@@ -161,7 +162,6 @@ input:focus, input:not (:placeholder-shown ) {
 				
 				<!-- 아이디 / 비밀번호 입력창 -->
 				<div class="form-group id input-box">					
-				
 					<input id="mem_id" type="text" name="mem_id" placeholder="아이디를 입력해주세요" required>
 					<label for="id">아이디</label>
 				</div>
@@ -169,7 +169,6 @@ input:focus, input:not (:placeholder-shown ) {
 				<div class="form-group pw input-box">				
 					<input id="mem_pw" type="password" name="mem_pw" placeholder="비밀번호를 입력해주세요" required> 
 					<label for="password">비밀번호</label>
-
 				</div>
 
 				<br><br>
@@ -200,8 +199,6 @@ input:focus, input:not (:placeholder-shown ) {
          <c:import url="MainFooter.jsp"></c:import>
       </div>
    </div>
-
-
 
 </body>
 </html>

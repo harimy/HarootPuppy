@@ -5,7 +5,6 @@
 
 <mapper namespace="com.haroot.mybatis.IWalkRoomDAO"><!-- implements IMemberDAO -->
 	
-	
 	<!-- 산책메이트 메인페이지에서 산책방 리스트 불러오는 메소드 -->
 	<select id="list" resultType="com.haroot.mybatis.WalkRoomDTO">
 		SELECT WALKROOM_CODE, WALKROOM_LEADER, AUTO_CODE
@@ -46,6 +45,17 @@
 	</delete>
 	
 	<update id="modify">
+		UPDATE TBL_WALKROOM
+		SET AUTO_CODE=1, STYLE_CODE=2, BITE_CODE=0, DESEX_CODE=1, SAMESEX_CODE=0
+		  , WALKROOM_MIN=2, WALKROOM_MAX=4
+		  , WALKROOM_START=TO_DATE('2021-06-27', 'YYYY-MM-DD')
+		  , WALKROOM_END=TO_DATE('2021-06-27', 'YYYY-MM-DD')
+		  , WALKROOM_TITLE='함께 산책하실 분?'
+		  , WALKROOM_WORDS='같이? 가요?'
+		  , WALKROOM_PLACE='안양천 돌다리'
+		  , WALKROOM_LATITUE='37. 475694'
+		  , WALKROOM_LONGITUDE='126.876209'
+		WHERE WALKROOM_CODE=1
 	</update>
 	
 </mapper>

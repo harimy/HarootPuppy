@@ -96,20 +96,21 @@ String cp = request.getContextPath();
 	<div>
 
 		<!-- 방 제목 -->
-		<div id="walkTitle">재롱이랑 동구랑 산책하실</div>
-		<!-- 방 정보 -->
-		<div id="walkInfo">
-			산책 장소 : 안양천 <br> 산책 일시 : 2021년 06월 13일 18:30 ~ 21:00<br> 산책
-			인원 : 최소 3명 최대 4명<br> 방장 한 마디 : 같이 즐겁게 산책해요 ~~ <br>
-
-
-			<!-- 산책메이트 특징 -->
-			원하는 산책 메이트 특징<br> <span id="dogSize" class="mateOp">대형견</span> <span
-				id="dogSize" class="mateOp">중형견</span> <span id="gender"
-				class="mateOp">동일 성별 양육자</span> <span id="mouth" class="mateOp">입질하는
-				반려견 금지</span> <span id="auto" class="mateOp">자동 확정 옵션 OFF</span>
-		</div>
-		<br>
+		<c:forEach var="room" begin="1" end="2" items="${rooms }" >
+			<div id="walkTitle">${room.walkroom_title }</div> 
+			<!-- 방 정보 -->
+			<div id="walkInfo">
+				산책 장소 : ${room.walkroom_place } <br> 산책 일시 : ${room.walkroom_start } ~ ${room.walkroom_end }<br> 산책
+				인원 : 최소 ${room.walkroom_min }명 최대 ${room.walkroom_max }명<br> 방장 한 마디 : ${room.walkroom_words } <br>
+	
+				<!-- 산책메이트 특징 -->
+				원하는 산책 메이트 특징<br>
+				<span id="dogDesex" class="mateOp"> ${room.desex_content } </span>
+				<span id="gender" class="mateOp"> 양육자 성별 ${room.samesex_content } </span>
+				<span id="mouth" class="mateOp"> ${room.bite_content } </span>
+				<span id="auto" class="mateOp"> ${room.auto_content } </span><br>
+			</div>
+		</c:forEach>
 
 		<!-- 매칭 타이머 -->
 		<div id="leftTimer">
@@ -128,29 +129,37 @@ String cp = request.getContextPath();
 
 	<!-- 참여자 프로필 -->
 	<div class="row">
-		<div class="col-sm-4 col-md-3">
-			<div class="thumbnail">
-				<div class="nickName">
-					<div class="thumbLeft">나와 재롱이와 동구<img src="images/man.png" class="icons">
+		<c:forEach var="room" items="${rooms }">
+			<div class="col-sm-4 col-md-3">
+				<div class="thumbnail">
+					<div class="nickName">
+						<div class="thumbLeft">${room.mem_nickname }<img src="images/man.png" class="icons">
+						</div>
+						<div class="thumbRight">
+							<button type="button" class="menuBtn transparent-button">
+	  							<span class="glyphicon glyphicon-option-vertical" style="color: #000000"></span>
+							</button>
+						</div>
 					</div>
-					<div class="thumbRight">
-						<button type="button" class="menuBtn transparent-button">
-  							<span class="glyphicon glyphicon-option-vertical" style="color: #000000"></span>
-						</button>
+					<br> <img class="img-responsive"
+						src="<%=cp%>/images/jaerong.jpg">
+					<div class="caption">
+						<div style="font-size: 20px; font-weight: bold;">${room.pet_name } (${room.pet_type_name }, ${room.pet_age })</div>
+						
+						<p style="float: left; margin-right: 15px;">
+							${room.pet_desex_content }<br> ${room.pet_bite_content }<br>
+						</p>
+						<p style="display: inline-block;">
+							${room.pet_char1_content}, ${room.pet_char2_content }<br> ${room.pet_char3_content }<br> ${room.pet_char4_content }<br>
+						</p>
 					</div>
 				</div>
-				<br> <img class="img-responsive"
-					src="<%=cp%>/images/jaerong.jpg">
-				<div class="caption">
-					<h3>재롱</h3>
-					<p>
-						로트와일러, 3세<br> 중성화 완료<br> 입질 없음<br> 낯가림 없음<br>
-					</p>
-				</div>
+				<div class="masterTag">방장</div>
+				<div class="readyTag">Ready 완료</div>
+				<div class="notReadyTag">Ready 대기</div>
+				<br>
 			</div>
-			<div class="masterTag">방장</div>
-			<br>
-		</div>
+		</c:forEach>
 
 		<div class="col-sm-4 col-md-3">
 			<div class="thumbnail">
@@ -231,7 +240,7 @@ String cp = request.getContextPath();
 		<button type="button" id="changeInfo"
 			onclick="location.href='WalkRoomInsertForm.jsp'">방 정보 변경</button>
 		<button type="button" id="list"
-			onclick="location.href='WalkRoomList.jsp'">목록으로</button>
+			onclick="window.close()">목록으로</button>
 		<button type="button" id="delete">방 삭제하기</button>
 	</div>
 </body>

@@ -7,12 +7,11 @@
 	
 	
 	<!-- 각 산책방 내에서 참여자들 정보 불러오는 조회 메소드 -->
-	<select id="list" resultType="com.haroot.mybatis.WalkRoomViewDTO">
+	<select id="list" parameterType="java.lang.Integer" resultType="com.haroot.mybatis.WalkRoomViewDTO">
 		SELECT *
 		FROM WALKROOMVIEW
-		WHERE WALKROOM_CODE = '';
+		WHERE WALKROOM_CODE = #{walkroom_code}
 	</select>
 
 	
 </mapper>
-
