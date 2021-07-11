@@ -74,31 +74,17 @@
     	margin: 20px;
     }
     
-    #bodyCss
-    {
-    	font-size: 16px;
-    }
-    
     .bold
     {
     	font-weight: bold;
     }
-    
-    /*
-     #bodyCss h1
-    { text-align: center; }
-    #bodyCss h2
-    { text-align: center; }
-    #bodyCss h3
-    { text-align: center; } 
-    */
 
 	 #bodyCss h1, h2, h3
     { text-align: center; }
     
 </style>
 </head>
-<body id="bodyCss">
+<body>
 
 <div id="harootHeader">
 	<c:import url="AdminMenu.jsp"></c:import>
@@ -131,13 +117,11 @@
 				<tr>
 					<td class="adminTd1 color2">
 						<ul>
-							<!-- <li><a href="ReportedBoardTab.jsp" class="link">미처리 게시물 50건</a></li> -->
 							<li>
-								<a href="ReportedBoardTab.jsp" class="link">
+								<a href="adminreportboardlist.action" class="link">
 									미처리 게시물 <span class="spanSt1">${boardNotHandled }</span>건
 								</a>
 							</li>
-							<!-- <li><a href="ReportedReplyTab.jsp" class="link">미처리 댓글 50건</a></li> -->
 							<li>
 								<a href="ReportedReplyTab.jsp" class="link">
 								미처리 댓글 <span class="spanSt1">${boardCommNotHandled }</span>건
@@ -204,7 +188,9 @@
 		 	 <c:forEach var="a1" items="${list1}" end="1">
 		 	 	<tr>
 		 	 		<!-- 게시물 제목 -->
-		 	 		<td>${a1.board_title }</td>
+		 	 		<td>
+		 	 			<a class="link" href="adminreportboardview.action?rep_log_code=${a1.rep_log_code }">${a1.board_title }</a>
+		 	 		</td>
 		 	 		<!-- 신고날짜 -->
 		 	 		<td>${a1.rep_log_date }</td>
 		 	 	</tr>

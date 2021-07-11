@@ -104,7 +104,7 @@
 				<br>
 				<!-- 게시판 > 게시물 리스트 출력 -->
 				 
-				<c:forEach var="a" items="${adBoardReportList }">
+				<c:forEach var="a" items="${adBoardReportList3 }">
 					<tr>
 						<!-- 체크박스로 신고처리 보류 -->
 						<!-- 
@@ -136,8 +136,7 @@
 
 	
 	<div id="footer" style="text-align: center;">
-		<!-- <p>1 Prev 21 22 23 24 25 26 27 28 29 30 Next 63</p> -->
-		<p><span style="font-weight: bold;">1</span> 2 3 4 5 6 7 8 9 10</p>
+		<p>1 Prev 21 22 23 24 25 26 27 28 29 30 Next 63</p>
 	</div>
 	
 	<br><br><br><br>

@@ -86,7 +86,7 @@
 					<th class="num">번호</th>
 					<th class="subject">제목</th>
 					<th class="name">작성자</th>
-					<th class="created">작성일</th>
+					<th class="">작성일</th>
 					<th class="hitCount">조회수</th>
 					<th class="like">좋아요</th>
 				</tr>
@@ -95,7 +95,7 @@
 					<td class="num">001</td>
 					<td class="subject">리뷰관련건</td>
 					<td class="name">관리자001</td>
-					<td class="created">2021-07-03</td>
+					<td class="">2021-07-03</td>
 					<td class="hitCount">10</td>
 					<td class="like">1</td>
 				</tr>
@@ -109,14 +109,14 @@
 						<select name="searchKey" class="selectField">
 							<option value="subject">제목</option>
 							<option value="name">작성자</option>
-						</select> <input type="text" name="searchValue" class="textField">
-						<input type="button" value="검색" class="btn2" onclick="sendIt()">
+						</select> <input type="text" name="searchValue" style="width: 150px;">
+						<input type="button" value="검색" class="btn btn-outline-dark"" onclick="sendIt()">
 					</form>
 				</div>
 				<!-- #leftHeader -->
 	
 				<div id="rightHeader">
-					<input type="button" value="글쓰기" class="btn2"
+					<input type="button" value="글쓰기" class="btn btn-outline-dark""
 						onclick="javascript:location.href='<%=cp%>/NoticeInsertForm.jsp'">
 				</div>
 	

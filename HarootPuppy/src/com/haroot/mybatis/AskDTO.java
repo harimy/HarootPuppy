@@ -27,6 +27,7 @@ public class AskDTO
 	
 	private int ask_code;
 
+
 	public int getAsk_code()
 	{
 		return ask_code;

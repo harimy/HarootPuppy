@@ -1207,31 +1207,6 @@ REP011	4	오프라인	SID001	2021-06-28	1	미처리																OFFREP002	PAR
 
 
 
---○ 게시판 게시물 신고 전체 조회
-SELECT REP_LOG_CODE
-    , REP_TYPE_CODE
-    , REP_TYPE_CONTENT
-    , SID_CODE
-    , reporter_nickname
-    , REP_LOG_DATE
-    , REP_STATE_CODE
-    , REP_STATE_CONTENT
-    , REP_LOG_READ
-    , BOARD_REP_CODE
-    , BOARD_CODE
-    , BOARD_WRITER
-    , BOARD_TITLE
-    , BOARD_CONTENT
-FROM REPORTVIEW
-WHERE REP_TYPE_CODE = 1
-;
---==>>
-/*
-REP001	1	게시글	SID003	뚜또집사	2021-06-27	2	신고해제	2021-06-28	BREP001	7	SID001	샘플사료무나	안양천돌다리로 오실분
-REP002	1	게시글	SID007	맛있는참치	2021-06-27	1	미처리	2021-06-28	BREP002	3	SID001	오늘 뜨거운 밤	뜨거운밤..어쩌고..신고당할만한 이야기
-REP003	1	게시글	SID002	사공혜연	2021-06-27	1	미처리	2021-06-28	BREP003	3	SID001	오늘 뜨거운 밤	뜨거운밤..어쩌고..신고당할만한 이야기
-*/
-
 -- 같은 게시물이 여러 번 신고될시 BOARD_CODE 로 식별, 한번 신고처리된 게시물은 신고처리가 똑같이 나와야된다. 
 
 /*
@@ -1292,24 +1267,241 @@ WHERE REP_LOG_CODE IN (SELECT REP_LOG_CODE       -- 신고내역번호
                         WHERE BOARD_CODE = 3)
 ;
 
+--○ 게시판 게시물 신고 전체 조회
+SELECT REP_LOG_CODE
+		    , REP_TYPE_CODE
+		    , REP_TYPE_CONTENT
+		    , SID_CODE
+		    , REPORTER_NICKNAME
+		    , REP_LOG_DATE
+		    , REP_STATE_CODE
+		    , REP_STATE_CONTENT
+            , NVL2(REP_LOG_READ, '○', 'Ⅹ') 
+		    , BOARD_REP_CODE
+		    , BOARD_CODE
+		    , BOARD_WRITER
+		    , BOARD_TITLE
+		    , BOARD_CONTENT
+		FROM REPORTVIEW
+		WHERE REP_TYPE_CODE = 1
+		ORDER BY REP_LOG_CODE DESC
+;
+--==>>
+/*
+REP003	1	게시글	SID002	사공혜연	2021-06-27	1	미처리	○	BREP003	3	SID001	오늘 뜨거운 밤	뜨거운밤..어쩌고..신고당할만한 이야기
+REP002	1	게시글	SID007	맛있는참치	2021-06-27	1	미처리	○	BREP002	3	SID001	오늘 뜨거운 밤	뜨거운밤..어쩌고..신고당할만한 이야기
+REP001	1	게시글	SID003	뚜또집사	2021-06-27	2	신고해제	○	BREP001	7	SID001	샘플사료무나	안양천돌다리로 오실분
+*/
 
 
+-- REPORTVIEW 에 열람상태 컬럼 추가
+
+CREATE OR REPLACE VIEW REPORTVIEW
+AS
+SELECT L.REP_LOG_CODE AS REP_LOG_CODE                                   -- 신고내역코드
+    , L.REP_TYPE_CODE AS REP_TYPE_CODE                                  -- 신고유형코드 -> 신고유형코드에 따라 피신고자 컬럼이 달라짐..
+    , T.REP_TYPE_CONTENT AS REP_TYPE_CONTENT                            -- 신고유형내용
+    --, L.REP_LOG_WRITER AS REP_LOG_WRITER                              -- 안쓸듯? (SID_CODE랑 중복)
+    , SI.SID_CODE AS SID_CODE                                           -- 신고자 (회원코드)
+    , M.MEM_NICKNAME AS REPORTER_NICKNAME                               -- 신고자 닉네임  --> 07.07 추가
+    , TO_CHAR(L.REP_LOG_DATE, 'YYYY-MM-DD') AS REP_LOG_DATE             -- 신고날짜
+    , L.REP_STATE_CODE AS REP_STATE_CODE                                -- 신고처리상태코드 
+    , S.REP_STATE_CONTENT AS REP_STATE_CONTENT                          -- 신고처리상태내용
+    , TO_CHAR(L.REP_LOG_READ, 'YYYY-MM-DD') AS REP_LOG_READ             -- 열람날짜
+    , NVL2(REP_LOG_READ, '○', 'Ⅹ') AS LOG_READ_STATE                  -- 열람상태 -> 07.10 추가
+    , WCR.WALKCOMM_REP_CODE AS WALKCOMM_REP_CODE                        -- 산책방댓글신고코드
+    , WC.WALK_COMM_WRITER AS WALK_COMM_WRITER                           -- 산책방댓글작성자 (피신고자)
+    , BCR.BOARDCOMM_REP_CODE AS BOARDCOMM_REP_CODE                      -- 게시판댓글신고코드
+    , BC.BOARD_COMM_WRITER AS BOARD_COMM_WRITER                         -- 게시판댓글작성자 (피신고자)
+    , BR.BOARD_REP_CODE AS BOARD_REP_CODE                               -- 게시물신고코드
+    , BR.BOARD_CODE AS BOARD_CODE                                       -- 게시물코드(숫자)
+    , B.BOARD_WRITER AS BOARD_WRITER                                    -- 게시물작성자 (피신고자)
+    , B.BOARD_TITLE AS BOARD_TITLE                                      -- 게시물 제목
+    , B.BOARD_CONTENT AS BOARD_CONTENT                                  -- 게시물 내용
+    , WR.WALKROOM_REP_CODE AS WALKROOM_REP_CODE                         -- 산책방신고코드
+    , W.WALKROOM_CODE AS WALKROOM_CODE                                  -- 산책방 코드 --> 추가
+    , W.WALKROOM_TITLE AS WALKROOM_TITLE                                -- 산책방 제목 --> 추가
+    , W.WALKROOM_WORDS AS WALKROOM_WORDS                                -- 산책방 내용 --> 추가
+    , W.WALKROOM_LEADER AS WALKROOM_LEADER                              -- 산책방방장 (피신고자)
+    , OO.OFF_REP_CODE AS OFF_REP_CODE                                   -- 오프라인신고코드 -> TBL_OFFOPINION 에서 조회가능..
+    , OO.PARTICIPANTS_CODE AS PARTICIPANTS_CODE                         -- 참여자코드 (피신고자)
+    -- 추가
+    , BC.BOARD_COMM_CODE AS BOARD_COMM_CODE                             -- 게시판댓글코드
+    , BC.BOARD_COMM_CONTENT AS BOARD_COMM_CONTENT                       -- 게시판댓글내용
+    , WC.WALK_COMM_CONTENT AS WALK_COMM_CONTENT                         -- 산책방댓글내용
+
+FROM TBL_REPORT_LOG L
+LEFT OUTER JOIN TBL_REPORT_TYPE T ON L.REP_TYPE_CODE = T.REP_TYPE_CODE
+LEFT OUTER JOIN TBL_SID SI ON L.REP_LOG_WRITER = SI.SID_CODE
+
+-- 추가
+LEFT OUTER JOIN TBL_MEMBER M ON M.MEM_CODE = SI.MEM_CODE
+--
+
+LEFT OUTER JOIN TBL_REPORT_STATE S ON L.REP_STATE_CODE = S.REP_STATE_CODE
+LEFT OUTER JOIN TBL_WALKCOMM_REPORT WCR ON L.REP_LOG_CODE = WCR.REP_LOG_CODE
+LEFT OUTER JOIN TBL_WALK_COMMENT WC ON WCR.WALK_COMM_CODE = WC.WALK_COMM_CODE
+
+LEFT OUTER JOIN TBL_BOARDCOMM_REPORT BCR ON L.REP_LOG_CODE = BCR.REP_LOG_CODE
+
+LEFT OUTER JOIN TBL_BOARD_COMMENT BC ON BCR.BOARD_COMM_CODE = BC.BOARD_COMM_CODE
+
+LEFT OUTER JOIN TBL_BOARD_REPORT BR ON L.REP_LOG_CODE = BR.REP_LOG_CODE
+
+LEFT OUTER JOIN TBL_BOARD B ON BR.BOARD_CODE = B.BOARD_CODE
+
+LEFT OUTER JOIN TBL_WALKROOM_REPORT WR ON L.REP_LOG_CODE = WR.REP_LOG_CODE
+LEFT OUTER JOIN TBL_WALKROOM W ON WR.WALKROOM_CODE = W.WALKROOM_CODE
+LEFT OUTER JOIN TBL_OFF_REPORT OO ON L.REP_LOG_CODE = OO.REP_LOG_CODE
+ORDER BY L.REP_LOG_CODE;
+--==>>
+/*
+REP_LOG_CODE	REP_TYPE_CODE	REP_TYPE_CONTENT	SID_CODE	REPORTER_NICKNAME	REP_LOG_DATE	REP_STATE_CODE	REP_STATE_CONTENT	REP_LOG_READ	LOG_READ_STATE	WALKCOMM_REP_CODE	WALK_COMM_WRITER	BOARDCOMM_REP_CODE	BOARD_COMM_WRITER	BOARD_REP_CODE	BOARD_CODE	BOARD_WRITER	BOARD_TITLE	BOARD_CONTENT	WALKROOM_REP_CODE	WALKROOM_CODE	WALKROOM_TITLE	WALKROOM_WORDS	WALKROOM_LEADER	OFF_REP_CODE	PARTICIPANTS_CODE	BOARD_COMM_CODE	BOARD_COMM_CONTENT	WALK_COMM_CONTENT
+REP001	1	게시글	SID003	뚜또집사	2021-06-27	2	신고해제	2021-06-28	○					BREP001	7	SID001	샘플사료무나	안양천돌다리로 오실분										
+REP002	1	게시글	SID007	맛있는참치	2021-06-27	1	미처리	2021-06-28	○					BREP002	3	SID001	오늘 뜨거운 밤	뜨거운밤..어쩌고..신고당할만한 이야기										
+REP003	1	게시글	SID002	사공혜연	2021-06-27	1	미처리	2021-06-28	○					BREP003	3	SID001	오늘 뜨거운 밤	뜨거운밤..어쩌고..신고당할만한 이야기										
+REP004	5	산책방/댓글	SID001	주리짱짱걸	2021-06-27	1	미처리		Ⅹ	WCREP001	SID002								WRREP003	1	함께 산책 하실 분?	같이가요ㅎ	SID001					왜아무도안들어오지..
+REP005	5	산책방/댓글	SID001	주리짱짱걸	2021-06-27	2	신고해제	2021-06-28	○	WCREP002	SID001																	오늘5분만 늦춰도될까요?
+REP006	2	댓글	SID003	뚜또집사	2021-06-27	2	신고해제	2021-06-28	○			BCREP001	SID002													2	진짜웃기죠?	
+REP007	2	댓글	SID003	뚜또집사	2021-06-27	2	신고해제	2021-06-28	○			BCREP002	SID010													5	구매완	
+REP008	3	산책방/게시물	SID002	사공혜연	2021-06-27	1	미처리		Ⅹ										WRREP001	1	함께 산책 하실 분?	같이가요ㅎ	SID001					
+REP009	3	산책방/게시물	SID010	연기연습하는은우	2021-06-27	2	신고해제	2021-06-28	○										WRREP002	2	가취가욥~!	프로산책러입니다	SID002					
+REP010	4	오프라인	SID003	뚜또집사	2021-06-28	2	신고해제	2021-06-29	○															OFFREP001	PAR001			
+REP011	4	오프라인	SID001	주리짱짱걸	2021-06-28	1	미처리		Ⅹ															OFFREP002	PAR004			
+*/
 
 
+--○ 신고내역코드로 특정 신고 조회
+SELECT REP_LOG_CODE
+		    , REP_TYPE_CODE
+		    , REP_TYPE_CONTENT
+		    , SID_CODE
+		    , REPORTER_NICKNAME
+		    , REP_LOG_DATE
+		    , REP_STATE_CODE
+		    , REP_STATE_CONTENT
+            , LOG_READ_STATE
+		    , BOARD_REP_CODE
+		    , BOARD_CODE
+		    , BOARD_WRITER
+		    , BOARD_TITLE
+		    , BOARD_CONTENT
+		FROM REPORTVIEW
+WHERE REP_LOG_CODE = 'REP003'
+;
+
+-- 미처리 상태의  게시물 조회
+SELECT REP_LOG_CODE
+		    , REP_TYPE_CODE
+		    , REP_TYPE_CONTENT
+		    , SID_CODE
+		    , REPORTER_NICKNAME
+		    , REP_LOG_DATE
+		    , REP_STATE_CODE
+		    , REP_STATE_CONTENT
+            , LOG_READ_STATE
+		    , BOARD_REP_CODE
+		    , BOARD_CODE
+		    , BOARD_WRITER
+		    , BOARD_TITLE
+		    , BOARD_CONTENT
+		FROM REPORTVIEW
+		WHERE REP_TYPE_CODE = 1
+          AND REP_STATE_CODE = 1
+		ORDER BY REP_LOG_CODE DESC
+;
+
+-- 신고해제 상태의 게시물 조회
+SELECT REP_LOG_CODE
+		    , REP_TYPE_CODE
+		    , REP_TYPE_CONTENT
+		    , SID_CODE
+		    , REPORTER_NICKNAME
+		    , REP_LOG_DATE
+		    , REP_STATE_CODE
+		    , REP_STATE_CONTENT
+            , LOG_READ_STATE
+		    , BOARD_REP_CODE
+		    , BOARD_CODE
+		    , BOARD_WRITER
+		    , BOARD_TITLE
+		    , BOARD_CONTENT
+		FROM REPORTVIEW
+		WHERE REP_TYPE_CODE = 1
+          AND REP_STATE_CODE = 2
+		ORDER BY REP_LOG_CODE DESC
+;
 
 
+-- 공지 테이블 데이터 출력
+SELECT *
+FROM TBL_NOTICE;
+--==>>
+/*
+NOTICE_CODE	NOTICE_WRITER	NOTICE_HEAD_CODE	NOTICE_TITLE	NOTICE_PHOTO	NOTICE_CONTENT	NOTICE_VIEW	NOTICE_LIKE	NOTICE_DATE
+1	ADM001	2	강아지배변봉투		산책 시 강아지 배변봉투를 꼭 챙겨주세요	0	0	21/06/26
+2	ADM002	1	산책메이트 튜토리얼1		산책메이트 사용 방법 안내	0	0	21/06/28
+3	ADM002	1	산책메이트 튜토리얼2		산책메이트 사용 방법 안내	0	0	21/06/28
+4	ADM002	1	산책메이트 튜토리얼3		산책메이트 사용 방법 안내	0	0	21/06/28
+5	ADM001	1	산책메이트 튜토리얼4		산책메이트 사용 방법 안내	0	0	21/06/29
+*/
+
+INSERT INTO TBL_BOARD(BOARD_CODE, BOARD_WRITER, BOARD_CATE_CODE, BOARD_TITLE
+		                    , BOARD_CONTENT, BOARD_VIEW, BOARD_LIKE, BOARD_DATE)
+		VALUES(#{board_code, jdbcType=NUMERIC}, 'SID002', #{board_cate_code}, #{board_title}
+		       ,#{board_content}, 0, 0, SYSDATE)
+
+-- Insert 구문
+INSERT INTO TBL_NOTICE(NOTICE_CODE, NOTICE_WRITER, NOTICE_HEAD_CODE, NOTICE_TITLE, NOTICE_PHOTO, NOTICE_CONTENT
+, NOTICE_VIEW, NOTICE_LIKE, NOTICE_DATE) 
+VALUES(#(notice_code, jdbcType=NUMERIC}, 'ADM001', #{notice_head_code}, #{notice_title}, null, #{notice_content}, 0, 0, SYSDATE);
+
+;
+SELECT MAX(NOTICE_CODE)+1 AS MAX_NUM
+FROM TBL_NOTICE
+;
 
 
+SELECT MAX(NOTICE_CODE)+1 FROM TBL_NOTICE
+
+ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';
 
 
+SELECT *
+FROM TBL_NOTICE_LEG;
+--==>>
+/*
+1	안내
+2	필독
+3	공지
+*/
 
 
+-- 공지 뷰 생성 
+CREATE OR REPLACE VIEW NOTICEVIEW
+AS
+SELECT N.NOTICE_CODE AS NOTICE_CODE
+    , N.NOTICE_WRITER AS NOTICE_WRITER
+    , N.NOTICE_HEAD_CODE AS NOTICE_HEAD_CODE
+    , NL.NOTICE_CATE_CONTENT AS NOTICE_CATE_CONTENT
+    , N.NOTICE_TITLE AS NOTICE_TITLE
+    , N.NOTICE_PHOTO AS NOTICE_PHOTO
+    , N.NOTICE_CONTENT AS NOTICE_CONTENT
+    , N.NOTICE_VIEW AS NOTICE_VIEW
+    , N.NOTICE_LIKE AS NOTICE_LIKE
+    ,TO_CHAR(N.NOTICE_DATE, 'YYYY-MM-DD') AS NOTICE_DATE
+FROM TBL_NOTICE N
+LEFT JOIN TBL_NOTICE_LEG NL
+ON N.NOTICE_HEAD_CODE = NL.NOTICE_CATE_CODE;
+--==>> View NOTICEVIEW이(가) 생성되었습니다.
 
-
-
-
-
-
+-- 뷰 조회
+SELECT NOTICE_CODE, NOTICE_WRITER, NOTICE_HEAD_CODE
+    , NOTICE_CATE_CONTENT, NOTICE_TITLE, NOTICE_PHOTO
+    , NOTICE_CONTENT, NOTICE_VIEW, NOTICE_LIKE, NOTICE_DATE
+FROM NOTICEVIEW
+ORDER BY NOTICE_CODE
+;
 
 
 
