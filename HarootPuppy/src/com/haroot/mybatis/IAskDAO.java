@@ -27,13 +27,13 @@ public interface IAskDAO
 	public int add(AskDTO ask);
 	
 	// 게시글 검색
-	public AskDTO search(String searchKey, String searchValue);
+	public AskDTO search(int ask_code);
 	
 	// 게시글 수정 
 	public int modify(AskDTO ask);
 	
 	// 게시글 삭제
-	public int remove(AskDTO ask);
+	public int remove(int ask_code);
 	
 	// 특정 영역(시작번호 ~ 끝번호)의 게시물의 목록을 읽어오는 메소드 정의 
 	public ArrayList<AskDTO> getLists(int start, int end, String searchKey, String searchValue);

@@ -13,8 +13,7 @@ public class AskDTO
 	, ASK_TITLE, ASK_CONTENT, ASK_PHOTO, ASK_STATE_CODE, ASK_STATE_CONTENT, ASK_READ  
 	 */
 	
-	private String ask_code // 고객문의코드
-   , ask_cate_code         // 문의카테고리코드
+	private String  ask_cate_code         // 문의카테고리코드
    , ask_cate_content      // 문의카테고리내용
    , sid_code              // 작성자(회원코드)
    , mem_nickname          // 작성자닉네임
@@ -25,13 +24,15 @@ public class AskDTO
    , ask_state_code        // 문의처리상태코드
    , ask_state_content     // 문의처리상태내용 (미처리, 답변완료)
    , ask_read;              // 열람날짜
+	
+	private int ask_code;
 
-	public String getAsk_code()
+	public int getAsk_code()
 	{
 		return ask_code;
 	}
 
-	public void setAsk_code(String ask_code)
+	public void setAsk_code(int ask_code)
 	{
 		this.ask_code = ask_code;
 	}

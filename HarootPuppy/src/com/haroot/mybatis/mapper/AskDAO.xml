@@ -9,6 +9,7 @@
 		SELECT *
 		FROM ASKVIEW
 		WHERE SID_CODE='SID001'
+		ORDER BY ASK_CODE DESC
  	</select>
 	
 	<!-- 관리자 : askNotRead, 관리자가 안읽은 고객문의 수 조회 -->
@@ -18,31 +19,16 @@
 		WHERE ASK_READ IS NULL
 	</select>
 
+
 	<select id="search" resultType="com.haroot.mybatis.AskDTO">
-		<!-- SELECT SID, NAME, TEL
+		SELECT SID, NAME, TEL
 		FROM TBL_STUDENT
-		WHERE SID= #{sid} -->
+		WHERE SID= #{sid}
 	</select>
 
 	<!-- 아별 추가 -->
 	<!-- 관리자가 읽지않은 고객문의 리스트 -->
 	<select id="notHandledList" resultType="com.haroot.mybatis.AskDTO">
-	<!-- 
-	SELECT ASK_CODE
-	, ASK_CATE_CODE
-	, ASK_CATE_CONTENT
-	, SID_CODE
-	, MEM_NICKNAME
-	, ASK_DATE
-	, ASK_TITLE
-	, ASK_CONTENT
-	, ASK_PHOTO
-	, ASK_STATE_CODE
-	, ASK_STATE_CONTENT
-	, ASK_READ
-	FROM ASKVIEW
-	WHERE ASK_STATE_CODE = 1 
-	-->
 	SELECT ASK_CODE
 	, ASK_CATE_CODE
 	, ASK_CATE_CONTENT
@@ -58,6 +44,7 @@
 	FROM ASKVIEW
 	WHERE ASK_READ IS NULL
 	</select>
+
 	<select id="getReadData" parameterType="java.lang.Integer" resultType="com.haroot.mybatis.AskDTO">
 		SELECT *
 		FROM ASKVIEW
@@ -70,18 +57,34 @@
 		WHERE SID_CODE='SID001'
 	</select>
 	
-	<insert id="add">	
-		INSERT INTO TBL_ASK(ASK_CODE, ASK_CATE_CODE, SID_CODE, ASK_DATE
-                , ASK_TITLE, ASK_CONTENT, ASK_STATE_CODE)
-		VALUES(#{ask_code, jdbcType=NUMERIC}, 3, 'SID003'
-				, TO_DATE(#{ask_date}, 'YYYY-MM-DD HH24:MI:SS')
-				, #{ask_title}, #{ask_content}, 1)
-	</insert>
-	
 	<select id="getMaxNum" resultType="java.lang.Integer">
 		SELECT MAX(ASK_CODE) AS MAX_NUM
 		FROM ASKVIEW
 
 	</select>
+	
+	<insert id="add">	
+		INSERT INTO TBL_ASK(ASK_CODE, ASK_CATE_CODE, SID_CODE, ASK_DATE
+                , ASK_TITLE, ASK_CONTENT, ASK_PHOTO, ASK_STATE_CODE)
+		VALUES(#{ask_code, jdbcType=NUMERIC}, #{ask_cate_code}, 'SID003'
+ 				, TO_DATE(#{ask_date}, 'YYYY-MM-DD HH24:MI:SS')
+				, #{ask_title}, #{ask_content}, #{ask_photo}, 1)
+	</insert>
+	
+	<update id="modify">
+		UPDATE TBL_ASK
+		SET ASK_CATE_CODE = #{ask_cate_code}
+		  , ASK_DATE = SYSDATE
+		  , ASK_TITLE = #{ask_title}
+		  , ASK_CONTENT = #{ask_content}
+		  , ASK_PHOTO = #{ask_photo}
+		WHERE ASK_CODE = #{ask_code}
+	</update>
+	
+	<delete id="remove">
+		DELETE
+		FROM TBL_ASK
+		WHERE ASK_CODE = #{ask_code}
+	</delete>
 
 </mapper>
