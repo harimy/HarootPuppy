@@ -36,60 +36,68 @@ body
 </head>
 <body>
 <jsp:include page="Main.jsp" />
-<div style="text-align: center;">
-<form>
-	<div>
-		<h5>${view.cate_content }</h5>
-		<h1>${view.title }</h1>
-		<h4>${view.nickname }</h4>
-	</div>
-	<div style="display: inline-block;">
-			<div style="float: left">${view.content_date}&nbsp;&nbsp;</div>
-			<div style="display: inline-block;">조회수 ${viewnum }&nbsp;&nbsp;</div>
-			<div style="display: inline-block;">좋아요 ${likenum }&nbsp;&nbsp;</div>
-			<div style="float: right; display: inline-block;">
-				<img alt="" src="images/like2.png" width="35" height="35" id="like">
-				<img alt="" src="images/report2.png" width="35" height="35" id="report">
+<div id="content" style="width: 85%; margin: auto;">
+	<form>ß
+		<div style="width: 85%; margin: auto;">
+			<div>
+				<h1>${view.board_title }</h1>
+				<input type="hidden" name="board_code" value="${view.board_code }">
 			</div>
-	</div>
-	
-	<div>
-		<textarea rows="30" cols="120" readonly="readonly" style="padding: 30px;">${view.content }</textarea>
-	</div><br>
-	<div>
-		<div>
-			댓글
+			<div style="display: inline-block;">
+				<div style="float: left; font-weight: bold;">${view.nickname }&nbsp;&nbsp;</div>
+				<div style="display: inline-block;">${view.board_content_date }&nbsp;&nbsp;</div>
+			</div>
+			<div>
+				<div style="float: left; font-weight: bold;">카테고리 &nbsp;&nbsp;</div>
+				<div style="display: inline-block;">${view.board_cate_content}&nbsp;&nbsp;</div>
+			</div>
+			<div>
+				<div style="float: left;">조회수 ${view.viewNum }&nbsp;&nbsp;</div>
+				<div style="display: inline-block;">좋아요 ${view.likeNum }&nbsp;&nbsp;</div>
+				<div style="display: inline-block; float: right;">
+					<img alt="" src="images/like2.png" width="35" height="35" id="like">
+					<img alt="" src="images/report2.png" width="35" height="35" id="report">
+				</div>
+			</div>
 		</div>
-		<div>
-		<table>
-		<c:forEach var="view" items="${commView }">
-		<tr>
-			<td>${view.board_comm_content }</td>
-		</tr>
-		</c:forEach>
-		</table>
+		<br>
+		<div style="width: 85%; margin: auto;">
+			<textarea rows="20" class="form-control" disabled="disabled">${view.board_content }</textarea>
+		</div><br>
+		<div style="width: 85%; margin: auto;">
+			<div>
+				댓글
+			</div>
+			<div>
+			<table>
+			<c:forEach var="view" items="${commView }">
+			<tr>
+				<td>${view.board_comm_content }</td>
+			</tr>
+			</c:forEach>
+			</table>
+			</div>
 		</div>
-	</div>
-	<br>
-	<div>
-		<textarea rows="3" cols="112" style="float: left; width: 807px;">댓글을 입력해주세요.</textarea>
-		<input type="button" value="등록" id="submitBtn" class="submitbtn">
-	</div>
-	<br>
-	
-	<div class="bbsArticle_bottomLine" style="width: 80%;">
-		<p><a href="">이전글 : </a></p>
-		<hr>
-	</div>
-	<div class="bbsArticle_noLine" style="width: 80%;">
-		<p><a href="">다음글 : </a></p>
-	</div>
-	<div>
-		<button type="button" id="updateBtn" class="listbtn">수정</button>
-		<button type="button" id="deleteBtn" class="listbtn">삭제</button>
-		<button type="button" id="listBtn" class="listbtn">목록으로</button>
-	</div>
-</form>
+		<br>
+		<div style="width: 85%; margin: auto;">
+			<textarea rows="3" cols="125" placeholder="댓글을 입력해주세요."></textarea>
+			<input type="button" value="등록" id="submitBtn" class="submitbtn">
+		</div>
+		<br>
+		
+		<div style="width: 85%; margin: auto;" class="bbsArticle_bottomLine" style="width: 80%;">
+			<p><a href="">이전글 : ${view.board_title }</a></p>
+			<hr>
+		</div>
+		<div style="width: 85%; margin: auto;" class="bbsArticle_noLine" style="width: 80%;">
+			<p><a href="">다음글 : ${view.board_title }</a></p>
+		</div>
+		<div style="width: 85%; margin: auto; text-align: right;">
+			<button type="button" id="updateBtn" class="btn btn-warning" onclick="location.href='boardupdateform.action?board_code=${view.board_code }&board_writer=${view.board_writer }'">수정</button>
+			<button type="button" id="deleteBtn" class="btn btn-danger">삭제</button>
+			<button type="button" id="listBtn" class="btn btn-success"  onclick="location.href='boardlist.action'">목록으로</button>
+		</div>
+	</form>
 </div>
 
 </body>

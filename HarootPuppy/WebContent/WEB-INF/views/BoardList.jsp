@@ -32,7 +32,7 @@
 <body>
 <jsp:include page="Main.jsp" />
 <br><br><br><br>
-<div id="bbsList">
+<div id="bbsList" style="width: 85%; margin: auto; text-align: right;">
    <div style="text-align : left; width: 300px; float:right;">
          <div id="gotohotboard">
          <h2>HOT 게시판 >> </h2>
@@ -75,13 +75,13 @@
       </tr>
      <c:forEach var="list" items="${list }">
         <tr id="list">
-           <td>${list.cate_content }</td>
-           <td>${list.num }</td>
+           <td>${list.board_cate_content }</td>
+           <td>${list.board_code }</td>
            <td>
-			<a href="boardview.action?num=${list.num }&nickname=${list.nickname}">${list.title }</a>
+			<a href="boardview.action?board_code=${list.board_code }&board_writer=${list.board_writer}">${list.board_title }</a>
 		   </td>
            <td>${list.nickname }</td>
-           <td>${list.content_date }</td>
+           <td>${list.board_content_date }</td>
            <td>${list.viewNum }</td>
            <td>${list.likeNum }</td>
     	</tr>
@@ -102,33 +102,14 @@
             </form>
          </div><!-- #leftHeader -->
       
-         <div id="rightHeader">
-            <input type="button" value="글쓰기" class="btn2"
-            onclick="javascript:location.href='boardinsertform.action'">         
-         </div>
+        <div>
+		<button class="btn btn-primary btn-sm" type="button" id="insertBoard" onclick="location.href='boardinsertform.action'">글 등록</button>
+		</div>
       
    </div><!-- #bbsList_header -->
       <br><br>
       <div id="footer_number" style="text-align: center;">
-         <p>1 Prev 21 22 23 24 25 26 27 28 29 30 Next 63</p>
-         
-      <%--    <p>
-         <%
-         if(dataCount != 0)
-         {
-         %>
-            <%=pageIndexList %>
-         <%
-         }
-         else
-         {
-         %>
-            등록된 게시물이 존재하지 않습니다.
-         <%
-         }
-         %>
-         </p> --%>
-         
+         <p>1</p>
       </div>
       
    </div><!-- #bbsList_list -->
