@@ -125,6 +125,19 @@ li.timeLineLi{
   }
 }
 
+
+
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
+}
+
 </style>
 
 
@@ -135,9 +148,9 @@ li.timeLineLi{
   - 반려견 다이어리 하단 타임라인 페이지
 ------------------------------->
 
-	<div>
+	<div class="out">
 		<!-- 메뉴영역 -->
-		<div>
+		<div class="in">
 			<%-- <c:import url="상단메뉴.jsp"></c:import> --%>
 		</div>
 

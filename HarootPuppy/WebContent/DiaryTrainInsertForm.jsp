@@ -40,6 +40,17 @@ String cp = request.getContextPath();
 	margin: 0px auto;
 }
 
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
+}
+
 .starsDiv {
 	display: flex;
 	flex-direction: row;
@@ -165,7 +176,8 @@ String cp = request.getContextPath();
 <div>
 	
 	<!-- content 영역 -->
-	<div>
+	<div class="out">
+	<div class="in">
 		<!-- 즐겨찾기 영역 (form 영역 바깥) -->
 		<form action="" id="">
 
@@ -195,7 +207,8 @@ String cp = request.getContextPath();
 		
 			<!-- content 영역 -->
 			<!-- 즐겨찾기 -->
-			<div class="container-fluid favorite" id="privateBlock">
+			<div class="container-fluid favorite" id="privateBlock"
+			style="background-color: powderblue; width: 600px; height: 300px;">
 				즐겨찾기&nbsp; 
 				<select name="favorite">
 					<option value="mirivogi">미리보기</option>
@@ -274,7 +287,7 @@ String cp = request.getContextPath();
 			<%-- <c:import url="하단메뉴.jsp"></c:import> --%>
 		</div>
 </div>
-	
+</div>
 
 
 

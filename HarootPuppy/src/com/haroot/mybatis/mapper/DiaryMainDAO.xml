@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haroot.mybatis.IPetDAO">
+	<!-- 특정회원의 특정 반려견 정보 (pet_code 기반 -->
+	<select id="petInfo" parameterType="java.lang.String" resultType="com.haroot.mybatis.PetDTO">
+		SELECT PET_CODE, PET_NAME, SID_CODE, RELATION_CODE
+		FROM FORPETNAME_VIEW
+		WHERE PET_CODE = #{pet_code}
+		<!-- WHERE SID_CODE = #{PET_CODE} -->
+	</select>
+	 
+</mapper>

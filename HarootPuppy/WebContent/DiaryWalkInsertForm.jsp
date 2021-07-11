@@ -44,7 +44,16 @@ String cp = request.getContextPath();
 }
 
 
+.out
+{
+	width:100%;
+	text-align: center;
+}
 
+.in
+{
+	display:inline-block;
+}
 </style>
 
 
@@ -59,7 +68,8 @@ String cp = request.getContextPath();
 
 
 	<!-- content 영역 -->
-	<div>
+	<div class="out">
+	<div class="in">
 		<form action="" id="">
 
 			<!-- 공통항목 (시작 시간) -->
@@ -169,7 +179,7 @@ String cp = request.getContextPath();
 
 		</form>
 	</div>
-
+	</div>
 
 </body>
 </html>

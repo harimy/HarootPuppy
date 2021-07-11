@@ -48,6 +48,17 @@ function add_private() {
 {
 	margin: 0px auto;
 }
+
+.out
+{
+	width:100%;
+	text-align: center;
+}
+
+.in
+{
+	display:inline-block;
+}
 </style>
 
 
@@ -60,7 +71,8 @@ function add_private() {
 
 
 	<!-- content 영역 -->
-	<div>
+	<div class="out">
+	<div class="in">
 		<form action="" id="">
 
 			<!-- 공통항목 (시작 시간/ 종료 시간) -->
@@ -115,7 +127,7 @@ function add_private() {
 
 		</form>
 	</div>
-
+	</div>	
 
 </body>
 </html>

@@ -30,4 +30,7 @@ public interface IPetDAO
 	// 반려견(들) 검색 (sid)로
 	public ArrayList<PetDTO> searchPets(String sid_code);
 	
+	
+	// public String searchPetCode(String sid_code);
+	
 }
