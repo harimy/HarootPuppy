@@ -1,6 +1,5 @@
 package com.haroot.mybatis;
 
-
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;

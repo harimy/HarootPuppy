@@ -6,6 +6,7 @@
 <mapper namespace="com.haroot.mybatis.IAdminMainDAO">
 
 	<!-- 로그인 용 조회 -->
+
 	<!-- 
 	<select id='loginAdmin' resultType = "java.lang.String">
 		SELECT ADMIN_NAME
@@ -14,5 +15,5 @@
 		AND ADMIN_PW=CRYPTPACK.ENCRYPT(#{admin_id}, #{admin_pw});
 	</select>
 	-->
-	
+
 </mapper>
