@@ -26,13 +26,13 @@ public class DiaryMealInsertController
 	private SqlSession sqlSession;
 	
 	
-	@RequestMapping(value="diaryinsertmeal.action", method = RequestMethod.GET)
+	@RequestMapping(value="diaryinsertmeal.action", method = RequestMethod.POST)
 	public String insertmeal(DiaryMealDTO mealDto) throws SQLException 
 	{
 		IDiaryMealDAO mealDao = sqlSession.getMapper(IDiaryMealDAO.class);
-		
-		mealDao.addMeal(mealDto);
-		System.out.println(mealDto);
+	
+		System.out.println(mealDto.getCommon_start());
+		mealDao.addMeal2(mealDto);
 		
 		return "redirect:diarymain.action";
 	}

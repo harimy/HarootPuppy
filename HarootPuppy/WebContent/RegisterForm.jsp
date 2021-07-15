@@ -21,6 +21,7 @@
 
 	$(function()
 	{
+
 		var checkNum1=0;
 		var checkNum2=0;
 		var checkNum3=0;
@@ -43,7 +44,7 @@
 		
 		$("#join").click(function(){
 			
-			
+		 	// alert(typeof($("#mem_addr").val()));
 /* 			$("#telCheck").click(function(){
 				checkNum2 =checkNum3 + 1;
 			});
@@ -99,6 +100,20 @@
 		
 	});
 	
+	
+	
+	 function openAddressChild() 
+	  {
+		    var _width = '650';
+		    var _height = '380';
+		 
+		    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+		    var _left = Math.ceil(( window.screen.width - _width )/2);
+		    var _top = Math.ceil(( window.screen.height - _height )/2); 
+		 
+		    var open = window.open('AddrSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );	 		
+	 		
+	  }
 
 	
 </script>
@@ -175,7 +190,7 @@ RegisterForm의 Form이 채워지고
 	                    <label for="pwd">비밀번호</label>
 	                </td>
 	                <td>
-	                    <input type="text" name="mem_pw" id="pwd" size="20px"> 
+	                    <input type="password" name="mem_pw" id="pwd" size="20px"> 
 	                    <span id="errPw">4자 이상~15자 이내</span>
 	                </td>
 	            </tr>
@@ -184,7 +199,7 @@ RegisterForm의 Form이 채워지고
 	                    <label for="pwdCheck">비밀번호 확인</label>
 	                </td>
 	                <td>
-	                    <input type="text" name="pwdCheck" id="pwdCheck" size="20px">
+	                    <input type="password" name="pwdCheck" id="pwdCheck" size="20px">
 	                    <span id="errPwdCheck">일치하지 않습니다.</span>
 	                </td>
 	            </tr>
@@ -243,8 +258,9 @@ RegisterForm의 Form이 채워지고
 	                    <label for="home">주소 검색</label>
 	                </td>
 	                <td>
-	                    <input type="text" name="mem_addr" id="dong" size="35">
-	                    <input type="button" id="address" value="주소 검색">
+	                 	<input type="text" id="mem_addr" name="mem_addr" placeholder="주소를 입력하세요">
+						<input type="button" onclick="openAddressChild()" value="주소 검색"><br>
+						<div id="addrMap" style="width:300px; height:300px; margin-top:10px; display:none"></div>
 		                <br><br>
 	                </td>
 	            </tr>

@@ -88,8 +88,12 @@ public class WalkRoomListMain
 	
 	
 	@RequestMapping(value = "/walkroominsertform.action", method = RequestMethod.GET)
-	public String walkRoomInsertForm(ModelMap model) throws SQLException
+	public String walkRoomInsertForm(HttpServletRequest request, ModelMap model) throws SQLException
 	{
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		String pet_code = (String)session.getAttribute("pet_code");
+		
 		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
 		
 		int nextNum = dao.max() + 1;
@@ -101,8 +105,12 @@ public class WalkRoomListMain
 	
 	
 	@RequestMapping(value = "/walkroominsert.action", method = RequestMethod.POST)
-	public String memberInsert(WalkRoomDTO w) throws SQLException
+	public String memberInsert(HttpServletRequest request, WalkRoomDTO w) throws SQLException
 	{
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		String pet_code = (String)session.getAttribute("pet_code");
+		
 		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
 		IParticipantsDAO partDao = sqlSession.getMapper(IParticipantsDAO.class);
 		ParticipantsDTO partDto = new ParticipantsDTO();
@@ -125,14 +133,15 @@ public class WalkRoomListMain
 		return "redirect:walkroommain.action";
 	}
 	
-	
+	/*
 	@RequestMapping(value = "walkroomupdateform.action", method = RequestMethod.POST)
 	public String memberUpdate(MemberDTO m)
 	{
-//		WalkRoomDAO dao = sqlSession.getMapper(IMemberDAO.class);
-//		dao.
-		
-		//dao.modify(m);
+
+		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
+
+		dao.modify(m);
+
 		
 		return "WalkRoomUpdateForm.jsp";
 	}

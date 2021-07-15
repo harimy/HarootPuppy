@@ -70,6 +70,8 @@ public class MainController
 		
 		return "main.action";
 
+
 	}
 	
+
 }

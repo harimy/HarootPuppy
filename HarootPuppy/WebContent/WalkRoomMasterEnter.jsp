@@ -91,9 +91,16 @@ String cp = request.getContextPath();
 
 </head>
 <body>
-	<jsp:include page="Main.jsp" />
-	<!-- 방 개설하면서 정보 불러오기 -->
 	<div>
+		<!-- 메뉴영역 -->
+		<div id="harootHeader">
+			<c:import url="Main.jsp"></c:import>
+		</div>
+
+		<!-- content 영역 -->
+		<div id="harootContent">
+			<!-- 방 개설하면서 정보 불러오기 -->
+		<div>
 
 		<!-- 방 제목 -->
 		<c:forEach var="room" begin="1" end="2" items="${rooms }" >
@@ -154,13 +161,19 @@ String cp = request.getContextPath();
 						</p>
 					</div>
 				</div>
+				<div class="masterTag" style="${ room.walkroom_leader == room.sid_code ? ''  : 'display: none;' }">방장</div>
+				<div class="notReadyTag" style="${ room.walkroom_leader != room.sid_code ? ''  : 'display: none;' }">Ready 대기</div>
+				<div class="readyTag" style="display:none;">Ready 완료</div>
+				<!-- 
 				<div class="masterTag">방장</div>
 				<div class="readyTag">Ready 완료</div>
 				<div class="notReadyTag">Ready 대기</div>
+				 -->
 				<br>
 			</div>
 		</c:forEach>
-
+		
+		<%-- 
 		<div class="col-sm-4 col-md-3">
 			<div class="thumbnail">
 				<div class="nickName">
@@ -206,6 +219,8 @@ String cp = request.getContextPath();
 			</div>
 			<div class="notReadyTag">Ready 대기</div>
 		</div>
+		 --%>
+		 
 	</div>
 
 
@@ -243,5 +258,7 @@ String cp = request.getContextPath();
 			onclick="window.close()">목록으로</button>
 		<button type="button" id="delete">방 삭제하기</button>
 	</div>
+	</div>
+</div>
 </body>
 </html>

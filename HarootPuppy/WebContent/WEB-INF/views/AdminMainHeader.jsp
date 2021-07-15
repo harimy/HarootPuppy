@@ -36,10 +36,14 @@
 <body>
 
 <div id="harootHeader">
-	<div style="float:left;"><a href="Main.jsp" class="adminMain">로그아웃&nbsp;&nbsp;&nbsp;</a></div>
-	<div style="float:right;">ADMIN</div>
+	<div style="float:left;"><a href="logoutadmin.action" class="adminMain">로그아웃&nbsp;&nbsp;&nbsp;</a></div>
+<<<<<<< HEAD
+	<div style="float:right;">ADMIN ${name }님 환영합니다.</div>
+=======
+	<div style="float:right;">ADMIN ${name} 님</div>
+>>>>>>> 260d166faf2724f88afda8d7a1bda90021e99eff
 	<div id="logo" style="text-align : center;">
-		<a href="adminmain.action">
+		<a href="adminheader.action">
 			<img alt="" src="images/mainlogo.png" width="250" height="100" border="0">
 		</a>
 	</div>

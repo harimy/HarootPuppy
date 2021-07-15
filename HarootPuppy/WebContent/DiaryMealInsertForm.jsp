@@ -27,12 +27,30 @@ String cp = request.getContextPath();
 <script type="text/javascript" src="<%=cp%>/js/diary.js"></script>
 
 <script type="text/javascript">
+	var favorite_name;
+	
 	function add_private() 
 	{
-		var favorite_name = prompt('즐겨찾기 이름을 입력하세요'); 
+		favorite_name = prompt('즐겨찾기 이름을 입력하세요'); 
 		alert(favorite_name);
 
 	};
+	
+	
+	
+	$(function()
+	{
+		$("#errForm").css("display", "none");
+		
+		if ( $("#start1").val()=="" || $("#end1").val()==""
+			|| $("#meal_name").val()=="" 
+			|| $("#meal_amount").val()=="" 
+		{
+			$("#errForm").css("display" ,"inline");
+			return;
+		} 
+		
+	});
 	
 /* 	$(function()
 	{
@@ -141,6 +159,13 @@ String cp = request.getContextPath();
 	display:inline-block;
 }
 
+#errForm
+	{
+		color: red;
+		font-size: small;
+		display: none;
+	}
+
 </style>
 
 
@@ -152,7 +177,7 @@ String cp = request.getContextPath();
 ------------------------------->
 	<div class="out">
 	<div class="in">
-	<!-- <form action="" id="" method="post"> -->	
+	<form action="diaryinsertmeal.action"  method="post"> 
 
 			<!-- 공통항목 (시작 시간) -->
 			<div class="form-time">
@@ -176,19 +201,19 @@ String cp = request.getContextPath();
 			</svg></button>
 			
 			<!-- 즐겨찾기 영역 -->
-			<div style="background-color: powderblue; width: 450px; height: 200px;">
+			<div style="background-color: #F6CEE3; width: 450px; height: 200px;">
 				<div class="form-group">
-				<input class="form-control" name="favorite_name" type="hidden" >
+				<input class="form-control" name="favorite_name" id="favorite_name" type="hidden" >
 				</div>
 				
 				<div class="form-group">
-				<label for="focusedInput"> <span class="input-group-text" id="">사료이름</span> </label> 
+				<label for="focusedInput"> <span class="input-group-text" id="mealname">사료이름</span> </label> 
 				<input class="form-control" id="focusedInput" name="meal_name" type="text" placeholder="사료 이름">
 				</div>
 				<div class="form-group">
 				<label for="focusedInput"> 
 				<span class="input-group-text" id="meal_amount">사료양</span>
-				</label> <input class="form-control" id="focusedInput" type="text"
+				</label> <input class="form-control focusedInput" id="meal_amount" type="text"
 					placeholder="숫자만 입력하세요" name="meal_amount">g
 				</div>
 				
@@ -251,18 +276,15 @@ String cp = request.getContextPath();
 			<br> <input type="reset" value="취소"
 				class="btn btn-outline-secondary"> 
 				<button type="submit"
-				onclick="location.href='diaryinsertmeal.action'" 
-				class="btn btn-secondary final_btn" >저장</button> 
-				
+				class="btn btn-secondary final_btn" >저장</button>
+				 
+				<span id="errForm">필수 입력 항목을 입력하세요.</span>	
 			<div>
 				<input type="hidden" value="sid_code" name="sid_code">
-			</div>
-			
-			<div>
 				<input type="hidden" value="pet_code" name="pet_code">
 			</div>
 
-		<!-- </form> -->
+		</form>
 	</div>
 	</div>
 

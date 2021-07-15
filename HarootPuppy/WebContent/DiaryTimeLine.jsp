@@ -166,7 +166,13 @@ li.timeLineLi{
 							<span>날씨 : 좋음</span><br>
 							<span class="memo">산책하다가 귀여운 강아지 만남!</span>
 						</li>
-						<li class="timeLineLi">
+						 <li class="timeLineLi">
+							<div class="time">09:30 AM</div>
+							<span>밥</span><br>
+							<span>오리젠 50g</span><br>
+							<span class="memo">너무 빨리 먹어서 걱정 ㅠ</span>
+						</li>
+						<!-- <li class="timeLineLi">
 							<div class="time">09:30 AM</div>
 							<span>관리명</span><br>
 							<span>관리내용</span><br>
@@ -177,13 +183,7 @@ li.timeLineLi{
 							<span>관리명</span><br>
 							<span>관리내용</span><br>
 							<span class="memo">메모</span>
-						</li>
-						<li class="timeLineLi">
-							<div class="time">09:30 AM</div>
-							<span>관리명</span><br>
-							<span>관리내용</span><br>
-							<span class="memo">메모</span>
-						</li>
+						</li> -->
 						<li class="timeLineLi"></li>
 					</ul>
 				</div>
