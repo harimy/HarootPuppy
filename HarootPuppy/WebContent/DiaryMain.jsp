@@ -290,7 +290,7 @@ $(function()
          <c:import url="Main.jsp"></c:import>
       </div>
 
-<<<<<<< HEAD
+
       <!-- content 영역 -->
       <div>
          <!-- 반려견 이름 출력 -->
@@ -314,31 +314,6 @@ $(function()
             <input type="hidden" value="${list.pet_code }" name="pet_code" id="pet_code">
          </div>
          <br>
-=======
-		<!-- content 영역 -->
-		<div>
-			<!-- 반려견 이름 출력 -->
-			<div>
-				<h1 class="badge-parent">
-					<br>
-					<br> <span class="badge badge-pill badge-warning">${list.pet_name }</span>
-				</h1>
-				<br>
-			</div>
-			<!-- 정보보기 버튼 -->
-			<div style="text-align: right; margin-right: 500px;">
-				<button type="button" class="btn btn-success" id="petInfo" value="${list.pet_code }" onclick="location.href='DiaryInfo.jsp'">
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-						fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-              		<path
-							d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z" />
-            		</svg>
-					정보 보기
-				</button>
-				<input type="hidden" value="${list.pet_code }" name="pet_code" id="pet_code">
-			</div>
-			<br>
->>>>>>> e2a736788c9c7ffcb0955cb6c092612eb2e350fe
 
          <!-- 달력영역 -->
          <div id="calendarArea" style="background-color: RGB(253,239,142); height: 800px;">
@@ -373,8 +348,6 @@ $(function()
          </div> 
          
          
-         
-         
          <!-- 타임라인 -->
          <div id="timeline">
          <c:import url="DiaryTimeLine.jsp"></c:import>
@@ -382,10 +355,6 @@ $(function()
          
          </div>
          <!-- 기본관리 / 특별관리 탭 영역 끝 -->
-
-
-
-      
 
 
       <!-- 하단 회사 설명 영역 -->

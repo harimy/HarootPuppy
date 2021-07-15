@@ -125,16 +125,16 @@ public class WalkRoomListMain
 		return "redirect:walkroommain.action";
 	}
 	
-	
+	/*
 	@RequestMapping(value = "walkroomupdateform.action", method = RequestMethod.POST)
 	public String memberUpdate(MemberDTO m)
 	{
 		WalkRoomDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		dao.
 		
 		//dao.modify(m);
 		
 		return "WalkRoomUpdateForm.jsp";
 	}
+	*/
 	
 }

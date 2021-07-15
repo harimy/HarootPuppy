@@ -3,17 +3,12 @@
  * - 관리자페이지 컨트롤러 객체
 ================================*/
 
-
+/*
 package com.haroot.mybatis;
 
 import java.sql.SQLException;
-
 import javax.servlet.http.HttpServletRequest;
-<<<<<<< HEAD
-=======
 import javax.servlet.http.HttpServletResponse;
->>>>>>> e2a736788c9c7ffcb0955cb6c092612eb2e350fe
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -79,7 +74,8 @@ public class AdminController
 		return "/WEB-INF/views/AdminMain.jsp";
 	
 	}
-
-	
 	
 }
+*/
+
+
