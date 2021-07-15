@@ -61,6 +61,18 @@ span{
 			$("#welcome").html("${nickname} 님 환영합니다!");
 			$("#welcome").attr("onclick", "");
 		}
+		
+		if (  $("#loginCheck1").val() = null)
+		{
+			$("#log").attr("onclick", "location.href='login.action'");
+			$("#log").html("로그인");
+			$("#myPage").css('display', "none");
+			$("#notice").css('display', "none");
+			var nickname = $("#nickname").val();
+			// alert(nickname);
+			$("#welcome").html("회원가입");
+			$("#welcome").attr("onclick", "location.href='registerform.action'");
+		}
 
 	});
 </script>
@@ -86,7 +98,7 @@ span{
 					<img alt="" src="images/mainlogo.png" width="250" height="100"
 						border="0">
 				</button>
-				<button type="button" id="loginCheck"></button>
+				<!-- <button type="button" id="loginCheck"></button> -->
 				<input type="hidden" id="loginCheck1" value="${sid_code }">
 			</div>
 		</div>

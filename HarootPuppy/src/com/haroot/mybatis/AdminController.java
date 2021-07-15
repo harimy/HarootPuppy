@@ -9,6 +9,7 @@ package com.haroot.mybatis;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,8 @@ public class AdminController
 	
 	// 아별
 	// 관리자 계정 로그인시 , 관리자용 메인 페이지 요청 (아별 : GET 방식)
+	
+	/*
 	@RequestMapping(value="/adminmain.action", method=RequestMethod.GET)
 	public String adminMain(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws SQLException
 	{
@@ -74,6 +77,7 @@ public class AdminController
 		return "/WEB-INF/views/AdminMain.jsp";
 	
 	}
+
 	
 }
 */

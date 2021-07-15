@@ -34,6 +34,7 @@ public class WalkRoomViewController
 		int walkroom_code = Integer.parseInt(request.getParameter("num"));
 		//System.out.println(walkroom_code);
 		
+		// 방 번호로 방 정보 및 참여자 정보 조회하기
 		IWalkRoomViewDAO dao = sqlSession.getMapper(IWalkRoomViewDAO.class);
 		ArrayList<WalkRoomViewDTO> rooms = dao.list(walkroom_code);
 	    model.addAttribute("rooms", rooms);
@@ -47,6 +48,8 @@ public class WalkRoomViewController
 		else if(sid_code.equals(walkroom_leader))
 		{
 			//System.out.println("같음");
+			model.addAttribute("rooms", rooms);
+			model.addAttribute("walkroom_code", walkroom_code);
 			result = "WalkRoomMasterEnter.jsp";
 		}
 		else
@@ -93,7 +96,7 @@ public class WalkRoomViewController
 	    }
 	    else 
 	    {
-	    	model.addAttribute("r",r);	// 방 정보 출력용 하나짜리 DTO
+	    	model.addAttribute("r",r);				// 방 정보 출력용 하나짜리 DTO
 	    	model.addAttribute("rooms", rooms);	 	// 참여자 정보 출력용 ArrayList<DTO>
 	    	result = "WalkRoomGuestEnter.jsp";
 	    }

@@ -68,6 +68,7 @@
 	height: 350px;
 	border-radius: 30px;
 	margin: 30px;
+	margin-right: 100px;
 }
 
 .button2
@@ -82,6 +83,7 @@
 	height: 350px;
 	border-radius: 30px;
 	margin: 30px;
+	margin-left: 100px;
 }
 
 .tdMain
