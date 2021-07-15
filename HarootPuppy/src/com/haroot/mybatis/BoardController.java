@@ -1,14 +1,11 @@
 package com.haroot.mybatis;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +24,8 @@ public class BoardController
 	
 	
 	@RequestMapping(value="/boardlist.action", method=RequestMethod.GET)
-	public String boardList(Model model, HttpServletRequest request)
+
+	public String boardList(Model model) throws SQLException
 	{
 
 		HttpSession session = request.getSession();
@@ -64,19 +62,21 @@ public class BoardController
 		
 		model.addAttribute("nextNum", nextNum);
 		
-		System.out.println(request.getParameter("board_code"));
+		System.out.println(nextNum);
 		
 		return "/BoardInsertForm.jsp";
 	}
 	
 	@RequestMapping(value="/boardinsert.action", method=RequestMethod.POST)
-	public String boardInsert(BoardDTO board) throws IOException
+	public String boardInsert(HttpServletRequest request, BoardDTO board) throws IOException, SQLException
 	{
 		IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
-		BoardDTO dto = new BoardDTO();
 		
-		int board_code = dao.getMaxNum() + 1;
-		dto.setBoard_code(board_code);
+		//int board_code = dao.getMaxNum() + 1;
+		
+		System.out.println(board.getBoard_cate_code());
+		
+//		dto.setBoard_code(board_code);
 		
 		dao.add(board);
 		
@@ -84,7 +84,7 @@ public class BoardController
 	}
 	
 	@RequestMapping(value="/boardview.action", method=RequestMethod.GET)
-	public String boardView(Model model, int board_code, String board_writer)
+	public String boardView(Model model, int board_code, String board_writer) throws SQLException
 	{
 		String result = null;
 		
@@ -105,29 +105,19 @@ public class BoardController
 		
 		model.addAttribute("board_code", board_code);
 		model.addAttribute("board_writer", board_writer);
-		model.addAttribute("search", dao.getReadData(board_code, board_writer));
+		model.addAttribute("view", dao.view(board_code, board_writer));
 		  
 		return "BoardUpdateForm.jsp";
 	}
 	
 	// 게시글 수정
 	@RequestMapping(value="/boardupdate.action", method=RequestMethod.POST)
-	public String boardUpdate(HttpServletRequest request, BoardDTO board)
+	public String boardUpdate(HttpServletRequest request, BoardDTO board) throws SQLException
 	{	
 		IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
 		
-		System.out.println("언놈이냐 : " + request.getParameter("board_code"));
-		System.out.println("언놈이냐 작성 : " + request.getParameter("board_writer"));
-		System.out.println("언놈이냐 카테코드 : " + request.getParameter("board_cate_code"));
-		System.out.println("언놈이냐 제목 : " + request.getParameter("board_title"));
-		System.out.println("언놈이냐 내용 : " + request.getParameter("board_content"));
-		
 		int board_code = Integer.parseInt(request.getParameter("board_code"));
-
 		String board_writer = request.getParameter("board_writer");
-		
-		board.setBoard_writer(request.getParameter("board_writer"));
-		board.setBoard_code(Integer.parseInt(request.getParameter("board_code")));
 		
 		dao.modify(board);
 		

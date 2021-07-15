@@ -39,8 +39,9 @@
 				return;		// submit 액션 처리 중단
 			}
 		 	
-		 	$(boardForm).submit();
+		 	$("#boardForm").submit();
 		});
+
 	});
 </script>
 </head>
@@ -54,7 +55,7 @@
 
  <br><br><br>
 <div style="width:85%; margin: auto;">
- <form role="form" action="boardinsert.action" method="post" enctype="multipart/form-data" name="boardForm">
+ <form role="form" id="boardForm" action="boardinsert.action" method="post" enctype="multipart/form-data" name="boardForm">
       <table class="table table-bordered" id="tblAdd">
          <tr>
             <td>제목</td>

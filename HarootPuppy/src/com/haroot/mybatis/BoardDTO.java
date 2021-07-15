@@ -19,10 +19,10 @@ public class BoardDTO
 	
 	private String writer, head_code, title, content, photo, content_date, cate_content;	
 	
-	private String  board_writer, board_cate_code, board_title, board_content
+	private String  board_writer, board_title, board_content
 				 , board_photo, board_content_date, board_cate_content, nickname, name;
 	
-	private int board_code, board_view, board_like;
+	private int board_code, board_view, board_like, board_cate_code;
 	
 	private MultipartFile uploadFile;
 
@@ -138,12 +138,12 @@ public class BoardDTO
 		this.board_writer = board_writer;
 	}
 
-	public String getBoard_cate_code()
+	public int getBoard_cate_code()
 	{
 		return board_cate_code;
 	}
 
-	public void setBoard_cate_code(String board_cate_code)
+	public void setBoard_cate_code(int board_cate_code)
 	{
 		this.board_cate_code = board_cate_code;
 	}

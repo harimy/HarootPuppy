@@ -23,19 +23,17 @@
 <style type="text/css">
 .submitbtn
 {
-	width: 60px;
-	height: 60px;
+	width: 66px;
+	height: 66px;
 	margin-left:10px;
 	font-weight: bold;
 }
-body
- {
- 	margin: 30px;
- }
+
 </style>
 </head>
 <body>
 <jsp:include page="Main.jsp" />
+<br><br>
 <div id="content" style="width: 85%; margin: auto;">
 	<form>
 		<div style="width: 85%; margin: auto;">
@@ -80,17 +78,21 @@ body
 		</div>
 		<br>
 		<div style="width: 85%; margin: auto;">
-			<textarea rows="3" cols="125" placeholder="댓글을 입력해주세요."></textarea>
+		<div style="float: left;">
+			<textarea rows="3" cols="130" placeholder="댓글을 입력해주세요."></textarea>
+		</div>
+		<div style="display: inline-block;">
 			<input type="button" value="등록" id="submitBtn" class="submitbtn">
+		</div>
 		</div>
 		<br>
 		
 		<div style="width: 85%; margin: auto;" class="bbsArticle_bottomLine" style="width: 80%;">
-			<p><a href="">이전글 : ${view.board_title }</a></p>
+			<p><a href="">이전글 : 오늘 날씨 좋던데</a></p>
 			<hr>
 		</div>
 		<div style="width: 85%; margin: auto;" class="bbsArticle_noLine" style="width: 80%;">
-			<p><a href="">다음글 : ${view.board_title }</a></p>
+			<p><a href="">다음글 : 펫페어에서 오리진 40% 할인</a></p>
 		</div>
 		<div style="width: 85%; margin: auto; text-align: right;">
 			<button type="button" id="updateBtn" class="btn btn-warning" onclick="location.href='boardupdateform.action?board_code=${view.board_code }&board_writer=${view.board_writer }'">수정</button>
