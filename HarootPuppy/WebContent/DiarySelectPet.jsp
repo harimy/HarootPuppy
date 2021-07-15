@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+   request.setCharacterEncoding("UTF-8");
+   String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
 
 <!-- jQuery JS -->
 <script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
+   src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <!-- jQuery-UI CSS -->
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
@@ -25,7 +25,7 @@
 
 <style type="text/css">
 body {
-	text-align: center;
+   text-align: center;
 }
 
 /* div.Card 가운데 정렬 */
@@ -36,36 +36,36 @@ body {
 }
 
 .card-body {
-	height: 50px;
+   height: 50px;
 }
 
 .cardImage {
-	border: 5px solid #ffc107;
-	-webkit-border-radius: 50px;
-	max-width: 200px;
-	height: 200px;
-	margin: 0px auto;
-	cursor:pointer;
+   border: 5px solid #ffc107;
+   -webkit-border-radius: 50px;
+   max-width: 200px;
+   height: 200px;
+   margin: 0px auto;
+   cursor:pointer;
 }
 
 .cardImage:hover {
-	color: #212529;
-	background-color: #e0a800;
-	border-color: #d39e00;
+   color: #212529;
+   background-color: #e0a800;
+   border-color: #d39e00;
 }
 
 .card-img, .card-img-top {
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
+   border-top-left-radius: 0px;
+   border-top-right-radius: 0px;
 }
 
 .card-group {
-	margin: 100px;
+   margin: 100px;
 }
 
 #cardContent {
-	margin-left: 100px;
-	margin-right: 100px;
+   margin-left: 100px;
+   margin-right: 100px;
 }
 </style>
 
@@ -73,35 +73,35 @@ body {
 <script type="text/javascript">
 
 $(function() {
-	$("#register").click(function()
-	{
-		// alert($('input[name="reportOption"]:checked').val());
-		if(typeof $('input[name="petAdd"]:checked').val() == 'undefined' )
-		{
-			 $("#errMsg").css("display" ,"inline");
-			 return ; 
-			//alert("됨");
-		} 
-		
-		document.replyReport.submit();
-		// form을 일단 넘기고 속성값은 나중에 받아가기
-	});
+   $("#register").click(function()
+   {
+      // alert($('input[name="reportOption"]:checked').val());
+      if(typeof $('input[name="petAdd"]:checked').val() == 'undefined' )
+      {
+          $("#errMsg").css("display" ,"inline");
+          return ; 
+         //alert("됨");
+      } 
+      
+      document.replyReport.submit();
+      // form을 일단 넘기고 속성값은 나중에 받아가기
+   });
 }); 
 
 
 
 
 /*$(function()
-	{
-	 $(".final_btn").click(function()
-		{
-		 // alert($(this).val());
-		 $(location).attr("href", "diarymain.action?pet_code="+ $(this).val() );
-		 
-		
-		});
-	 
-	});
+   {
+    $(".final_btn").click(function()
+      {
+       // alert($(this).val());
+       $(location).attr("href", "diarymain.action?pet_code="+ $(this).val() );
+       
+      
+      });
+    
+   });
 */
 
  
@@ -114,100 +114,100 @@ $(function() {
   DiarySelectPet.jsp
   - 반려견 다이어리 작성할 반려견 선택
 ---------------------------------------->
-	<div>
-		<!-- 메뉴영역 -->
-		<div>
-			<jsp:include page="Main.jsp" />
-		</div>
-		
-		
-	<form action="diarymain.action" id="selectPetForm" method="post">
+   <div>
+      <!-- 메뉴영역 -->
+      <div>
+         <jsp:include page="Main.jsp" />
+      </div>
+      
+      
+   <form action="diarymain.action" id="selectPetForm" method="post">
 
-		<!-- content 영역 -->
-		<div>
-			<h3>다이어리 작성할 반려견 선택</h3>
-		</div>
+      <!-- content 영역 -->
+      <div>
+         <h3>다이어리 작성할 반려견 선택</h3>
+      </div>
 
-		
-		<div style="text-align: right; margin-right: 120px;">
-			<button type="button" class="btn btn-warning"
-			id="register" name="petAdd" 
-			onclick="location.href='petadd.action'">반려견 추가</button>
+      
+      <div style="text-align: right; margin-right: 120px;">
+         <button type="button" class="btn btn-warning"
+         id="register" name="petAdd" 
+         onclick="location.href='petadd.action'">반려견 추가</button>
 
-			<span id="errMsg">필수 선택 사항을 선택하세요</span>
-		</div>
-		
+         <span id="errMsg">필수 선택 사항을 선택하세요</span>
+      </div>
+      
 
-		<div id="cardContent">
-			<div class="card-group">
-				
-				<c:forEach var="list" items="${petList }" >
-					<div class="card">
-						<img class="cardImage" src="<%=cp%>/images/puppy1.png"
-							onclick="location.href='diarymain.action?pet_code='+'${list.pet_code}'">
-						<div class="card-body">
-							<h5 class="card-title">${list.pet_name }</h5>
-							<button type="button" class="btn btn-warning">수정</button>
-							<button type="button" class="btn btn-info">삭제</button>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-		</div>	
-				<!-- <c:forEach var="list" items="${petList }" >
+      <div id="cardContent">
+         <div class="card-group">
+            
+            <c:forEach var="list" items="${petList }" >
+               <div class="card">
+                  <img class="cardImage" src="<%=cp%>/images/puppy1.png"
+                     onclick="location.href='diarymain.action?pet_code='+'${list.pet_code}'">
+                  <div class="card-body">
+                     <h5 class="card-title">${list.pet_name }</h5>
+                     <button type="button" class="btn btn-warning">수정</button>
+                     <button type="button" class="btn btn-info">삭제</button>
+                  </div>
+               </div>
+            </c:forEach>
+         </div>
+      </div>   
+            <!-- <c:forEach var="list" items="${petList }" >
 
-								<div class="card">
-								<img class="cardImage" src="${list.pet_photo }"> 
-								
-									<div class="card-body">
-										
-										<h5 class="card-title">${list.pet_name }</h5>
+                        <div class="card">
+                        <img class="cardImage" src="${list.pet_photo }"> 
+                        
+                           <div class="card-body">
+                              
+                              <h5 class="card-title">${list.pet_name }</h5>
 
-										<button type="submit" class="btn btn-warning">수정</button>
-										<button type="button" class="btn btn-info">삭제</button>
-										
-										<button type="button" class="btn final_btn" 
-										value="${list.pet_code}">다이어리</button>
-										
-										<input type="hidden" value="${list.pet_code }" 
-										name="pet_code" >
+                              <button type="submit" class="btn btn-warning">수정</button>
+                              <button type="button" class="btn btn-info">삭제</button>
+                              
+                              <button type="button" class="btn final_btn" 
+                              value="${list.pet_code}">다이어리</button>
+                              
+                              <input type="hidden" value="${list.pet_code }" 
+                              name="pet_code" >
 
-										
-										
-									</div>
-								</div>
-					</c:forEach>
-				-->
-				
+                              
+                              
+                           </div>
+                        </div>
+               </c:forEach>
+            -->
+            
 
 
-				<!--  
-				<div class="card">
-					<img class="cardImage" src="<%=cp%>/images/puppy1.png">
-					<div class="card-body">
-						<h5 class="card-title">재롱이</h5>
-						<button type="button" class="btn btn-warning">수정</button>
-						<button type="button" class="btn btn-info">삭제</button>
-					</div>
-				</div>
-				<div class="card">
-					<img class="cardImage" src="<%=cp%>/images/puppy1.png">
-					<div class="card-body">
-						<h5 class="card-title">호두</h5>
-						<button type="button" class="btn btn-warning">수정</button>
-						<button type="button" class="btn btn-info">삭제</button>
-					</div>
-				</div>
-				-->
-				
-		
-	</form>
-		<!-- 하단 회사 설명 영역 -->
-		<div>
-			<c:import url="MainFooter.jsp"></c:import>
-		</div>
-	</div>
-	
+            <!--  
+            <div class="card">
+               <img class="cardImage" src="<%=cp%>/images/puppy1.png">
+               <div class="card-body">
+                  <h5 class="card-title">재롱이</h5>
+                  <button type="button" class="btn btn-warning">수정</button>
+                  <button type="button" class="btn btn-info">삭제</button>
+               </div>
+            </div>
+            <div class="card">
+               <img class="cardImage" src="<%=cp%>/images/puppy1.png">
+               <div class="card-body">
+                  <h5 class="card-title">호두</h5>
+                  <button type="button" class="btn btn-warning">수정</button>
+                  <button type="button" class="btn btn-info">삭제</button>
+               </div>
+            </div>
+            -->
+            
+      
+   </form>
+      <!-- 하단 회사 설명 영역 -->
+      <div>
+         <c:import url="MainFooter.jsp"></c:import>
+      </div>
+   </div>
+   
 
 
 </body>

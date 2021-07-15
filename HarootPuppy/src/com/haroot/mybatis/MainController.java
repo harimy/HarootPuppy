@@ -58,7 +58,6 @@ public class MainController
 			return "HarootPuppyMain.jsp";
 	}
 	
-	
 	@RequestMapping(value="mainmenu.action", method=RequestMethod.POST)
 	public String goToMain2(Model model, HttpServletRequest request, HttpServletResponse response)
 	{
@@ -72,5 +71,7 @@ public class MainController
 		return "main.action";
 
 	}
+
 	
+
 }

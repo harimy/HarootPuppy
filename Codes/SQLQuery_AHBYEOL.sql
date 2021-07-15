@@ -1503,8 +1503,8 @@ FROM NOTICEVIEW
 ORDER BY NOTICE_CODE
 ;
 
-
-
+commit;
+--==>> 커밋 완료.
 
 
 
