@@ -86,7 +86,7 @@ span{
 					<img alt="" src="images/mainlogo.png" width="250" height="100"
 						border="0">
 				</button>
-				<button type="button" id="loginCheck"></button>
+				<!-- <button type="button" id="loginCheck"></button> -->
 				<input type="hidden" id="loginCheck1" value="${sid_code }">
 			</div>
 		</div>

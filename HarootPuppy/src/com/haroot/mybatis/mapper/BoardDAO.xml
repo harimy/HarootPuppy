@@ -11,6 +11,12 @@
 		<!-- ORDER BY NUM DESC -->
 	</select>
 	
+	<select id="view" parameterType="map" resultType="com.haroot.mybatis.BoardDTO">
+		SELECT *
+		FROM BOARDVIEW
+		WHERE BOARD_CODE = #{board_code} AND BOARD_WRITER = #{board_writer, jdbcType=VARCHAR}
+	</select> 
+	
 	<select id="count" resultType="java.lang.Integer">
 		SELECT COUNT(*) AS COUNT
 		FROM BOARDVIEW
@@ -24,30 +30,17 @@
 	<!-- BOARD_CODE	BOARD_WRITER BOARD_CATE_CODE BOARD_TITLE BOARD_CONTENT BOARD_PHOTO BOARD_VIEW BOARD_LIKE BOARD_DATE -->
 	<insert id="add">
 		INSERT INTO TBL_BOARD(BOARD_CODE, BOARD_WRITER, BOARD_CATE_CODE, BOARD_TITLE
-		                    , BOARD_CONTENT, BOARD_VIEW, BOARD_LIKE, BOARD_DATE)
+		                    , BOARD_CONTENT, BOARD_PHOTO, BOARD_VIEW, BOARD_LIKE, BOARD_DATE)
 		VALUES(#{board_code}, 'SID006', #{board_cate_code}, #{board_title}
-		       ,#{board_content}, 0, 0, SYSDATE)
+		       ,#{board_content}, #{board_photo}, 0, 0, SYSDATE)
 	</insert> 
 	
 	<select id="search" parameterType="map" resultType="com.haroot.mybatis.BoardDTO">
-		SELECT BOARD_CATE_CODE, BOARD_DATE, BOARD_TITLE, BOARD_CONTENT, BOARD_PHOTO
-		FROM BOARDVIEW
-		WHERE BOARD_CODE = #{board_code} AND BOARD_WRITER = #{board_writer}
-	</select>
-	
-	<!-- parameterType="java.lang.Integer"  -->
-	
-	<select id="view" parameterType="map" resultType="com.haroot.mybatis.BoardDTO">
 		SELECT *
 		FROM BOARDVIEW
 		WHERE BOARD_CODE = #{board_code} AND BOARD_WRITER = #{board_writer}
 	</select>
 	
-	<select id="getReadData" parameterType="map" resultType="com.haroot.mybatis.BoardDTO">
-		SELECT *
-		FROM BOARDVIEW
-		WHERE BOARD_CODE = #{board_code} AND BOARD_WRITER = #{board_writer}
-	</select> 
 
 	<update id="modify" parameterType="map">
 		UPDATE TBL_BOARD
@@ -56,7 +49,7 @@
 		  , BOARD_TITLE = #{board_title}
 		  , BOARD_CONTENT = #{board_content}
 		  , BOARD_PHOTO = #{board_photo, jdbcType=VARCHAR}
-		WHERE BOARD_CODE = #{board_code} AND BOARD_WRITER = #{board_writer}
+		WHERE BOARD_CODE = #{board_code} AND BOARD_WRITER = #{board_writer, jdbcType=VARCHAR}
 	</update>
 	
 	<select id="next">

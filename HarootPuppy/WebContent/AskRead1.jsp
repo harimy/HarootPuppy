@@ -33,7 +33,7 @@
 	<div style="text-align: center;">
 		[나의 반려견] 메뉴의 메인 페이지로 이동하여 자신이 등록한 반려견 사진 하단의 수정 버튼을 통해 수정하실 수 있습니다.
 	</div>
-	<br>
+	<br><br><br><br>
 	<div style="text-align: center;">
 		<button type="button" onclick="location.href='FaqList.jsp'">목록으로</button>
 	</div>

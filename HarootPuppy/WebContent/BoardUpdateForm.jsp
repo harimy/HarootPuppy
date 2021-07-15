@@ -54,37 +54,37 @@
 
  <br><br><br>
 <div style="width:85%; margin: auto;">
- <form role="form" action="boardupdate.action?board_code=${search.board_code }&board_writer=${search.board_writer }" method="post" enctype="multipart/form-data" name="boardForm">
+ <form role="form" action="boardupdate.action?board_code=${view.board_code }&board_writer=${view.board_writer }" method="post" enctype="multipart/form-data" name="boardForm">
       <table class="table table-bordered" id="tblAdd">
          <tr>
             <td>제목</td>
             <td>
             	<input type="hidden" id="board_code" name="board_code" value="${board_code}">
             	<input type="hidden" id="board_date" name="board_date"> 
-            	<input type="hidden" id="board_writer" name="board_writer" value="${search.board_writer }">
-                <input type="text" id="board_title" name="board_title" class="form-control" placeholder="제목을 입력하세요" value="${search.board_title }">
+            	<input type="hidden" id="board_writer" name="board_writer" value="${view.board_writer }">
+                <input type="text" id="board_title" name="board_title" class="form-control" placeholder="제목을 입력하세요" value="${view.board_title }">
             </td>
          </tr>
          <tr>
             <td>카테고리 선택</td>
             <td>
                <select id="board_cate_code" name="board_cate_code" class="form-control">
-                  <option value="1" ${"1"== search.board_cate_code ? "selected='selected'"  : "" }>행사/할인정보</option>
-                  <option value="2" ${"2"== search.board_cate_code ? "selected='selected'"  : "" }>리뷰</option>
-                  <option value="3" ${"3"== search.board_cate_code ? "selected='selected'"  : "" }>수다</option>
-                  <option value="4" ${"4"== search.board_cate_code ? "selected='selected'"  : "" }>중고장터</option>
+                  <option value="1" ${"1"== view.board_cate_code ? "selected='selected'"  : "" }>행사/할인정보</option>
+                  <option value="2" ${"2"== view.board_cate_code ? "selected='selected'"  : "" }>리뷰</option>
+                  <option value="3" ${"3"== view.board_cate_code ? "selected='selected'"  : "" }>수다</option>
+                  <option value="4" ${"4"== view.board_cate_code ? "selected='selected'"  : "" }>중고장터</option>
                </select>
             </td>
          </tr>
          <tr>
             <td>첨부파일</td>
             <td>
-              <input type="file" id="board_photo" name="board_photo" class="form-control" value="${search.board_photo }">
+              <input type="file" id="board_photo" name="board_photo" class="form-control" value="${view.board_photo }">
             </td>
          </tr>
      </table>
      <br>
-    <textarea rows=20 placeholder="내용을 입력하세요" id="board_content" name="board_content" class="form-control">${search.board_content }</textarea><br>
+    <textarea rows=20 placeholder="내용을 입력하세요" id="board_content" name="board_content" class="form-control">${view.board_content }</textarea><br>
  </form>
  
  <div style="margin: auto; text-align: right;">

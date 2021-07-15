@@ -23,10 +23,6 @@
 <!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 <style type="text/css">
-	 body
-	 {
-	 	/* margin: 30px;  */
-	 }
 
 	 .askList
 	 {

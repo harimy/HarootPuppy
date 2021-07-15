@@ -21,10 +21,10 @@
 <script src="<%=cp %>/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
-	$(function ()
+	/* $(function ()
 	{
 		$("#list").css({"color":"red", "font-weight":"bold"});
-	});
+	}); */
 	
 
 </script>
@@ -47,7 +47,7 @@
     <br><br><br><br><br><br><br><br><br><br>
     <div>
       <div style="text-align: center;">
-         <h1>전체게시판</h1>
+         <h1>자유게시판</h1>
       </div>
       <br>
       <div>
@@ -63,7 +63,7 @@
        </div>
        <br>
    </div>
-   <table id="bbsList_list" class="table" style="text-align: center; width: 100%;">
+   <table id="bbsList_list" class="table table-striped table-condensed table-hover" style="text-align: center; width: 100%;">
       <tr id="title">
          <th class="cate">카테고리</th>
          <th class="num">번호</th>
