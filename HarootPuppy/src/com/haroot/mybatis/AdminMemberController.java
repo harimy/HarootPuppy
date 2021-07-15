@@ -123,11 +123,19 @@ public class AdminMemberController
 		
 		System.out.println(mem_code);
 		
-		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		
-		dao.remove(mem_code);
+		try
+		{
+			IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+			
+			dao.remove(mem_code);
+			
 		
-		return "redirect:adminmanagemember.action";
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+			return "redirect:adminmanagemember.action";
 	}
 	
 	

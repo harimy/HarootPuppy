@@ -3,11 +3,10 @@
  * - 관리자페이지 컨트롤러 객체
 ================================*/
 
-
+/*
 package com.haroot.mybatis;
 
 import java.sql.SQLException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -78,7 +77,9 @@ public class AdminController
 		return "/WEB-INF/views/AdminMain.jsp";
 	
 	}
-	*/
-	
+
 	
 }
+*/
+
+

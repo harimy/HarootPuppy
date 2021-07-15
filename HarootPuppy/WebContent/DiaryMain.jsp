@@ -345,7 +345,7 @@ $(function()
              </div>
            </div>
          </div>
-         </div>   
+
          
          <!-- 타임라인 -->
          <div id="timeline">
