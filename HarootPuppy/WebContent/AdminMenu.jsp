@@ -61,7 +61,7 @@
 </head>
 <body>
 
-<jsp:include page="AdminMainHeader.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/AdminMainHeader.jsp"></jsp:include>
 
 <div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">

@@ -139,10 +139,9 @@ public class WalkRoomListMain
 	{
 		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
 
-		//dao.modify(m);
+		dao.modify(m);
 		
 		return "WalkRoomUpdateForm.jsp";
 	}
-	*/
 	
 }

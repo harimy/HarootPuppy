@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -26,16 +27,30 @@ public class BoardController
 	
 	
 	@RequestMapping(value="/boardlist.action", method=RequestMethod.GET)
-	public String boardList(Model model)
+	public String boardList(Model model, HttpServletRequest request)
 	{
+
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
 		String result = null;
 		
-		IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "HarootMain.jsp";
+		}
+		else
+		{
+			// System.out.println(sid_code);
+			IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
+			model.addAttribute("nickname", mem.searchNickName(sid_code));
+			session.setAttribute("sid_code", sid_code);
 		
-		model.addAttribute("list", dao.list());
-		
-		result = "/WEB-INF/views/BoardList.jsp";
-		
+			IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+			
+			model.addAttribute("list", dao.list());
+			
+			result = "/WEB-INF/views/BoardList.jsp";
+		}
 		return result;
 	}
 	
