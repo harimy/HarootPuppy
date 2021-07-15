@@ -6,11 +6,13 @@
 <mapper namespace="com.haroot.mybatis.IAdminMainDAO">
 
 	<!-- 로그인 용 조회 -->
+	<!-- 
 	<select id='loginAdmin' resultType = "java.lang.String">
 		SELECT ADMIN_NAME
 		FROM TBL_ADMIN
-		WHERE ADMIN_ID={#admin_id}
-		AND ADMIN_PW=CRYPTPACK.ENCRYPT({#admin_id}, {#admin_pw});
+		WHERE ADMIN_ID=#{admin_id}
+		AND ADMIN_PW=CRYPTPACK.ENCRYPT(#{admin_id}, #{admin_pw});
 	</select>
+	-->
 	
 </mapper>
