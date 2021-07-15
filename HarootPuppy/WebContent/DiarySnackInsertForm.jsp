@@ -193,7 +193,7 @@ function add_private() {
 			</svg></button>
 		
 			<!-- 즐겨찾기 영역 -->
-			<div style="background-color: powderblue; width: 600px; height: 200px;">
+			<div style="background-color: #F6CEE3; width: 600px; height: 200px;">
 				<div class="form-group">
 				<label for="focusedInput"> <span class="input-group-text" id="">간식이름</span> </label> 
 				<input class="form-control" id="focusedInput" type="text" placeholder="">

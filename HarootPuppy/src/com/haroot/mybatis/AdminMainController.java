@@ -1,4 +1,4 @@
-package com.haroot.mybatis;
+/*package com.haroot.mybatis;
 
 import java.sql.SQLException;
 
@@ -102,4 +102,5 @@ public class AdminMainController
 
    }
 
-}
+}*/
+

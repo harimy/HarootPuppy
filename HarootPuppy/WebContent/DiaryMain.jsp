@@ -290,7 +290,6 @@ $(function()
          <c:import url="Main.jsp"></c:import>
       </div>
 
-
       <!-- content 영역 -->
       <div>
          <!-- 반려견 이름 출력 -->
@@ -314,6 +313,7 @@ $(function()
             <input type="hidden" value="${list.pet_code }" name="pet_code" id="pet_code">
          </div>
          <br>
+
 
          <!-- 달력영역 -->
          <div id="calendarArea" style="background-color: RGB(253,239,142); height: 800px;">

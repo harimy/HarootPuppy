@@ -5,6 +5,11 @@ FROM DUAL;
 SELECT *
 FROM TBL_DAILY;
 
+SELECT*
+FROM TBL_COMMON;
+
+SELECT*
+FROM TBL_MEAL_TYPE;
 
 -- 1번 조회
 SELECT C.COMMON_CODE AS COMMON_CODE
@@ -509,6 +514,8 @@ SELECT MEAL_NAME
 FROM TBL_MEAL_TYPE
 ;
 
+SELECT *
+FROM TBL_COMMON;
 
 -----------------------------------------------------------------------------
 ----------------------------------------------------------------------------
@@ -551,3 +558,4 @@ WHERE PET_CODE = 'PET003'
 SELECT PET_CODE
 FROM TBL_PET
 WHERE PET_CODE = 'PET003';
+

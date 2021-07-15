@@ -93,7 +93,7 @@ function add_private() {
 		
 			
 			<!-- 즐겨찾기 영역 -->
-			<div style="background-color: powderblue; width:500px; height: 400px;">
+			<div style="background-color: #F6CEE3; width:500px; height: 400px;">
 				
 				<div class="form-group">
 					<label for="focusedInput"> <span class="input-group-text">제품명</span>

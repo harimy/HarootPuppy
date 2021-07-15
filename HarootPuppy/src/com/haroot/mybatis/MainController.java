@@ -51,6 +51,7 @@ public class MainController
 			return "LoginForm.jsp";
 		}
 
+	}
 	@RequestMapping(value="beforemain.action", method=RequestMethod.GET)
 	public String goToMainBefore(Model model)
 	{
@@ -72,4 +73,5 @@ public class MainController
 	}
 
 	
+
 }

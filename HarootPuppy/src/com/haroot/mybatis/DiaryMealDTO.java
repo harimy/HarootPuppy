@@ -16,9 +16,65 @@ public class DiaryMealDTO
 				, favorite_name			// 즐겨찾기 이름
 				, favorite_date 		// 즐찾 생성 날짜
 				, common_start			// 공통 시작시간
-				, common_end;			// 공통 끝 시간
+				, common_end			// 공통 끝 시간
+				, meal_type				// 사료타입
+				, common_memo			// 메모
+				, common_photo			// 사진
+				, sid_code				// 회원코드
+				, pet_code;				// 반려견코드
 	
 				
+	
+	public String getCommon_memo()
+	{
+		return common_memo;
+	}
+
+	public void setCommon_memo(String common_memo)
+	{
+		this.common_memo = common_memo;
+	}
+
+	public String getCommon_photo()
+	{
+		return common_photo;
+	}
+
+	public void setCommon_photo(String common_photo)
+	{
+		this.common_photo = common_photo;
+	}
+
+	public String getSid_code()
+	{
+		return sid_code;
+	}
+
+	public void setSid_code(String sid_code)
+	{
+		this.sid_code = sid_code;
+	}
+
+	public String getPet_code()
+	{
+		return pet_code;
+	}
+
+	public void setPet_code(String pet_code)
+	{
+		this.pet_code = pet_code;
+	}
+
+	public String getMeal_type()
+	{
+		return meal_type;
+	}
+
+	public void setMeal_type(String meal_type)
+	{
+		this.meal_type = meal_type;
+	}
+
 	public String getCommon_start()
 	{
 		return common_start;
