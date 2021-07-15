@@ -73,8 +73,8 @@
 			
 		});
 	});
-	
-	
+		
+
 	
 	function openChild()
 	{
@@ -184,9 +184,14 @@
 						</p>
 					</div>
 				</div>
+				<div class="masterTag" style="${ room.walkroom_leader == room.sid_code ? ''  : 'display: none;' }">방장</div>
+				<div class="notReadyTag" style="${ room.walkroom_leader != room.sid_code ? ''  : 'display: none;' }">Ready 대기</div>
+				<div class="readyTag" style="display:none;">Ready 완료</div>
+				<!-- 
 				<div class="masterTag">방장</div>
 				<div class="readyTag">Ready 완료</div>
 				<div class="notReadyTag">Ready 대기</div>
+				 -->
 				<br>
 			</div>
 		</c:forEach>
@@ -269,14 +274,7 @@
 		<button type="button" id="list" onclick="window.close()">목록으로</button>
 		<button type="button" id="out">방 나가기</button>
 	</div>
-		</div>
-
-		<!-- 하단 회사 설명 영역 -->
-		<div id="harootFooter">
-			<c:import url="MainFooter.jsp"></c:import>
-		</div>
-	</div>
-
+</div>
 
 </body>
 

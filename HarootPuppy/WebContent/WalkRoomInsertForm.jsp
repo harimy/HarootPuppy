@@ -158,7 +158,7 @@
 			// 산책방 제목 유효성 검사
 			if( $.trim($("#walkroom_title").val()) == "" )
 			{
-				alert("방 제목을 입력하세요.");
+				$("#errRoomTitle").css("display", "inline");
 				$("#walkroom_title").focus();
 				return;
 			}
@@ -166,7 +166,7 @@
 			// 산책 장소 유효성 검사
 			if ( $.trim($("#walkroom_place").val()) == "" )
 			{
-				alert("산책 장소를 입력하세요.");
+				$("#errWalkPlace").css("display", "inline");
 				$("#walkroom_place").focus();
 				return;
 			}
@@ -180,7 +180,7 @@
 			var sysdate = now.getFullYear() + "-" + (parseInt(now.getMonth())+1) + "-" + now.getDate() + " "
 			 	+ now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 			$("#walkroom_gendate").val(sysdate);
-			alert(sysdate);
+			//alert(sysdate);
 			
 			
 			//now.getFullYear(); 		// 년도
@@ -197,10 +197,10 @@
 			var startDate = $("#startDate").val();		// 사용자가 선택한 산책 출발 날짜 값 받아서 변수에 담음
 			var startDateArr = startDate.split('-');	// -를 기준으로 잘라내어 배열로 저장 => 2021-07-06 → 2021 07 06
 			var canStart1 = new Date(now.getFullYear(), now.getMonth(), now.getDate()
-					, parseInt(now.getHours()) + 1, now.getMinutes(), now.getSeconds())				// 현재시간 + 1시간 
+					, parseInt(now.getHours()) + 1, now.getMinutes(), now.getSeconds());				// 현재시간 + 1시간 
 			
 			var canStart2 = new Date(now.getFullYear(), now.getMonth(), now.getDate()
-					, parseInt(now.getHours()) + 24, now.getMinutes(), now.getSeconds())			// 현재시간 + 24시간
+					, parseInt(now.getHours()) + 24, now.getMinutes(), now.getSeconds());			// 현재시간 + 24시간
 
 			var startTime = $("#startTime").val();		// 사용자가 선택한 산책 출발 시간 값 받아서 변수에 담음
 			var startTimeArr = startTime.split(':');	// :를 기준으로 잘라내어 배열로 저장 => 03:00 → 03 00

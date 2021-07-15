@@ -88,8 +88,8 @@ public class LoginController
 	public String logoutM(HttpServletRequest request, HttpSession session, Model model) throws SQLException 
 	{
 		
-		String sibal = (String)session.getAttribute("sid_code");
-		System.out.println(sibal);
+		String sid_code = (String)session.getAttribute("sid_code");
+		System.out.println(sid_code);
       session.removeAttribute("sid_code");
       return "HarootPuppyMain.jsp";
 	}
@@ -98,9 +98,9 @@ public class LoginController
 	public String logoutA(HttpServletRequest request, HttpSession session, Model model) throws SQLException 
 	{
 		
-      session.removeAttribute("amdin_code");
+      session.removeAttribute("admin_code");
      
-      return "HarootPuppyMain.jsp";
+      return "/HarootPuppyMain.jsp";
 	}
 
 }
