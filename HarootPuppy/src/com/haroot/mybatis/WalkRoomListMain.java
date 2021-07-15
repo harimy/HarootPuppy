@@ -129,8 +129,8 @@ public class WalkRoomListMain
 	@RequestMapping(value = "walkroomupdateform.action", method = RequestMethod.POST)
 	public String memberUpdate(MemberDTO m)
 	{
-		WalkRoomDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		dao.
+		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
+
 		
 		//dao.modify(m);
 		

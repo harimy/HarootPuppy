@@ -45,6 +45,7 @@ public class LoginController
 		if(dto != null)
 		{
 			model.addAttribute("sid_code", dto.getSid_code());
+			model.addAttribute("nickname", dto.getMem_nickname());
 			session.setAttribute("sid_code", dto.getSid_code());
 			result = "mainheader.action";
 			//System.out.println(sid_code);
@@ -98,7 +99,7 @@ public class LoginController
 	public String logoutA(HttpServletRequest request, HttpSession session, Model model) throws SQLException 
 	{
 		
-      session.removeAttribute("amdin_code");
+      session.removeAttribute("admin_code");
      
       return "HarootPuppyMain.jsp";
 	}
