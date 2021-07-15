@@ -11,15 +11,31 @@
 <title>BoardList.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/style.css">
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/list.css">
+<!-- 부트스트랩 css -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 제이쿼리 script -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<!-- 부트스트랩 script -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 부트스트랩 테마 css -->
+<script src="<%=cp %>/js/bootstrap.min.js"></script>
+<script type="text/javascript">
 
+	/* $(function ()
+	{
+		$("#list").css({"color":"red", "font-weight":"bold"});
+	}); */
+	
+
+</script>
 </head>
 <body>
-<jsp:include page="MainTest.jsp" />
+<jsp:include page="Main.jsp" />
 <br><br><br><br>
-<div id="bbsList">
+<div id="bbsList" style="width: 85%; margin: auto; text-align: right;">
    <div style="text-align : left; width: 300px; float:right;">
          <div id="gotohotboard">
-         <h1>HOT 게시판 >> </h1>
+         <h2>HOT 게시판 >> </h2>
          <hr>
       </div>
       <div>
@@ -31,7 +47,7 @@
     <br><br><br><br><br><br><br><br><br><br>
     <div>
       <div style="text-align: center;">
-         <h1>전체게시판</h1>
+         <h1>자유게시판</h1>
       </div>
       <br>
       <div>
@@ -47,7 +63,7 @@
        </div>
        <br>
    </div>
-   <table id="bbsList_list" class="table" style="text-align: center; width: 100%;">
+   <table id="bbsList_list" class="table table-striped table-condensed table-hover" style="text-align: center; width: 100%;">
       <tr id="title">
          <th class="cate">카테고리</th>
          <th class="num">번호</th>
@@ -57,37 +73,21 @@
          <th class="hitCount">조회수</th>
          <th class="like">좋아요</th>
       </tr>
-      <tr id="lists"> 
-         <td class="cate">리뷰</td>
-         <td class="num">리뷰</td>
-         <td class="subject">리뷰</td>
-         <td class="name">리뷰</td>
-         <td class="created">리뷰</td>
-         <td class="hitCount">리뷰</td> 
-         <td class="like">리뷰</td>                  
-      </tr>
+     <c:forEach var="list" items="${list }">
+        <tr id="list">
+           <td>${list.board_cate_content }</td>
+           <td>${list.board_code }</td>
+           <td>
+			<a href="boardview.action?board_code=${list.board_code }&board_writer=${list.board_writer}">${list.board_title }</a>
+		   </td>
+           <td>${list.nickname }</td>
+           <td>${list.board_content_date }</td>
+           <td>${list.viewNum }</td>
+           <td>${list.likeNum }</td>
+    	</tr>
+    </c:forEach>
    </table>
          
-         <%-- <%
-         for (BoardDTO dto : lists)
-         {
-         %>
-         <dl>
-            <dd class="num"><%=dto.getNum() %></dd>
-            <dd class="subject">
-               <a href="<%=articleUrl %>&num=<%=dto.getNum() %>">      <!-- 825번 게시물 선택했을 때 링크 : Article.jsp?pageNum=1&num=825 -->
-               <%=dto.getSubject() %>
-               </a>
-            </dd>
-            <dd class="name"><%=dto.getName() %></dd>
-            <dd class="created"><%=dto.getCreated() %></dd>
-            <dd class="hitCount"><%=dto.getHitCount() %></dd>
-         </dl>
-         <%
-         }
-         %> --%>
-         
-     
       <br>
       <div id="bbsList_header">
       <br>
@@ -102,37 +102,18 @@
             </form>
          </div><!-- #leftHeader -->
       
-         <div id="rightHeader">
-            <input type="button" value="글쓰기" class="btn2"
-            onclick="javascript:location.href='<%=cp%>/Created.jsp'">         
-         </div>
+        <div>
+		<button class="btn btn-primary btn-sm" type="button" id="insertBoard" onclick="location.href='boardinsertform.action'">글 등록</button>
+		</div>
       
    </div><!-- #bbsList_header -->
       <br><br>
       <div id="footer_number" style="text-align: center;">
-         <p>1 Prev 21 22 23 24 25 26 27 28 29 30 Next 63</p>
-         
-      <%--    <p>
-         <%
-         if(dataCount != 0)
-         {
-         %>
-            <%=pageIndexList %>
-         <%
-         }
-         else
-         {
-         %>
-            등록된 게시물이 존재하지 않습니다.
-         <%
-         }
-         %>
-         </p> --%>
-         
+         <p>1</p>
       </div>
       
    </div><!-- #bbsList_list -->
    
-<jsp:include page="MainFooter.jsp" />
+<%-- <jsp:include page="MainFooter.jsp" /> --%>
 </body>
 </html>

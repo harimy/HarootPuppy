@@ -22,7 +22,7 @@ public class BoardController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	
+	// 게시글 목록 조회	
 	@RequestMapping(value="/boardlist.action", method=RequestMethod.GET)
 
 	public String boardList(HttpServletRequest request, Model model) throws SQLException
@@ -34,94 +34,155 @@ public class BoardController
 		
 		if(sid_code=="" || sid_code==null)
 		{
-			result = "/WEB-INF/views/BoardList.jsp";
+			result = "redirect:LoginForm.jsp";
 		}
 		else
 		{
 			// System.out.println(sid_code);
-			IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
-			model.addAttribute("nickname", mem.searchNickName(sid_code));
-			session.setAttribute("sid_code", sid_code);
+			//IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
+			//model.addAttribute("nickname", mem.searchNickName(sid_code));
+			//session.setAttribute("sid_code", sid_code);
 		
 			IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
 			
 			model.addAttribute("list", dao.list());
 			
-			result = "/WEB-INF/views/BoardList.jsp";
+			result = "/BoardList.jsp";
 		}
 		return result;
 	}
 	
-	
+	// 게시글 등록 폼
 	@RequestMapping(value="/boardinsertform.action", method=RequestMethod.GET)
 	public String boardInsertForm(HttpServletRequest request, ModelMap model) throws SQLException
 	{
-		IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		String result = null;
 		
-		int nextNum = dao.getMaxNum() + 1;
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+			
+			int nextNum = dao.getMaxNum() + 1;
+			
+			model.addAttribute("nextNum", nextNum);
+			
+			//System.out.println(nextNum);
+			
+			result =  "/BoardInsertForm.jsp";
+		}
 		
-		model.addAttribute("nextNum", nextNum);
-		
-		System.out.println(nextNum);
-		
-		return "/BoardInsertForm.jsp";
+		return result;
 	}
 	
+	// 게시글 등록
 	@RequestMapping(value="/boardinsert.action", method=RequestMethod.POST)
 	public String boardInsert(HttpServletRequest request, BoardDTO board) throws IOException, SQLException
 	{
-		IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
-		
-		//int board_code = dao.getMaxNum() + 1;
-		
-		System.out.println(board.getBoard_cate_code());
-		
-//		dto.setBoard_code(board_code);
-		
-		dao.add(board);
-		
-		return "redirect:boardlist.action";
-	}
-	
-	@RequestMapping(value="/boardview.action", method=RequestMethod.GET)
-	public String boardView(Model model, int board_code, String board_writer) throws SQLException
-	{
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
 		String result = null;
 		
-		IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+			
+			//int board_code = dao.getMaxNum() + 1;
+			
+			System.out.println(board.getBoard_cate_code());
+			
+	//		dto.setBoard_code(board_code);
+			
+			dao.add(board);
+			
+			result =  "redirect:boardlist.action";
+		}
 		
-		model.addAttribute("view", dao.view(board_code, board_writer));
+		return result;
+	}
+	
+	// 게시글 조회
+	@RequestMapping(value="/boardview.action", method=RequestMethod.GET)
+	public String boardView(HttpServletRequest request, Model model, int board_code, String board_writer) throws SQLException
+	{
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		String result = null;
 		
-		result = "/WEB-INF/views/BoardRead.jsp";
-		
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+			
+			model.addAttribute("view", dao.view(board_code, board_writer));
+			
+			result = "/WEB-INF/views/BoardRead.jsp";
+			
+		}
 		return result;
 	}
 	
 	// 게시글 수정 폼
 	@RequestMapping(value="/boardupdateform.action", method=RequestMethod.GET)
-	public String boardUpdateForm(ModelMap model, int board_code, String board_writer) throws SQLException
+	public String boardUpdateForm(HttpServletRequest request, ModelMap model, int board_code, String board_writer) throws SQLException
 	{
-		IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		String result = null;
 		
-		model.addAttribute("board_code", board_code);
-		model.addAttribute("board_writer", board_writer);
-		model.addAttribute("view", dao.view(board_code, board_writer));
-		  
-		return "BoardUpdateForm.jsp";
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+			
+			model.addAttribute("board_code", board_code);
+			model.addAttribute("board_writer", board_writer);
+			model.addAttribute("view", dao.view(board_code, board_writer));
+			  
+			result = "BoardUpdateForm.jsp";
+		}
+		return result;
 	}
 	
 	// 게시글 수정
 	@RequestMapping(value="/boardupdate.action", method=RequestMethod.POST)
 	public String boardUpdate(HttpServletRequest request, BoardDTO board) throws SQLException
 	{	
-		IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		String result = null;
 		
-		int board_code = Integer.parseInt(request.getParameter("board_code"));
-		String board_writer = request.getParameter("board_writer");
-		
-		dao.modify(board);
-		
-		return "redirect:boardview.action?board_code=" + board_code + "&board_writer=" + board_writer;
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
+			
+			int board_code = Integer.parseInt(request.getParameter("board_code"));
+			String board_writer = request.getParameter("board_writer");
+			
+			dao.modify(board);
+			
+			result = "redirect:boardview.action?board_code=" + board_code + "&board_writer=" + board_writer;
+		}
+		return result;
 	}
 	
 }

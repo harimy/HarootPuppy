@@ -24,17 +24,22 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
-		
 		String result = null;
 		
-		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
-		
-		model.addAttribute("askList", dao.askList());
-		model.addAttribute("count", dao.count());
-		
-		result = "/WEB-INF/views/AskList.jsp";
-		
-		return result;
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
+			
+			model.addAttribute("askList", dao.askList());
+			model.addAttribute("count", dao.count());
+			
+			result = "/WEB-INF/views/AskList.jsp";
+		}
+			return result;
 	}
 	
 	@RequestMapping(value="/askread.action", method=RequestMethod.GET)
@@ -42,16 +47,21 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
-		
 		String result = null;
 		
-		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
-		
-		model.addAttribute("read", dao.getReadData(ask_code));
-		
-		result = "/WEB-INF/views/AskRead.jsp";
-		
-		return result;
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
+			
+			model.addAttribute("read", dao.getReadData(ask_code));
+			
+			result = "/WEB-INF/views/AskRead.jsp";
+		}
+			return result;
 	}
 	
 	@RequestMapping(value = "askinsertform.action", method = RequestMethod.GET)
@@ -59,15 +69,22 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String result = null;
 		
-		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
-		
-		int nextNum = dao.getMaxNum() + 1;
-		
-		model.addAttribute("nextNum", nextNum);
-		//System.out.println("여기 사실 글등록페이지임");
-		
-		return "/AskInsertForm.jsp";
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
+			
+			int nextNum = dao.getMaxNum() + 1;
+			
+			model.addAttribute("nextNum", nextNum);
+			//System.out.println("여기 사실 글등록페이지임");
+		}
+			return "/AskInsertForm.jsp";
 	}
 	
 	@RequestMapping(value="/askinsert.action", method=RequestMethod.POST)
@@ -75,16 +92,25 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String result = null;
 		
-		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
-		AskDTO dto = new AskDTO();
-		
-		int ask_code = dao.getMaxNum() + 1;
-		dto.setAsk_code(ask_code);
-		
-		dao.add(ask);
-		
-		return "redirect:asklist.action";
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
+			AskDTO dto = new AskDTO();
+			
+			int ask_code = dao.getMaxNum() + 1;
+			dto.setAsk_code(ask_code);
+			
+			dao.add(ask);
+			
+			return "redirect:asklist.action";
+		}
+		return result;
 	}
 	
 	// 게시글 수정 폼
@@ -93,13 +119,22 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String result = null;
 		
-		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
-		
-		model.addAttribute("ask_code", ask_code);
-		model.addAttribute("search", dao.getReadData(ask_code));
-		  
-		return "AskUpdateForm.jsp";
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
+			
+			model.addAttribute("ask_code", ask_code);
+			model.addAttribute("search", dao.getReadData(ask_code));
+			  
+			result = "AskUpdateForm.jsp";
+		} 
+		return result;
 	}
 	
 	// 게시글 수정
@@ -108,13 +143,23 @@ public class AskController
 	{	
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String result = null;
 		
-		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
-	
-		int ask_code = Integer.parseInt(request.getParameter("ask_code"));
-		dao.modify(ask);
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
 		
-		return "redirect:askread.action?ask_code=" + ask_code;
+			int ask_code = Integer.parseInt(request.getParameter("ask_code"));
+			dao.modify(ask);
+			
+			result =  "redirect:askread.action?ask_code=" + ask_code;
+		} 
+		return result;
+		
 	}
 	
 	@RequestMapping(value="/askdelete.action", method=RequestMethod.GET)
@@ -122,14 +167,23 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String result = null;
 		
-		int ask_code = Integer.parseInt(request.getParameter("ask_code"));
-		
-		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
-		
-		dao.remove(ask_code);
-		
-		return "redirect:asklist.action";
+		if(sid_code=="" || sid_code==null)
+		{
+			result = "redirect:LoginForm.jsp";
+		}
+		else
+		{
+			int ask_code = Integer.parseInt(request.getParameter("ask_code"));
+			
+			IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
+			
+			dao.remove(ask_code);
+			
+			result = "redirect:asklist.action";
+		} 
+		return result;
 	}
 	
 	
