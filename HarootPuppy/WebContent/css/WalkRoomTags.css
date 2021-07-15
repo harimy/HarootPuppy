@@ -13,16 +13,34 @@
 .masterTag 
 {
 	background: rgb(196, 91, 36);
+	width: 100%;
+	height: 25px;
+	border-radius: 15px;
+	text-align: center;
+	vertical-align: center;
+	color: white;
 }
 
 .readyTag 
 {
 	background: rgb(232, 159, 60);
+	width: 100%;
+	height: 25px;
+	border-radius: 15px;
+	text-align: center;
+	vertical-align: center;
+	color: white;
 }
 
 .notReadyTag 
 {
 	background: rgb(224, 224, 224);
+	width: 100%;
+	height: 25px;
+	border-radius: 15px;
+	text-align: center;
+	vertical-align: center;
+	color: white;
 }
 
 .mateOp 

@@ -36,10 +36,10 @@
 <body>
 
 <div id="harootHeader">
-	<div style="float:left;"><a href="Main.jsp" class="adminMain">로그아웃&nbsp;&nbsp;&nbsp;</a></div>
+	<div style="float:left;"><a href="logoutadmin.action" class="adminMain">로그아웃&nbsp;&nbsp;&nbsp;</a></div>
 	<div style="float:right;">ADMIN ${name} 님</div>
 	<div id="logo" style="text-align : center;">
-		<a href="AdminMain.jsp">
+		<a href="adminheader.action">
 			<img alt="" src="images/mainlogo.png" width="250" height="100" border="0">
 		</a>
 	</div>

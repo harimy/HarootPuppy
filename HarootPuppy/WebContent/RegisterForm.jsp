@@ -175,7 +175,7 @@ RegisterForm의 Form이 채워지고
 	                    <label for="pwd">비밀번호</label>
 	                </td>
 	                <td>
-	                    <input type="text" name="mem_pw" id="pwd" size="20px"> 
+	                    <input type="password" name="mem_pw" id="pwd" size="20px"> 
 	                    <span id="errPw">4자 이상~15자 이내</span>
 	                </td>
 	            </tr>
