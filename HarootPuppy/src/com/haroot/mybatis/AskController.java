@@ -88,7 +88,7 @@ public class AskController
 	
 	// 게시글 수정
 	@RequestMapping(value="/askupdate.action", method=RequestMethod.POST)
-	public String askUpdate(HttpServletRequest request, AskDTO ask)
+	public String askUpdate(HttpServletRequest request, AskDTO ask) throws SQLException
 	{	
 		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
 	

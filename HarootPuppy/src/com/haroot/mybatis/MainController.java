@@ -37,18 +37,40 @@ public class MainController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
-		
+
 		// System.out.println(sid_code);
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		model.addAttribute("nickname", dao.searchNickName(sid_code));
-		model.addAttribute("sid_code", sid_code);
-		// sid_code 넘김
 
+		if(sid_code!=null)
+		{
+			return "HarootPuppyMain.jsp";
+		}
+		else
+		{
+			return "LoginForm.jsp";
+		}
+
+	}
 	@RequestMapping(value="beforemain.action", method=RequestMethod.GET)
 	public String goToMainBefore(Model model)
 	{
 			return "HarootPuppyMain.jsp";
 	}
 	
+	
+	@RequestMapping(value="mainmenu.action", method=RequestMethod.POST)
+	public String goToMain2(Model model, HttpServletRequest request, HttpServletResponse response)
+	{
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		
+		// System.out.println(sid_code);
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		session.setAttribute("sid_code", sid_code);
+		
+		return "main.action";
+
+	}
 	
 }
