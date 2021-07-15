@@ -18,9 +18,9 @@
    <!--  ※ mybatis 를 사용하기 위한 환경 설정 추가 2 → SimpleDriverDataSource  -->
    <bean id="localDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
       <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
-      <property name="url" value="jdbc:oracle:thin:@211.238.142.152:1521:xe"></property>
+      <property name="url" value="jdbc:oracle:thin:@13.125.5.7:1521:xe"></property>
       <property name="username" value="harootpuppy"></property>
-      <property name="password" value="TIGER"></property>
+      <property name="password" value="java006$"></property>
    </bean>
 
    <!-- ② mybatis 등록 과정에서 생겨나는 추가 코드 -->
@@ -33,8 +33,6 @@
       <property name="mapperLocations" value="classpath:com/haroot/mybatis/mapper/*.xml"></property>
    </bean>
     
-
-
 
    <!--   ⑥ sqlSession 등록 과정에서 생겨나는 추가 코드 -->
    <!-- ※ mybatis 를 사용하기 위한 환경 설정 추가 3 → SqlSessionTemplate -->

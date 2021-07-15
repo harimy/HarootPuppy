@@ -25,7 +25,7 @@ public class BoardController
 	
 	@RequestMapping(value="/boardlist.action", method=RequestMethod.GET)
 
-	public String boardList(Model model) throws SQLException
+	public String boardList(HttpServletRequest request, Model model) throws SQLException
 	{
 
 		HttpSession session = request.getSession();
