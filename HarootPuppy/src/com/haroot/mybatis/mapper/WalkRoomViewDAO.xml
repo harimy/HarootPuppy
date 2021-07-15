@@ -12,6 +12,5 @@
 		FROM WALKROOMVIEW
 		WHERE WALKROOM_CODE = #{walkroom_code}
 	</select>
-
 	
 </mapper>
