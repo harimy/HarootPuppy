@@ -21,7 +21,8 @@
 <!--  부트스트랩 JS -->
 <script type="text/javascript" src="<%=cp%>/js/bootstrap.js"></script>
 <!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css"><script type="text/javascript">
+<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
+<script type="text/javascript">
 	$(function()
 	{
 		$("#register").click(function()
@@ -39,7 +40,10 @@
 				return;		// submit 액션 처리 중단
 			}
 		 	
-		 	$("#boardForm").submit();
+		 	$(boardForm).submit(); 
+		 	
+		  	//alert($("#board_title").val());
+		  	//alert($("#board_content").val());
 		});
 
 	});
@@ -55,13 +59,13 @@
 
  <br><br><br>
 <div style="width:85%; margin: auto;">
- <form role="form" id="boardForm" action="boardinsert.action" method="post" enctype="multipart/form-data" name="boardForm">
+ <form role="form" id="boardForm" action="boardinsert.action" method="post" name="boardForm">
       <table class="table table-bordered" id="tblAdd">
          <tr>
             <td>제목</td>
             <td>
             	<input type="hidden" id="board_code" name="board_code" value="${nextNum }">
-            	<input type="hidden" id="board_date" name="board_date"> 
+            	<input type="hidden" id="board_date" name="board_date">
                 <input type="text" id="board_title" name="board_title" class="form-control" placeholder="제목을 입력하세요">
             </td>
          </tr>
@@ -85,13 +89,15 @@
      </table>
      <br>
     <textarea rows=20 placeholder="내용을 입력하세요" id="board_content" name="board_content" class="form-control"></textarea><br>
+    
+     <div style="margin: auto; text-align: right;">
+	  <button type="button" id="cancel" class="btn btn-danger" onclick="location.href='boardlist.action'">취소</button>
+	  <button type="button" id="register" class="btn btn-primary">글 등록</button>
+	  <span id="err" style="color: red; font-weight: bold; display: none;"></span>
+ 	</div> 
  </form>
  
- <div style="margin: auto; text-align: right;">
-	  <button type="button" id="cancel" class="btn btn-danger" onclick="location.href='boardlist.action'">취소</button>
-	  <button type="submit" id="register" class="btn btn-primary">글 등록</button>
-	  <span id="err" style="color: red; font-weight: bold; display: none;"></span>
- </div> 
+
  
  </div>
  
