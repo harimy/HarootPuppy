@@ -15,6 +15,12 @@
 		VALUES(#{participants_code}, #{walkroom_code}, #{relation_code}, #{readyoption_code}, #{readystate_code}, SYSDATE)
 	</insert>
 	
+	<delete id="exitWalkRoom" parameterType="java.lang.String">
+		DELETE
+		FROM TBL_PARTICIPANTS
+		WHERE PARTICIPANTS_CODE = #{participants_code}
+	</delete>
+	
 	<select id="max" resultType="java.lang.Integer">
 		SELECT MAX(TO_NUMBER(SUBSTR(PARTICIPANTS_CODE, 4)))
 		FROM TBL_PARTICIPANTS
@@ -30,6 +36,12 @@
 	<update id="modifyReadyOption">
 		UPDATE TBL_PARTICIPANTS
 		SET READYOPTION_CODE = #{readyoption_code}
+		WHERE PARTICIPANTS_CODE = #{participants_code}
+	</update>
+	
+	<update id="modifyReadyState">
+		UPDATE TBL_PARTICIPANTS
+		SET READYSTATE_CODE = #{readystate_code}
 		WHERE PARTICIPANTS_CODE = #{participants_code}
 	</update>
 	

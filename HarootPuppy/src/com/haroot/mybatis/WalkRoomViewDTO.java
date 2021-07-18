@@ -11,7 +11,8 @@ public class WalkRoomViewDTO
 		, walkroom_place, walkroom_latitude, walkroom_longtitude
 		, auto_code, auto_content, style_code, style_content
 		, bite_code, bite_content, desex_code, desex_content, samesex_code, samesex_content
-		, participants_code, mem_nickname, mem_gender, sid_code, walkroom_leader, mem_id
+		, participants_code, readyoption_code, readystate_code
+		, mem_nickname, mem_gender, sid_code, walkroom_leader, mem_id
 		, pet_code, pet_birth, pet_age, pet_sex, pet_name, pet_photo, pet_type_code, pet_type_name
 		, pet_bite_code, pet_bite_content, pet_desex_code, pet_desex_content
 		, pet_char1_code, pet_char1_content, pet_char2_code, pet_char2_content
@@ -226,6 +227,22 @@ public class WalkRoomViewDTO
 	public void setParticipants_code(String participants_code)
 	{
 		this.participants_code = participants_code;
+	}
+	public String getReadyoption_code()
+	{
+		return readyoption_code;
+	}
+	public void setReadyoption_code(String readyoption_code)
+	{
+		this.readyoption_code = readyoption_code;
+	}
+	public String getReadystate_code()
+	{
+		return readystate_code;
+	}
+	public void setReadystate_code(String readystate_code)
+	{
+		this.readystate_code = readystate_code;
 	}
 	public String getMem_nickname()
 	{

@@ -70,24 +70,38 @@
 	// Source: stackoverflow
 
 	$(document).ready(function()
-	{
+	{	
+		//alert($("#readyBtn").val());
+		
+		if( $("#readyBtn").val() == "1" ) // 레디 완료 상태면
+		{
+			$("#readyBtn").css("background-color", "rgb(224, 224, 224)");
+			$("#readyBtn").html("CANCEL");
+		}
+		else if( $("#readyBtn").val() == "0" ) // 레디 대기 상태면
+		{
+			$("#readyBtn").css("background-color", "rgb(232, 159, 60)");
+			$("#readyBtn").html("READY");
+		}
+		
 		$("#readyBtn").click(function()
 		{
-			alert("됨");
-			if ( $(this).val() == "notReady" )
+			//alert("READY 버튼 눌림"); 
+			if ( $(this).val() == "1" )		// 레디 완료 상태면
 			{
 				$(this).css("background-color", "rgb(224, 224, 224)");
 				$(this).html("CANCEL");
-				$(this).val("ready");
-				return;
+				$(this).val("0");
 			}
-			else if ( $(this).val() == "ready" )
+			else if ( $(this).val() == "0" )	// 레디 대기 상태면
 			{
 				$(this).css("background-color", "rgb(232, 159, 60)");
 				$(this).html("READY");
-				$(this).val("notReady");
-				return;
+				$(this).val("1");
 			}
+			
+			$(location).attr("href"
+					, "readystateupdate.action?readystate=" + $(this).val());
 			
 		});
 	});
@@ -145,20 +159,16 @@
 		</div>
 
 		<!-- 매칭/준비 버튼 -->
-		<button type="button" id="readyBtn" class="btn" value="notReady">READY</button>
-		<!-- <div style="display: inline-block">
-			<input type="checkBox" name="readyoption" id="readyoption" value="">
-			<label for="readyoption">READY 고정</label>
-		</div> -->
+		<button type="button" id="readyBtn" class="btn" value="${room.readystate_code }">READY</button>
 		<br><br>
 
 		<!-- 참여자 프로필 -->
 		<div class="row">
-			<c:forEach var="room" items="${rooms }">
+			<c:forEach var="rs" items="${rooms }">
 				<div class="col-sm-4 col-md-3">
 					<div class="thumbnail">
 						<div class="nickName">
-							<div class="thumbLeft">${room.mem_nickname }<img src="images/man.png" class="icons">
+							<div class="thumbLeft">${rs.mem_nickname }<img src="images/man.png" class="icons">
 							</div>
 							<div class="thumbRight">
 								<button type="button" class="menuBtn transparent-button">
@@ -169,19 +179,17 @@
 						<br> <img class="img-responsive"
 							src="<%=cp%>/images/jaerong.jpg">
 						<div class="caption">
-							<div style="font-size: 20px; font-weight: bold;">${room.pet_name } (${room.pet_type_name }, ${room.pet_age })</div>
-							
-							<p style="float: left; margin-right: 15px;">
-								${room.pet_desex_content }<br> ${room.pet_bite_content }<br>
-							</p>
+							<div style="font-size: 20px; font-weight: bold;">${rs.pet_name } (${rs.pet_type_name }, ${rs.pet_age })</div><br>
+
 							<p style="display: inline-block;">
-								${room.pet_char1_content}, ${room.pet_char2_content }<br> ${room.pet_char3_content }<br> ${room.pet_char4_content }<br>
+								${rs.pet_desex_content }<br> ${rs.pet_bite_content }<br>
+								${rs.pet_char1_content}<br> ${rs.pet_char2_content }<br> ${rs.pet_char3_content }<br> ${rs.pet_char4_content }<br>
 							</p>
 						</div>
 					</div>
-					<div class="masterTag" style="${ room.walkroom_leader == room.sid_code ? ''  : 'display: none;' }">방장</div>
-					<div class="notReadyTag" style="${ room.walkroom_leader != room.sid_code ? ''  : 'display: none;' }">Ready 대기</div>
-					<div class="readyTag" style="display:none;">Ready 완료</div>
+					<div class="masterTag" style="${ rs.walkroom_leader == rs.sid_code ? ''  : 'display: none;' }">방장</div>
+					<div class="notReadyTag" style="${ rs.walkroom_leader != rs.sid_code && rs.readystate_code == '0' ? ''  : 'display: none;' }">Ready 대기</div>
+					<div class="readyTag" style="${ rs.walkroom_leader != rs.sid_code && rs.readystate_code == '1' ? ''  : 'display: none;' }">Ready 완료</div>
 					<!-- 
 					<div class="masterTag">방장</div>
 					<div class="readyTag">Ready 완료</div>
@@ -221,8 +229,8 @@
 	
 		<!-- 방장/일반 개별 버튼 -->
 		<div id="buttonArea" style="float: right;">
-			<button type="button" id="list" onclick="window.close()">목록으로</button>
-			<button type="button" id="out">방 나가기</button>
+			<button type="button" id="list" onclick="location.href='walkroommain.action'">목록으로</button>
+			<button type="button" id="out" onclick="location.href='walkroomexit.action'">방 나가기</button>
 		</div>
 		<br><br>
 	

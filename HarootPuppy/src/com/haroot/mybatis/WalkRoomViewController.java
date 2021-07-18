@@ -21,6 +21,7 @@ public class WalkRoomViewController
 	@Autowired
 	private SqlSession sqlSession;
 	
+	// 방 선택 후 입장하기 전 조건들 체크하여 분기처리
 	@RequestMapping(value="/walkroomentercheck.action", method=RequestMethod.GET)
 	public String walkRoomEnterCheck(HttpServletRequest request, ModelMap model) throws SQLException
 	{
@@ -133,6 +134,7 @@ public class WalkRoomViewController
 		return result;
 	}
 	
+	// 산책방 입장 (주로 방장 입장용)
 	@RequestMapping(value="/walkroomenter.action", method=RequestMethod.GET)
 	public String walkRoomOptionEnter(HttpServletRequest request, ModelMap model) throws SQLException
 	{
@@ -189,23 +191,34 @@ public class WalkRoomViewController
 		// 세션으로 로그인한 사용자의 sid_code, walkroom_code 받아오기
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String pet_code = (String)session.getAttribute("pet_code");
 		int walkroom_code = (int)session.getAttribute("walkroom_code");
-		
-		// 방 번호로 방 정보 및 참여자 정보 조회하기
-		IWalkRoomViewDAO dao = sqlSession.getMapper(IWalkRoomViewDAO.class);
-		ArrayList<WalkRoomViewDTO> rooms = dao.list(walkroom_code);
-		WalkRoomViewDTO room = rooms.get(0);
 		
 	    if(sid_code == null)	// 로그인 안했을 경우
 	    {
 	    	result = "redirect:loginMem.action";
 	    }
-	    else if(room == null) 	// 그 번호로 조회된 방이 없는 경우 산책메이트 메인으로 넘김
+	    else if(pet_code == null) 	// 펫 선택 안한 경우
 	    {
-	    	result = "redirect:walkroommain.action";
-	    }   
+	    	result = "redirect:walkroomselect.action";
+	    }    
 	    else 
 	    {
+	    	// 양육관계 코드 얻어냄
+			IRelationDAO relation_dao = sqlSession.getMapper(IRelationDAO.class);
+			RelationDTO relation_dto = relation_dao.list(sid_code, pet_code);
+			String relation_code = relation_dto.getRelation_code();
+			
+			// 산책방 번호와 양육관계 코드로 참여자 코드 얻어냄
+			IParticipantsDAO part_dao = sqlSession.getMapper(IParticipantsDAO.class);
+			ParticipantsDTO part_dto = part_dao.search(walkroom_code, relation_code);
+			String participants_code = part_dto.getParticipants_code();
+			
+	    	// 방 번호로 방 정보 및 참여자 정보 조회하기
+			IWalkRoomViewDAO dao = sqlSession.getMapper(IWalkRoomViewDAO.class);
+			ArrayList<WalkRoomViewDTO> rooms = dao.list(walkroom_code);
+			WalkRoomViewDTO room = dao.search(walkroom_code, participants_code);
+			
 	    	model.addAttribute("room", room);
 	    	model.addAttribute("rooms", rooms);	 	// 참여자 정보 출력용 ArrayList<DTO>
 	    	result = "WalkRoomMasterEnter.jsp";
@@ -224,28 +237,35 @@ public class WalkRoomViewController
 		// 세션으로 로그인한 사용자의 sid_code 받아오기
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
-		
-		// 방 번호 받아오기
-		//System.out.println(request.getParameter("walkroom_code"));
+		String pet_code = (String)session.getAttribute("pet_code");
 		int walkroom_code = (int)session.getAttribute("walkroom_code");
-		//System.out.println("방 번호 : " + walkroom_code);
-		
-		// 방 번호로 방 정보 및 참여자 정보 조회하기
-		IWalkRoomViewDAO dao = sqlSession.getMapper(IWalkRoomViewDAO.class);
-		ArrayList<WalkRoomViewDTO> rooms = dao.list(walkroom_code);
-		WalkRoomViewDTO room = rooms.get(0);
-	    
+		//System.out.println("walkroomguest walkroom_code : " + walkroom_code);
 		
 	    if(sid_code == null)	// 로그인 안했을 경우
 	    {
 	    	result = "redirect:loginMem.action";
 	    }
-	    else if(room == null) 	// 그 번호로 조회된 방이 없는 경우 산책메이트 메인으로 넘김
+	    else if(pet_code == null) 	// 펫 선택 안한 경우
 	    {
-	    	result = "redirect:walkroommain.action";
+	    	result = "redirect:walkroomselect.action";
 	    }   
 	    else 
 	    {
+	    	// 양육관계 코드 얻어냄
+			IRelationDAO relation_dao = sqlSession.getMapper(IRelationDAO.class);
+			RelationDTO relation_dto = relation_dao.list(sid_code, pet_code);
+			String relation_code = relation_dto.getRelation_code();
+			
+			// 산책방 번호와 양육관계 코드로 참여자 코드 얻어냄
+			IParticipantsDAO part_dao = sqlSession.getMapper(IParticipantsDAO.class);
+			ParticipantsDTO part_dto = part_dao.search(walkroom_code, relation_code);
+			String participants_code = part_dto.getParticipants_code();
+	    	
+			// 방 번호로 방 정보 및 참여자 정보 조회하기
+			IWalkRoomViewDAO dao = sqlSession.getMapper(IWalkRoomViewDAO.class);
+			ArrayList<WalkRoomViewDTO> rooms = dao.list(walkroom_code);
+			WalkRoomViewDTO room = dao.search(walkroom_code, participants_code);
+			
 	    	model.addAttribute("room", room);
 	    	model.addAttribute("rooms", rooms);	 	// 참여자 정보 출력용 ArrayList<DTO>
 	    	result = "WalkRoomGuestEnter.jsp";
@@ -343,6 +363,89 @@ public class WalkRoomViewController
 			int walkroom_code = Integer.parseInt(request.getParameter("num"));
 			dao.remove(walkroom_code);
 			result="redirect:walkroommain.action";
+		}
+
+		return result;
+	}
+	
+	// 방장 아닌 참여자 방 나가기 버튼 클릭 시
+	@RequestMapping(value = "/walkroomexit.action", method = RequestMethod.GET)
+	public String walkroomExit(HttpServletRequest request) throws SQLException
+	{
+		String result = "";
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		String pet_code = (String)session.getAttribute("pet_code");
+		int walkroom_code = (int)session.getAttribute("walkroom_code");
+		
+		if(sid_code == null)
+		{
+			result = "redirect:loginMem.action";
+		}
+		else if(pet_code == null)
+		{
+			result = "/walkroomselect.action";
+		}
+		else
+		{
+			// 양육관계 코드 얻어냄
+			IRelationDAO relation_dao = sqlSession.getMapper(IRelationDAO.class);
+			RelationDTO relation_dto = relation_dao.list(sid_code, pet_code);
+			String relation_code = relation_dto.getRelation_code();
+			
+			// 산책방 번호와 양육관계 코드로 참여자 코드 얻어냄
+			IParticipantsDAO part_dao = sqlSession.getMapper(IParticipantsDAO.class);
+			ParticipantsDTO part_dto = part_dao.search(walkroom_code, relation_code);
+			String participants_code = part_dto.getParticipants_code();
+			
+			// 방 나가기 = 참여자 테이블에서 삭제 처리
+			part_dao.exitWalkRoom(participants_code);
+			
+			// 산책방 코드 세션 삭제 구문 필요
+			
+			result="redirect:walkroommain.action";
+		}
+
+		return result;
+	}
+	
+	// 레디 버튼 클릭 시 레디 상태 업데이트
+	@RequestMapping(value = "/readystateupdate.action", method = RequestMethod.GET)
+	public String readyStateUpdate(HttpServletRequest request) throws SQLException
+	{
+		String result = "";
+		HttpSession session = request.getSession();
+		String sid_code = (String)session.getAttribute("sid_code");
+		String pet_code = (String)session.getAttribute("pet_code");
+		int walkroom_code = (int)session.getAttribute("walkroom_code");
+		
+		if(sid_code == null)
+		{
+			result = "redirect:loginMem.action";
+		}
+		else if(pet_code == null)
+		{
+			result = "/walkroomselect.action";
+		}
+		else
+		{
+			// 레디 상태 코드 받아옴
+			String readystate_code = request.getParameter("readystate");
+			System.out.println("readystateupdate readystate_code : " + readystate_code);
+			
+			// 양육관계 코드 얻어냄
+			IRelationDAO relation_dao = sqlSession.getMapper(IRelationDAO.class);
+			RelationDTO relation_dto = relation_dao.list(sid_code, pet_code);
+			String relation_code = relation_dto.getRelation_code();
+			
+			// 산책방 번호와 양육관계 코드로 참여자 코드 얻어냄
+			IParticipantsDAO part_dao = sqlSession.getMapper(IParticipantsDAO.class);
+			ParticipantsDTO part_dto = part_dao.search(walkroom_code, relation_code);
+			String participants_code = part_dto.getParticipants_code();
+			
+			// 방 나가기 = 참여자 테이블에서 삭제 처리
+			part_dao.modifyReadyState(readystate_code, participants_code);
+			result="redirect:walkroomguest.action";
 		}
 
 		return result;

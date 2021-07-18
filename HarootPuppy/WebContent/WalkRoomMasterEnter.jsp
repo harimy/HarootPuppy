@@ -198,11 +198,10 @@
 						<br> <img class="img-responsive"
 							src="<%=cp%>/images/jaerong.jpg">
 						<div class="caption">
-							<div style="font-size: 20px; font-weight: bold;">${room.pet_name } (${room.pet_type_name }, ${room.pet_age })</div>
+							<div style="font-size: 20px; font-weight: bold;">${room.pet_name } (${room.pet_type_name }, ${room.pet_age })</div><br>
 							<div style="display: inline-block;">
-								<p style="display: inline-block; margin-right: 15px;">
+								<p style="display: inline-block;">
 									${room.pet_desex_content }<br> ${room.pet_bite_content }<br>
-								
 									${room.pet_char1_content}<br> ${room.pet_char2_content }<br> ${room.pet_char3_content }<br> ${room.pet_char4_content }<br>
 								</p>
 							</div>

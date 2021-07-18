@@ -102,7 +102,7 @@
 		else
 		{
 			$("#walkroom_code").val("${nextNum}");
-			alert($("#walkroom_code").val());
+			//alert($("#walkroom_code").val());
 		}
 	});
 
