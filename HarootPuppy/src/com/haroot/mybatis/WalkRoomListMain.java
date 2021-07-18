@@ -28,6 +28,8 @@ public class WalkRoomListMain
 		// 세션 처리 --------------------------------------------------
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		session.removeAttribute("pet_code");	// 펫 선택 페이지 로드시 펫 코드 초기화
+		
 		IPetDAO dao = sqlSession.getMapper(IPetDAO.class);
 		ArrayList<PetDTO> petlist = dao.searchPets(sid_code);
 		

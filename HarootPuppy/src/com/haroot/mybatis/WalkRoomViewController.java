@@ -75,6 +75,7 @@ public class WalkRoomViewController
 				{
 					// 해당 유저가 다른 반려견으로 참여중인 경우
 					// 메소드 하나 더 만들어서 반려견 바꿔서 참여할건지 묻도록 코드 추가 필요
+					// 현재는 404 에러 뜨도록 해둠
 				}
 				else if(check_dao.search_room_sid_rel(walkroom_code, sid_code, relation_code) == 1)
 				{

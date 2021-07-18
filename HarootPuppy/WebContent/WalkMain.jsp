@@ -134,44 +134,48 @@
 		<div class="walkUserInfo">
 			<div class="walkHotPlace">
 				<div>내 주변 산책 핫플레이스
-					<input type="button" value="위치 재설정" onclick="sample5_execDaumPostcode()"><br>
+					<input type="button" value="위치 재설정" onclick="sample5_execDaumPostcode()">
 				</div>
-				<div id="map" style="width:300px;height:300px;margin-top:10px;display:block"></div>
+				<div id="map" style="width:300px; height:300px; margin:10px; display:block"></div>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c980959de9d6957591bdf2f69c03ce68&libraries=services"></script>
 <script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-            level: 5 // 지도의 확대 레벨
-        };
+    var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+    mapOption = 
+    {
+        center: new daum.maps.LatLng(${pet.pet_addr_lat}, ${pet.pet_addr_lng}), // 지도의 중심좌표
+        level: 5 // 지도의 확대 레벨
+    };
 
     //지도를 미리 생성
     var map = new daum.maps.Map(mapContainer, mapOption);
     //주소-좌표 변환 객체를 생성
     var geocoder = new daum.maps.services.Geocoder();
     //마커를 미리 생성
-    var marker = new daum.maps.Marker({
-        position: new daum.maps.LatLng(37.537187, 127.005476),
+    var marker = new daum.maps.Marker(
+    {
+        position: new daum.maps.LatLng(${pet.pet_addr_lat}, ${pet.pet_addr_lng}),
         map: map
     });
 
 
     function sample5_execDaumPostcode() 
     {
-        new daum.Postcode({
-            oncomplete: function(data) {
+        new daum.Postcode(
+        {
+            oncomplete: function(data) 
+            {
                 var addr = data.address; // 최종 주소 변수
 
                 // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("sample5_address").innerHTML = addr;
+                document.getElementById("sample5_address").innerHTML = '설정한 주소지 : ' + addr;
                 // 주소로 상세 정보를 검색
-                geocoder.addressSearch(data.address, function(results, status) {
+                geocoder.addressSearch(data.address, function(results, status) 
+                {
                     // 정상적으로 검색이 완료됐으면
-                    if (status === daum.maps.services.Status.OK) {
-						
-                  	  	
+                    if (status === daum.maps.services.Status.OK) 
+                    {     
                         var result = results[0]; //첫번째 결과의 값을 활용
 
                         // 해당 주소에 대한 좌표를 받아서
@@ -179,13 +183,14 @@
                         // 지도를 보여준다.
                         
                         // alert(result.y);
-                        //  alert(result.x);
+                        // alert(result.x);
                         mapContainer.style.display = "block";
                         map.relayout();
                         // 지도 중심을 변경한다.
                         map.setCenter(coords);
                         // 마커를 결과값으로 받은 위치로 옮긴다.
                         marker.setPosition(coords)
+                        
                     }
                 });
             }
@@ -194,69 +199,16 @@
     
     
 </script>
-<span id="sample5_address"></span>
+<span id="sample5_address">반려견 주소지 : ${pet.pet_addr}</span>
 			</div>
 			<div class="walkPet">
 				<div>산책할 반려견
-					<input type="button" value="수정" onclick="location.href='walkroommain.action'">
+					<input type="button" value="수정" onclick="location.href='walkroomselect.action'">
 				</div>
-				<div><img class="petImage" src="/HarootPuppy/images/jaerong.jpg"></div>
+				<div><img style="margin: 10px;" class="petImage" src="/HarootPuppy/images/jaerong.jpg"></div>
 				<div>${pet.pet_name }</div>
 			</div>
 		</div>
-		
-		<!-- 
-		<div id="harootContent">
-			<div id="mapAndPet">
-				<table style="text-align: center;">
-					<tr>
-						<th>내 주변 산책 핫플레이스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-							type="button" value="위치 재설정" onclick="openChild()"><br>
-						</th>
-						<th>산책할 반려견&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-							type="button" value="수정">
-						</th>
-					</tr>
-					<tr>
-						<td
-							style="width: 300px; height: 280px; padding-left: 40px; padding-right: 40px;">
-							<div id="map" style="width: 380px; height: 300px;"></div> <script
-								type="text/javascript"
-								src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c980959de9d6957591bdf2f69c03ce68"></script>
-							<script> 
-								var container = document.getElementById('map');
-								var options = {
-									center : new kakao.maps.LatLng(
-											37.383431730893726,
-											126.96076431156959),
-									level : 3
-								};
-
-								var map = new kakao.maps.Map(container, options);
-								var map = new kakao.maps.Map(container, options);
-							</script>
-						</td>
-						<td><img class="Image" src="/HarootPuppy/images/jaerong.jpg"
-							style="width: 380px; height: 300px; padding-right: 40px; padding-left: 40px;">
-						</td>
-					</tr>
-					<tr>
-						<td>기준 주소지 : 경기도 고양시 일산서구 주엽로 98</td>
-						<td>재롱이</td>
-					</tr>
-				</table>
-			</div> -->
-
-			<!-- <div style="width: 50%; float: center;">
-		<div>
-			<h5 style="float: left; padding-left: 160px; padding-right: 90px;">산책할 나의 반려견</h5>
-			<input type="button" value="수정">
-		<br>
-			<img class = "Image" src="/HarootPuppy/images/coco.png" style="width: 300px;"> 
-			<h5 style="padding-left: 690px;">재롱이</h5>
-			여기 여백 padding-left: 690px; 준 부분 이렇게 주면 안될듯 함.,,,같이 고민 plz
-		</div>
-	</div> -->
 
 		<br><br>
 
