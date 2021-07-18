@@ -10,8 +10,26 @@
 <head>
 <meta charset="UTF-8">
 <title>WalkRoomGuestEnter.jsp</title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
+
+<!-- 부트스트랩 CSS -->
+<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
+
+<!-- 산책방 관련 css : 산책메이트 특징태그, 방장태그, 레디 태그 -->
+<link rel="stylesheet" type="text/css" href="css/WalkRoom.css">
+<link rel="stylesheet" type="text/css" href="<%=cp%>/css/WalkRoomTags.css">
+
+<style type="text/css">
+	.transparent-button	
+	{
+	    background-color: transparent !important;
+	    background-image: none !important;
+	    border-color: transparent;
+	    border: none;
+	    color: #FFFFFF; 
+	}
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 	CountDownTimer('06/30/2021 09:30 PM', 'leftTime');
 
@@ -73,8 +91,6 @@
 			
 		});
 	});
-		
-
 	
 	function openChild()
 	{
@@ -86,25 +102,6 @@
 	}
 
 </script>
-<!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
-
-<link rel="stylesheet" type="text/css" href="css/WalkRoom.css">
-
-<!-- 산책방 태그들 관련 css : 산책메이트 특징태그, 방장태그, 레디 태그 -->
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/WalkRoomTags.css">
-
-<style type="text/css">
-	.transparent-button
-	{
-	    background-color: transparent !important;
-	    background-image: none !important;
-	    border-color: transparent;
-	    border: none;
-	    color: #FFFFFF; 
-	}
-
-</style>
 
 </head>
 <body>
@@ -124,7 +121,7 @@
 <div id="harootContent">
 	<!-- 방 정보 불러오기 -->
 	
-	<div class="alignCenter">
+	<form class="alignCenter" id="roomForm">
 
 		<!-- 방 제목 -->
 		<div id="walkTitle">${room.walkroom_title }</div> 
@@ -149,6 +146,10 @@
 
 		<!-- 매칭/준비 버튼 -->
 		<button type="button" id="readyBtn" class="btn" value="notReady">READY</button>
+		<!-- <div style="display: inline-block">
+			<input type="checkBox" name="readyoption" id="readyoption" value="">
+			<label for="readyoption">READY 고정</label>
+		</div> -->
 		<br><br>
 
 		<!-- 참여자 프로필 -->
@@ -225,7 +226,7 @@
 		</div>
 		<br><br>
 	
-	</div>
+	</form>
 </div>
 </body>
 </html>

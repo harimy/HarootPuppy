@@ -107,7 +107,7 @@ public class WalkRoomListMain
 		}
 		else if(pet_code == null)
 		{
-			result = "/walkroomselect.action";
+			result = "redirect:walkroomselect.action";
 		}
 		else
 		{
@@ -142,7 +142,7 @@ public class WalkRoomListMain
 		}
 		else if(pet_code == null)
 		{
-			result = "/walkroomselect.action";
+			result = "redirect:walkroomselect.action";
 		}
 		else
 		{
@@ -172,7 +172,7 @@ public class WalkRoomListMain
 		}
 		else if(pet_code == null)
 		{
-			result = "/walkroomselect.action";
+			result = "redirect:walkroomselect.action";
 		}
 		else
 		{
@@ -211,95 +211,9 @@ public class WalkRoomListMain
 		return result;
 	}
 	
-	@RequestMapping(value = "/walkroomupdateform.action", method = RequestMethod.GET)
-	public String walkRoomUpdateForm(HttpServletRequest request, ModelMap model) throws SQLException
-	{
-		String result = "";
-		HttpSession session = request.getSession();
-		String sid_code = (String)session.getAttribute("sid_code");
-		String pet_code = (String)session.getAttribute("pet_code");
-		
-		if(sid_code == null)
-		{
-			result = "redirect:loginMem.action";
-		}
-		else if(pet_code == null)
-		{
-			result = "/walkroomselect.action";
-		}
-		else
-		{
-			IWalkRoomViewDAO dao = sqlSession.getMapper(IWalkRoomViewDAO.class);
-			WalkRoomViewDTO dto;
-			
-			// 수정할 방 코드 받아오기
-			//System.out.println("변환 전 : " + request.getParameter("num"));
-			int walkroom_code = Integer.parseInt(request.getParameter("num"));
-			//System.out.println("변환 후 : " + walkroom_code);
-
-			dto = dao.list(walkroom_code).get(0);
-			
-			model.addAttribute("walkroom", dto);
-			
-			result = "/WalkRoomInsertForm.jsp";
-		}
-
-		return result;
-	}
 	
-	@RequestMapping(value = "/walkroomupdate.action", method = RequestMethod.POST)
-	public String walkRoomUpdate(HttpServletRequest request, WalkRoomDTO dto) throws SQLException
-	{
-		String result = "";
-		HttpSession session = request.getSession();
-		String sid_code = (String)session.getAttribute("sid_code");
-		String pet_code = (String)session.getAttribute("pet_code");
-		
-		if(sid_code == null)
-		{
-			result = "redirect:loginMem.action";
-		}
-		else if(pet_code == null)
-		{
-			result = "/walkroomselect.action";
-		}
-		else
-		{
-			IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
-			dao.modify(dto);
-			int walkroom_code = Integer.parseInt(request.getParameter("num"));
-			result = "redirect:walkroomenter.action?num=" + walkroom_code;
-		}
-
-		return result;
-	}
 	
-	@RequestMapping(value = "/walkroomdelete.action", method = RequestMethod.GET)
-	public String walkroomDelete(HttpServletRequest request) throws SQLException
-	{
-		String result = "";
-		HttpSession session = request.getSession();
-		String sid_code = (String)session.getAttribute("sid_code");
-		String pet_code = (String)session.getAttribute("pet_code");
-		
-		if(sid_code == null)
-		{
-			result = "redirect:loginMem.action";
-		}
-		else if(pet_code == null)
-		{
-			result = "/walkroomselect.action";
-		}
-		else
-		{
-			IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
-			int walkroom_code = Integer.parseInt(request.getParameter("num"));
-			dao.remove(walkroom_code);
-			result="redirect:walkroommain.action";
-		}
-
-		return result;
-	}
+	
 	
 	
 }

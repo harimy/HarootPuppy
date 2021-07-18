@@ -90,10 +90,9 @@
 			}
 
 		});
+		
 	});
-</script>
-
-<script type="text/javascript">
+		
 	$(function()
 	{
 		$("#changeRoomInfo").click(function()
@@ -114,13 +113,32 @@
        	});
 		
 	});
-	
+</script>
 
+<script type="text/javascript">
+	function closeChild()
+	{
+		/*
+		if(typeof(window.opener.top) == "object") // 부모창이 존재하면
+		{
+			alert("트루");
+		 	opener.top.location.href = "walkroommaster.action";	// 방 입장하면
+		 	self.close();		// 자식 창 닫기
+		}
+		*/
+		
+		// 부모창 페이지 이동
+		opener.location.href="walkroommaster.action"; 
+
+		//자식 창 닫기
+		window.close();
+		
+	}
 </script>
 
 
 </head>
-<body>
+<body onload="closeChild()">
 <!-----------------------------
    WalkRoomMasterEnter.jsp
    - 방장용 산책방 페이지 
@@ -236,10 +254,10 @@
 		<!-- 방장/일반 개별 버튼 -->
 		<div id="buttonArea" style="float: right;">
 			<button type="button" id="changeRoomInfo" value="${room.walkroom_code }" 
-			name="changeRoomInfo">방 정보 변경</button>
-			<button type="button" id="goToList" onclick="window.close()">목록으로</button>
+			name="changeRoomInfo">방 정보 수정</button>
+			<button type="button" id="goToList" onclick="location.href='walkroommain.action'">목록으로</button>
 			<button type="button" id="deleteRoom" value="${room.walkroom_code }" 
-			name="deleteRoom">방 삭제하기</button>
+			name="deleteRoom">방 삭제</button>
 		</div>
 		<br><br>
 	

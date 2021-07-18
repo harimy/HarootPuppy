@@ -318,11 +318,10 @@
 				</tr>
 			</table>
 			<br>
-			<div>
-			 	<label for="onlyAble" style="float: right;">
-			 		<input type="checkBox" name="able" id="onlyAble" value="onlyAble">&nbsp;참여가능한 방만 보기&nbsp;&nbsp;
-			 		<input type="button" value="검색" style="float: right;">
-				</label>
+			<div style="float: right;">
+		 		<input type="checkBox" name="able" id="onlyAble" value="onlyAble">
+		 		<label for="onlyAble">참여가능한 방만 보기</label>
+		 		<input type="button" value="검색">
 			</div>
 		</div>
 		<br>

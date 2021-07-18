@@ -90,17 +90,19 @@
 		{
 			// 산책방 글쓰기일 경우 walkroom_code == null
 			// 산책방 수정일 경우 walkroom_code 값을 가지기 때문에 이 if 문에 걸리게 됨
+			$(document).attr("title", "WalkRoomUpdateForm.jsp");
 			$("#pageTitle").html("산책방 정보 수정");
 			$("#makeRoom").html("수정");
 			$("#walkroom_code").val("${walkroom.walkroom_code}");
 			$(".genDate_td").css("display", "inline");
 			$("#goToMain").attr("onclick", "location.href='walkroomenter.action?num=${walkroom.walkroom_code}'");
 			$("form").attr("action", "walkroomupdate.action?num=${walkroom.walkroom_code}");	
+			$("#harootHeader").css("display", "none");
 		}
 		else
 		{
 			$("#walkroom_code").val("${nextNum}");
-			//alert($("#walkroom_code").val());
+			alert($("#walkroom_code").val());
 		}
 	});
 

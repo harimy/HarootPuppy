@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haroot.mybatis.IRelationDAO"><!-- implements IMemberDAO -->
+	
+	<select id="list" parameterType="map" resultType="com.haroot.mybatis.RelationDTO">
+		SELECT R.RELATION_CODE, R.SID_CODE, R.PET_CODE
+		     , RT.RELATION_TYPE_CODE, RT.RELATION_TYPE_CONTENT
+		FROM TBL_RELATION R, TBL_RELATION_TYPE RT
+		WHERE R.RELATION_TYPE_CODE = RT.RELATION_TYPE_CODE
+		  AND SID_CODE = #{sid_code}
+		  AND PET_CODE = #{pet_code}
+	</select>
+	
+</mapper>

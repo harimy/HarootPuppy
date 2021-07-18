@@ -5,7 +5,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 	
-	int walkroom_code = Integer.parseInt(request.getParameter("num"));
+	/* int walkroom_code = Integer.parseInt(request.getParameter("num")); */
 %>
 <!DOCTYPE html>
 <html>
@@ -17,25 +17,48 @@
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/menuStyle.css">
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
-<script type="text/javascript">
-	$(function() {
+<style>
+	body 
+	{
+		background-color: #EEE;
+	}
+	
+	#errMsg 
+	{
+		color: red;
+		font-size: small;
+		display: none;
+	}
+</style>
 
-		$("#enter").click(function() {
+<script type="text/javascript">
+	$(function() 
+	{
+		$("#enter").click(function() 
+		{
 			$("#errMsg").css("display", "none");
-			if ($("input:radio[name='autoOption']").is(":checked") == false) {
+			if ($("input:radio[name='autoOption']").is(":checked") == false) 
+			{
 				$("#errMsg").css("display", "inline");
 				return;
 			}
 
-			// $("input:radio[name='autoOption']:checked").val() 넘겨주며
-			window.opener.location.href = "walkroomguest.action?num=" + walkroom_code;
+			//alert($("input:radio[name='autoOption']:checked").val());
+			
+			// 부모창 페이지 이동 테스트
+			//opener.location.href="http://naver.com/"; 
+			
+			//opener.location.href="walkroomguest.action?num=" + $("#walkroom_code").val();
+			// 세션으로 산책방 코드 넘겨받기 때문에 위의 코드 필요 없음
+			opener.location.href="readyoptionupdate.action?readyoption="
+					+ $("input:radio[name='autoOption']:checked").val(); 
+
 			//자식 창 닫기
 			window.close();
 		});
 		
-
 	});
-	
+
 	function openCommReportChild()
 	{
 	    // window.name = "부모창 이름"; 
@@ -44,7 +67,7 @@
 	    openWin = window.open("WalkRoomReportInsertForm.jsp",
 	            "childForm", "width=570, height=350, resizable = no, scrollbars = no");
 	    
-	    close.window();
+	    window.close();
 	  
 	}
 	
@@ -61,17 +84,7 @@
 	}
 
 </script>
-<style>
-body {
-	background-color: #EEE;
-}
 
-#errMsg {
-	color: red;
-	font-size: small;
-	display: none;
-}
-</style>
 </head>
 <body>
 <!-----------------------------
@@ -81,18 +94,18 @@ body {
   자동 선택 옵션 창
 ------------------------------->
 	<div>
-		<form action="walkroomguest.action">
+		<form action="walkroomguest.action" name="popForm">
 			<h1>[Ready] 고정 옵션을 활성화 하시겠습니까?</h1>
 			<br>
 			<h3>※ [Ready] 고정 옵션 활성화 시, 방 옵션 또는 다른 참여자의 Ready 상태 변화에 상관 없이
 				[Ready] 상태를 유지하게 됩니다.</h3>
-			<input type="radio" name="autoOption" class="autoOption" id="deactive"> 
+			<input type="radio" name="autoOption" class="autoOption" id="deactive" value="0"> 
 			<label for="deactive">비활성화</label> 
-			<input type="radio" name="autoOption" class="autoOption" id="active">
+			<input type="radio" name="autoOption" class="autoOption" id="active" value="1">
 			<label for="active">활성화</label><br><br>
 			<button type="button" id="cancel" onclick="window.close()">취소</button>
-			<button type="submit" id="enter">입장</button>
-			<input type="hidden" name="walkroom_code" value="<%=walkroom_code%>">
+			<button type="button" id="enter">입장</button>
+			<%-- <input type="hidden" id="walkroom_code" name="walkroom_code" value="<%=walkroom_code%>"> --%>
 			<span id="errMsg">필수 선택 사항을 선택하세요</span><br><br>
 		</form>
 	</div>
