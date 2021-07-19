@@ -53,20 +53,15 @@
     a:hover, a:active { text-decoration: none; }
 </style>
 
-
 </head>
 <body>
 
 <jsp:include page="MainHeader.jsp"></jsp:include>
 
-<form action="mainmenu.action" method="post">
-
 <div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">
-
 	<li class="menu1">
-        <a href="selectpet.action">나의 반려견 
-        </a>
+        <a href="selectpet.action">나의 반려견</a>  
     </li>
     <li class="menu2">
     	<a href="walkroomselect.action">산책메이트</a>	
@@ -74,27 +69,22 @@
             <li style="margin-top: 5px;"><a href="walkroomselect.action">산책메이트</a></li>
             <li><a href="WalkHistoryMain.jsp">히스토리</a></li>
         </ul> 
-    </li>   
+    </li>
     <li class="menu3">
-        <a href="boardlist.action">자유게시판</a>
+        <a href="ReportMain.jsp">자유게시판</a>
         <ul class="menu3_s submenu">
-            <li style="margin-top: 5px;"><a href="boardlist.action">자유게시판</a></li>
-            <li>HOT 게시판</li>
+            <li style="margin-top: 5px;"><a href=".jsp">자유게시판</a></li>
+            <li>HOT 게시판<li>
         </ul>   
     </li>
     <li class="menu4">
-    	<a href="FaqList.jsp">고객 지원</a>
-    	<ul class="menu4_s submenu">
-            <li style="margin-top: 5px;"><a href="FaqList.jsp">자주하는 질문</a></li>
-            <li><a href="asklist.action">1:1 질문</a></li>
-            
-        </ul> 
+    	<a href="AllUserInfoList.jsp">고객 지원</a>
     </li>
-    
-</ul>
 
+</ul>
 </div>
-</form>
+
+
 
 </body>
 </html>
