@@ -8,108 +8,118 @@
 <!-- - 선언되는 메소드의 이름 (메소드명) 과 『id="식별자"』가 일치해야 한다 -->
 <mapper namespace="com.haroot.mybatis.IMemberDAO">
 
-	<!-- ○구성해야 할 쿼리문 → 조회 → SELECT 엘리먼트 구성 -->
-	<!-- ○ id="식별자" -->
-	<!-- - 인터페이스에 선언된 메소드의 이름과 일치해야 하며,
-		   호출 메소드명 역할을 수행하게 된다 -->
-	<!-- ○ resultType="패키지 경로가 포함된 자료형 클래스" 또는 "원시 래퍼 타입" -->
+   <!-- ○구성해야 할 쿼리문 → 조회 → SELECT 엘리먼트 구성 -->
+   <!-- ○ id="식별자" -->
+   <!-- - 인터페이스에 선언된 메소드의 이름과 일치해야 하며,
+         호출 메소드명 역할을 수행하게 된다 -->
+   <!-- ○ resultType="패키지 경로가 포함된 자료형 클래스" 또는 "원시 래퍼 타입" -->
 
 
-	<!-- 회원 리스트 조회 -->
-	<select id="list" resultType="com.haroot.mybatis.MemberDTO">
-		SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
-		, MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
-		, PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE
-		, WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT 
-		FROM MEMBERVIEW
-	</select>
-	
-	<!-- 아별 추가 -->
-	<!-- 계정상태가 정상인 회원 리스트 조회(강제탈퇴, 일시정지 제외) -->
-	<select id="normalList" resultType="com.haroot.mybatis.MemberDTO">
-		SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
-		, MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
-		, PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE
-		, WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT
-		FROM MEMBERVIEW
-		WHERE PAUSE_CODE IS NULL
-		  AND OUT_TYPE_CODE IS NULL
-		  AND MEM_CODE IS NOT NULL
-	</select>
-	
-	
-	<!-- 회원 수 조회 
-	<select id="count" resultType="java.lang.Integer">
-		SELECT COUNT (*) AS COUNT
-		FROM MEMBERVIEW
-	</select>
-	-->
-	
-	<!-- 회원 등록(회원가입, 회원용) 프로시저 호출 -->
-	<insert id="add" statementType="CALLABLE">
-		{
-       	 	call PRC_MEMBER_INSERT(#{mem_id}, #{mem_pw}, #{mem_name}, #{mem_birth}, #{mem_gender}, #{mem_tel}, #{mem_addr}, #{mem_nickname}, #{walk_agree_check})
-	    }
-	</insert>
-	
-	<!-- 로그인 -->
-	<select id="loginMem" parameterType="java.lang.String" resultType="com.haroot.mybatis.MemberDTO">
-		SELECT S.SID_CODE AS SID_CODE
-		     , M.MEM_CODE AS MEM_CODE
-		     , M.MEM_ID AS MEM_ID
-		     , M.MEM_NAME AS MEM_NAME
-		FROM TBL_SID S,
-		(
-		    SELECT MEM_CODE, MEM_ID, MEM_NAME
-		    FROM TBL_MEMBER
-		    WHERE MEM_ID = #{mem_id}
-		    AND MEM_PW = CRYPTPACK.ENCRYPT(#{mem_pw}, #{mem_id})
-		)M
-		WHERE S.MEM_CODE = M.MEM_CODE
-	</select>
-	
-	
-	
-	<!-- 회원코드로 회원 조회 -->
-	<select id="search" resultType="com.haroot.mybatis.MemberDTO">
-		 SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
-		, MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
-		, PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE
-		, WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT
-		FROM MEMBERVIEW
-		WHERE SID_CODE = #{sid_code}
-		
-	</select>
-	
-	
-	<!-- 회원정보 수정 -->
-	<update id="modify">
-		<!-- 아별 수정 -->
-		UPDATE TBL_MEMBER
-		SET MEM_ID = #{mem_id}
-		  , MEM_NAME = #{mem_name}
-		  , MEM_NICKNAME = #{mem_nickname}
-		  , MEM_GENDER = #{mem_gender}
-		  , MEM_BIRTH = TO_DATE(#{mem_birth},'YYYY-MM-DD')
-		  , MEM_TEL = #{mem_tel}
-		  , MEM_ADDR = #{mem_addr}
-		WHERE MEM_CODE = #{mem_code, jdbcType=VARCHAR}
-		
-	</update>
-	
-	
-	<!-- 회원정보 삭제 -->
-	<delete id="remove">
-		DELETE
-		FROM TBL_MEMBER
-		WHERE MEM_CODE = #{mem_code, jdbcType=VARCHAR}
-	</delete>
-	 
-	<!-- 로그인 후 화면에서 보여줄 이름 조회 -->
-	<select id="searchNickName" parameterType="java.lang.String" resultType ="java.lang.String">
-		SELECT MEM_NICKNAME
-		FROM MEMBERVIEW
-		WHERE SID_CODE=#{sid_code} 
-	</select>
-	 
+   <!-- 회원 리스트 조회 -->
+   <select id="list" resultType="com.haroot.mybatis.MemberDTO">
+      SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
+      , MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
+      , PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE
+      , WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT 
+      FROM MEMBERVIEW
+   </select>
+   
+   <!-- 아별 추가 -->
+   <!-- 계정상태가 정상인 회원 리스트 조회(강제탈퇴, 일시정지 제외) -->
+   <select id="normalList" resultType="com.haroot.mybatis.MemberDTO">
+      SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
+      , MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
+      , PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE
+      , WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT
+      FROM MEMBERVIEW
+      WHERE PAUSE_CODE IS NULL
+        AND OUT_TYPE_CODE IS NULL
+        AND MEM_CODE IS NOT NULL
+   </select>
+   
+   
+   <!-- 회원 수 조회 
+   <select id="count" resultType="java.lang.Integer">
+      SELECT COUNT (*) AS COUNT
+      FROM MEMBERVIEW
+   </select>
+   -->
+   
+   <!-- 회원 등록(회원가입, 회원용) 프로시저 호출 -->
+   <insert id="add" statementType="CALLABLE">
+      {
+              call PRC_MEMBER_INSERT(#{mem_id}, #{mem_pw}, #{mem_name}, #{mem_birth}, #{mem_gender}, #{mem_tel}, #{mem_addr}, #{mem_nickname}, #{walk_agree_check})
+       }
+   </insert>
+   
+   <!-- 로그인 -->
+   <select id="loginMem" parameterType="java.lang.String" resultType="com.haroot.mybatis.MemberDTO">
+      SELECT S.SID_CODE AS SID_CODE
+           , M.MEM_CODE AS MEM_CODE
+           , M.MEM_ID AS MEM_ID
+           , M.MEM_NAME AS MEM_NAME
+      FROM TBL_SID S,
+      (
+          SELECT MEM_CODE, MEM_ID, MEM_NAME
+          FROM TBL_MEMBER
+          WHERE MEM_ID = #{mem_id}
+          AND MEM_PW = CRYPTPACK.ENCRYPT(#{mem_pw}, #{mem_id})
+      )M
+      WHERE S.MEM_CODE = M.MEM_CODE
+   </select>
+   
+   
+   
+   <!-- 회원코드로 회원 조회 -->
+   <select id="search" resultType="com.haroot.mybatis.MemberDTO">
+       SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
+      , MEM_GENDER, MEM_TEL, MEM_ADDR, MEM_REGDATE, MEM_NICKNAME
+      , PAUSE_CODE ,PAUSE_START, OUT_CODE, OUT_TYPE_CODE, OUT_DATE
+      , WALK_AGREE_CODE, WALK_AGREE_CHECK, WALK_AGREE_DATE, OUT_TYPE_CONTENT
+      FROM MEMBERVIEW
+      WHERE SID_CODE = #{sid_code}
+      
+   </select>
+   
+   
+   <!-- 회원정보 수정 -->
+   <update id="modify">
+      <!-- 아별 수정 -->
+      UPDATE TBL_MEMBER
+      SET MEM_ID = #{mem_id}
+        , MEM_NAME = #{mem_name}
+        , MEM_NICKNAME = #{mem_nickname}
+        , MEM_GENDER = #{mem_gender}
+        , MEM_BIRTH = TO_DATE(#{mem_birth},'YYYY-MM-DD')
+        , MEM_TEL = #{mem_tel}
+        , MEM_ADDR = #{mem_addr}
+      WHERE MEM_CODE = #{mem_code, jdbcType=VARCHAR}
+      
+   </update>
+   
+   
+   <!-- 회원정보 삭제 -->
+   <delete id="remove">
+      DELETE
+      FROM TBL_MEMBER
+      WHERE MEM_CODE = #{mem_code, jdbcType=VARCHAR}
+   </delete>
+    
+   <!-- 로그인 후 화면에서 보여줄 이름 조회 -->
+   <select id="searchNickName" parameterType="java.lang.String" resultType ="java.lang.String">
+      SELECT MEM_NICKNAME
+      FROM MEMBERVIEW
+      WHERE SID_CODE=#{sid_code} 
+   </select>
+   
+   <!-- 아별추가 -->
+   <!-- 계정상태가 정상인 회원수 조회 -->
+   <select id="normalCount" resultType="java.lang.Integer">
+      SELECT COUNT(*) AS COUNT
+      FROM MEMBERVIEW
+      WHERE PAUSE_CODE IS NULL
+        AND OUT_TYPE_CODE IS NULL
+        AND MEM_CODE IS NOT NULL
+   </select>
+    
 </mapper>
