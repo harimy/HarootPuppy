@@ -72,8 +72,7 @@
         <ul class="menu1_s submenu">
 
             <li style="margin-top: 5px;"><a href="adminmanagemember.action" class="link">전체회원 정보 조회</a></li>
-            <li><a href="OutUserInfoList.jsp" class="link">탈퇴회원 정보 조회</a></li>
-            <li><a href="AdminInfoList.jsp" class="link">관리자 정보 조회</a></li>
+            <li><a href="adminmanageadmin.action" class="link">관리자 정보 조회</a></li>
         </ul>   
     </li>
     <li class="menu2">

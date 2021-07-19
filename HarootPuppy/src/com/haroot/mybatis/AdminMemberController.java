@@ -37,6 +37,10 @@ public class AdminMemberController
 		// 전체 회원 정보 리스트 전달
 		model.addAttribute("normalList", dao.normalList());
 		
+		// 전체 회원 정보 수 전달
+		model.addAttribute("normalCount", dao.normalCount());
+		
+		
 		return "/WEB-INF/views/AllUserInfoList.jsp";
 	}
 	
@@ -88,23 +92,6 @@ public class AdminMemberController
 	@RequestMapping(value="/adminmemberupdate.action", method=RequestMethod.POST)
 	public String adminMemberUpdate(MemberDTO m, HttpServletRequest request) throws SQLException
 	{	
-		/* String mem_code = request.getParameter("mem_code"); */
-		
-		//System.out.println(mem_code); */
-		//--==>> MEM001
-		
-		//System.out.println(m.getMem_id());
-		//--==>> joohee
-		
-		//System.out.println(m.getSid_code());
-		//--==>> SID002
-		
-		//System.out.println(m.getMem_birth());
-		//--==>> 1995-11-02
-		
-		//System.out.println(m.getMem_gender());
-		//--==>> M
-		
 		
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		  
@@ -138,5 +125,13 @@ public class AdminMemberController
 			return "redirect:adminmanagemember.action";
 	}
 	
+	
+	// 관리자 > 회원관리 관리자정보리스트 페이지
+	@RequestMapping(value="/adminmanageadmin.action", method=RequestMethod.GET)
+	public String adminManageadmin(ModelMap model) throws SQLException
+	{
+		
+		return "/WEB-INF/views/AdminInfoList.jsp";
+	}
 	
 }
