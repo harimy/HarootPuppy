@@ -1,5 +1,6 @@
 package com.haroot.mybatis;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface IPetDAO
@@ -9,11 +10,11 @@ public interface IPetDAO
 	
 	// 반려견 정보 리스트 출력 
 	// (반려견 선택 시)
-	public PetDTO petInfo(String pet_code);
+	public PetDTO petInfo(String pet_code) throws SQLException;
 	
 	// 반려견 정보 리스트 출력2 
 	// (다이어리내 반려견 정보 확인 시)
-	public PetDTO petInfo2(String pet_code);
+	public PetDTO petInfo2(String pet_code) throws SQLException;;
 	
 	// 반려견 추가
 	public int petAdd(PetDTO pet);

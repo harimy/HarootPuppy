@@ -13,4 +13,11 @@
 		WHERE WALKROOM_CODE = #{walkroom_code}
 	</select>
 	
+	<select id="search" resultType="com.haroot.mybatis.WalkRoomViewDTO">
+		SELECT *
+		FROM WALKROOMVIEW
+		WHERE WALKROOM_CODE = #{walkroom_code}
+		  AND PARTICIPANTS_CODE = #{participants_code}
+	</select>
+	
 </mapper>
