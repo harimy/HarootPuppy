@@ -10,8 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>ReportedBoardRead.jsp</title>
-<link rel="stylesheet" type="text/css" href="<%=cp %>/css/style.css">
-<link rel="stylesheet" type="text/css" href="<%=cp %>/css/list.css">
 <!-- 부트스트랩 css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 제이쿼리 script -->
@@ -21,63 +19,137 @@
 <!-- 부트스트랩 테마 css -->
 <script src="<%=cp %>/js/bootstrap.min.js"></script>
 <style type="text/css">
-.submitbtn
+
+#boardReadDiv
 {
-	width: 60px;
-	height: 60px;
-	margin-left:10px;
-	font-weight: bold;
+	width: 917px; 
+	margin: 100px auto;
 }
-body
- {
- 	margin: 30px;
- }
+ 
+.boardTh
+{
+	padding: 4px;
+}
+
 </style>
+
+<script type="text/javascript">
+
+
+	$(function()
+	{
+		$("#reportBtn").click(function()
+		{
+			var board_code = $("#reportBtn").val();
+			//alert(board_code);
+			//--==>> 3 (board_code)
+			
+			var rep_state_code = $("#rep_state_code").val();
+			
+			//alert(rep_state_code);
+			//--==>> 1, 2, 3 (미처리, 신고해제, 신고확정)
+			 
+			$(location).attr("href", "adminreportboardhandle.action?board_code=" 
+					+ board_code + "&rep_state_code=" + rep_state_code);
+			
+			
+		});
+	});
+
+	
+</script>
+
+
+
 </head>
 <body>
-<div style="text-align: center;">
-<form>
-	<div>
-		<h5>카테고리</h5>
-		<h1>글제목</h1>
-		<h4>작성자</h4>
+<div>
+	<!-- 메뉴영역 -->
+	<div id="harootHeader">
+		<c:import url="AdminMenu.jsp"></c:import>
 	</div>
-	<div style="display: inline-block;">
-			<div style="float: left">2021.12.11&nbsp;&nbsp;</div>
+	<div id="boardReadDiv">
+	<form action="" id="" name="">
+		<div>
 			<%-- 
-			<div style="display: inline-block;">조회수 ${viewnum }&nbsp;&nbsp;</div>
-			<div style="display: inline-block;">좋아요 ${likenum }&nbsp;&nbsp;</div>
+			<h5>카테고리</h5>
+			<!-- <h1>글제목</h1> -->
+			<h1>${search.board_title }</h1>
+			<h4>작성자</h4>
 			 --%>
+			 <table style="width: 100%;">
+			 	<tr>
+			 		<th style="width: 20%;" class="boardTh">글제목</th>
+			 		<th style="width: 80%;" class="boardTh">${search.board_title }</th>
+			 	</tr>
+			 	<tr>
+			 		<th class="boardTh">신고자</th>
+			 		<th class="boardTh">${search.reporter_nickname }</th>
+			 	</tr>
+			 	<tr>
+			 		<th class="boardTh">작성자</th>
+			 		<th class="boardTh">${search.board_writer }</th>
+			 	</tr>
+			 	<tr>
+			 		<th class="boardTh">신고접수날짜</th>
+			 		<th class="boardTh">${search.rep_log_date }</th>
+			 	</tr>
+			 	<tr>
+			 		<th class="boardTh">신고처리</th>
+			 		<th class="boardTh">${search.rep_state_content }</th>
+			 	</tr>
+			 </table>
+		</div>
+		
+		<div>
+			<textarea rows="25" cols="127" readonly="readonly" >
+				<%-- ${search.board_content } --%>
+				<%-- 줄바꿈 처리 --%>
+				<c:out value="${search.board_content }" />
+			</textarea>
+		</div><br>
+		
+		<br>
+		
+		<!-- 
+		미처리 1
+		신고해제 2
+		신고확정 3 
+		-->
+		
+	
+		<div style="float: right;">
+			<select name="rep_state_code" id="rep_state_code" style="height: 32px; width: 122px;">
+				<option value="1">미처리</option>
+				<option value="2">신고해제</option>
+				<option value="3">신고확정</option>
+			</select>
+			<button type="button" name="reportBtn" id="reportBtn"
+				 class="btn btn-dark" value="${search.board_code }" onclick="">확인</button>
+		</div>
+		
+		<br><br><br>
+		<div class="bbsArticle_bottomLine">
+			<p><a href="">이전글 : 이전글입니다. </a></p>
+			<hr>
+		</div>
+		<div class="bbsArticle_noLine">
+			<p><a href="">다음글 : 다음글입니다. </a></p>
+		</div>
+		<br><br>
+		<div>
+			<button type="button" id="listBtn" class="listbtn btn btn-secondary" onclick="location.href='adminreportboardlist.action'">
+				목록으로
+			</button>
+		</div>
+	</form>
+	</div>
+	<!-- 하단 회사 설명 영역 -->
+	<div id="harootFooter">
+		<c:import url="MainFooter.jsp"></c:import>
 	</div>
 	
-	<div>
-		<textarea rows="30" cols="120" readonly="readonly" style="padding: 30px;">
-			글내용
-		</textarea>
-	</div><br>
-	
-	<!-- 
-	<div style="display: inline-block;">
-		<textarea rows="3" cols="112" style="float: left; width: 807px;">댓글을 입력해주세요.</textarea>
-		<input type="button" value="등록" id="submitBtn" class="submitbtn">
-	</div>
-	 -->
-	<br>
-	
-	<div class="bbsArticle_bottomLine" style="width: 80%;">
-		<p><a href="">이전글 : </a></p>
-		<hr>
-	</div>
-	<div class="bbsArticle_noLine" style="width: 80%;">
-		<p><a href="">다음글 : </a></p>
-	</div>
-	<div>
-		<button type="button" id="updateBtn" class="listbtn">수정</button>
-		<button type="button" id="deleteBtn" class="listbtn">삭제</button>
-		<button type="button" id="listBtn" class="listbtn">목록으로</button>
-	</div>
-</form>
-</div>
+</div>	
 
 </body>
 </html>
