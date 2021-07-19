@@ -51,7 +51,6 @@ span{
 		$("#notice").css('display', "none");
 
 		
-
 		if (  $("#loginCheck1").val() != "")
 		{
 			$("#log").attr("onclick", "location.href='logoutmem.action'");
@@ -89,7 +88,6 @@ span{
 		}
 	});
 	
-    }
 </script>
 </head>
 <body>

@@ -22,7 +22,7 @@ public class DiaryMainController
 	
 	// 반려견 선택 → 반려견의 다이어리 
 	@RequestMapping(value="diarymain.action", method = RequestMethod.GET)
-	public String startDiary(HttpServletRequest req, HttpServletResponse response, ModelMap model) 
+	public String startDiary(HttpServletRequest req, HttpServletResponse response, ModelMap model) throws SQLException 
 	{
 		IPetDAO petDao = sqlSession.getMapper(IPetDAO.class);
 		

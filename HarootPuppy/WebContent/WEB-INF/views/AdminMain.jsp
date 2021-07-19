@@ -242,9 +242,6 @@
 
 <br><br><br><br>
 
-<div id="harootFooter">
-	<c:import url="MainFooter.jsp"></c:import>
-</div>
 
 </body>
 </html>

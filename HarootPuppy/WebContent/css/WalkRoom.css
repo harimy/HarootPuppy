@@ -1,29 +1,48 @@
 @charset "UTF-8";
 
+#harootContent
+{
+	width: 100%;
+	text-align: center;
+	height: auto; 
+	min-height: 100px; 
+	overflow: auto;
+}
+	
+.alignCenter
+{
+	width: 80%;
+	display: inline-block;
+}
 
-div {
+div 
+{
 	font-size: 18px;
 }
 
-#walkTitle {
-	font-size: 55px;
+#walkTitle 
+{
+	font-size: 50px;
 	font-weight: bold;
 	font-family: 맑은 고딕;
 	color: #343;
 }
 
-#walkInfo {
-	font-size: 18px;
+#walkInfo 
+{
+	font-size: 20px;
 	font-family: 맑은 고딕;
 	color: #343;
 }
 
-.table {
+.table 
+{
 	border-collapse: collapse;
 	width: 100%;
 }
 
-.table th, .table td {
+.table th, .table td 
+{
 	border: 1px solid gray;
 	border-left: 0px;
 	border-right: 0px;
@@ -31,29 +50,30 @@ div {
 	line-height: 150%;
 }
 
-.table th {
+.table th 
+{
 	font-weight: bold;
 	background-color: #EEE;
 }
 
-#mr {
+#mr 
+{
 	display: inline-block;
 	float: none;
 }
 
-#profileArea {
-	background-color: #EEE;
-}
-
-img {
+img 
+{
 	width: 200px;
 }
 
-.icons {
+.icons 
+{
 	width: 20px;
 }
 
-.btn {
+.btn 
+{
 	border: none;
 	color: white;
 	padding: 15px 30px;
@@ -97,4 +117,22 @@ img {
 {
 	
 	float: right;
+}
+
+/* 댓글 부분 정렬 */
+
+.newReply
+{
+	width: 100%;
+}
+
+textarea
+{
+	width: 80%;
+	vertical-align: middle;
+}
+
+#insertReply
+{
+	width: 7%;
 }

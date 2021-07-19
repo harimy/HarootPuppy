@@ -74,10 +74,7 @@
 		</div>
 	</div>
 
-	<!-- 하단 회사 설명 영역 -->
-	<div id="harootFooter">
-		<c:import url="MainFooter.jsp"></c:import>
-	</div>
+
 </div>
 
 </body>

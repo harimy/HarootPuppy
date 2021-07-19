@@ -5,10 +5,14 @@ public class WalkRoomViewDTO
 	// 속성값 구성
 	private int walkroom_code;
 	private String walkroom_title, walkroom_words, walkroom_min, walkroom_max
-		, walkroom_gendate, walkroom_start, walkroom_end, walkroom_place, walkroom_latitude, walkroom_longtitude
+		, walkroom_gendate, walkroom_start, walkroom_end
+		, walkroom_startdate, walkroom_starttime
+		, walkroom_enddate, walkroom_endtime
+		, walkroom_place, walkroom_latitude, walkroom_longtitude
 		, auto_code, auto_content, style_code, style_content
 		, bite_code, bite_content, desex_code, desex_content, samesex_code, samesex_content
-		, participants_code, mem_nickname, mem_gender, sid_code, walkroom_leader, mem_id
+		, participants_code, readyoption_code, readystate_code
+		, mem_nickname, mem_gender, sid_code, walkroom_leader, mem_id
 		, pet_code, pet_birth, pet_age, pet_sex, pet_name, pet_photo, pet_type_code, pet_type_name
 		, pet_bite_code, pet_bite_content, pet_desex_code, pet_desex_content
 		, pet_char1_code, pet_char1_content, pet_char2_code, pet_char2_content
@@ -75,6 +79,38 @@ public class WalkRoomViewDTO
 	public String getWalkroom_end()
 	{
 		return walkroom_end;
+	}
+	public String getWalkroom_startdate()
+	{
+		return walkroom_startdate;
+	}
+	public void setWalkroom_startdate(String walkroom_startdate)
+	{
+		this.walkroom_startdate = walkroom_startdate;
+	}
+	public String getWalkroom_starttime()
+	{
+		return walkroom_starttime;
+	}
+	public void setWalkroom_starttime(String walkroom_starttime)
+	{
+		this.walkroom_starttime = walkroom_starttime;
+	}
+	public String getWalkroom_enddate()
+	{
+		return walkroom_enddate;
+	}
+	public void setWalkroom_enddate(String walkroom_enddate)
+	{
+		this.walkroom_enddate = walkroom_enddate;
+	}
+	public String getWalkroom_endtime()
+	{
+		return walkroom_endtime;
+	}
+	public void setWalkroom_endtime(String walkroom_endtime)
+	{
+		this.walkroom_endtime = walkroom_endtime;
 	}
 	public void setWalkroom_end(String walkroom_end)
 	{
@@ -191,6 +227,22 @@ public class WalkRoomViewDTO
 	public void setParticipants_code(String participants_code)
 	{
 		this.participants_code = participants_code;
+	}
+	public String getReadyoption_code()
+	{
+		return readyoption_code;
+	}
+	public void setReadyoption_code(String readyoption_code)
+	{
+		this.readyoption_code = readyoption_code;
+	}
+	public String getReadystate_code()
+	{
+		return readystate_code;
+	}
+	public void setReadystate_code(String readystate_code)
+	{
+		this.readystate_code = readystate_code;
 	}
 	public String getMem_nickname()
 	{

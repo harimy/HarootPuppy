@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haroot.mybatis.IWalkRoomEnterCheckViewDAO"><!-- implements IMemberDAO -->
+	
+	<select id="participants_list" parameterType="java.lang.Integer" resultType="com.haroot.mybatis.WalkRoomEnterCheckViewDTO">
+		SELECT *
+		FROM WALKROOM_ENTERCHECK_VIEW
+		WHERE WALKROOM_CODE = #{walkroom_code};
+	</select>
+	
+	<select id="search_room_sid" parameterType="map" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM WALKROOM_ENTERCHECK_VIEW
+		WHERE WALKROOM_CODE = #{walkroom_code}
+		  AND SID_CODE = #{sid_code}
+	</select>
+	
+	<select id="search_room_sid_rel" parameterType="map" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM WALKROOM_ENTERCHECK_VIEW
+		WHERE WALKROOM_CODE = #{walkroom_code}
+		  AND SID_CODE = #{sid_code}
+		  AND RELATION_CODE = #{relation_code}
+	</select>
+	
+</mapper>

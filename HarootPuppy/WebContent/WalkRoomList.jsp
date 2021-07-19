@@ -23,38 +23,18 @@
 <link rel="stylesheet" href="/HarootPuppy/css/bootstrap.css">
 
 <script type="text/javascript">
-
-/* 
-$(function()
-{
-	$("#lists").click(function()
-	{
-		alert("눌렀다");
-		
-		if($("#sid_code").value() == $("#walkroom_leader").value())
-		{
-			alert("같음");
-		}
-		else
-		{
-			alert("다름");
-		}
-	
-	});
-
-});
-*/
-
 var openWin;
+
 function openChild(walkroom_code)
 {
     // window.name = "부모창 이름"; 
-    window.name = "parentForm";
+    window.name = "parent";
     
     // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-    openWin = window.open("walkroomenter.action?num=" + walkroom_code,
+    openWin = window.open("walkroomentercheck.action?num=" + walkroom_code,
             "childForm", "width=570, height=350, resizable = no, scrollbars = no");
 }
+
 </script>
 
 <style type="text/css">

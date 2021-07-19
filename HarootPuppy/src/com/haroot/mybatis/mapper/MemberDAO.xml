@@ -13,8 +13,7 @@
    <!-- - 인터페이스에 선언된 메소드의 이름과 일치해야 하며,
          호출 메소드명 역할을 수행하게 된다 -->
    <!-- ○ resultType="패키지 경로가 포함된 자료형 클래스" 또는 "원시 래퍼 타입" -->
-
-
+  
    <!-- 회원 리스트 조회 -->
    <select id="list" resultType="com.haroot.mybatis.MemberDTO">
       SELECT SID_CODE, MEM_CODE, MEM_ID, MEM_PW, MEM_NAME, MEM_BIRTH
@@ -121,5 +120,4 @@
         AND OUT_TYPE_CODE IS NULL
         AND MEM_CODE IS NOT NULL
    </select>
-    
 </mapper>

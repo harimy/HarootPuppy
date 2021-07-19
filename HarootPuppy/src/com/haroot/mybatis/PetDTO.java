@@ -8,6 +8,8 @@ public class PetDTO
 				, desex_code, desex_content						// 중성화여부코드, 중성화여부내용
 				, pet_sex, pet_birth							// 반려견성별, 반려견생일
 				, pet_fav_place									// 자주산책하는장소
+				, pet_fav_lat									// 자주산책하는장소 위도
+				, pet_fav_lng									// 자주산책하는장소 경도
 				, pet_char1_code, pet_char1_content				// 반려견성격1코드, 반려견성격1내용
 				, pet_char2_code, pet_char2_content				// 반려견성격2코드, 반려견성격2내용
 				, pet_char3_code, pet_char3_content				// 반려견성격3코드, 반려견성격3내용
@@ -16,6 +18,8 @@ public class PetDTO
 				, pet_info_code, pet_name						// 반려견정보코드, 반려견이름
 				, pet_photo										// 반려견 사진
 				, pet_addr										// 반려견 주소
+				, pet_addr_lat									// 반려견 주소 위도
+				, pet_addr_lng									// 반려견 주소 경도
 				, pet_regnum									// 반려견등록번호
 				, disease_code									// 기저질환코드
 				, disease_content								// 기저질환내용
@@ -23,7 +27,6 @@ public class PetDTO
 				, fav_food_content								// 관심사료내용
 				, inject_type_code								// 접종종류코드
 				, inject_type_name								// 접종종류내용
-				
 				, relation_code									// 양육관계코드
 				, sid_code										// 회원코드
 				, relation_type_code							// 양육관계종류코드
@@ -133,6 +136,26 @@ public class PetDTO
 	public void setPet_fav_place(String pet_fav_place)
 	{
 		this.pet_fav_place = pet_fav_place;
+	}
+	
+	public String getPet_fav_lat()
+	{
+		return pet_fav_lat;
+	}
+
+	public void setPet_fav_lat(String pet_fav_lat)
+	{
+		this.pet_fav_lat = pet_fav_lat;
+	}
+
+	public String getPet_fav_lng()
+	{
+		return pet_fav_lng;
+	}
+
+	public void setPet_fav_lng(String pet_fav_lng)
+	{
+		this.pet_fav_lng = pet_fav_lng;
 	}
 
 	public String getPet_char1_code()
@@ -263,6 +286,26 @@ public class PetDTO
 	public void setPet_addr(String pet_addr)
 	{
 		this.pet_addr = pet_addr;
+	}
+
+	public String getPet_addr_lat()
+	{
+		return pet_addr_lat;
+	}
+
+	public String getPet_addr_lng()
+	{
+		return pet_addr_lng;
+	}
+
+	public void setPet_addr_lat(String pet_addr_lat)
+	{
+		this.pet_addr_lat = pet_addr_lat;
+	}
+
+	public void setPet_addr_lng(String pet_addr_lng)
+	{
+		this.pet_addr_lng = pet_addr_lng;
 	}
 
 	public String getPet_regnum()

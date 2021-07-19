@@ -58,7 +58,7 @@
 </head>
 <body>
 
-<jsp:include page="MainTest.jsp"></jsp:include>
+<jsp:include page="Main.jsp"></jsp:include>
 
 <!-----------------------------
   UserMyPage.jsp
