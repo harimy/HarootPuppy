@@ -15,9 +15,9 @@ function goBack()
 {
 		// alert(document.getElementById("lat").value);
 		var addr = document.getElementById("address").innerText; 
-		window.opener.document.getElementById("pet_addr").value = addr;
-		window.opener.document.getElementById("pet_addr_lat").value = document.getElementById("lat").value;
-		window.opener.document.getElementById("pet_addr_lng").value = document.getElementById("lng").value;
+		window.opener.document.getElementById("favWalk_addr").value = addr;
+		window.opener.document.getElementById("fav_addr_lat").value = document.getElementById("lat").value;
+		window.opener.document.getElementById("fav_addr_lng").value = document.getElementById("lng").value;
 		window.close();
 
 }
