@@ -115,7 +115,7 @@
 						<td>${a.rep_log_code }</td>
 						<td>${a.rep_state_content }</td>
 						<td>${a.board_code }</td>
-						<%-- <td>${a.board_title }</td> --%>
+						
 						<td>
 							<!-- href: action 에 처리 -->
 							<a href="adminreportboardview.action?rep_log_code=${a.rep_log_code }" class="link">

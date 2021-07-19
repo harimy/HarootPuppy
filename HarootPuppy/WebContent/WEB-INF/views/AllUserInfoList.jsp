@@ -105,16 +105,15 @@
 		
 		<br><br>
 		
-		<div>
-			<select>
-				<option>회원번호</option>
-				<option>이름</option>
-				<option>아이디</option>
-				<option>계정상태</option>
+		<div style="margin-left: 10px;">
+			<select name="memberSearch" id="memberSearch">
+				<option value="memId">아이디</option>
+				<option value="memName">이름</option>
+				<option value="memNickname">닉네임</option>
 			</select>
 			<input type="text" name="searchValue" class="textField">
 			<input type="button" value="검색" class="btn2" onclick="sendIt()"> 
-			<p style="float: right;">전체 회원 수 : 23233</p>
+			<p style="float: right; margin-right: 10px;">전체 회원 수 : ${normalCount} </p>
 		</div>
 		
 		<br><br>
@@ -198,9 +197,11 @@
 			</table>
 		</div>
 	</div>
+	<%-- 
 	<div id="harootFooter">
 		<c:import url="MainFooter.jsp"></c:import>
 	</div>
+	 --%>
 </div>
 </body>
 </html>

@@ -111,5 +111,15 @@
 		FROM MEMBERVIEW
 		WHERE SID_CODE=#{sid_code} 
 	</select>
+	
+	<!-- 아별추가 -->
+	<!-- 계정상태가 정상인 회원수 조회 -->
+	<select id="normalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM MEMBERVIEW
+		WHERE PAUSE_CODE IS NULL
+		  AND OUT_TYPE_CODE IS NULL
+		  AND MEM_CODE IS NOT NULL
+	</select>
 	 
 </mapper>

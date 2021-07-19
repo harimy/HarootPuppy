@@ -5,7 +5,10 @@
 
 package com.haroot.mybatis;
 import java.sql.SQLException;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -30,7 +33,7 @@ public class LoginController
 		return result;
 	}
 	@RequestMapping(value="loginmem.action", method=RequestMethod.POST)
-	public String loginM(HttpServletRequest request, HttpSession session, Model model) throws SQLException
+	public String loginM(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws SQLException
 	{
 		String result = null;
 	
@@ -47,6 +50,10 @@ public class LoginController
 			model.addAttribute("sid_code", dto.getSid_code());
 			model.addAttribute("nickname", dto.getMem_nickname());
 			session.setAttribute("sid_code", dto.getSid_code());
+			Cookie cookie = new Cookie("sid_code", dto.getSid_code());
+			cookie.setMaxAge(60);
+			response.addCookie(cookie);
+			
 			result = "mainheader.action";
 			//System.out.println(sid_code);
 		}
@@ -86,7 +93,7 @@ public class LoginController
 	}
 	
 	@RequestMapping(value="logoutmem.action", method=RequestMethod.GET)
-	public String logoutM(HttpServletRequest request, HttpSession session, Model model) throws SQLException 
+	public String logoutM(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws SQLException 
 	{
 		
 		String sid_code = (String)session.getAttribute("sid_code");

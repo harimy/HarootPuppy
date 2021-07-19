@@ -54,11 +54,14 @@ public interface IMemberDAO
 
 	// 아별 추가
 	// 계정상태가 정상인 회원 리스트 조회(강제탈퇴, 일시정지 제외)
-
 	public ArrayList<MemberDTO> normalList() throws SQLException;
 	
 	// 나현  로그인 후 화면에서 닉네임 노출
 	public String searchNickName(String sid_code);
+	
+	// 아별 추가(7.19)
+	// 계정상태가 정상인 회원수 조회
+	public int normalCount() throws SQLException;
 
 		
 }
