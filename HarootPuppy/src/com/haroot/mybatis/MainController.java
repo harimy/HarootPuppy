@@ -1,6 +1,7 @@
 package com.haroot.mybatis;
 
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,7 +28,8 @@ public class MainController
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		model.addAttribute("nickname", dao.searchNickName(sid_code));
 		session.setAttribute("sid_code", sid_code);
-		
+
+
 		return "main.action";
 
 	}
@@ -65,7 +67,6 @@ public class MainController
 		String sid_code = (String)session.getAttribute("sid_code");
 		
 		// System.out.println(sid_code);
-		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		session.setAttribute("sid_code", sid_code);
 		
 		return "main.action";

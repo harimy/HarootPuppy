@@ -111,7 +111,7 @@
 		    var _left = Math.ceil(( window.screen.width - _width )/2);
 		    var _top = Math.ceil(( window.screen.height - _height )/2); 
 		 
-		    var open = window.open('AddrSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );	 		
+		    var open = window.open('MemAddrSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );	 		
 	 		
 	  }
 
