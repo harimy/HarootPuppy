@@ -21,13 +21,15 @@ public class WalkRoomListMain
 	private SqlSession sqlSession;
 	
 	@RequestMapping(value = "/walkroomselect.action", method = RequestMethod.GET)
-	public String WalkRoomMain(HttpServletRequest request, ModelMap model)
+	public String walkRoomSelect(HttpServletRequest request, ModelMap model)
 	{
 		String result = null;
 		
 		// 세션 처리 --------------------------------------------------
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		session.removeAttribute("pet_code");	// 펫 선택 페이지 로드시 펫 코드 초기화
+		
 		IPetDAO dao = sqlSession.getMapper(IPetDAO.class);
 		ArrayList<PetDTO> petlist = dao.searchPets(sid_code);
 		
@@ -47,101 +49,173 @@ public class WalkRoomListMain
 	
 	// walkroommain.action 으로 요청이 들어오면 아래의 메소드가 일을 처리
 	@RequestMapping(value = "/walkroommain.action", method = RequestMethod.GET)
-	public String walkRoomList(HttpServletRequest request, ModelMap model) throws SQLException	// Model, ModelMap 둘 다 사용 가능
+	public String walkRoomMain(HttpServletRequest request, ModelMap model) throws SQLException	// Model, ModelMap 둘 다 사용 가능
 	{
+		String result = "";
 		HttpSession session = request.getSession();
-		String pet_code = (String)session.getAttribute("pet_code");
-		if(pet_code==null)
+		String sid_code = (String)session.getAttribute("sid_code");
+		String session_pet_code = (String)session.getAttribute("pet_code");
+		
+		if(sid_code==null)	// 로그인 안한 경우
 		{
-			pet_code = request.getParameter("pet_code"); 
-			session.setAttribute("pet_code", pet_code);
+			result = "redirect:loginMem.action";
 		}
-		//System.out.println(pet_code);
+		else if(session_pet_code == null)	// 처음 펫 선택후 산책메이트 접속 시
+		{
+			String pet_code = (String)request.getParameter("pet_code"); 	
+			session.setAttribute("pet_code", pet_code);
+			//System.out.println("walkroommain pet_code " + pet_code);
+			
+			IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
+		    IPetDAO petdao = sqlSession.getMapper(IPetDAO.class);
+		    PetDTO petdto = petdao.petInfo(pet_code);
+			
+		    model.addAttribute("list", dao.list());
+		    model.addAttribute("pet", petdto);
+		    
+		    result = "/WalkMain.jsp";
+		}
+		else if(session_pet_code != null)	// 산책방 생성 후 redirect 시
+		{
+			//System.out.println("redirect:walkroommain pet_code : " + session_pet_code);
+			
+			IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
+		    IPetDAO petdao = sqlSession.getMapper(IPetDAO.class);
+			PetDTO petdto = petdao.petInfo(session_pet_code);
+			
+		    model.addAttribute("list", dao.list());
+		    model.addAttribute("pet", petdto);
+		    
+		    result = "/WalkMain.jsp";
+		}
 		
-		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
-	    IPetDAO petdao = sqlSession.getMapper(IPetDAO.class);
-		
-	    model.addAttribute("list", dao.list());
-	    model.addAttribute("pet", petdao.petInfo(pet_code));
 	    
-	    return "/WalkMain.jsp";
+	    return result;
 	}
 	
 	
 	@RequestMapping(value = "/walkroomlist.action", method = RequestMethod.GET)
-	public String l(HttpServletRequest request, ModelMap model) throws SQLException	// Model, ModelMap 둘 다 사용 가능
+	public String walkRoomList(HttpServletRequest request, ModelMap model) throws SQLException	// Model, ModelMap 둘 다 사용 가능
 	{
+		String result = "";
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
-		String pet_code = request.getParameter("pet_code"); 
-		//System.out.println(pet_code);
+		String pet_code = (String)session.getAttribute("pet_code");
+		//System.out.println("walkroomlist pet_code : " + pet_code);
 		
-		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
-	    IPetDAO petdao = sqlSession.getMapper(IPetDAO.class);
+		if(sid_code == null)
+		{
+			result = "redirect:loginMem.action";
+		}
+		else if(pet_code == null)
+		{
+			result = "redirect:walkroomselect.action";
+		}
+		else
+		{
+			IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
+		    IPetDAO petdao = sqlSession.getMapper(IPetDAO.class);
+			
+		    model.addAttribute("list", dao.list());
+		    model.addAttribute("sid_code", sid_code);
+		    model.addAttribute("pet", petdao.petInfo(pet_code));
+		    
+		    result = "/WalkRoomList.jsp";
+		}
 		
-	    model.addAttribute("list", dao.list());
-	    model.addAttribute("sid_code", sid_code);
-	    model.addAttribute("pet", petdao.petInfo(pet_code));
 	    
-	    return "/WalkRoomList.jsp";
+	    return result;
 	}
 	
 	
 	@RequestMapping(value = "/walkroominsertform.action", method = RequestMethod.GET)
 	public String walkRoomInsertForm(HttpServletRequest request, ModelMap model) throws SQLException
 	{
+		String result = "";
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
 		
 		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
 		
-		int nextNum = dao.max() + 1;
+		if(sid_code == null)
+		{
+			result = "redirect:loginMem.action";
+		}
+		else if(pet_code == null)
+		{
+			result = "redirect:walkroomselect.action";
+		}
+		else
+		{
+			int nextNum = dao.max() + 1;
+			//System.out.println("nextNum : " + nextNum);
+			model.addAttribute("nextNum", nextNum);
+			result = "/WalkRoomInsertForm.jsp";
+		}
 		
-		model.addAttribute("nextNum", nextNum);
 		
-		return "/WalkRoomInsertForm.jsp";
+		return result;
 	}
 	
 	
 	@RequestMapping(value = "/walkroominsert.action", method = RequestMethod.POST)
-	public String memberInsert(HttpServletRequest request, WalkRoomDTO w) throws SQLException
+	public String walkRoomInsert(HttpServletRequest request, WalkRoomDTO w) throws SQLException
 	{
+		String result = "";
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
+		//System.out.println("walkroominsert pet_code : " + pet_code);
 		
-		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
-		IParticipantsDAO partDao = sqlSession.getMapper(IParticipantsDAO.class);
-		ParticipantsDTO partDto = new ParticipantsDTO();
+		if(sid_code == null)
+		{
+			result = "redirect:loginMem.action";
+		}
+		else if(pet_code == null)
+		{
+			result = "redirect:walkroomselect.action";
+		}
+		else
+		{
+
+			IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
+			IParticipantsDAO partDao = sqlSession.getMapper(IParticipantsDAO.class);
+			ParticipantsDTO partDto = new ParticipantsDTO();
+			
+			// 참여자 코드 구성
+			String participants_code = "PAR" + (partDao.max()+1);
+			partDto.setParticipants_code(participants_code);
+			
+			// 산책방 코드 구성
+			int walkroom_code = dao.max() + 1;
+			partDto.setWalkroom_code(walkroom_code);
+			
+			// TBL_WALKROOM 테이블에 방장 코드(방생성자의 sid) 동적으로 넘겨주기
+			w.setWalkroom_leader(sid_code);
+			
+			// TBL_PARTICIPANTS 테이블에 양육관계 코드 동적으로 넘겨주기 
+			//System.out.println("walkroominsert2 pet_code : " + pet_code);
+			IPetDAO petdao = sqlSession.getMapper(IPetDAO.class);
+		    PetDTO petdto = petdao.petInfo(pet_code);
+		    String rel_code = petdto.getRelation_code();
+		    partDto.setRelation_code(rel_code);
+			
+		    // 메소드 실행
+			dao.add(w);
+			partDao.add(partDto);
+			
+			// 나중에 생성한 산책방으로 이동하게 변경하기
+			result = "redirect:walkroommain.action";
+				
+		}
 		
-		// 참여자 코드 구성
-		String participants_code = partDao.max_code();
-		participants_code = "PAR" + (Integer.parseInt(participants_code.substring(3))+1);
-		partDto.setParticipants_code(participants_code);
-		//System.out.println(participants_code);
-		
-		// 산책방 코드 구성
-		int walkroom_code = dao.max() + 1;
-		partDto.setWalkroom_code(walkroom_code);
-		
-		// 양육관계 코드 구성 → sid 구성 후 값 가져오기
-		dao.add(w);
-		partDao.add(partDto);
-		
-		// 나중에 생성한 산책방으로 이동하게 변경하기
-		return "redirect:walkroommain.action";
+		return result;
 	}
 	
-	@RequestMapping(value = "walkroomupdateform.action", method = RequestMethod.POST)
-	public String memberUpdate(WalkRoomDTO m) throws SQLException
-	{
-
-		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
-
-		dao.modify(m);
-
-		return "WalkRoomUpdateForm.jsp";
-	}
+	
+	
+	
+	
 	
 }

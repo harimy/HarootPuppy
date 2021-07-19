@@ -157,6 +157,8 @@ SELECT P.PET_CODE AS PET_CODE
     , P.PET_SEX AS PET_SEX
     , TO_CHAR(P.PET_BIRTH, 'YYYY-MM-DD') AS PET_BIRTH 
     , P.PET_FAV_PLACE AS PET_FAV_PLACE
+    , P.PET_FAV_LAT AS PET_FAV_LAT                      -- 하림 추가(즐겨찾는 산책장소 위도)
+    , P.PET_FAV_LNG AS PET_FAV_LNG                      -- 하림 추가(즐겨찾는 산책장소 경도)
     , P.PET_SOCIAL AS PET_SOCIAL
     , P.PET_CHAR1_CODE AS PET_CHAR1_CODE
     , C1.PET_CHAR1_CONTENT AS PET_CHAR1_CONTENT
@@ -171,6 +173,8 @@ SELECT P.PET_CODE AS PET_CODE
     , I.PET_NAME AS PET_NAME
     , I.PET_PHOTO AS PET_PHOTO
     , I.PET_ADDR AS PET_ADDR
+    , I.PET_ADDR_LAT AS PET_ADDR_LAT                    -- 하림 추가(반려견 주소 위도) 
+    , I.PET_ADDR_LNG AS PET_ADDR_LNG                    -- 하림 추가(반려견 주소 경도)
     , I.PET_REGNUM AS PET_REGNUM    
     , R.RELATION_CODE AS RELATION_CODE
     , R.SID_CODE AS SID_CODE

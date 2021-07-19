@@ -47,6 +47,13 @@
 			, changeMonth: true
 			, changeYear: true
 		});
+		
+		/*
+		$("#add").click(function()
+		{
+			alert($("#pet_photo").val());
+		});
+		*/
 	});
 
 	
@@ -60,9 +67,37 @@
 		    var _left = Math.ceil(( window.screen.width - _width )/2);
 		    var _top = Math.ceil(( window.screen.height - _height )/2); 
 		 
+		    var open = window.open('PetAddrSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );	 		
+	 		
+	  }
+	 
+	 function openAddressChild1() 
+	  {
+		    var _width = '650';
+		    var _height = '380';
+		 
+		    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+		    var _left = Math.ceil(( window.screen.width - _width )/2);
+		    var _top = Math.ceil(( window.screen.height - _height )/2); 
+		 
 		    var open = window.open('WalkPlaceSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );	 		
 	 		
 	  }
+	 
+	 function openSelectTypeChild() 
+	  {
+		    var _width = '650';
+		    var _height = '380';
+		 
+		    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+		    var _left = Math.ceil(( window.screen.width - _width )/2);
+		    var _top = Math.ceil(( window.screen.height - _height )/2); 
+		 
+		    var open = window.open('PetTypeSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );	 		
+	 		
+	  }
+	 
+	 
 
 </script>
 
@@ -205,7 +240,7 @@
 </style>
 
 </head>
-<body onload="initialize()">
+<body>
 
 <!-----------------------------
    PetAdd.jsp
@@ -230,72 +265,53 @@
 				<th>반려견 사진 선택</th>
 				<td>
 					<div class="petPhoto">
-            /*
-						<input type="file" value="파일 선택" name="petFile" id="petFile"/>
-					 	<div class="select_img"><img src="" /></div>
-					 	<!-- 등록한 사진 미리보는 script -->
-					 	<script type="text/javascript">
-						$("#petFile").change(function(){
-							 if(this.files && this.files[0]) {
-							  var reader = new FileReader;
-							  reader.onload = function(data) {
-							   $(".select_img img").attr("src", data.target.result).width(250);        
-							  }
-							  reader.readAsDataURL(this.files[0]);
-							 }
-						});
-					 	</script>
-             */
 						<input type="file" value="파일 선택" name="upload" id="pet_photo"/>
 					 	<div class="select_img"><img id="img"/></div>					 
-
 					 </div>
 				</td>
 			</tr>
 			<tr>
 				<th>이름</th>
 				<td>
-					<input type="text" placeholder="내용을 입력해주세요"  style="width:80%;">
+					<input type="text" name="pet_name" placeholder="내용을 입력해주세요" style="width:80%;">
 				</td>
 			</tr>
 			<tr>
 				<th>성별</th>
 				<td>
-		       		<input type="radio" name="gender" id="woman" value="여">
+		       		<input type="radio" name="pet_sex" id="woman" value="F">
 		       		<label for="woman">여</label>
-		      		<input type="radio" name="gender" id="man" value="남">
+		      		<input type="radio" name="pet_sex" id="man" value="M">
 		      		<label for="man">남</label>
 		      	</td>
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><input type="text" id="birthday" name="birthday" placeholder="생년월일" /></td>
+				<td><input type="text" id="birthday" name="pet_birth" placeholder="생년월일" /></td>
 			</tr>
 			<tr>
 				<th>중성화 여부</th>
 				<td>
-	        		<input type="radio" name="y/n" id="yes" value="예">
+	        		<input type="radio" name="desex_content" id="yes" value="Y">
 	        		<label for="yes">예</label>
-	       			<input type="radio" name="y/n" id="no" value="아니요">
+	       			<input type="radio" name="desex_content" id="no" value="N">
 	       			<label for="no">아니요</label>
 	       		</td>
 			</tr>
 			<tr>
 				<th>예방 접종 여부</th>
 				<td>
-					<label><input type="checkbox" name="in" value="광견병">광견병</label>
-					<label><input type="checkbox" name="in" value="종합백신">종합백신</label>
-					<label><input type="checkbox" name="in" value="켄넬코프">켄넬코프</label>
-					<label><input type="checkbox" name="in" value="코로나">코로나</label>
-					<label><input type="checkbox" name="in" value="인플루엔자">인플루엔자</label>
+					<label><input type="checkbox" name="inject_type_name" value="광견병">광견병</label>
+					<label><input type="checkbox" name="inject_type_name" value="종합백신">종합백신</label>
+					<label><input type="checkbox" name="inject_type_name" value="켄넬코프">켄넬코프</label>
+					<label><input type="checkbox" name="inject_type_name" value="코로나">코로나</label>
+					<label><input type="checkbox" name="inject_type_name" value="인플루엔자">인플루엔자</label>
 				</td>
 			</tr>
 			<tr>
 				<th>품종</th>
 				<td>
-					<select name="type_no">
-						<option value="mix">믹스</option>
-					</select>
+					<input type="text" name="pet_type"	id="pet_type" placeholder="구현진행중">
 				</td>
 			</tr>
 			<tr>
@@ -308,16 +324,16 @@
 					<input type="button" onclick="openAddressChild()" value="주소 검색"><br>
 					<div id="addrMap" style="width:300px; height:300px; margin-top:10px; display:none"></div>
 					<input type="hidden" id="pet_addr_lat" name="pet_addr_lat" value="">
-					<input type="hidden" id="pet_addr_lng" name="pet_addr_lng" value="">
-					<button type="button" onclick="check()"></button>
-				</td>
+					<input type="hidden" id="pet_addr_lng" name="pet_addr_lng" value="">				</td>
 			</tr>
 			<tr>
 				<th>자주가는 산책 장소</th>
 				<td>
-					<input type="text" id="sample5_address2" placeholder="자주가는 산책 주소를 입력하세요">
-					<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-					<div id="placeMap" style="width:300px; height:300px; margin-top:10px; display:none"></div>
+					<input type="text" id="favWalk_addr" placeholder="자주가는 산책 주소를 입력하세요">
+					<input type="button" onclick="openAddressChild1()" value="주소 검색"><br>
+					<div id="addrMap" style="width:300px; height:300px; margin-top:10px; display:none"></div>
+					<input type="hidden" id="fav_addr_lat" name="pet_addr_lat" value="">
+					<input type="hidden" id="fav_addr_lng" name="pet_addr_lng" value="">
 				</td>
 			</tr>				
 		
@@ -386,30 +402,30 @@
 			<tr>
 				<th>성격</th>
 				<td>1. 
-	              	<input type="radio" name="sung" id="s1" value="활발">
+	              	<input type="radio" name="pet_char1_content" id="s1" value="활발">
 	              	<label for="활발">활발해요</label>
-	             	<input type="radio" name="sung" id="s2" value="얌전">
+	             	<input type="radio" name="pet_char1_content	" id="s2" value="얌전">
 	             	<label for="얌전">얌전해요</label>
 	             	<br>
 	             		
 	             	2. 
-	             	<input type="radio" name="sung" id="s3" value="겁">
+	             	<input type="radio" name="pet_char2_content" id="s3" value="겁">
 	              	<label for="겁">겁이많아요</label>
-	             	<input type="radio" name="sung" id="s4" value="아니요">
+	             	<input type="radio" name="pet_char2_content" id="s4" value="아니요">
 	             	<label for="no">아니요</label>
 	             	<br>
 	             		
 	             	3.
-	             	<input type="radio" name="sung" id="s5" value="말">
+	             	<input type="radio" name="pet_char3_content" id="s5" value="말">
 	              	<label for="말">말이 많아요</label>
-	             	<input type="radio" name="sung" id="s6" value="조용">
+	             	<input type="radio" name="pet_char3_content" id="s6" value="조용">
 	             	<label for="조용">조용해요</label>
 	             	<br>
 	             		
 	             	4.
-	             	<input type="radio" name="sung" id="s7" value="주인">
+	             	<input type="radio" name="pet_char4_content" id="s7" value="주인">
 	              	<label for="주인">주인바라기</label>
-	             	<input type="radio" name="sung" id="s8" value="사람">
+	             	<input type="radio" name="pet_char4_content" id="s8" value="사람">
 	             	<label for="사람">사람이면 다 좋아해요</label>
 	             </td>  		
 			</tr>						
@@ -427,7 +443,7 @@
 		<br>
 		<div style="float: right;">
 		<input type="button" class="btn" value="취소">
-		<button type="submit" class="btn" value="등록">등록</button>
+		<button type="button" class="btn" name="add" id="add" value="등록">등록</button>
 		
 		<span id="errMsg">필수 입력 항목을 입력하세요.</span>			
 		</div>

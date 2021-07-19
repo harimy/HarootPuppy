@@ -7,20 +7,43 @@
 	
 	<insert id="add" parameterType="com.haroot.mybatis.ParticipantsDTO">
 		INSERT INTO TBL_PARTICIPANTS(PARTICIPANTS_CODE, WALKROOM_CODE, RELATION_CODE, PARTICIPANTS_START)
-		VALUES(#{participants_code}, #{walkroom_code}, 'REL003', SYSDATE)
+		VALUES(#{participants_code}, #{walkroom_code}, #{relation_code}, SYSDATE)
 	</insert>
 	
-	<select id="max_code" resultType="java.lang.String">
-		SELECT S.PARTICIPANTS_CODE
-		FROM TBL_PARTICIPANTS S,
-		(
-		    SELECT ROWNUM AS NUMS, PARTICIPANTS_CODE
-		    FROM TBL_PARTICIPANTS
-		)R
-		WHERE S.PARTICIPANTS_CODE = R.PARTICIPANTS_CODE
-		  AND R.NUMS=(SELECT MAX(ROWNUM)
-              	  	  FROM TBL_PARTICIPANTS)
+	<insert id="addGuest" parameterType="com.haroot.mybatis.ParticipantsDTO">
+		INSERT INTO TBL_PARTICIPANTS(PARTICIPANTS_CODE, WALKROOM_CODE, RELATION_CODE, READYOPTION_CODE, READYSTATE_CODE, PARTICIPANTS_START)
+		VALUES(#{participants_code}, #{walkroom_code}, #{relation_code}, #{readyoption_code}, #{readystate_code}, SYSDATE)
+	</insert>
+	
+	<delete id="exitWalkRoom" parameterType="java.lang.String">
+		DELETE
+		FROM TBL_PARTICIPANTS
+		WHERE PARTICIPANTS_CODE = #{participants_code}
+	</delete>
+	
+	<select id="max" resultType="java.lang.Integer">
+		SELECT MAX(TO_NUMBER(SUBSTR(PARTICIPANTS_CODE, 4)))
+		FROM TBL_PARTICIPANTS
 	</select>
+	
+	<select id="search" parameterType="map" resultType="com.haroot.mybatis.ParticipantsDTO">
+		SELECT PARTICIPANTS_CODE
+		FROM TBL_PARTICIPANTS
+		WHERE WALKROOM_CODE = #{walkroom_code}
+		  AND RELATION_CODE = #{relation_code}
+	</select>
+	
+	<update id="modifyReadyOption">
+		UPDATE TBL_PARTICIPANTS
+		SET READYOPTION_CODE = #{readyoption_code}
+		WHERE PARTICIPANTS_CODE = #{participants_code}
+	</update>
+	
+	<update id="modifyReadyState">
+		UPDATE TBL_PARTICIPANTS
+		SET READYSTATE_CODE = #{readystate_code}
+		WHERE PARTICIPANTS_CODE = #{participants_code}
+	</update>
 	
 </mapper>
 

@@ -33,7 +33,7 @@
 		, WALKROOM_START, WALKROOM_END
 		, WALKROOM_TITLE, WALKROOM_WORDS, WALKROOM_PLACE, WALKROOM_LATITUDE, WALKROOM_LONGITUDE
 		, WALKROOM_GENDATE)
-		VALUES(#{walkroom_code, jdbcType=NUMERIC}, 'SID001'
+		VALUES(#{walkroom_code}, #{walkroom_leader}
 		, #{auto_code}, #{style_code}, #{bite_code}, #{desex_code}, #{samesex_code}
 		, #{walkroom_min}, #{walkroom_max}
 		, TO_DATE(#{walkroom_start}, 'YYYY-MM-DD HH24:MI'), TO_DATE(#{walkroom_end}, 'YYYY-MM-DD HH24:MI')
@@ -41,21 +41,25 @@
 		, TO_DATE(#{walkroom_gendate}, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	
-	<delete id="remove">
+	<delete id="remove" parameterType="java.lang.Integer">
+		DELETE
+		FROM TBL_WALKROOM
+		WHERE WALKROOM_CODE = #{walkroom_code}
 	</delete>
 	
 	<update id="modify">
 		UPDATE TBL_WALKROOM
-		SET AUTO_CODE=1, STYLE_CODE=2, BITE_CODE=0, DESEX_CODE=1, SAMESEX_CODE=0
-		  , WALKROOM_MIN=2, WALKROOM_MAX=4
-		  , WALKROOM_START=TO_DATE('2021-06-27', 'YYYY-MM-DD')
-		  , WALKROOM_END=TO_DATE('2021-06-27', 'YYYY-MM-DD')
-		  , WALKROOM_TITLE='함께 산책하실 분?'
-		  , WALKROOM_WORDS='같이? 가요?'
-		  , WALKROOM_PLACE='안양천 돌다리'
-		  , WALKROOM_LATITUE='37. 475694'
+		SET AUTO_CODE=#{auto_code}, STYLE_CODE=#{style_code}
+		  , BITE_CODE=#{bite_code}, DESEX_CODE=#{desex_code}, SAMESEX_CODE=#{samesex_code}
+		  , WALKROOM_MIN=#{walkroom_min}, WALKROOM_MAX=#{walkroom_max}
+		  , WALKROOM_START=TO_DATE(#{walkroom_start}, 'YYYY-MM-DD HH24:MI')
+		  , WALKROOM_END=TO_DATE(#{walkroom_end}, 'YYYY-MM-DD HH24:MI')
+		  , WALKROOM_TITLE=#{walkroom_title}
+		  , WALKROOM_WORDS=#{walkroom_words, jdbcType=VARCHAR}
+		  , WALKROOM_PLACE= #{walkroom_place}
+		  , WALKROOM_LATITUDE='37. 475694'
 		  , WALKROOM_LONGITUDE='126.876209'
-		WHERE WALKROOM_CODE=1
+		WHERE WALKROOM_CODE=#{walkroom_code}
 	</update>
 	
 </mapper>
