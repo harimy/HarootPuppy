@@ -19,7 +19,6 @@
 	{
 		text-align: center !important; 
 	}
-	
 
 	
 </style>
@@ -28,24 +27,66 @@
     
 	var openWin;
 	
-	function openDetailChild()
+	function openDetailChild(sid_code)
 	{
+		var _width = '570';
+	    var _height = '600';
+	    
+	    //alert(sid_code);
+	    //--==>> SID001
+	    
+	    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+	    var _left = Math.ceil(( window.screen.width - _width )/2);
+	    var _top = Math.ceil(( window.screen.height - _height )/2); 
+		
 	    // window.name = "부모창 이름"; 
 	    window.name = "parentForm";
 	    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-	    openWin = window.open("UserInfoRead.jsp",
-	            "childForm", "width=570, height=350, resizable = no");    
+	    /* openWin = window.open("memberdetailinfo.action?sid_code=",
+	            "childForm", "width=570, height=600, resizable = no");   */ 
+	    openWin = window.open("memberdetailinfo.action?sid_code=" + sid_code
+	   		 , "childForm1", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top +', resizable=no');   
+	    
 	}
 	
-	function openUpdateChild()
+	function openUpdateChild(sid_code)
 	{
+		//alert(sid_code);
+		//--==>> SID001
+		var _width = '570';
+	    var _height = '600';
+	    
+	 	// 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+	    var _left = Math.ceil(( window.screen.width - _width )/2);
+	    var _top = Math.ceil(( window.screen.height - _height )/2); 
+		
 	    // window.name = "부모창 이름"; 
-	    window.name = "parentForm";
+	   	window.name = "parentForm";
+	   	
+	   	
 	    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-	    openWin = window.open("UserInfoUpdateForm.jsp",
-	            "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
+	    /* openWin = window.open("UserInfoUpdateForm.jsp",
+	            "childForm", "width=570, height=600, resizable = no, scrollbars = no"); */   
+	    openWin = window.open("adminmemberupdateform.action?sid_code=" + sid_code
+	   		 , "childForm2", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top +', resizable=no');   
+	    
 	}
 
+	$(function()
+	{
+		$(".btnDelete").click(function()
+		{
+			
+			if (confirm("정말 삭제하시겠습니까?")) 
+			{
+				// alert($(this).val());
+				 
+				$(location).attr("href", "adminmemberdelete.action?mem_code=" + $(this).val());
+				//$(location).attr("href", "https://loomio.kr");
+			}
+			
+		});
+	});
 
 </script>
 </head>
@@ -55,7 +96,7 @@
 		<c:import url="AdminMenu.jsp"></c:import>
 	</div>
 	
-	<br><br><br><br>
+	<br><br>
 	
 	<div id="harootContent">
 		<div style="width: 100%; text-align: center;">
@@ -85,16 +126,18 @@
 					<th>회원번호</th>
 					<th>아이디</th>
 					<th>이름</th>
-					<th>계정상태</th>
+					<th>닉네임</th>
 					<th>성별</th>
 					<th>핸드폰번호</th>
 					<th>주소</th>
-					<th>세부정보 조회</th>
+					<th>상세정보 조회</th>
 					<th>회원정보 수정</th>
 					<th>회원정보 삭제</th>
 				</tr>	
+				<!-- normalList -->
+				<!-- 
 				<tr>
-					<td>10000</td>
+					<td>34324</td>
 					<td>aa@naver.com</td>
 					<td>박진수</td>
 					<td>정상</td>
@@ -111,6 +154,47 @@
 						<button type = "button" id="delete">삭제</button>
 					</td>
 				</tr>	
+				 -->
+				 <c:forEach var="mem" items="${normalList}">
+		 	 	<tr>
+		 	 		<!-- 회원번호 -->
+		 	 		<td>
+		 	 			${mem.sid_code }
+		 	 			<input type="hidden" name="mem_code" value="${mem.mem_code }">
+		 	 		</td>
+		 	 		<!-- 아이디 -->
+		 	 		<td>${mem.mem_id }</td>
+		 	 		<!-- 이름 -->
+		 	 		<td>${mem.mem_name }</td>
+		 	 		<!-- 닉네임 -->
+		 	 		<td>${mem.mem_nickname }</td>
+		 	 		<!-- 성별 -->
+		 	 		<td>${mem.mem_gender }</td>
+		 	 		<!-- 핸드폰번호 -->
+		 	 		<td>${mem.mem_tel }</td>
+		 	 		<!-- 주소 -->
+		 	 		<td>${mem.mem_addr }</td>
+		 	 		<td>
+						<button type="button" id="detail" class="detail" value="" onclick="openDetailChild('${mem.sid_code}')">
+							보기
+						</button>
+						
+					</td>
+					<td>
+						<button type="button" class="btnUpdate" id="update" value="" onclick="openUpdateChild('${mem.sid_code}')">
+							수정
+						</button>
+					</td>
+					<td>
+						<%-- <button type="button" class="btnDelete" value="${mem.sid_code }" 
+						id="delete" onclick="location.href='adminmemberdelete.action?sid_code=${mem.sid_code }'"> --%>
+						<button type="button" class="btnDelete" value="${mem.mem_code }" id="delete" onclick="">
+							삭제
+						</button>
+					</td>
+		 	 	</tr>
+		 	 </c:forEach>
+				 
 			</table>
 		</div>
 	</div>

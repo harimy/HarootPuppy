@@ -14,12 +14,14 @@
    src="http://code.jquery.com/jquery.min.js"></script>
 <style>
     /* 메뉴 수정 */
-   /* .ab >ul { list-style:none; margin:0; padding:0; width: 100%}
+    /* 상단메뉴에만 list-style 제거, 관리자메인페이지에서는 출력 */
+   .ab >ul { list-style:none; margin:0; padding:0; width: 100%}
    
    .ab ol { list-style:none; margin:0; padding:0; width: 100%}
-   .ab li { list-style:none; margin:0; padding:0; width: 100%} */
-   
-   .ab ul, ol, li { list-style:none; margin:0; padding:0; width: 100%}
+   .ab li { list-style:none; margin:0; padding:0; width: 100%}
+    
+    
+    /* .ab ul, ol, li { list-style:none; margin:0; padding:0; width: 100%} 이전 ver. */
    	
    	
     ul.myMenu {text-align: center;}
@@ -61,25 +63,25 @@
 </head>
 <body>
 
-<jsp:include page="/WEB-INF/views/AdminMainHeader.jsp"></jsp:include>
+<jsp:include page="AdminMainHeader.jsp"></jsp:include>
 
 <div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">
 	<li class="menu1">
-        <a href="AllUserInfoList.jsp" class="link">회원 관리</a>
+        <a href="adminmanagemember.action" class="link">회원 관리</a>
         <ul class="menu1_s submenu">
 
-            <li style="margin-top: 5px;"><a href="AllUserInfoList.jsp" class="link">전체회원 정보 조회</a></li>
+            <li style="margin-top: 5px;"><a href="adminmanagemember.action" class="link">전체회원 정보 조회</a></li>
             <li><a href="OutUserInfoList.jsp" class="link">탈퇴회원 정보 조회</a></li>
             <li><a href="AdminInfoList.jsp" class="link">관리자 정보 조회</a></li>
         </ul>   
     </li>
     <li class="menu2">
-    	<a href="NoticeList.jsp" class="link">공지 관리</a>	
+    	<a href="adminnoticelist.action" class="link">공지 관리</a>	
 
     </li>
     <li class="menu3">
-        <a href="ReportMain.jsp" class="link">신고 관리</a>
+        <a href="reportmain.action" class="link">신고 관리</a>
         <ul class="menu3_s submenu">
 
             <li style="margin-top: 5px;"><a href="adminreportboardlist.action" class="link">게시판 글 신고</a></li>
@@ -89,20 +91,14 @@
         </ul>   
     </li>
     <li class="menu4">
-    	<a href="AdminAskList.jsp" class="link">고객 지원</a>
+    	<a href="adminasklist.action" class="link">고객 지원</a>
 
     </li>
 
 </ul>
 </div>
 
-<c:if test="${message == 'success' }"> 
-<h2>
-    ${sessionScope.admin_name}
-    (${sessionScope.admin_userid})님 환영합니다.
-    <!--sessionScope는 세션에 담은 setAttribute()메소드 안에 있는 값을 jsp에서 JSTL로 간단히 사용하고 싶을때 사용하면 된다. -->
-    <!--ex) dlgkstjq12(이한섭)님 환영합니다. 와 같이 출력됨.  --></h2>
-    </c:if>
+
 
 </body>
 </html>
