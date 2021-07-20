@@ -28,10 +28,7 @@
 	margin-left:10px;
 	font-weight: bold;
 }
-body
- {
- 	margin: 30px;
- }
+
 </style>
 </head>
 <body>
@@ -65,10 +62,12 @@ body
 		<div style="width: 85%; margin: auto;">
 			<textarea rows="20" class="form-control" disabled="disabled">${view.board_content }</textarea>
 		</div><br>
-		<div style="width: 85%; margin: auto;">
-			<div>
-				댓글
-			</div>
+		<div style="width: 85%; margin: auto; text-align: right;">
+			<button type="button" id="updateBtn" class="btn btn-warning" onclick="location.href='boardupdateform.action?board_code=${view.board_code }&board_writer=${view.board_writer }'">수정</button>
+			<button type="button" id="deleteBtn" class="btn btn-danger">삭제</button>
+			<button type="button" id="listBtn" class="btn btn-success"  onclick="location.href='boardlist.action'">목록으로</button>
+		</div>
+		<%-- <div style="width: 85%; margin: auto;">
 			<div>
 			<table>
 			<c:forEach var="view" items="${commView }">
@@ -78,13 +77,28 @@ body
 			</c:forEach>
 			</table>
 			</div>
-		</div>
+		</div>  --%>
 		<br>
-		<div style="width: 85%; margin: auto;">
-			<textarea rows="3" cols="125" placeholder="댓글을 입력해주세요."></textarea>
-			<input type="button" value="등록" id="submitBtn" class="submitbtn">
-		</div>
-		<br>
+		
+		<div class="container" style="width: 85%; margin: auto;">
+	        <label for="content">comment</label>
+	        <form name="commentInsertForm">
+	            <div class="input-group">
+	               <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">
+	               <span class="input-group-btn">
+	                    <button type="button" name="commentInsertBtn" class="btn btn-default" >등록</button>
+	               </span>
+	              </div>
+	        </form>
+	    </div>
+	    
+	    <div class="container">
+	        <div class="listComm"></div>
+	    </div>
+	    
+ 	    <jsp:include page="BoardComment.jsp" />
+
+		<br><br><br>
 		
 		<div style="width: 85%; margin: auto;" class="bbsArticle_bottomLine" style="width: 80%;">
 			<p><a href="">이전글 : ${view.title }</a></p>
@@ -93,11 +107,7 @@ body
 		<div style="width: 85%; margin: auto;" class="bbsArticle_noLine" style="width: 80%;">
 			<p><a href="">다음글 : ${view.title }</a></p>
 		</div>
-		<div style="width: 85%; margin: auto; text-align: right;">
-			<button type="button" id="updateBtn" class="btn btn-warning" onclick="location.href='boardupdateform.action?board_code=${view.board_code }&board_writer=${view.board_writer }'">수정</button>
-			<button type="button" id="deleteBtn" class="btn btn-danger">삭제</button>
-			<button type="button" id="listBtn" class="btn btn-success"  onclick="location.href='boardlist.action'">목록으로</button>
-		</div>
+		
 	</form>
 </div>
 
