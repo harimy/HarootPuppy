@@ -80,10 +80,10 @@
            <td>
 			<a href="boardview.action?board_code=${list.board_code }&board_writer=${list.board_writer}">${list.board_title }</a>
 		   </td>
-           <td>${list.nickname }</td>
+           <td>${list.board_nickname }</td>
            <td>${list.board_content_date }</td>
-           <td>${list.viewNum }</td>
-           <td>${list.likeNum }</td>
+           <td>${list.board_view }</td>
+           <td>${list.board_like }</td>
     	</tr>
     </c:forEach>
    </table>

@@ -24,7 +24,6 @@ public class BoardController
 	
 	// 게시글 목록 조회	
 	@RequestMapping(value="/boardlist.action", method=RequestMethod.GET)
-
 	public String boardList(HttpServletRequest request, Model model) throws SQLException
 	{
 
@@ -72,8 +71,6 @@ public class BoardController
 			
 			model.addAttribute("nextNum", nextNum);
 			
-			//System.out.println(nextNum);
-			
 			result =  "/BoardInsertForm.jsp";
 		}
 		
@@ -96,11 +93,7 @@ public class BoardController
 		{
 			IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
 			
-			//int board_code = dao.getMaxNum() + 1;
-			
-			System.out.println(board.getBoard_cate_code());
-			
-	//		dto.setBoard_code(board_code);
+			board.setSid_code(sid_code);
 			
 			dao.add(board);
 			
@@ -128,7 +121,7 @@ public class BoardController
 			
 			model.addAttribute("view", dao.view(board_code, board_writer));
 			
-			result = "/WEB-INF/views/BoardRead.jsp";
+			result = "/BoardRead.jsp";
 			
 		}
 		return result;
@@ -175,8 +168,14 @@ public class BoardController
 		{
 			IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
 			
+			System.out.println("더헉" + request.getParameter("board_code"));
+			
+			
 			int board_code = Integer.parseInt(request.getParameter("board_code"));
 			String board_writer = request.getParameter("board_writer");
+			
+			board.setBoard_code(board_code);
+			board.setBoard_writer(board_writer);
 			
 			dao.modify(board);
 			

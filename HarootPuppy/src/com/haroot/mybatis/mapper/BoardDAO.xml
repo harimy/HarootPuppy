@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="getMaxNum" resultType="java.lang.Integer">
-		SELECT MAX(BOARD_CODE) AS MAX_NUM
+		SELECT MAX(BOARD_CODE) AS MAX_board
 		FROM TBL_BOARD
 	</select>
 	
@@ -31,7 +31,7 @@
 	<insert id="add">
 		INSERT INTO TBL_BOARD(BOARD_CODE, BOARD_WRITER, BOARD_CATE_CODE, BOARD_TITLE
 		                    , BOARD_CONTENT, BOARD_PHOTO, BOARD_VIEW, BOARD_LIKE, BOARD_DATE)
-		VALUES(#{board_code}, 'SID006', #{board_cate_code}, #{board_title}
+		VALUES(#{board_code}, #{sid_code}, #{board_cate_code}, #{board_title}
 		       ,#{board_content}, #{board_photo}, 0, 0, SYSDATE)
 	</insert> 
 	
