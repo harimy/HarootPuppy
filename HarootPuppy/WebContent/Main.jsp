@@ -14,7 +14,6 @@
 <script type="text/javascript"
    src="http://code.jquery.com/jquery.min.js"></script>
 <style>
-
     /* 메뉴 수정 */
    .ab ul, ol, li { list-style:none; margin:0; padding:0; width: 100%}
    	

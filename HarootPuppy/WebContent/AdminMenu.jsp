@@ -44,20 +44,17 @@
 		height: 30px;
 		font-size: 14pt;
 	}
-
 	a.container:hover, a.container:active
 	{
 		background-color: rgb(244,188,23);
 		color: #000000;
 		height: 26px;
 	}
-
   a.link { text-decoration: none; color: black; }
   a.link:visited { text-decoration: none; }
   a.link:hover { text-decoration: none; }
   a.link:focus { text-decoration: none; }
   a.link:hover, a:active { text-decoration: none; }
-
 </style>
 
 </head>

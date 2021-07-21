@@ -18,12 +18,10 @@
 table {
 	width: 300px;
 }
-
 #harootHeader {
 	padding: 5px;
 	background-color: rgb(244, 188, 23);
 }
-
 .transparent-button {
 	background-color: transparent !important;
 	background-image: none !important;
@@ -45,11 +43,9 @@ span{
 		{
 			alert($('#loginCheck1').val());
 		});
-
 		
 		$("#myPage").css('display', "none");
 		$("#notice").css('display', "none");
-
 		
 		if (  $("#loginCheck1").val() != "")
 		{
@@ -74,7 +70,6 @@ span{
 			$("#welcome").html("회원가입");
 			$("#welcome").attr("onclick", "location.href='registerform.action'");
 		}
-
 		if (  $("#loginCheck1").val() == null)
 		{
 			$("#log").attr("onclick", "location.href='login.action'");

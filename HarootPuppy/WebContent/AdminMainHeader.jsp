@@ -30,7 +30,6 @@
     a.adminMain:hover { text-decoration: none; }
     a.adminMain:focus { text-decoration: none; }
     a.adminMain:hover, a:active { text-decoration: none; }
-
 </style>
 </head>
 <body>
