@@ -10,21 +10,29 @@
 <meta charset="UTF-8">
 <title>AllUserInfoList.jsp</title>
 <link rel="stylesheet" href="css/bootstrap.css">
+
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<style type="text/css">
-	
-	/* 가운데 정렬 */
-	#userTable th, td
-	{
-		text-align: center !important; 
-	}
 
-	
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+
+
+<style type="text/css">
+
+.btn { font-size: 9pt;}
+
+body
+{
+	font-size: 14px !important;
+}
+
 </style>
 
 <script type="text/javascript">
-    
+	
+
 	var openWin;
 	
 	function openDetailChild(sid_code)
@@ -71,137 +79,125 @@
 	   		 , "childForm2", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top +', resizable=no');   
 	    
 	}
+	
 
 	$(function()
 	{
-		$(".btnDelete").click(function()
+		$(".btnDelete").click(
+				function()
+				{
+
+					if (confirm("정말 삭제하시겠습니까?"))
+					{
+						// alert($(this).val());
+
+						$(location).attr("href",
+								"adminmemberdelete.action?mem_code=" + $(this).val());
+						//$(location).attr("href", "https://loomio.kr");
+					}
+
+				});
+	});
+
+	$(document).ready(function()
+	{
+
+		$('#example').dataTable(
 		{
-			
-			if (confirm("정말 삭제하시겠습니까?")) 
-			{
-				// alert($(this).val());
-				 
-				$(location).attr("href", "adminmemberdelete.action?mem_code=" + $(this).val());
-				//$(location).attr("href", "https://loomio.kr");
-			}
 			
 		});
 	});
-
 </script>
 </head>
 <body>
-<div>
-	<div id="harootHeader">
-		<c:import url="AdminMenu.jsp"></c:import>
-	</div>
-	
-	<br><br>
-	
-	<div id="harootContent">
-		<div style="width: 100%; text-align: center;">
-			<h1>전체 회원정보 조회</h1>
+	<div>
+		<!-- 메뉴 영역 -->
+		<div id="harootHeader">
+			<c:import url="AdminMenu.jsp"></c:import>
 		</div>
-		
-		<br><br>
-		
-		<div style="margin-left: 10px;">
-			<select name="memberSearch" id="memberSearch">
-				<option value="memId">아이디</option>
-				<option value="memName">이름</option>
-				<option value="memNickname">닉네임</option>
-			</select>
-			<input type="text" name="searchValue" class="textField">
-			<input type="button" value="검색" class="btn2" onclick="sendIt()"> 
-			<p style="float: right; margin-right: 10px;">전체 회원 수 : ${normalCount} </p>
-		</div>
-		
-		<br><br>
-		
-		<div>
-			<table class="table table-striped table-condensed table-hover" id="userTable" style="text-align: center;"> 
 
-				<tr>
-					<th>회원번호</th>
-					<th>아이디</th>
-					<th>이름</th>
-					<th>닉네임</th>
-					<th>성별</th>
-					<th>핸드폰번호</th>
-					<th>주소</th>
-					<th>상세정보 조회</th>
-					<th>회원정보 수정</th>
-					<th>회원정보 삭제</th>
-				</tr>	
-				<!-- normalList -->
-				<!-- 
-				<tr>
-					<td>34324</td>
-					<td>aa@naver.com</td>
-					<td>박진수</td>
-					<td>정상</td>
-					<td>남</td>
-					<td>010-1111-1111</td>
-					<td>서울 마포구</td>
-					<td>
-						<button type = "button" id="detail" onclick="openDetailChild()">보기</button>
-					</td>
-					<td>
-						<button type = "button" id="update" onclick="openUpdateChild()">수정</button>
-					</td>
-					<td>
-						<button type = "button" id="delete">삭제</button>
-					</td>
-				</tr>	
-				 -->
-				 <c:forEach var="mem" items="${normalList}">
-		 	 	<tr>
-		 	 		<!-- 회원번호 -->
-		 	 		<td>
-		 	 			${mem.sid_code }
-		 	 			<input type="hidden" name="mem_code" value="${mem.mem_code }">
-		 	 		</td>
-		 	 		<!-- 아이디 -->
-		 	 		<td>${mem.mem_id }</td>
-		 	 		<!-- 이름 -->
-		 	 		<td>${mem.mem_name }</td>
-		 	 		<!-- 닉네임 -->
-		 	 		<td>${mem.mem_nickname }</td>
-		 	 		<!-- 성별 -->
-		 	 		<td>${mem.mem_gender }</td>
-		 	 		<!-- 핸드폰번호 -->
-		 	 		<td>${mem.mem_tel }</td>
-		 	 		<!-- 주소 -->
-		 	 		<td>${mem.mem_addr }</td>
-		 	 		<td>
-						<button type="button" id="detail" class="detail" value="" onclick="openDetailChild('${mem.sid_code}')">
-							보기
-						</button>
-						
-					</td>
-					<td>
-						<button type="button" class="btnUpdate" id="update" value="" onclick="openUpdateChild('${mem.sid_code}')">
-							수정
-						</button>
-					</td>
-					<td>
-						<%-- <button type="button" class="btnDelete" value="${mem.sid_code }" 
-						id="delete" onclick="location.href='adminmemberdelete.action?sid_code=${mem.sid_code }'"> --%>
-						<button type="button" class="btnDelete" value="${mem.mem_code }" id="delete" onclick="">
-							삭제
-						</button>
-					</td>
-		 	 	</tr>
-		 	 </c:forEach>
-				 
-			</table>
+		<br>
+		<br>
+
+		<div id="harootContent">
+			<div style="width: 100%; text-align: center;">
+				<h1>전체 회원정보 조회</h1>
+			</div>
+
+			<br>
+			<br>
+	
+			<div style="width: 1200px; margin: 0px auto;">
+			
+				<span class="badge rounded-pill bg-warning text-dark" style="font-size: 12pt;">전체 회원 수: ${normalCount}명</span><br><br>
+			
+			</div>
+	
+			<div style="width: 1200px; margin: 0px auto;">
+				<table class="table table-striped table-condensed table-hover table-bordered" id="example" style="text-align: center;">  
+					<thead>
+						<tr>
+							<th>회원번호</th>
+							<th>아이디</th>
+							<th>이름</th>
+							<th>닉네임</th>
+							<th>성별</th>
+							<th>핸드폰번호</th>
+							<th>주소</th>
+							<th>상세정보 조회</th>
+							<th>회원정보 수정</th>
+							<th>회원정보 삭제</th>
+						</tr>	
+					</thead>
+
+					<tbody>
+						<c:forEach var="mem" items="${normalList}">
+							<tr>
+								<!-- 회원번호 -->
+								<td>${mem.sid_code } <input type="hidden" name="mem_code"
+									value="${mem.mem_code }">
+								</td>
+								<!-- 아이디 -->
+								<td>${mem.mem_id }</td>
+								<!-- 이름 -->
+								<td>${mem.mem_name }</td>
+								<!-- 닉네임 -->
+								<td>${mem.mem_nickname }</td>
+								<!-- 성별 -->
+								<%-- <td>${mem.mem_gender } </td> --%>
+								<td>${mem.mem_gender == "F" ? '여성'  : '남성' } </td>
+								<!-- 핸드폰번호 -->
+								<td>${mem.mem_tel }</td>
+								<!-- 주소 -->
+								<td>${mem.mem_addr }</td>
+								<td>
+									<button type="button" id="detail" class="detail btn btn-success" 
+										onclick="openDetailChild('${mem.sid_code}')">보기</button>
+
+								</td>
+								<td>
+									<button type="button" class="btnUpdate btn btn-warning" id="update" value=""
+										onclick="openUpdateChild('${mem.sid_code}')">수정</button>
+								</td>
+								<td>
+								<button type="button" class="btnDelete btn btn-danger" value="${mem.mem_code }" id="delete" onclick="">삭제</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+
+				</table>
+			</div>
 		</div>
+
+
 	</div>
-	<%-- 
-	<div id="harootFooter">
-		<c:import url="MainFooter.jsp"></c:import>
-	</div>
-	 --%>
-</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+
+
 </body>
 </html>

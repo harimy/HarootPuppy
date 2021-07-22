@@ -30,14 +30,14 @@
     a.adminMain:hover { text-decoration: none; }
     a.adminMain:focus { text-decoration: none; }
     a.adminMain:hover, a:active { text-decoration: none; }
-
 </style>
 </head>
 <body>
 
 <div id="harootHeader">
 	<div style="float:left;"><a href="Main.jsp" class="adminMain">로그아웃&nbsp;&nbsp;&nbsp;</a></div>
-	<div style="float:right;">ADMIN</div>
+	<!-- <div style="float:right;">ADMIN</div> -->
+	<div style="float:right; padding-right: 5px;">ADMIN ${adminName }님, 환영합니다.</div>
 	<div id="logo" style="text-align : center;">
 		<a href="adminmain.action">
 			<img alt="" src="images/mainlogo.png" width="250" height="100" border="0">

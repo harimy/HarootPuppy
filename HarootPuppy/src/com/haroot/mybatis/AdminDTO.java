@@ -6,7 +6,13 @@ package com.haroot.mybatis;
 
 public class AdminDTO
 {
-	private String admin_code, admin_id, admin_pw, admin_name, admin_regdate;
+	// 관리자 정보 조회시 사용
+	
+	private String admin_code			// 관리자코드
+						, admin_id			// 관리자 아이디
+						, admin_pw			// 관리자 패스워드
+						, admin_name		// 관리자 이름
+						, admin_regdate;	// 관리자 등록 날짜
 
 	
 	// getter / setter

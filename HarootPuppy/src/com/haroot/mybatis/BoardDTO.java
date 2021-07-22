@@ -20,13 +20,25 @@ public class BoardDTO
 	private String writer, head_code, title, content, photo, content_date, cate_content;	
 	
 	private String  board_writer, board_title, board_content
-				 , board_photo, board_content_date, board_cate_content, nickname, name;
-	
+				 , board_photo, board_content_date, board_cate_content, nickname, name, board_nickname, sid_code;
+
 	private int board_code, board_view, board_like, board_cate_code;
 	
 	private MultipartFile uploadFile;
-
 	
+	
+	
+	
+	public String getBoard_nickname()
+	{
+		return board_nickname;
+	}
+
+	public void setBoard_nickname(String board_nickname)
+	{
+		this.board_nickname = board_nickname;
+	}
+
 	// getter / setter
 	public int getNum()
 	{
@@ -257,6 +269,16 @@ public class BoardDTO
 	public void setUploadFile(MultipartFile uploadFile)
 	{
 		this.uploadFile = uploadFile;
+	}
+
+	public String getSid_code()
+	{
+		return sid_code;
+	}
+
+	public void setSid_code(String sid_code)
+	{
+		this.sid_code = sid_code;
 	}
 	
 	

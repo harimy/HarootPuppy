@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BoardInsertForm.jsp</title>
+<title>BoardUpdateForm.jsp</title>
 <!-- jQuery JS -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
@@ -54,14 +54,12 @@
 
  <br><br><br>
 <div style="width:85%; margin: auto;">
- <form role="form" action="boardupdate.action?board_code=${view.board_code }&board_writer=${view.board_writer }" method="post" enctype="multipart/form-data" name="boardForm">
+ <form role="form" action="boardupdate.action?board_code=${view.board_code }&board_writer=${view.board_writer }" method="post" name="boardForm">
       <table class="table table-bordered" id="tblAdd">
          <tr>
             <td>제목</td>
             <td>
-            	<input type="hidden" id="board_code" name="board_code" value="${board_code}">
             	<input type="hidden" id="board_date" name="board_date"> 
-            	<input type="hidden" id="board_writer" name="board_writer" value="${view.board_writer }">
                 <input type="text" id="board_title" name="board_title" class="form-control" placeholder="제목을 입력하세요" value="${view.board_title }">
             </td>
          </tr>

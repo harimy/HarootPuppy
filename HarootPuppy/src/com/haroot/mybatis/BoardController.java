@@ -24,12 +24,13 @@ public class BoardController
 	
 	// 게시글 목록 조회	
 	@RequestMapping(value="/boardlist.action", method=RequestMethod.GET)
-
 	public String boardList(HttpServletRequest request, Model model) throws SQLException
 	{
 
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -54,10 +55,12 @@ public class BoardController
 	
 	// 게시글 등록 폼
 	@RequestMapping(value="/boardinsertform.action", method=RequestMethod.GET)
-	public String boardInsertForm(HttpServletRequest request, ModelMap model) throws SQLException
+	public String boardInsertForm(HttpServletRequest request, Model model) throws SQLException
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -72,8 +75,6 @@ public class BoardController
 			
 			model.addAttribute("nextNum", nextNum);
 			
-			//System.out.println(nextNum);
-			
 			result =  "/BoardInsertForm.jsp";
 		}
 		
@@ -82,10 +83,12 @@ public class BoardController
 	
 	// 게시글 등록
 	@RequestMapping(value="/boardinsert.action", method=RequestMethod.POST)
-	public String boardInsert(HttpServletRequest request, BoardDTO board) throws IOException, SQLException
+	public String boardInsert(HttpServletRequest request, BoardDTO board, Model model) throws IOException, SQLException
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -96,11 +99,7 @@ public class BoardController
 		{
 			IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
 			
-			//int board_code = dao.getMaxNum() + 1;
-			
-			System.out.println(board.getBoard_cate_code());
-			
-	//		dto.setBoard_code(board_code);
+			board.setSid_code(sid_code);
 			
 			dao.add(board);
 			
@@ -116,6 +115,8 @@ public class BoardController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -128,7 +129,7 @@ public class BoardController
 			
 			model.addAttribute("view", dao.view(board_code, board_writer));
 			
-			result = "/WEB-INF/views/BoardRead.jsp";
+			result = "/BoardRead.jsp";
 			
 		}
 		return result;
@@ -140,6 +141,8 @@ public class BoardController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -161,10 +164,12 @@ public class BoardController
 	
 	// 게시글 수정
 	@RequestMapping(value="/boardupdate.action", method=RequestMethod.POST)
-	public String boardUpdate(HttpServletRequest request, BoardDTO board) throws SQLException
+	public String boardUpdate(HttpServletRequest request, BoardDTO board, Model model) throws SQLException
 	{	
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -175,8 +180,14 @@ public class BoardController
 		{
 			IBoardDAO dao = sqlSession.getMapper(IBoardDAO.class);
 			
+			System.out.println("더헉" + request.getParameter("board_code"));
+			
+			
 			int board_code = Integer.parseInt(request.getParameter("board_code"));
 			String board_writer = request.getParameter("board_writer");
+			
+			board.setBoard_code(board_code);
+			board.setBoard_writer(board_writer);
 			
 			dao.modify(board);
 			

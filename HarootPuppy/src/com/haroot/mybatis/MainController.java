@@ -1,7 +1,6 @@
 package com.haroot.mybatis;
 
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,13 +22,9 @@ public class MainController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
-		
 		// System.out.println(sid_code);
-		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		model.addAttribute("nickname", dao.searchNickName(sid_code));
-		session.setAttribute("sid_code", sid_code);
-
-
+		String nickname = (String)session.getAttribute("nickname");
+		
 		return "main.action";
 
 	}
@@ -41,9 +36,9 @@ public class MainController
 		String sid_code = (String)session.getAttribute("sid_code");
 
 		// System.out.println(sid_code);
-		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		model.addAttribute("nickname", dao.searchNickName(sid_code));
 
+		String nickname = (String)session.getAttribute("nickname");
+		
 		if(sid_code!=null)
 		{
 			return "HarootPuppyMain.jsp";
@@ -57,14 +52,15 @@ public class MainController
 	@RequestMapping(value="beforemain.action", method=RequestMethod.GET)
 	public String goToMainBefore(Model model)
 	{
-			return "HarootPuppyMain.jsp";
+			return "main.action";
 	}
 	
-	@RequestMapping(value="mainmenu.action", method=RequestMethod.POST)
+	@RequestMapping(value="mainmenu.action", method=RequestMethod.GET)
 	public String goToMain2(Model model, HttpServletRequest request, HttpServletResponse response)
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
 		
 		// System.out.println(sid_code);
 		session.setAttribute("sid_code", sid_code);

@@ -9,14 +9,27 @@ String cp = request.getContextPath();
 <head>
 <meta charset="UTF-8">
 <title>UserInfoRead.jsp</title>
+<!-- jQuery JS -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
+<!-- jQuery-UI CSS -->
+<link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
+
+<!--  부트스트랩 JS -->
+<script type="text/javascript" src="<%=cp%>/js/bootstrap.js"></script>
+<!-- 부트스트랩 CSS -->
+<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 
 <style type="text/css">
 
 #tbl_userRead th{ text-align: center; }
 
+
 #tbl_userRead .info 
 {	
 	width: 250px; 
+	margin-bottom: 5px;
+	
 }
 
 </style>
@@ -39,74 +52,6 @@ String cp = request.getContextPath();
 
 	<div>
 		<table id="tbl_userRead" style="text-align: left;">
-		 <!-- 
-		<tr>
-			<th>회원 번호</th>
-			<td>10000</td>
-		</tr>
-		<tr>
-			<th>이름</th>
-			<td>박진수</td>
-		</tr>
-		<tr>
-			<th>아이디</th>
-			<td>jinsooyeoyo</td>
-		</tr>
-		<tr>
-			<th>계정 상태</th>
-			<td>정상</td>
-		</tr>
-		<tr>
-			<th>닉네임</th>
-			<td>진수여요</td>
-		</tr>
-		<tr>
-			<th>생일</th>
-			<td>2001.01.01</td>
-		</tr>
-		<tr>
-			<th>성별</th>
-			<td>남성</td>
-		</tr>
-		<tr>
-			<th>핸드폰번호</th>
-			<td>010-1111-1111</td>
-		</tr>
-		<tr>
-			<th>주소</th>
-			<td>서울 마포구</td>
-		</tr>
-		<tr>
-			<th>회원가입 날짜</th>
-			<td>2020.08.08</td>
-		</tr>
-		<tr>
-			<th>반려견</th>
-			<td>A0001</td>
-		</tr>
-		<tr>
-			<th>산책서비스 동의 여부</th>
-			<td>ON</td>
-		</tr>
-		<tr>
-			<th>산책 횟수</th>
-			<td>20회</td>
-		</tr>
-		<tr>
-			<th>게시판 신고 누적 횟수</th>
-			<td>0건</td>
-		</tr>
-		<tr>
-			<th>산책메이트 온라인 신고 누적 횟수</th>
-			<td>0건</td>
-		</tr>
-		<tr>
-			<th>산책메이트 오프라인 신고 누적 횟수</th>
-			<td>1건</td>
-		</tr>
-		  -->
- 
-			
 			<tr>
 				<th style="width: 230px;">회원식별번호</th>
 				<td>
@@ -196,18 +141,23 @@ String cp = request.getContextPath();
 				<th>산책메이트 서비스 동의 여부</th>
 				<td>
 					<input type="text" class="info" value="${search.walk_agree_check }" readonly="readonly"/>
-					
+							
 				</td>
 			</tr>
 			
+			<tr>
+				<td colspan="2">
+					<button type="button" class="btn btn-warning" onclick="closeUserRead()" style="float: right;">닫기</button>
+				</td>
+			</tr>
 		</table>
 
 		<br>
 
 	</div>
 
-		<div style="width: 496px; text-align: right;">
-			<button type="button" class="" onclick="closeUserRead()">닫기</button>
-		</div>
+		<!-- <div style="width: 496px; text-align: right;">
+			<button type="button" class="btn btn-secondary" onclick="closeUserRead()">닫기</button>
+		</div> -->
 </body>
 </html>

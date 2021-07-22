@@ -41,7 +41,6 @@ public class DiaryMealInsertController
 		session.setAttribute("pet_code", pet_code);
 	
 		// System.out.println(mealDto.getCommon_start());
-		
 		mealDao.addMeal2(mealDto);
 		
 		return "redirect:diarymain.action";
