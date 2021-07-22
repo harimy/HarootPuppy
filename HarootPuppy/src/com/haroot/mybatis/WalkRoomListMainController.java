@@ -9,12 +9,13 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class WalkRoomListMain
+public class WalkRoomListMainController
 {
 	// mybatis 객체 의존성 (자동) 주입
 	@Autowired
@@ -29,6 +30,7 @@ public class WalkRoomListMain
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		session.removeAttribute("pet_code");	// 펫 선택 페이지 로드시 펫 코드 초기화
+		String nickname = (String)session.getAttribute("nickname");
 		
 		IPetDAO dao = sqlSession.getMapper(IPetDAO.class);
 		ArrayList<PetDTO> petlist = dao.searchPets(sid_code);
@@ -55,6 +57,7 @@ public class WalkRoomListMain
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String session_pet_code = (String)session.getAttribute("pet_code");
+		String nickname = (String)session.getAttribute("nickname");
 		
 		if(sid_code==null)	// 로그인 안한 경우
 		{
@@ -80,7 +83,7 @@ public class WalkRoomListMain
 			//System.out.println("redirect:walkroommain pet_code : " + session_pet_code);
 			
 			IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
-		    IPetDAO petdao = sqlSession.getMapper(IPetDAO.class);
+		   IPetDAO petdao = sqlSession.getMapper(IPetDAO.class);
 			PetDTO petdto = petdao.petInfo(session_pet_code);
 			
 		    model.addAttribute("list", dao.list());
@@ -102,6 +105,8 @@ public class WalkRoomListMain
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
 		//System.out.println("walkroomlist pet_code : " + pet_code);
+		String nickname = (String)session.getAttribute("nickname");
+
 		
 		if(sid_code == null)
 		{
@@ -135,6 +140,10 @@ public class WalkRoomListMain
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
+		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
+		model.addAttribute("nickname", mem.searchNickName(sid_code));
 		
 		IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
 		
@@ -160,13 +169,18 @@ public class WalkRoomListMain
 	
 	
 	@RequestMapping(value = "/walkroominsert.action", method = RequestMethod.POST)
-	public String walkRoomInsert(HttpServletRequest request, WalkRoomDTO w) throws SQLException
+	public String walkRoomInsert(HttpServletRequest request, WalkRoomDTO w, Model model) throws SQLException
 	{
 		String result = "";
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		//System.out.println("walkroominsert pet_code : " + pet_code);
+		
+		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
+		model.addAttribute("nickname", mem.searchNickName(sid_code));
 		
 		if(sid_code == null)
 		{

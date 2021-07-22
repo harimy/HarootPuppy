@@ -6,7 +6,6 @@
 package com.haroot.mybatis;
 import java.sql.SQLException;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -50,9 +49,9 @@ public class LoginController
 			model.addAttribute("sid_code", dto.getSid_code());
 			model.addAttribute("nickname", dto.getMem_nickname());
 			session.setAttribute("sid_code", dto.getSid_code());
-			Cookie cookie = new Cookie("sid_code", dto.getSid_code());
-			cookie.setMaxAge(60);
-			response.addCookie(cookie);
+
+			String nickname = dao.searchNickName(dto.getSid_code());
+			session.setAttribute("nickname", nickname);
 			
 			result = "mainheader.action";
 			//System.out.println(sid_code);
@@ -97,8 +96,9 @@ public class LoginController
 	{
 		
 		String sid_code = (String)session.getAttribute("sid_code");
-		System.out.println(sid_code);
+		String nickname = (String)session.getAttribute("nickname");
       session.removeAttribute("sid_code");
+      session.removeAttribute("nickname");
       return "HarootPuppyMain.jsp";
 	}
 	

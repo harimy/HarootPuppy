@@ -29,13 +29,12 @@ public class DiarySelectPetController
 		
 		HttpSession session = req.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
-		
+		String nickname = (String)session.getAttribute("nickname");     
 		// System.out.println(sid_code);
 		
 		if (sid_code==null)		//-- 로그인이 되어있지 않은 상황
 			return "redirect:loginmem.action";
-		
-		session.setAttribute("sid_code", sid_code);
+
 		model.addAttribute("petList", petDao.searchPets(sid_code));	
 		return "/DiarySelectPet.jsp";
 	}

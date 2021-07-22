@@ -24,6 +24,8 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -47,6 +49,8 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -69,6 +73,8 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -92,6 +98,8 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -119,6 +127,8 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -143,6 +153,8 @@ public class AskController
 	{	
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -167,6 +179,8 @@ public class AskController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)

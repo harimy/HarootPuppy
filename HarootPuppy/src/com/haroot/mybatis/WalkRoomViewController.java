@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +32,12 @@ public class WalkRoomViewController
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 	    
+		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
+		model.addAttribute("nickname", mem.searchNickName(sid_code));
+		
 		if(sid_code == null) // 로그인 안한 상황
 		{
 			result = "redirect:loginMem.action";
@@ -94,13 +100,18 @@ public class WalkRoomViewController
 	
 	// 레디 고정 옵션 팝업창에서 호출 (팝업창은 닫히기 때문에 return 값 필요 없음)
 	@RequestMapping(value="/readyoptionupdate.action", method=RequestMethod.GET)
-	public String readyOptionUpdate(HttpServletRequest request) throws SQLException
+	public String readyOptionUpdate(HttpServletRequest request, Model model) throws SQLException
 	{
 		String result = "";
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
 		int walkroom_code = (int)session.getAttribute("walkroom_code");
+		String nickname = (String)session.getAttribute("nickname");
+
+		
+		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
+		model.addAttribute("nickname", mem.searchNickName(sid_code));
 		
 		if(sid_code == null) // 로그인 안한 상황
 		{
@@ -144,6 +155,8 @@ public class WalkRoomViewController
 		// 세션
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		//System.out.println("로그인 한 회원(세션) : " + sid_code);
 		
 		// 방 번호
@@ -193,6 +206,8 @@ public class WalkRoomViewController
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		int walkroom_code = (int)session.getAttribute("walkroom_code");
 		
 	    if(sid_code == null)	// 로그인 안했을 경우
@@ -239,6 +254,8 @@ public class WalkRoomViewController
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		int walkroom_code = (int)session.getAttribute("walkroom_code");
 		//System.out.println("walkroomguest walkroom_code : " + walkroom_code);
 		
@@ -284,6 +301,8 @@ public class WalkRoomViewController
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		
 		if(sid_code == null)
 		{
@@ -321,6 +340,8 @@ public class WalkRoomViewController
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		
 		if(sid_code == null)
 		{
@@ -349,6 +370,8 @@ public class WalkRoomViewController
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		
 		if(sid_code == null)
 		{
@@ -378,6 +401,8 @@ public class WalkRoomViewController
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
 		int walkroom_code = (int)session.getAttribute("walkroom_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		
 		if(sid_code == null)
 		{
@@ -419,6 +444,8 @@ public class WalkRoomViewController
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
 		int walkroom_code = (int)session.getAttribute("walkroom_code");
+		String nickname = (String)session.getAttribute("nickname");
+
 		
 		if(sid_code == null)
 		{
