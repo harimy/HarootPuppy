@@ -31,7 +31,7 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-	CountDownTimer('06/30/2021 09:30 PM', 'leftTime');
+	CountDownTimer("${room.walkroom_start }", 'leftTime');
 
 	function CountDownTimer(walkStart, id)
 	{
@@ -54,14 +54,16 @@
 
 				return;
 			}
-			var days = Math.floor(distance / _day);
-			var hours = Math.floor((distance % _day) / _hour);
-			var minutes = Math.floor((distance % _hour) / _minute);
-			var seconds = Math.floor((distance % _minute) / _second);
-
-			document.getElementById(id).innerHTML = hours + ':';
-			document.getElementById(id).innerHTML += minutes + ':';
-			document.getElementById(id).innerHTML += seconds;
+			
+			if( days > 0) remain += days + "일 ";
+			if( hours < 10) hours = "0" + hours;
+			remain += hours + ":";
+			if( minutes < 10) minutes = "0" + minutes;
+			remain += minutes + ":";
+			if( seconds < 10) seconds = "0" + seconds;
+			remain += seconds + "";
+			
+			document.getElementById(id).innerHTML = remain;
 		}
 
 		timer = setInterval(showRemaining, 1000); // 1초마다 반복되는 함
@@ -168,7 +170,7 @@
 				<div class="col-sm-4 col-md-3">
 					<div class="thumbnail">
 						<div class="nickName">
-							<div class="thumbLeft">${rs.mem_nickname }<img src="images/man.png" class="icons">
+							<div class="thumbLeft">${rs.mem_nickname }<img src="${ rs.mem_gender == 'F' ? 'images/girl.png'  : 'images/man.png' }" class="icons">
 							</div>
 							<div class="thumbRight">
 								<button type="button" class="menuBtn transparent-button">
@@ -190,11 +192,6 @@
 					<div class="masterTag" style="${ rs.walkroom_leader == rs.sid_code ? ''  : 'display: none;' }">방장</div>
 					<div class="notReadyTag" style="${ rs.walkroom_leader != rs.sid_code && rs.readystate_code == '0' ? ''  : 'display: none;' }">Ready 대기</div>
 					<div class="readyTag" style="${ rs.walkroom_leader != rs.sid_code && rs.readystate_code == '1' ? ''  : 'display: none;' }">Ready 완료</div>
-					<!-- 
-					<div class="masterTag">방장</div>
-					<div class="readyTag">Ready 완료</div>
-					<div class="notReadyTag">Ready 대기</div>
-					 -->
 					<br>
 				</div>
 			</c:forEach>

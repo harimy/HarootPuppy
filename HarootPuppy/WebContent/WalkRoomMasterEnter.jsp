@@ -35,7 +35,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-	CountDownTimer('06/30/2021 09:30 PM', 'leftTime');
+	CountDownTimer("${room.walkroom_start }", 'leftTime');
 
 	function CountDownTimer(walkStart, id)
 	{
@@ -51,6 +51,8 @@
 		{
 			var now = new Date();
 			var distance = end - now;
+			var remain = "";
+			
 			if (distance < 0)
 			{
 				clearInterval(timer); // 반복되는 함수를 종료
@@ -58,14 +60,27 @@
 
 				return;
 			}
+			
 			var days = Math.floor(distance / _day);
 			var hours = Math.floor((distance % _day) / _hour);
 			var minutes = Math.floor((distance % _hour) / _minute);
 			var seconds = Math.floor((distance % _minute) / _second);
+			
+			if( minutes == 30 )	// 산책 시작 시간까지 30분 남은 시점
+			{
+				// 매칭 버튼 클릭 기능
+			}
 
-			document.getElementById(id).innerHTML = hours + ':';
-			document.getElementById(id).innerHTML += minutes + ':';
-			document.getElementById(id).innerHTML += seconds;
+			if( days > 0) remain += days + "일 ";
+			if( hours < 10) hours = "0" + hours;
+			remain += hours + ":";
+			if( minutes < 10) minutes = "0" + minutes;
+			remain += minutes + ":";
+			if( seconds < 10) seconds = "0" + seconds;
+			remain += seconds + "";
+			
+			document.getElementById(id).innerHTML = remain;
+
 		}
 
 		timer = setInterval(showRemaining, 1000); // 1초마다 반복되는 함수
@@ -174,7 +189,7 @@
 	
 		<!-- 매칭 타이머 -->
 		<div id="leftTimer">
-			매칭 완료까지 <span id="leftTime"></span> 남음
+		 	산책 시작까지 <span id="leftTime"></span> 남음
 		</div>
 	
 		<!-- 매칭/준비 버튼 -->
@@ -183,11 +198,11 @@
 	
 		<!-- 참여자 프로필 -->
 		<div class="row">
-			<c:forEach var="room" items="${rooms }" >
+			<c:forEach var="rs" items="${rooms }" >
 				<div class="col-sm-4 col-md-3">
 					<div class="thumbnail">
 						<div class="nickName">
-							<div class="thumbLeft">${room.mem_nickname }<img src="images/man.png" class="icons">
+							<div class="thumbLeft">${rs.mem_nickname }<img src="${ rs.mem_gender == 'F' ? 'images/girl.png'  : 'images/man.png' }" class="icons">
 							</div>
 							<div class="thumbRight">
 								<button type="button" class="menuBtn transparent-button">
@@ -198,23 +213,18 @@
 						<br> <img class="img-responsive"
 							src="<%=cp%>/images/jaerong.jpg">
 						<div class="caption">
-							<div style="font-size: 20px; font-weight: bold;">${room.pet_name } (${room.pet_type_name }, ${room.pet_age })</div><br>
+							<div style="font-size: 20px; font-weight: bold;">${rs.pet_name } (${rs.pet_type_name }, ${rs.pet_age })</div><br>
 							<div style="display: inline-block;">
 								<p style="display: inline-block;">
-									${room.pet_desex_content }<br> ${room.pet_bite_content }<br>
-									${room.pet_char1_content}<br> ${room.pet_char2_content }<br> ${room.pet_char3_content }<br> ${room.pet_char4_content }<br>
+									${rs.pet_desex_content }<br> ${rs.pet_bite_content }<br>
+									${rs.pet_char1_content}<br> ${rs.pet_char2_content }<br> ${rs.pet_char3_content }<br> ${rs.pet_char4_content }<br>
 								</p>
 							</div>
 						</div>
 					</div>
-					<div class="masterTag" style="${ room.walkroom_leader == room.sid_code ? ''  : 'display: none;' }">방장</div>
-					<div class="notReadyTag" style="${ room.walkroom_leader != room.sid_code ? ''  : 'display: none;' }">Ready 대기</div>
-					<div class="readyTag" style="display:none;">Ready 완료</div>
-					<!-- 
-					<div class="masterTag">방장</div>
-					<div class="readyTag">Ready 완료</div>
-					<div class="notReadyTag">Ready 대기</div>
-					 -->
+					<div class="masterTag" style="${ rs.walkroom_leader == rs.sid_code ? ''  : 'display: none;' }">방장</div>
+					<div class="notReadyTag" style="${ rs.walkroom_leader != rs.sid_code && rs.readystate_code == '0' ? ''  : 'display: none;' }">Ready 대기</div>
+					<div class="readyTag" style="${ rs.walkroom_leader != rs.sid_code && rs.readystate_code == '1' ? ''  : 'display: none;' }">Ready 완료</div>
 					<br>
 				</div>
 			</c:forEach>	 
