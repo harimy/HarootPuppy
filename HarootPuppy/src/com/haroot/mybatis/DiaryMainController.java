@@ -32,6 +32,9 @@ public class DiaryMainController
 		session.setAttribute("sid_code", sid_code);
 		model.addAttribute("sid_code", sid_code);
 		
+		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
+		model.addAttribute("nickname", mem.searchNickName(sid_code));
+		
 		String pet_code = req.getParameter("pet_code");
 		session.setAttribute("pet_code", pet_code);
 		model.addAttribute("pet_code", pet_code);

@@ -32,7 +32,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="Main.jsp" />
+<!--<jsp:include page="Main.jsp" />-->
 <br><br>
 <div id="content" style="width: 85%; margin: auto;">
 	<form>

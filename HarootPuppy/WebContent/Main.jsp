@@ -71,14 +71,14 @@
         </ul> 
     </li>
     <li class="menu3">
-        <a href="ReportMain.jsp">자유게시판</a>
+        <a href="boardlist.action">자유게시판</a>
         <ul class="menu3_s submenu">
-            <li style="margin-top: 5px;"><a href=".jsp">자유게시판</a></li>
+            <li style="margin-top: 5px;"><a href="boardlist.action">자유게시판</a></li>
             <li>HOT 게시판<li>
         </ul>   
     </li>
     <li class="menu4">
-    	<a href="AllUserInfoList.jsp">고객 지원</a>
+    	<a href="FaqList.jsp">고객 지원</a>
     </li>
 
 </ul>

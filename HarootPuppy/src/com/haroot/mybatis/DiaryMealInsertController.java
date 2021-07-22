@@ -30,7 +30,7 @@ public class DiaryMealInsertController
 	public String insertmeal(DiaryMealDTO mealDto) throws SQLException 
 	{
 		IDiaryMealDAO mealDao = sqlSession.getMapper(IDiaryMealDAO.class);
-	
+		
 		System.out.println(mealDto.getCommon_start());
 		mealDao.addMeal2(mealDto);
 		

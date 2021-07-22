@@ -17,19 +17,16 @@
 <meta charset="UTF-8">
 <title>PetAdd.jsp</title>
 
-<!-- 제이쿼리 -->
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
-<!-- jQuery-UI CSS -->
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
 
-<!-- 부트스트랩 -->
+
 <script type="text/javascript" src="js/bootstrap.js"></script>
 
-<!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="<%=cp %>/css/menuStyle.css">
-<link rel="stylesheet" type="text/css" href="<%=cp %>/css/jquery-ui.css">
+<!-- <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">  -->
+
+<link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <script type="text/javascript">
 
 
@@ -41,7 +38,7 @@
 		
 		// js 폴더, css 폴더 파일 확인 
 		// jQuery-UI 캘린더를 불러오는 함수 처리 (datepicker())
-		$("#birthday").datepicker(
+		$("#pet_birth").datepicker(
 		{
 			dateFormat: "yy-mm-dd"
 			, changeMonth: true
@@ -52,8 +49,11 @@
 		$("#add").click(function()
 		{
 			alert($("#pet_photo").val());
-		});
+		});            
 		*/
+		
+		
+		$
 	});
 
 	
@@ -96,6 +96,8 @@
 		    var open = window.open('PetTypeSelect.jsp', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );	 		
 	 		
 	  }
+	 
+	 
 	 
 	 
 
@@ -248,7 +250,7 @@
 ------------------------------->
 <!-- 메뉴영역 -->
 <div id="harootHeader">
-	<c:import url="MainTest.jsp"></c:import>
+	<c:import url="Main.jsp"></c:import>
 </div>
 		
 <br><br><br><br>
@@ -287,7 +289,7 @@
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><input type="text" id="birthday" name="pet_birth" placeholder="생년월일" /></td>
+				<td><input type="text" id="pet_birth" name="pet_birth" placeholder="생년월일" /></td>
 			</tr>
 			<tr>
 				<th>중성화 여부</th>
@@ -385,15 +387,15 @@
 				<th>사회성정보</th>
 				<td style="text-align: left;">
 					<div class="stars" style="display: inline-block;">
-						<input type="radio" id="five" name="rate" value="5">
+						<input type="radio" id="five" name="pet_social" value="5">
 						<label for="five"></label> 
-						<input type="radio" id="four" name="rate" value="4"> 
+						<input type="radio" id="four" name="pet_social" value="4"> 
 						<label for="four"></label> 
-						<input type="radio" id="three" name="rate" value="3">
+						<input type="radio" id="three" name="pet_social" value="3">
 						<label for="three"></label> 
-						<input type="radio" id="two" name="rate" value="2"> 
+						<input type="radio" id="two" name="pet_social" value="2"> 
 						<label for="two"></label> 
-						<input type="radio" id="one" name="rate" value="1"> 
+						<input type="radio" id="one" name="pet_social" value="1"> 
 						<label for="one"></label> 
 						<span class="result"></span>
 					</div>
@@ -402,39 +404,39 @@
 			<tr>
 				<th>성격</th>
 				<td>1. 
-	              	<input type="radio" name="pet_char1_content" id="s1" value="활발">
+	              	<input type="radio" name="pet_char1_content" id="c1" value="활발해요">
 	              	<label for="활발">활발해요</label>
-	             	<input type="radio" name="pet_char1_content	" id="s2" value="얌전">
+	             	<input type="radio" name="pet_char1_content	" id="c2" value="얌전해요">
 	             	<label for="얌전">얌전해요</label>
 	             	<br>
 	             		
 	             	2. 
-	             	<input type="radio" name="pet_char2_content" id="s3" value="겁">
+	             	<input type="radio" name="pet_char2_content" id="c3" value="겁이 많아요">
 	              	<label for="겁">겁이많아요</label>
-	             	<input type="radio" name="pet_char2_content" id="s4" value="아니요">
+	             	<input type="radio" name="pet_char2_content" id="c4" value="대범해요">
 	             	<label for="no">아니요</label>
 	             	<br>
 	             		
 	             	3.
-	             	<input type="radio" name="pet_char3_content" id="s5" value="말">
+	             	<input type="radio" name="pet_char3_content" id="c5" value="말이 많아요">
 	              	<label for="말">말이 많아요</label>
-	             	<input type="radio" name="pet_char3_content" id="s6" value="조용">
+	             	<input type="radio" name="pet_char3_content" id="c6" value="조용해요">
 	             	<label for="조용">조용해요</label>
 	             	<br>
 	             		
 	             	4.
-	             	<input type="radio" name="pet_char4_content" id="s7" value="주인">
+	             	<input type="radio" name="pet_char4_content" id="c7" value="주인바라기">
 	              	<label for="주인">주인바라기</label>
-	             	<input type="radio" name="pet_char4_content" id="s8" value="사람">
-	             	<label for="사람">사람이면 다 좋아해요</label>
+	             	<input type="radio" name="pet_char4_content" id="c8" value="사람이면 다 좋아요">
+	             	<label for="사람">사람이면 다 좋아요</label>
 	             </td>  		
 			</tr>						
 			<tr>
 				<th>입질 여부</th>
 				<td>
-	              	<input type="radio" name="bite" id="no" value="안물어요">
+	              	<input type="radio" name="bite_content" id="no" value="입질 없음">
 	              	<label for="no">안물어요</label>
-	             	<input type="radio" name="bite" id="yes" value="물어요">
+	             	<input type="radio" name="bite_content" id="yes" value="입질 있음">
 	             	<label for="yes">물어요</label>
 		        </td>
 			</tr>     
