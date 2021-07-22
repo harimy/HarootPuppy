@@ -29,6 +29,8 @@ public class BoardController
 
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -53,10 +55,12 @@ public class BoardController
 	
 	// 게시글 등록 폼
 	@RequestMapping(value="/boardinsertform.action", method=RequestMethod.GET)
-	public String boardInsertForm(HttpServletRequest request, ModelMap model) throws SQLException
+	public String boardInsertForm(HttpServletRequest request, Model model) throws SQLException
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -79,10 +83,12 @@ public class BoardController
 	
 	// 게시글 등록
 	@RequestMapping(value="/boardinsert.action", method=RequestMethod.POST)
-	public String boardInsert(HttpServletRequest request, BoardDTO board) throws IOException, SQLException
+	public String boardInsert(HttpServletRequest request, BoardDTO board, Model model) throws IOException, SQLException
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -109,6 +115,8 @@ public class BoardController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -133,6 +141,8 @@ public class BoardController
 	{
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)
@@ -154,10 +164,12 @@ public class BoardController
 	
 	// 게시글 수정
 	@RequestMapping(value="/boardupdate.action", method=RequestMethod.POST)
-	public String boardUpdate(HttpServletRequest request, BoardDTO board) throws SQLException
+	public String boardUpdate(HttpServletRequest request, BoardDTO board, Model model) throws SQLException
 	{	
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String nickname = (String)session.getAttribute("nickname");
+		
 		String result = null;
 		
 		if(sid_code=="" || sid_code==null)

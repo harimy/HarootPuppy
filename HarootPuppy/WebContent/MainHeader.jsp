@@ -39,10 +39,25 @@ span{
 <script type="text/javascript">
 	$(document).ready(function()
 	{
+		
+		$('#logo').click(function()
+		{
+			if ( $("#loginCheck1").val() != "" )
+			{
+				$("#logo").attr("onclick", "location.href='main.action'");
+			}
+			else
+			{
+				$("#logo").attr("onclick", "location.href='beforemain.action'");
+			}
+		});
+
+		/*
 		$('#loginCheck').click(function()
 		{
 			alert($('#loginCheck1').val());
 		});
+		*/
 		
 		$("#myPage").css('display', "none");
 		$("#notice").css('display', "none");
@@ -86,7 +101,7 @@ span{
 </script>
 </head>
 <body>
-	<form method="POST">
+	<form method="GET">
 		<div id="harootHeader">
 			<div style="float: left;">
 				<span id="log" onclick="location.href='login.action'">로그인&nbsp;&nbsp;&nbsp;</span>
@@ -101,8 +116,7 @@ span{
 				<span id="welcome" onclick="location.href='registerform.action'">회원가입</span>&nbsp;&nbsp;&nbsp;
 			</div>
 			<div id="logo" style="text-align: center;">
-				<button type="button" class="transparent-button"
-					onclick="location.href='beforemain.action'">
+				<button type="button" class="transparent-button" id="logo" onclick="">
 					<img alt="" src="images/mainlogo.png" width="250" height="100"
 						border="0">
 				</button>
