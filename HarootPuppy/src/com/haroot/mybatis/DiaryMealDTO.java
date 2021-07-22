@@ -4,7 +4,7 @@ public class DiaryMealDTO
 {
 	// 속성
 	private DiaryCommonDTO commonDto;	// 공통항목 속성
-	private String meal_type_code		// 사료타입코드
+	private String meal_type_code		// 사료타입코드 
 				, meal_type_content		// 사료타입내용
 				, meal_info_code 		// 사료정보코드
 				, favorite_code			// 즐겨찾기코드
@@ -23,11 +23,18 @@ public class DiaryMealDTO
 				, sid_code				// 회원코드
 				, pet_code;				// 반려견코드
 	
+	private int meal_amount;		// 사료양
 				
 	
+	// getter / setter 생성	
 	public String getCommon_memo()
 	{
 		return common_memo;
+	}
+
+	public String getMeal_type_content()
+	{
+		return meal_type_content;
 	}
 
 	public void setCommon_memo(String common_memo)
@@ -94,11 +101,7 @@ public class DiaryMealDTO
 	{
 		this.common_end = common_end;
 	}
-
-	private int meal_amount;			// 사료양
 	
-	
-	// getter / setter 생성
 	public String getMeal_type_code()
 	{
 		return meal_type_code;
@@ -109,10 +112,6 @@ public class DiaryMealDTO
 		this.meal_type_code = meal_type_code;
 	}
 
-	public String getMeal_type_content()
-	{
-		return meal_type_content;
-	}
 
 	public void setMeal_type_content(String meal_type_content)
 	{

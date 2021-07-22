@@ -93,7 +93,7 @@ public class AdminMainController
       
       if(admin_code!=null)
       {
-         return "/WEB-INF/views/AdminMain.jsp";
+         return "AdminMain.jsp";
       }
       else
       {

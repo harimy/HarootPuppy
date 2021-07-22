@@ -302,7 +302,7 @@ $(function()
          </div>
          <!-- 정보보기 버튼 -->
          <div style="text-align: right; margin-right: 500px;">
-            <button type="button" class="btn btn-success" id="petInfo" value="${list.pet_code }" onclick="location.href='DiaryInfo.jsp'">
+            <button type="button" class="btn btn-success" id="petInfo" value="${list.pet_code }" onclick="location.href='diaryinfo.action'">
                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                   fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
                     <path

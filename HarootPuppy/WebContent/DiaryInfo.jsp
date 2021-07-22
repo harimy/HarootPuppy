@@ -169,8 +169,8 @@ max-width: 30px;
 
    <div>
       <!-- 메뉴영역 -->
-      <div>
-         <jsp:include page="Main.jsp" />
+      <div id="harootHeader">
+         <c:import url="Main.jsp"></c:import>
       </div>
 
       <!-- content 영역 -->
@@ -178,39 +178,61 @@ max-width: 30px;
       <div>
          <!-- 반려견 요약 정보 -->
          <div style="text-align: center;">
+
             <img id="print" src="<%=cp%>/images/icons/main/print.png" onclick="window.print()"><br>
-            <h2>재롱이 정보</h2>
+            <%-- <img id="print" src="<%=cp%>${infoList.pet_photo }" onclick="window.print()"><br> --%>
+            
+          
+           <!--  <h2>재롱이 정보</h2> -->
+            <h2>${infoList.pet_name } 정보</h2>
+            
             <img style="   border: 5px solid #ffc107;-webkit-border-radius: 50px;
             max-width: 200px; height: 200px; margin: 0px auto;" src="<%=cp%>/images/puppy1.png"><br>
             <br><br>
             <table class="table table-sm">
                <tr>
-                     <th scope="col">#</th>
-                     <th scope="col">내용</th>
+                  <th scope="col">#</th>
+                  <th scope="col">내용</th>
                 </tr>
                <tr>
                   <td>이름</td>
-                  <td>${list.pet_name }</td>
+                  <td>${infoList.pet_name }</td>
                </tr>
                <tr>
                   <td>생일</td>
-                  <td>남</td>
+                  <td>${infoList.pet_birth }</td>
                </tr>
                <tr>
                   <td>성별</td>
-                  <td>수컷</td>
+                   <td>${infoList.desex_content }</td>
                </tr>
                <tr>
-                  <td>성격</td>
-                  <td>활발해요 / 사람좋아 / ...  </td>
+                  <td>성격 (1)</td>
+                  <td>${infoList.pet_char1_content }<br></td>
                </tr>
+               
+               <tr>
+                  <td>성격 (2)</td>
+                  <td>${infoList.pet_char2_content }<br></td>
+               </tr>
+               
+               <tr>
+                  <td>성격 (3)</td>
+                  <td>${infoList.pet_char3_content }<br></td>
+               </tr>
+               
+               <tr>
+                  <td>성격 (4)</td>
+                  <td>${infoList.pet_char4_content }<br></td>
+               </tr>
+               
                <tr>
                   <td>반려견등록번호</td>
-                  <td>4234234</td>
+                  <td>${infoList.pet_regnum }</td>
                </tr>
                <tr>
                   <td>품종</td>
-                  <td>리트리버</td>
+                  <td>${infoList.pet_type_name }</td>
                </tr>
                <tr>
                   <td>접종내역</td>
@@ -222,48 +244,20 @@ max-width: 30px;
                </tr>
             </table>
             
-            
-            
+       
+        </div>    
+        
+
+         <!-- 타임라인 -->
+         <div id="timeline">
+         <c:import url="DiaryTimeLine.jsp"></c:import>
          </div>
-         <!-- 타임라인 영역 -->
-         <div class="container timeContainer">
-            <div class="wrapper timeWrapper">
-               <h1 style="text-align: center;" id="h1Time">2021.06.29</h1>
-               <ul class="sessions timeLineUl">
-                  <li class="timeLineLi">
-                     <div class="time">09:00 AM</div>
-                     <span>산책</span><br>
-                     <span>날씨 : 좋음</span><br>
-                     <span class="memo">산책하다가 귀여운 강아지 만남!</span>
-                  </li>
-                  <li class="timeLineLi">
-                     <div class="time">09:30 AM</div>
-                     <span>관리명</span><br>
-                     <span>관리내용</span><br>
-                     <span class="memo">메모</span>
-                  </li>
-                  <li class="timeLineLi">
-                     <div class="time">09:30 AM</div>
-                     <span>관리명</span><br>
-                     <span>관리내용</span><br>
-                     <span class="memo">메모</span>
-                  </li>
-                  <li class="timeLineLi">
-                     <div class="time">09:30 AM</div>
-                     <span>관리명</span><br>
-                     <span>관리내용</span><br>
-                     <span class="memo">메모</span>
-                  </li>
-                  <li class="timeLineLi"></li>
-               </ul>
-            </div>
-         </div><!-- div.container -->
          
       </div>
 
       <!-- 하단 회사 설명 영역 -->
       <div>
-         <%-- <c:import url="하단메뉴.jsp"></c:import> --%>
+         <c:import url="MainFooter.jsp"></c:import>
       </div>
    </div>
 

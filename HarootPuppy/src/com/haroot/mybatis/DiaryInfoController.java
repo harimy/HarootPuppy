@@ -14,36 +14,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class DiaryMainController 
+public class DiaryInfoController 
 {
 	// SqlSession 을 활용하여 마이바티스 객체 의존성 (자동) 주입
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 반려견 선택 → 반려견의 다이어리 
-	@RequestMapping(value="diarymain.action", method = RequestMethod.GET)
+	// 다이어리 내 반려견 정보 보기
+	@RequestMapping(value="diaryinfo.action", method = RequestMethod.GET)
 	public String startDiary(HttpServletRequest req, HttpServletResponse response, ModelMap model) throws SQLException 
 	{
 		IPetDAO petDao = sqlSession.getMapper(IPetDAO.class);
 		
 		HttpSession session = req.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
+		String pet_code = (String)session.getAttribute("pet_code");
 		
 		session.setAttribute("sid_code", sid_code);
 		model.addAttribute("sid_code", sid_code);
 		
-		String pet_code = req.getParameter("pet_code");
 		session.setAttribute("pet_code", pet_code);
-		
-		// System.out.println("세션" + pet_code);
-		// System.out.println("파라미터" + req.getParameter("pet_code"));
-		
 		model.addAttribute("pet_code", pet_code);
 		
-		model.addAttribute("list", petDao.petInfo(pet_code));
+		model.addAttribute("infoList", petDao.petInfo2(pet_code));
 
+		// System.out.println("세션2" + pet_code);
 		
-		return "/DiaryMain.jsp";
+		return "/DiaryInfo.jsp";
 	}
 	
 
