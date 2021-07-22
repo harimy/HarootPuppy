@@ -38,32 +38,20 @@ String cp = request.getContextPath();
 	
 	
 	
-	$(function()
+/* 	$(function()
 	{
 		$("#errForm").css("display", "none");
 		
 		if ( $("#start1").val()=="" || $("#end1").val()==""
 			|| $("#meal_name").val()=="" 
-			|| $("#meal_amount").val()=="" 
+			|| $("#meal_amount").val()=="" )
 		{
 			$("#errForm").css("display" ,"inline");
 			return;
 		} 
 		
-	});
-	
-/* 	$(function()
-	{
-	 $(".final_btn").click(function()
-		{
-		 alert($(this).val());
-		 $(location).attr("href", "addtodiary.action?pet_code="+ $(this).val() );
-		 
-		
-		});
-	 
 	}); */
-
+	
 	
 </script>
 <style type="text/css">
@@ -195,10 +183,19 @@ String cp = request.getContextPath();
 					class="focusedInput form-time-control" id="end1">
 			</div>
 			
+			
+			<!-- 즐겨찾기 목록 selectbox  -->
+			<label for="focusedInput"> 즐겨찾기 : </label>
+			<select name="privateList">
+				<option vaue="미리보기">미리보기</option>
+			</select>
+			
 			<!-- 즐겨찾기 추가 버튼 (하트)  -->	
 			<button type="button" class="btn btn-primary" onclick="add_private()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
   			<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
 			</svg></button>
+			
+		
 			
 			<!-- 즐겨찾기 영역 -->
 			<div style="background-color: #F6CEE3; width: 450px; height: 200px;">
@@ -217,7 +214,7 @@ String cp = request.getContextPath();
 					placeholder="숫자만 입력하세요" name="meal_amount">g
 				</div>
 				
-				<span class="input-group-text form-control" id="">사료 종류</span>
+				<span class="input-group-text form-control" id="mealType">사료 종류</span>
 				<input type="radio" name="meal_type" id="dryMeal" >
 				<label for="dryMeal">건식</label>
 				<input type="radio" name="meal_type" id="wetMeal" >

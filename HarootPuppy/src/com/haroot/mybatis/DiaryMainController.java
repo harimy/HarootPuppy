@@ -37,11 +37,14 @@ public class DiaryMainController
 		
 		String pet_code = req.getParameter("pet_code");
 		session.setAttribute("pet_code", pet_code);
+		
+		// System.out.println("세션" + pet_code);
+		// System.out.println("파라미터" + req.getParameter("pet_code"));
+		
 		model.addAttribute("pet_code", pet_code);
 		
 		model.addAttribute("list", petDao.petInfo(pet_code));
 
-		//System.out.println(pet_code);
 		
 		return "/DiaryMain.jsp";
 	}
