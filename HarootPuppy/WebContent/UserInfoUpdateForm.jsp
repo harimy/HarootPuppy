@@ -9,6 +9,16 @@ String cp = request.getContextPath();
 <head>
 <meta charset="UTF-8">
 <title>UserInfoUpdateForm.jsp</title>
+<!-- jQuery JS -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
+<!-- jQuery-UI CSS -->
+<link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
+
+<!--  부트스트랩 JS -->
+<script type="text/javascript" src="<%=cp%>/js/bootstrap.js"></script>
+<!-- 부트스트랩 CSS -->
+<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 
 <style type="text/css">
 
@@ -17,7 +27,10 @@ String cp = request.getContextPath();
 #tbl_userRead .info 
 {	
 	width: 250px; 
+	margin-bottom: 5px;
 }
+
+
 
 </style>
 
@@ -38,9 +51,44 @@ String cp = request.getContextPath();
 
 	function goSubmit() 
 	{
+		<%-- 
 		f = document.getElementById("adminMemberUdpateForm");
 		f.target = "parentForm";
 		f.action= "<%=cp%>/adminmemberupdate.action";
+		f.submit();
+		self.close();
+		 --%>
+		 
+		f = document.getElementById("adminMemberUdpateForm");
+		f.target = "parentForm";
+		f.action= "<%=cp%>/adminmemberupdate.action";
+		 
+		if( $("#mem_name").val() == "")
+		{
+			alert("이름을 입력하세요.");
+			$("#mem_name").focus();
+			return;
+		}
+		if( $("#mem_nickname").val() == "")
+		{
+			alert("닉네임을 입력하세요.");
+			$("#mem_nickname").focus();
+			return;
+		}
+		if( $("#mem_tel").val() == "")
+		{
+			alert("핸드폰번호를 입력하세요.");
+			$("#mem_tel").focus();
+			return;
+		}
+		if( $("#mem_addr").val() == "")
+		{
+			alert("주소를 입력하세요.");
+			$("#mem_addr").focus();
+			return;
+		}
+		 
+		 
 		f.submit();
 		self.close();
 		
@@ -56,7 +104,7 @@ String cp = request.getContextPath();
 
 	<div>
 		<!-- <form action="adminmemberupdate.action" method="POST"> -->
-		<form name="adminMemberUdpateForm" id="adminMemberUdpateForm" method="POST">
+		<form name="adminMemberUdpateForm" id="adminMemberUdpateForm" method="POST" style="margin-left: 20px;">
 			<table id="tbl_userRead" style="text-align: left;">
 				<tr> 
 					<th style="width: 230px;">회원식별번호</th>
@@ -83,19 +131,19 @@ String cp = request.getContextPath();
 				<tr>
 					<th>이름</th>
 					<td>
-					<input type="text" name="mem_name" class="info" value="${search.mem_name }" />
+					<input type="text" name="mem_name" id="mem_name" class="info" value="${search.mem_name }" />
 					</td>
 				</tr>
 				<tr>
 					<th>닉네임</th>
 					<td>
-						<input type="text" name="mem_nickname" class="info" value="${search.mem_nickname }" />
+						<input type="text" name="mem_nickname" id="mem_nickname" class="info" value="${search.mem_nickname }" />
 						
 					</td>
 				</tr>
 				<tr>
 					<th>성별</th>
-					<td>
+					<td style="margin-bottom: 5px;">
 						<select name="mem_gender">
 							<option value="F" ${"F"== search.mem_gender ? "selected='selected'"  : "" }>여자</option>		 
 							<option value="M" ${"M"== search.mem_gender ? "selected='selected'"  : "" }>남자</option>		 
@@ -112,13 +160,13 @@ String cp = request.getContextPath();
 				<tr>
 					<th>핸드폰번호</th>
 					<td>
-						<input type="text" name="mem_tel" class="info" value="${search.mem_tel }" placeholder="xxx-xxxx-xxxx"/>
+						<input type="text" name="mem_tel" id="mem_tel" class="info" value="${search.mem_tel }" placeholder="xxx-xxxx-xxxx"/>
 					</td>
 				</tr>
 				<tr>
 					<th>주소</th>
 					<td>
-						<input type="text" name="mem_addr" class="info" value="${search.mem_addr }" />
+						<input type="text" name="mem_addr" id="mem_addr" class="info" value="${search.mem_addr }" />
 					</td>
 				</tr> 
 				<tr>
@@ -154,11 +202,14 @@ String cp = request.getContextPath();
 			</table>
 			<br><br>
 		
-			 <div style="width: 496px; text-align: right; display: inline-block;">
-				<button type="button" class="" onclick="closeUserRead()" style="float: left;">취소</button>
-				<input type="button" onclick="goSubmit()" value="수정" style="float: right;">
-				<button type="reset" class="" style="float: right;">초기화</button>
+			<div style="width: 496px; text-align: right; display: inline-block;">
+				<button type="button" class="btn btn-warning" onclick="closeUserRead()" style="float: left; margin-left: 20px; ">닫기</button>
+				<input type="button" class="btn btn-success" onclick="goSubmit()" value="수정" style="float: right; margin-right: 10px;">
+				<button type="reset" class="btn btn-warning" style="float: right; ">초기화</button>
 			</div>
+			
+			
+			
 		</form>	
 	</div>
 

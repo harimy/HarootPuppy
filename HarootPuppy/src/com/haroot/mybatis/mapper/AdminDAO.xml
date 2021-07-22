@@ -17,5 +17,35 @@
 		FROM TBL_ADMIN
 		WHERE ADMIN_CODE=#{admin_code}	
 	</select>
+	
+	
+	<!-- 관리자 전체 출력 -->
+	<select id="list" resultType="com.haroot.mybatis.AdminDTO">
+	SELECT ADMIN_CODE, ADMIN_ID, ADMIN_NAME
+		, TO_CHAR(ADMIN_REGDATE, 'YYYY-MM-DD') AS ADMIN_REGDATE
+	FROM TBL_ADMIN
+	</select>
+	
+	<!-- 관리자 정보 삭제 -->
+	<delete id="remove">
+      DELETE
+      FROM TBL_ADMIN
+      WHERE ADMIN_CODE = #{admin_code}
+   </delete>
+   
+   
+   <insert id="add" parameterType="com.haroot.mybatis.AdminDTO">
+	   	<selectKey keyProperty="admin_code" resultType="java.lang.String" order="BEFORE">
+	   		SELECT 'ADM'||ADMIN_SEQ.NEXTVAL
+			FROM DUAL
+			 <!-- select '9999' as admin_code from dual -->
+	   	</selectKey>
+	   
+	   INSERT INTO TBL_ADMIN(ADMIN_CODE, ADMIN_ID, ADMIN_PW, ADMIN_NAME, ADMIN_REGDATE)
+		VALUES( #{admin_code}, #{admin_id}, CRYPTPACK.ENCRYPT(#{admin_pw}, #{admin_id}), #{admin_name}, SYSDATE)
+	<!--    INSERT INTO TBL_ADMIN(ADMIN_CODE, ADMIN_ID, ADMIN_PW, ADMIN_NAME, ADMIN_REGDATE)
+		VALUES( 'ADM'||ADMIN_SEQ.NEXTVAL, #{admin_id}, CRYPTPACK.ENCRYPT(#{admin_pw}, #{admin_id}), #{admin_name}, SYSDATE) -->
+	   
+   </insert>
 	 
 </mapper>

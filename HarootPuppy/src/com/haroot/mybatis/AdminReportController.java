@@ -75,7 +75,7 @@ public class AdminReportController
 			model.addAttribute("list3", offdao.list());
 		
 		
-		return "/WEB-INF/views/ReportMain.jsp";
+		return "ReportMain.jsp";
 	
 	}
 	
@@ -102,7 +102,7 @@ public class AdminReportController
 		// 신고확정
 		model.addAttribute("adBoardReportList3", report.adBoardReportList3());
 		
-		return "/WEB-INF/views/ReportedBoardTab.jsp";
+		return "ReportedBoardTab.jsp";
 	}
 	
 	
@@ -126,7 +126,7 @@ public class AdminReportController
 		
 		model.addAttribute("search", report.search(rep_log_code));
 		
-		return "/WEB-INF/views/ReportedBoardRead.jsp";
+		return "ReportedBoardRead.jsp";
 	}
 	
 	// 관리자 > 신고관리 > 게시물 신고처리 

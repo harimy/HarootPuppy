@@ -41,7 +41,7 @@ public class AdminMemberController
 		model.addAttribute("normalCount", dao.normalCount());
 		
 		
-		return "/WEB-INF/views/AllUserInfoList.jsp";
+		return "AllUserInfoList.jsp";
 	}
 	
 	// 관리자 > 회원관리 > 회원정보 세부보기
@@ -63,7 +63,7 @@ public class AdminMemberController
 		// 반려견 아이디, 반려견 이름 전달
 		model.addAttribute("petList", petdao.searchPets(sid_code));
 		
-		return "/WEB-INF/views/UserInfoRead.jsp";
+		return "UserInfoRead.jsp";
 	}
 	
 	// 관리자 > 회원관리 > 회원정보 수정 폼
@@ -85,7 +85,7 @@ public class AdminMemberController
 		// 반려견 아이디, 반려견 이름 전달 
 		model.addAttribute("petList", petdao.searchPets(sid_code));
 		 
-		return "/WEB-INF/views/UserInfoUpdateForm.jsp";
+		return "UserInfoUpdateForm.jsp";
 	}
 	
 	// 관리자 > 회원관리 > 회원 정보 수정
@@ -108,7 +108,7 @@ public class AdminMemberController
 	{
 		String mem_code = request.getParameter("mem_code");
 		
-		System.out.println(mem_code);
+		//System.out.println(mem_code);
 		
 		
 		try
@@ -131,7 +131,50 @@ public class AdminMemberController
 	public String adminManageadmin(ModelMap model) throws SQLException
 	{
 		
-		return "/WEB-INF/views/AdminInfoList.jsp";
+		IAdminDAO admin = sqlSession.getMapper(IAdminDAO.class);
+		
+		// 관리자 회원 정보 리스트 전달
+		model.addAttribute("adminList", admin.list());
+		
+		return "AdminInfoList.jsp";
 	}
+	
+	
+	// 관리자 > 회원관리 관리자정보 삭제
+	@RequestMapping(value="/admindelete.action", method=RequestMethod.GET)
+	public String admindeleteadmin(ModelMap model, HttpServletRequest request) throws SQLException
+	{
+		String admin_code = request.getParameter("admin_code");
+		
+		System.out.println(admin_code);
+		
+		IAdminDAO admin = sqlSession.getMapper(IAdminDAO.class);
+		
+		// 관리자 회원 정보 리스트 전달
+		model.addAttribute("adminList", admin.remove(admin_code));
+		
+		return "redirect:adminmanageadmin.action";
+	}
+	// 관리자 > 회원관리 관리자 추가 폼페이지 
+	@RequestMapping(value="/admininsertform.action", method=RequestMethod.GET)
+	public String admininsertform(ModelMap model) throws SQLException
+	{
+		
+		return "AdminInsertForm.jsp";
+	}
+	
+	// 관리자 > 회원관리 관리자 추가
+	@RequestMapping(value="/admininsertadmin.action", method=RequestMethod.GET)
+	public String admininsertadmin(ModelMap model, AdminDTO dto) throws SQLException
+	{
+		
+		IAdminDAO admin = sqlSession.getMapper(IAdminDAO.class);
+		
+		admin.add(dto);
+		
+		return "redirect:adminmanageadmin.action";
+	}
+	
+	
 	
 }
