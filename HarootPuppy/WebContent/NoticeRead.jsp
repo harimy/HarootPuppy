@@ -1,129 +1,114 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>NoticeRead.jsp</title>
-
-<!-- jQuery JS -->
+<!-- 부트스트랩 css -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 제이쿼리 script -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
-<!-- jQuery-UI CSS -->
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
-
-<!--  부트스트랩 JS -->
-<script type="text/javascript" src="<%=cp%>/js/bootstrap.js"></script>
-<!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
-
+<!-- 부트스트랩 script -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 부트스트랩 테마 css -->
+<script src="<%=cp %>/js/bootstrap.min.js"></script>
 <style type="text/css">
 
-#adminNoticeRead
+#noticeDiv
 {
-   margin: 10px auto;
-   width: 900px; /* 800px 고정 */
-
+	width: 917px; 
+	margin: 100px auto;
+}
+ 
+.boardTh
+{
+	padding: 4px;
 }
 
-
-#harootContent
-{
-   width: 863px;
-   height: auto;
-   resize: none;	
-}
+.btn:hover { background: rgb(244,188,23);}
 
 </style>
 
+<script type="text/javascript">
+
+
+	
+</script>
+
+
+
 </head>
 <body>
-
-<!-----------------------------
-  NoticeRead.jsp
-  - 관리자 공지 글 하나 읽어보기
-------------------------------->
 <div>
 	<!-- 메뉴영역 -->
 	<div id="harootHeader">
 		<c:import url="AdminMenu.jsp"></c:import>
 	</div>
-
-	<!-- content 영역 -->
-	<div id="adminNoticeRead">
-			<form>
-				<div>
-					<h1>리뷰에 관한 건</h1>
-					<h4>관리자001</h4>
-				</div>
-
-				<div>
-					<table>
-						<tr>
-							<td>21.07.03 13:34&nbsp;&nbsp;</td>
-							<td>조회수 15&nbsp;&nbsp;</td>
-							<td>좋아요 8&nbsp;&nbsp;</td>
-							<td style="float: right;"><img alt=""
-								src="images/like2.png" width="35" height="35" border="0"
-								id="like"> <img alt="" src="images/report2.png"
-								width="35" height="35" border="0" id="report"></td>
-						</tr>
-					</table>
-				</div>
-
-				<div>
-					 <textarea rows="30" cols="120" 
-					 readonly="readonly" style="resize: none;">내용 불러오기</textarea>
-				</div>
-				<br>
-
-				<div>
-					<table>
-						<tr>
-							<th>댓글</th>
-						</tr>
-					</table>
-				</div>
-				<div>
-					<textarea rows="10" cols="120" 
-					readonly="readonly" id="reply">댓글 내용 불러와야됨</textarea>
-				</div>
-				<br>
-				<div>
-					<textarea rows="3" cols="112" style="float: left; resize:none;">댓글을 입력해주세요.</textarea>
-					<input type="button" value="등록" id="submitBtn" class="submitbtn">
-				</div>
-				<br><br><br>
-
-				<div class="bbsArticle_bottomLine" style="width: 850px;">
-					<p>
-						<a href="">이전글 : </a>
-					</p>
-					<hr>
-				</div>
-				<div class="bbsArticle_noLine" style="width: 850px;">
-					<p>
-						<a href="">다음글 : </a>
-					</p>
-				</div>
-				<div>
-					<button type="button" id="updateBtn" class="listbtn">수정</button>
-					<button type="button" id="deleteBtn" class="listbtn">삭제</button>
-					<button type="button" id="listBtn" class="listbtn">목록으로</button>
-				</div>
-				<br><br>
-				
-			</form>
+	<div id="noticeDiv">
+	<form action="" id="" name="">
+		<div>
+			
+			 <table style="width: 100%;">
+			 	<tr>
+			 		<th style="width: 20%;" class="boardTh">글제목</th>
+			 		<th style="width: 80%;" class="boardTh">${search.board_title }</th>
+			 	</tr>
+			 	<tr>
+			 		<th class="boardTh">작성자</th>
+			 		<th class="boardTh">${search.board_writer }</th>
+			 	</tr>
+			 	<tr>
+			 		<th class="boardTh">작성일자</th>
+			 		<th class="boardTh">${search.rep_log_date }</th>
+			 	</tr>
+			 	
+			 </table>
+		</div>
+		
+		<div>
+			<textarea rows="25" cols="127" readonly="readonly" style="resize: none;" >
+				<%-- ${search.board_content } --%>
+				<%-- 줄바꿈 처리 --%>
+				<c:out value="${search.board_content }" />
+			</textarea>
+		</div><br>
+		
+		<br>
+		
+		<div style="display: inline-block; float:right;">
+			<button class="btn btn-secondary">수정</button>
+			<button class="btn btn-secondary">삭제</button>
+		</div>
+		
+		<br><br><br>
+		<div class="bbsArticle_bottomLine">
+			<p><a href="">이전글 : 이전글입니다. </a></p>
+			<hr>
+		</div>
+		<div class="bbsArticle_noLine">
+			<p><a href="">다음글 : 다음글입니다. </a></p>
+		</div>
+		<br><br>
+		<div>
+			<button type="button" id="listBtn" class="listbtn btn btn-secondary" onclick="location.href='adminreportboardlist.action'">
+				목록으로
+			</button>
+			
+		</div>
+	</form>
 	</div>
-
-
-</div>
-
+	<!-- 하단 회사 설명 영역 -->
+	<div id="harootFooter">
+		<c:import url="MainFooter.jsp"></c:import>
+	</div>
+	
+</div>	
 
 </body>
 </html>

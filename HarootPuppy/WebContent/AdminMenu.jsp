@@ -5,6 +5,8 @@
    request.setCharacterEncoding("UTF-8");
    String cp = request.getContextPath();
 %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +90,6 @@
     </li>
     <li class="menu4">
     	<a href="adminasklist.action" class="link">고객 지원</a>
-
     </li>
 
 </ul>

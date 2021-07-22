@@ -28,8 +28,12 @@ public class AdminMainController
       
       // System.out.println(sid_code);
       IAdminDAO dao = sqlSession.getMapper(IAdminDAO.class);
-      model.addAttribute("name", dao.searchName(admin_code));
+      //model.addAttribute("name", dao.searchName(admin_code));
       session.setAttribute("admin_code", admin_code);
+      
+      
+      // 아래부터 아별추가
+      session.setAttribute("adminName", dao.searchName(admin_code));
       
       return "adminmain.action";
 
@@ -43,9 +47,14 @@ public class AdminMainController
       String admin_code = (String)session.getAttribute("admin_code");
       
       // System.out.println(sid_code);
-      IAdminDAO dao = sqlSession.getMapper(IAdminDAO.class);
-      model.addAttribute("name", dao.searchName(admin_code));   // 테스트용
+      //model.addAttribute("name", dao.searchName(admin_code));   // 테스트용
       
+      // 아별 추가
+      //System.out.println(dao.searchName(admin_code));
+      //--==>> 김아별
+      // 로그인 시 상단에 이름출력
+      String adminName = (String)session.getAttribute("adminName");
+      model.addAttribute("adminName", adminName);
 
 
       // 관리자용 신고 DAO 
@@ -93,7 +102,7 @@ public class AdminMainController
       
       if(admin_code!=null)
       {
-         return "/WEB-INF/views/AdminMain.jsp";
+         return "AdminMain.jsp";
       }
       else
       {

@@ -31,7 +31,7 @@ public class AdminNoticeController
 		// 전체 공지 리스트 전달
 		model.addAttribute("list", dao.list());
 		
-		return "/WEB-INF/views/NoticeList.jsp";
+		return "NoticeList.jsp";
 	}
 	
 	// 관리자 > 공지관리 > 글쓰기 페이지 
@@ -46,7 +46,7 @@ public class AdminNoticeController
 		
 		model.addAttribute("getMaxNum", getMaxNum);
 		
-		return "/WEB-INF/views/NoticeInsertForm.jsp";
+		return "NoticeInsertForm.jsp";
 	}
 	
 	// 관리자 > 공지관리 > 공지 데이터 입력

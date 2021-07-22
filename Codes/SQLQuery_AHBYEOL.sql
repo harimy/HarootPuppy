@@ -1551,15 +1551,57 @@ ASKVIEW
 
 -- 관리자 정보 조회 쿼리문
 
-SELECT *
-FROM TBL_ADMIN;
+SELECT ADMIN_CODE, ADMIN_ID, ADMIN_NAME, TO_CHAR(ADMIN_REGDATE, 'YYYY-MM-DD') AS ADMIN_REGDATE
+FROM TBL_ADMIN
+;
 --==>>
 /*
-ADMIN_CODE	ADMIN_ID	ADMIN_PW	ADMIN_NAME	ADMIN_REGDATE
-ADM001	admin1	œ��	김아별	21/07/07
-ADM002	admin2	�nȣ	박나현	21/07/07
+ADM001	admin1	김아별	2021-07-07
+ADM002	admin2	박나현	2021-07-07
 */
 
+-- 관리자 삭제
+DELETE
+      FROM TBL_ADMIN
+      WHERE ADMIN_CODE = 'ADM001'
+;
+
+--
+CREATE SEQUENCE ADMIN_SEQ
+NOCACHE;
 
 
+-- 관리자 등록
+INSERT INTO TBL_ADMIN(ADMIN_CODE, ADMIN_ID, ADMIN_PW, ADMIN_NAME, ADMIN_REGDATE)
+VALUES( 'ADM'||ADMIN_SEQ.NEXTVAL, 'admin3', CRYPTPACK.ENCRYPT('1111', 'admin3'), '이름', SYSDATE)
+;
+
+SELECT *
+FROM TBL_ADMIN;
+
+SELECT 'ADM'||ADMIN_SEQ.NEXTVAL
+FROM DUAL
+;
+
+commit;
+
+
+SELECT *
+FROM TBL_NOTICE;
+
+SELECT *
+FROM NOTICEVIEW;
+--==>>
+/*
+1	ADM001	2	강아지배변봉투		산책 시 강아지 배변봉투를 꼭 챙겨주세요	0	0	21/06/26
+2	ADM002	1	산책메이트 튜토리얼1		산책메이트 사용 방법 안내	0	0	21/06/28
+3	ADM002	1	산책메이트 튜토리얼2		산책메이트 사용 방법 안내	0	0	21/06/28
+4	ADM002	1	산책메이트 튜토리얼3		산책메이트 사용 방법 안내	0	0	21/06/28
+5	ADM001	1	산책메이트 튜토리얼4		산책메이트 사용 방법 안내	0	0	21/06/29
+*/
+
+--==>> 화면에서 보이는 데이터랑 다름 
+
+SELECT *
+FROM BOARDVIEW;
 
