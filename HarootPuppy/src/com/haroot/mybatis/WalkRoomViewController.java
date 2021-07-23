@@ -181,6 +181,10 @@ public class WalkRoomViewController
 			model.addAttribute("room", room);		// 방 정보 출력용 하나짜리 DTO
 			model.addAttribute("rooms", rooms);
 			model.addAttribute("walkroom_code", walkroom_code);
+			
+			IMatchDAO matDao = sqlSession.getMapper(IMatchDAO.class);
+	    	model.addAttribute("matchState", matDao.matchStateCheck(walkroom_code));	// 매칭 상태
+	    	
 			result = "WalkRoomMasterEnter.jsp";
 		}
 		else	// 일반 사용자로 입장 시
@@ -237,6 +241,10 @@ public class WalkRoomViewController
 			
 	    	model.addAttribute("room", room);
 	    	model.addAttribute("rooms", rooms);	 	// 참여자 정보 출력용 ArrayList<DTO>
+	    	
+	    	IMatchDAO matDao = sqlSession.getMapper(IMatchDAO.class);
+	    	model.addAttribute("matchState", matDao.matchStateCheck(walkroom_code));	// 매칭 상태
+	    	
 	    	result = "WalkRoomMasterEnter.jsp";
 	    }
 	    
@@ -386,6 +394,10 @@ public class WalkRoomViewController
 			IWalkRoomDAO dao = sqlSession.getMapper(IWalkRoomDAO.class);
 			int walkroom_code = Integer.parseInt(request.getParameter("num"));
 			dao.remove(walkroom_code);
+			
+			// 방 삭제 시 산책방 코드 세션 삭제 구문
+			session.removeAttribute("walkroom_code");
+			
 			result="redirect:walkroommain.action";
 		}
 
@@ -427,7 +439,8 @@ public class WalkRoomViewController
 			// 방 나가기 = 참여자 테이블에서 삭제 처리
 			part_dao.exitWalkRoom(participants_code);
 			
-			// 산책방 코드 세션 삭제 구문 필요
+			// 방 나가기 시 산책방 코드 세션 삭제 구문
+			session.removeAttribute("walkroom_code");
 			
 			result="redirect:walkroommain.action";
 		}

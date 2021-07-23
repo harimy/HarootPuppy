@@ -18,6 +18,7 @@
 	src="http://code.jquery.com/jquery.min.js"></script>
 
 <!-- 부트스트랩 script -->
+<script type="text/javascript" src="<%=cp%>/js/bootstrap.js"></script>
 <script src="<%=cp%>/js/bootstrap.min.js"></script>
 
 <style type="text/css">

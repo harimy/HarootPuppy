@@ -17,7 +17,11 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
 <!-- 부트스트랩 script -->
+<script type="text/javascript" src="<%=cp%>/js/bootstrap.js"></script>
 <script src="<%=cp%>/js/bootstrap.min.js"></script>
+
+<!-- 부트스트랩 CSS -->
+<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
 
 <style type="text/css">
 
@@ -90,26 +94,26 @@
 		      <!-- Nav tabs -->
 		      <div class="card">
 		        <ul class="nav nav-tabs nav-justified" role="tablist">
-		          <li role="presentation" class="active"><a href="#menu1" aria-controls="menu1" role="tab" data-toggle="tab"><i class="fa fa-home"></i>
+		          <li role="presentation" class="active"><a href="#historyMenu1" aria-controls="historyMenu1" role="tab" data-toggle="tab"><i class="fa fa-home"></i>
 		          	<span>신청완료</span></a>
 		          </li>
-		          <li role="presentation"><a href="#menu2" aria-controls="menu2" role="tab" data-toggle="tab"><i class="fa fa-user"></i>
+		          <li role="presentation"><a href="#historyMenu2" aria-controls="historyMenu2" role="tab" data-toggle="tab"><i class="fa fa-user"></i>
 		          	<span>산책예정</span></a>
 		          </li>
-		          <li role="presentation"><a href="#menu3" aria-controls="menu3" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>
+		          <li role="presentation"><a href="#historyMenu3" aria-controls="historyMenu3" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>
 		          	<span>산책 완료</span></a>
 		          </li>
 		        </ul>
 		        
 		        <!-- Tab panes -->
 		        <div class="tab-content">
-		          <div role="tabpanel" class="tab-pane active" id="menu1">
+		          <div role="tabpanel" class="tab-pane active" id="historyMenu1">
 		          	<c:import url="WalkApplyDone.jsp"></c:import>
 		          </div>
-		          <div role="tabpanel" class="tab-pane" id="menu2">
+		          <div role="tabpanel" class="tab-pane" id="historyMenu2">
 		          	<c:import url="WalkScheduled.jsp"></c:import>
 		          </div>
-		          <div role="tabpanel" class="tab-pane" id="menu3">
+		          <div role="tabpanel" class="tab-pane" id="historyMenu3">
 		          	<c:import url="WalkFinished.jsp"></c:import>
 		          </div>
 		        </div>
