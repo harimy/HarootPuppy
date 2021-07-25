@@ -268,7 +268,11 @@ SELECT WR.WALKROOM_CODE AS WALKROOM_CODE
 , MEM.MEM_NICKNAME AS MEM_NICKNAME
 , MEM.MEM_GENDER AS MEM_GENDER
 , REL.SID_CODE AS SID_CODE
-, WR.WALKROOM_LEADER AS WALKROOM_LEADER       -- SID.SID_CODE로 방장, 참여자 회원코드를 가져올 경우 둘을 구분할 수 없음.     
+, WR.WALKROOM_LEADER AS WALKROOM_LEADER       -- SID.SID_CODE로 방장, 참여자 회원코드를 가져올 경우 둘을 구분할 수 없음.
+, (SELECT MB.MEM_NICKNAME 
+   FROM TBL_SID SD, TBL_MEMBER MB
+   WHERE SD.MEM_CODE = MB.MEM_CODE
+     AND SID_CODE = WR.WALKROOM_LEADER) AS LEADER_NICKNAME  -- 방장 닉네임
 , MEM.MEM_ID AS MEM_ID
 , PET.PET_CODE AS PET_CODE
 , TO_CHAR(PET.PET_BIRTH, 'YYYY-MM-DD') PET_BIRTH
@@ -297,14 +301,15 @@ SELECT WR.WALKROOM_CODE AS WALKROOM_CODE
 , (SELECT PC4.PET_CHAR4_CODE FROM TBL_PET_CHAR4 PC4 WHERE PET_CHAR4_CODE = PET.PET_CHAR4_CODE) AS PET_CHAR4_CODE
 , (SELECT PC4.PET_CHAR4_CONTENT FROM TBL_PET_CHAR4 PC4 WHERE PET_CHAR4_CODE = PET.PET_CHAR4_CODE) AS PET_CHAR4_CONTENT
 , REL.RELATION_CODE AS RELATION_CODE
-, CASE WHEN M.MATCH_CODE IS NULL THEN '매칭이전'
-       WHEN M.MATCH_CODE IS NOT NULL THEN '매칭완료'
-       ELSE '알 수 없음' END AS MATCH_STATE
-, CASE WHEN WR.WALKROOM_END > SYSDATE THEN '산책예정'
-       WHEN WR.WALKROOM_END <= SYSDATE THEN '산책완료'
-       ELSE '알 수 없음' END AS WALK_STATE
+--, CASE WHEN M.MATCH_CODE IS NULL THEN '매칭이전'                  -- 쿼리로 직접 조회 예정
+--       WHEN M.MATCH_CODE IS NOT NULL THEN '매칭완료'
+--       ELSE '알 수 없음' END AS MATCH_STATE
+--, CASE WHEN WR.WALKROOM_END > SYSDATE THEN '산책예정'             -- 뷰 생성시의 SYSDATE 로 적용되기 때문에 이슈 발생
+--       WHEN WR.WALKROOM_END <= SYSDATE THEN '산책완료'
+--       ELSE '알 수 없음' END AS WALK_STATE
 , M.MATCH_CODE AS MATCH_CODE
 , TO_CHAR(M.MATCH_DATE, 'YYYY-MM-DD HH24:MI:SS') AS MATCH_DATE 
+, C.PARTI_COUNT AS PARTI_COUNT
 FROM TBL_WALKROOM WR
 LEFT JOIN TBL_PARTICIPANTS P
 ON WR.WALKROOM_CODE = P.WALKROOM_CODE
@@ -331,9 +336,15 @@ ON WR.WALKROOM_CODE = P.WALKROOM_CODE
                                             LEFT JOIN TBL_PET_INFO PI
                                             ON PET.PET_CODE = PI.PET_CODE 
                                                 LEFT JOIN TBL_PET_TYPE PTY
-                                                ON PET.PET_TYPE_CODE = PTY.PET_TYPE_CODE                                               
+                                                ON PET.PET_TYPE_CODE = PTY.PET_TYPE_CODE      
+                                                    LEFT JOIN (SELECT W.WALKROOM_CODE AS WALKROOM_CODE
+                                                             , COUNT(*) AS PARTI_COUNT
+                                                               FROM TBL_WALKROOM W, TBL_PARTICIPANTS P
+                                                               WHERE W.WALKROOM_CODE = P.WALKROOM_CODE(+)
+                                                               GROUP BY W.WALKROOM_CODE) C
+                                                    ON WR.WALKROOM_CODE = C.WALKROOM_CODE
 ORDER BY WR.WALKROOM_CODE, TO_NUMBER(SUBSTR(PARTICIPANTS_CODE, 4));
---==>> View WALKROOMVIEW이(가) 생성되었습니다. (2021-07-18 14:12:00)
+--==>> View WALKROOMVIEW이(가) 생성되었습니다. (2021-07-25 01:18:00)
 
 SELECT *
 FROM WALKROOMVIEW;

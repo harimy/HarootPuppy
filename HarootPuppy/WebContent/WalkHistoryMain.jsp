@@ -108,13 +108,13 @@
 		        <!-- Tab panes -->
 		        <div class="tab-content">
 		          <div role="tabpanel" class="tab-pane active" id="historyMenu1">
-		          	<c:import url="WalkApplyDone.jsp"></c:import>
+		          	<jsp:include page="walkroomapply.action"/>
 		          </div>
 		          <div role="tabpanel" class="tab-pane" id="historyMenu2">
-		          	<c:import url="WalkScheduled.jsp"></c:import>
+		          	<jsp:include page="walkroomscheduled.action"/>
 		          </div>
 		          <div role="tabpanel" class="tab-pane" id="historyMenu3">
-		          	<c:import url="WalkFinished.jsp"></c:import>
+		          	<jsp:include page="walkroomfinished.action"/>
 		          </div>
 		        </div>
 		      </div>

@@ -32,11 +32,16 @@ public class WalkRoomViewController
 		HttpSession session = request.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
-		String nickname = (String)session.getAttribute("nickname");
-
-	    
-		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
-		model.addAttribute("nickname", mem.searchNickName(sid_code));
+		//String nickname = (String)session.getAttribute("nickname");
+	    String req_rel_code = request.getParameter("rel");
+	    String roomState = request.getParameter("state");
+	    System.out.println("walkroomentercheck relation_code : " + req_rel_code);
+	    System.out.println("roomState : " + roomState);
+		
+	    IRelationDAO relation_dao = sqlSession.getMapper(IRelationDAO.class);
+		
+		int walkroom_code = Integer.parseInt(request.getParameter("num"));
+		System.out.println("walkroomentercheck pet_code : " + pet_code);
 		
 		if(sid_code == null) // 로그인 안한 상황
 		{
@@ -44,16 +49,27 @@ public class WalkRoomViewController
 		}
 		else if(pet_code == null) 	// 펫 선택 안한 상황
 		{
-			result = "redirect:walkroomselect.action";
+			if(req_rel_code == null)
+				result = "redirect:walkroomselect.action";
+			else
+			{
+				// 산책 히스토리를 통해 산책방 바로 입장하는 코드
+				// 해당 산책방에 참여중인 반려견 코드 필요함
+				System.out.println("히스토리 - 신청완료 or 산책예정");
+				pet_code = relation_dao.search_pet_code(req_rel_code);
+				session.setAttribute("pet_code", pet_code);
+				session.setAttribute("walkroom_code", walkroom_code);
+				session.setAttribute("roomState", roomState);
+				result = "redirect:walkroomenter.action";
+			}
 		}
 		else
 		{
-			IRelationDAO relation_dao = sqlSession.getMapper(IRelationDAO.class);
+			System.out.println("일반 입장");
 			RelationDTO relation_dto = relation_dao.list(sid_code, pet_code);
 			String relation_code = relation_dto.getRelation_code();
 			
 			// 선택한 산책방에 로그인한 유저가 참여중인지 확인
-			int walkroom_code = Integer.parseInt(request.getParameter("num"));
 			IWalkRoomEnterCheckViewDAO check_dao = sqlSession.getMapper(IWalkRoomEnterCheckViewDAO.class);
 			if (check_dao.search_room_sid(walkroom_code, sid_code) == 0)
 			{
@@ -72,7 +88,8 @@ public class WalkRoomViewController
 				part_dao.addGuest(part_dto);
 				
 				// 방 번호 세션으로 넘기면서 페이지 이동
-				session.setAttribute("walkroom_code", walkroom_code);	
+				session.setAttribute("walkroom_code", walkroom_code);
+				session.setAttribute("roomState", roomState);
 				result = "WalkRoomGuestFixOption.jsp";	// 방장은 이 분기에 절대 걸리지 않으므로 이렇게 처리
 			}
 			else // 산책방 참여중인 경우
@@ -88,6 +105,7 @@ public class WalkRoomViewController
 					// 해당 유저가 해당 반려견으로 참여중인 경우
 					// 바로 방 입장 할 수 있음
 					session.setAttribute("walkroom_code", walkroom_code);
+					session.setAttribute("roomState", roomState);
 					result = "walkroomenter.action";
 				}
 				
@@ -109,10 +127,6 @@ public class WalkRoomViewController
 		int walkroom_code = (int)session.getAttribute("walkroom_code");
 		String nickname = (String)session.getAttribute("nickname");
 
-		
-		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
-		model.addAttribute("nickname", mem.searchNickName(sid_code));
-		
 		if(sid_code == null) // 로그인 안한 상황
 		{
 			result = "redirect:loginMem.action";
@@ -263,6 +277,7 @@ public class WalkRoomViewController
 		String sid_code = (String)session.getAttribute("sid_code");
 		String pet_code = (String)session.getAttribute("pet_code");
 		String nickname = (String)session.getAttribute("nickname");
+		String roomState = (String)session.getAttribute("roomState");
 
 		int walkroom_code = (int)session.getAttribute("walkroom_code");
 		//System.out.println("walkroomguest walkroom_code : " + walkroom_code);
@@ -294,7 +309,15 @@ public class WalkRoomViewController
 			
 	    	model.addAttribute("room", room);
 	    	model.addAttribute("rooms", rooms);	 	// 참여자 정보 출력용 ArrayList<DTO>
+	    	model.addAttribute("roomState", roomState);	// 방의 상태값 넘겨줌(신청완료/산책예정)
 	    	result = "WalkRoomGuestEnter.jsp";
+	    	
+	    	System.out.println("walkroomguest roomState : " + roomState);
+	    	if(roomState.equals("apply") || roomState.equals("scheduled"))
+	    	{
+	    		session.removeAttribute("pet_code");
+	    	}
+	    	
 	    }
 	    
 	    return result;
