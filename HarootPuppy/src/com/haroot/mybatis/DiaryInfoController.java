@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 @Controller
 public class DiaryInfoController 
 {
@@ -37,7 +38,12 @@ public class DiaryInfoController
 		model.addAttribute("pet_code", pet_code);
 		
 		model.addAttribute("infoList", petDao.petInfo2(pet_code));
-
+		model.addAttribute("injectInfo", petDao.petInfo3(pet_code));
+		model.addAttribute("disInfo", petDao.petInfo4(pet_code));
+		
+		
+		// System.out.println(petDao.petInfo3(pet_code).getInject_type_name());
+		//-- 마지막 접종내역만 출력됨
 		// System.out.println("세션2" + pet_code);
 		
 		return "/DiaryInfo.jsp";

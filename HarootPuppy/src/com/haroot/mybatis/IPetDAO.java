@@ -16,9 +16,9 @@ public interface IPetDAO
 	// (다이어리내 반려견 정보 확인 시)
 	public PetDTO petInfo2(String pet_code) throws SQLException;
 	// → 접종내역
-	public PetDTO petInfo3(String pet_code) throws SQLException;
-	// → 관심사료
-	public PetDTO petInfo4(String pet_code) throws SQLException;
+	public ArrayList<PetDTO> petInfo3(String pet_code) throws SQLException;
+	// → 기저질환
+	public ArrayList<PetDTO> petInfo4(String pet_code) throws SQLException;
 	
 	
 	// 반려견 추가

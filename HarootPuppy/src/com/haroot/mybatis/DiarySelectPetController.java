@@ -27,14 +27,24 @@ public class DiarySelectPetController
 	{
 		IPetDAO petDao = sqlSession.getMapper(IPetDAO.class);
 		
+		//---------- 세션처리 ---------------------------------------
 		HttpSession session = req.getSession();
+		// session.removeAttribute("pet_code");	// 펫 선택 페이지 로드시 펫 코드 초기화
+		
 		String sid_code = (String)session.getAttribute("sid_code");
 		String nickname = (String)session.getAttribute("nickname");     
 		// System.out.println(sid_code);
 		
-		if (sid_code==null)		//-- 로그인이 되어있지 않은 상황
+		String pet_code = (String)session.getAttribute("pet_code");
+		session.setAttribute("pet_code", pet_code);
+		// System.out.println("펫코드" + pet_code);
+		
+		//---------- 로그인이 되어있지 않으면 로그인창으로 -----------
+		if (sid_code==null)		
 			return "redirect:loginmem.action";
-
+		
+		
+		//-------- petList 데이터 보내주기 ----------------------------
 		model.addAttribute("petList", petDao.searchPets(sid_code));	
 		return "/DiarySelectPet.jsp";
 	}
