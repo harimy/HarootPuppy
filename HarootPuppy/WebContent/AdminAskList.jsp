@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -10,37 +10,52 @@
 <meta charset="UTF-8">
 <title>AdminAskList.jsp</title>
 
-<!-- jQuery JS -->
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
-<!-- jQuery-UI CSS -->
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
+<link rel="stylesheet" href="css/bootstrap.css">
 
-<!--  부트스트랩 JS -->
-<script type="text/javascript" src="<%=cp%>/js/bootstrap.js"></script>
-<!-- 부트스트랩 CSS -->
-<link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
 
 <style type="text/css">
-	/* 가운데 정렬 */
-	#userTable th, td
+/* 가운데 정렬 */
+
+	body
+	{
+		font-size: 14px !important;
+	}
+
+#userTable th, td 
 	{
 		text-align: center !important;
 	}
-	
-	#askList
+
+#askList 
 	{
 		height: 700px;
 	}
-	
-	
+
 </style>
 
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+
+		$('#userTable').dataTable(
+		{
+			
+		});
+	});
+
+</script>
 
 </head>
 <body>
 
-<!-----------------------------
+	<!-----------------------------
   AdminAskList.jsp
   - 관리자가 보는 1:1 고객문의 게시판
 ------------------------------->
@@ -49,147 +64,78 @@
 		<div id="harootHeader">
 			<c:import url="AdminMenu.jsp"></c:import>
 		</div>
+		
+		<br>
+		<br>
 
 		<!-- content 영역 -->
 		<div id="askList">
-		<div style="width: 100%; text-align: center;">
-			<h1>1:1 문의 게시판</h1>
-		</div>
-		
-		<br><br>
-		
-		<div>
-			<select name="askTag" id="askTag">
-				<option>산책메이트</option>
-				<option>다이어리</option>
-				<option>게시판</option>
-				<option>계정</option>
-				<option>기타</option>
-			</select>
-			<p style="float: right;">문의글 수 : 30</p>
-		</div>
-		
-		<br><br>
-		
-		<div>
-			<table class="table table-striped table-condensed table-hover" id="userTable" style="text-align: center;"> 
-				<tr>
-					<th>카테고리</th>
-					<th>글제목</th>
-					<th>닉네임</th>
-					<th>작성일자</th>
-					<th>읽음상태</th>
-					<th>답변상태</th>
-				</tr>	
-				<tr>
-					<td>다이어리</td>
-					<td><a href="AdminAskReadList.jsp">강아지 정보를 수정하고싶으면 어떻게 하죠?</a></td>
-					<td>뚜냐사랑</td>
-					<td>2021-07-03</td>
-					<td>안읽음</td>
-					<td>답변대기</td>
-				</tr>	
-				<tr>
-					<td>산책</td>
-					<td>산책점수를 높이러면 어떻게 해야 하나요?</td>
-					<td>콩이엄마</td>
-					<td>2021-07-02</td>
-					<td>읽음</td>
-					<td>답변대기</td>
-				</tr>	
-				<tr>
-					<td>다이어리</td>
-					<td><a href="AdminAskReadList.jsp">강아지 정보를 수정하고싶으면 어떻게 하죠?</a></td>
-					<td>뚜냐사랑</td>
-					<td>2021-07-03</td>
-					<td>안읽음</td>
-					<td>답변대기</td>
-				</tr>	
-				<tr>
-					<td>산책</td>
-					<td>산책점수를 높이러면 어떻게 해야 하나요?</td>
-					<td>콩이엄마</td>
-					<td>2021-07-02</td>
-					<td>읽음</td>
-					<td>답변대기</td>
-				</tr>	
-				<tr>
-					<td>다이어리</td>
-					<td><a href="AdminAskReadList.jsp">강아지 정보를 수정하고싶으면 어떻게 하죠?</a></td>
-					<td>뚜냐사랑</td>
-					<td>2021-07-03</td>
-					<td>안읽음</td>
-					<td>답변대기</td>
-				</tr>	
-				<tr>
-					<td>산책</td>
-					<td>산책점수를 높이러면 어떻게 해야 하나요?</td>
-					<td>콩이엄마</td>
-					<td>2021-07-02</td>
-					<td>읽음</td>
-					<td>답변대기</td>
-				</tr>	
-				<tr>
-					<td>다이어리</td>
-					<td><a href="AdminAskReadList.jsp">강아지 정보를 수정하고싶으면 어떻게 하죠?</a></td>
-					<td>뚜냐사랑</td>
-					<td>2021-07-03</td>
-					<td>안읽음</td>
-					<td>답변대기</td>
-				</tr>	
-				<tr>
-					<td>산책</td>
-					<td>산책점수를 높이러면 어떻게 해야 하나요?</td>
-					<td>콩이엄마</td>
-					<td>2021-07-02</td>
-					<td>읽음</td>
-					<td>답변대기</td>
-				</tr>	
-				<tr>
-					<td>다이어리</td>
-					<td><a href="AdminAskReadList.jsp">강아지 정보를 수정하고싶으면 어떻게 하죠?</a></td>
-					<td>뚜냐사랑</td>
-					<td>2021-07-03</td>
-					<td>안읽음</td>
-					<td>답변대기</td>
-				</tr>	
-				<tr>
-					<td>산책</td>
-					<td>산책점수를 높이러면 어떻게 해야 하나요?</td>
-					<td>콩이엄마</td>
-					<td>2021-07-02</td>
-					<td>읽음</td>
-					<td>답변대기</td>
-				</tr>	
-				<tr>
-					<td>다이어리</td>
-					<td><a href="AdminAskReadList.jsp">강아지 정보를 수정하고싶으면 어떻게 하죠?</a></td>
-					<td>뚜냐사랑</td>
-					<td>2021-07-03</td>
-					<td>안읽음</td>
-					<td>답변대기</td>
-				</tr>	
-				<tr>
-					<td>산책</td>
-					<td>산책점수를 높이러면 어떻게 해야 하나요?</td>
-					<td>콩이엄마</td>
-					<td>2021-07-02</td>
-					<td>읽음</td>
-					<td>답변대기</td>
-				</tr>	
-			</table>
-			
-		</div>
-		
-		<div id="footer" style="text-align: center;">
-			<!-- <p>1 Prev 21 22 23 24 25 26 27 28 29 30 Next 63</p> -->
-			<p><span style="font-weight: bold;">1</span> 2 3 4 5 6 7 8 9 10</p>
-		</div>
-		
-	</div>
+			<div style="width: 100%; text-align: center;">
+				<h1>1:1 문의 게시판</h1>
+			</div>
 
-		
-</div>
+			<br>
+			<br>
+
+			
+			<div style="width: 1200px; margin: 0px auto;">
+			
+				<span class="badge rounded-pill bg-warning text-dark" style="font-size: 12pt;">읽지않은 문의글 수 : ${askNotRead }건</span><br><br>
+			
+			</div>
+
+			<br>
+			<br>
+
+			<div style="width: 1200px; margin: 0px auto;">
+				<table
+					class="table table-striped table-condensed table-hover table-bordered"
+					id="userTable" style="text-align: center;">
+					<thead>
+						<tr>
+							<th>카테고리</th>
+							<th>글제목</th>
+							<th>닉네임</th>
+							<th>작성일자</th>
+							<th>읽음상태</th>
+							<th>답변상태</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<c:forEach var="ask" items="${adminAskList}">
+							<tr>
+								<td>${ask.ask_cate_content }</td>
+								<td>
+									<a href="adminnoticeview.action?notice_code=${list.notice_code }" class="link">
+										${ask.ask_title }
+									</a>
+								
+								</td>
+								
+								<td>${ask.mem_nickname }</td>
+								<td>${ask.ask_date }</td>
+								<td>${ask.ask_read == null ? 'Ⅹ' : '○' }</td>
+								<td>${ask.ask_state_content }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+
+				</table>
+				
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+	
 
 
 </body>

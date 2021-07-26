@@ -4,6 +4,8 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	
+	String message = request.getParameter("message");
 %>
 <!DOCTYPE html>
 <html>
@@ -88,19 +90,58 @@
 	// Source: stackoverflow
 	$(document).ready(function()
 	{
+		
+		//alert($("#message").val());
+		//alert($("#matchBtn").val());
+		
+		if($("#message").val() != "" && $("#message").val() != null)
+		{
+			if( $("#message").val() == "minMemError" )
+			{
+				alert("참여인원이 최소인원보다 많아야 합니다.");
+				$("#message").val("");
+			}
+			else if( $("#message").val() == "readyStateError" )
+			{
+				alert("참여인원이 모두 READY 완료 상태여야 합니다.");
+				$("#message").val("");
+			}
+			else if ( $("#message").val() == "Matched" )
+			{
+				alert("매칭이 성공적으로 완료되었습니다.");
+				$("#message").val("");
+			}
+			else if ( $("#message").val() == "MatchCancel" )
+			{
+				alert("매칭이 취소되었습니다.");
+				$("#message").val("");
+			}
+		}
+		
+		if( $("#matchBtn").val() == "1" ) // 매칭 완료 상태면
+		{
+			$("#matchBtn").css("background-color", "rgb(224, 224, 224)");
+			$("#matchBtn").html("CANCEL");
+		}
+		else if( $("#matchBtn").val() == "0" ) // 매칭 대기 상태면
+		{
+			$("#matchBtn").css("background-color", "rgb(196, 91, 36)");
+			$("#matchBtn").html("MATCHING");
+		}
+		
 		$("#matchBtn").click(function()
 		{
-			if ($(this).val() == "notMatched")
+			
+			if ($(this).val() == "1")
 			{
-				$(this).css("background-color", "rgb(224, 224, 224)");
-				$(this).html("CANCEL");
-				$(this).val("matched");
+				$(location).attr("href"
+						, "walkroommatchcancel.action?num=${room.walkroom_code }");
 				return;
-			} else if ($(this).val() == "matched")
+			}
+			else if ($(this).val() == "0")
 			{
-				$(this).css("background-color", "rgb(196, 91, 36)");
-				$(this).html("MATCHING");
-				$(this).val("notMatched");
+				$(location).attr("href"
+						, "walkroommatch.action?num=${room.walkroom_code }");
 				return;
 			}
 
@@ -133,21 +174,11 @@
 <script type="text/javascript">
 	function closeChild()
 	{
-		/*
-		if(typeof(window.opener.top) == "object") // 부모창이 존재하면
-		{
-			alert("트루");
-		 	opener.top.location.href = "walkroommaster.action";	// 방 입장하면
-		 	self.close();		// 자식 창 닫기
-		}
-		*/
-		
 		// 부모창 페이지 이동
 		opener.location.href="walkroommaster.action"; 
 
 		//자식 창 닫기
 		window.close();
-		
 	}
 </script>
 
@@ -170,6 +201,7 @@
 <!-- 방 정보 불러오기 -->
 	
 	<div class="alignCenter">
+		<input type="hidden" id="message" value=<%=message %>>
 
 		<!-- 방 제목 -->
 		<div id="walkTitle">${room.walkroom_title }</div> 
@@ -193,7 +225,7 @@
 		</div>
 	
 		<!-- 매칭/준비 버튼 -->
-		<button type="button" id="matchBtn" value="notMatched" class="btn">MATCHING</button>
+		<button type="button" id="matchBtn" value="${matchState }" class="btn">MATCHING</button>
 		<br><br>
 	
 		<!-- 참여자 프로필 -->

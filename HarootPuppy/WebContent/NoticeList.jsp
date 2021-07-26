@@ -94,17 +94,7 @@
 							<th class="like" style="text-align: center;">좋아요</th> -->
 						</tr>
 					</thead>
-					<!-- 
-					<tr id="lists1">
-						<td class="cate">공지</td>
-						<td class="num">001</td>
-						<td class="subject">리뷰관련건</td>
-						<td class="name">관리자001</td>
-						<td class="">2021-07-03</td>
-						<td class="hitCount">10</td>
-						<td class="like">1</td>
-					</tr>
-					 -->
+					
 					<tbody>
 						<c:forEach var="list" items="${list }">
 							<tr>
@@ -112,11 +102,11 @@
 								<td>${list.notice_code }</td>					
 								<td>
 								
-								<a href="NoticeRead.jsp" class="link">
+								<a href="adminnoticeview.action?notice_code=${list.notice_code }" class="link">
 								<%-- <a href="adminreportboardview.action?notice_code=${list.notice_code }" class="link"> --%>
 								<span class="spanSt1">${list.notice_title }</span>
 								</a>
-											
+								
 								
 								</td>
 								<td>관리자</td>					
