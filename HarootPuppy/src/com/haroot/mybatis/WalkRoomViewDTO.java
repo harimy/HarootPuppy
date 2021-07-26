@@ -12,12 +12,13 @@ public class WalkRoomViewDTO
 		, auto_code, auto_content, style_code, style_content
 		, bite_code, bite_content, desex_code, desex_content, samesex_code, samesex_content
 		, participants_code, readyoption_code, readystate_code
-		, mem_nickname, mem_gender, sid_code, walkroom_leader, mem_id
+		, mem_nickname, mem_gender, sid_code, walkroom_leader, leader_nickname, mem_id
 		, pet_code, pet_birth, pet_age, pet_sex, pet_name, pet_photo, pet_type_code, pet_type_name
 		, pet_bite_code, pet_bite_content, pet_desex_code, pet_desex_content
 		, pet_char1_code, pet_char1_content, pet_char2_code, pet_char2_content
 		, pet_char3_code, pet_char3_content, pet_char4_code, pet_char4_content
-		, relation_code, match_state, walk_state, match_code, match_date;
+		, relation_code, match_state, walk_state, match_code, match_date
+		, parti_count;
 	
 	// getter / setter 구성
 	public int getWalkroom_code()
@@ -276,6 +277,14 @@ public class WalkRoomViewDTO
 	{
 		this.walkroom_leader = walkroom_leader;
 	}
+	public String getLeader_nickname()
+	{
+		return leader_nickname;
+	}
+	public void setLeader_nickname(String leader_nickname)
+	{
+		this.leader_nickname = leader_nickname;
+	}
 	public String getMem_id()
 	{
 		return mem_id;
@@ -483,6 +492,14 @@ public class WalkRoomViewDTO
 	public void setMatch_date(String match_date)
 	{
 		this.match_date = match_date;
+	}
+	public String getParti_count()
+	{
+		return parti_count;
+	}
+	public void setParti_count(String parti_count)
+	{
+		this.parti_count = parti_count;
 	}
 	
 }

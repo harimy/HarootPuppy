@@ -14,4 +14,10 @@
 		  AND PET_CODE = #{pet_code}
 	</select>
 	
+	<select id="search_pet_code" resultType="java.lang.String">
+		SELECT PET_CODE
+		FROM TBL_RELATION
+		WHERE RELATION_CODE = #{relation_code}
+	</select>
+	
 </mapper>

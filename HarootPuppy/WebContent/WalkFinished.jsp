@@ -24,10 +24,60 @@
 	}
 	
 </style>
-
 </head>
 <body>
 	<div id="bbsList">
+	<table id="bbsList_list" class="table">
+			<tr id="title">
+				<th style="width: 7%;">글번호</th>
+				<th colspan="2" style="width: 18%;">소개</th>
+				<th style="width: 15%;">산책 인원</th>
+				<th style="width: 7%;">반려견</th>				
+				<th style="width: 15%;">산책 일시</th>
+				<th style="width: 10%;">개설자</th>
+				<th style="width: 10%;">후기</th>
+				<th style="width: 10%;">참여자</th>
+			</tr>
+	
+			<c:forEach var="walkroom" items="${finishedList }">
+			<tr class="lists">
+				<td style="vertical-align: middle;">
+					${walkroom.walkroom_code }
+					<input type="hidden" name="walkroom_code" value="${walkroom.walkroom_code }">
+					<input type="hidden" name="sid_code" value="${sid_code }">
+				</td>
+				<td style="vertical-align: middle;">
+					<img style="border-radius: 100px;" src="images/jaerong.jpg" width=80 height=80></img>
+				</td>
+				<td style="text-align: left; width: 30%;" >
+					<div style="text-align: left; display:inline-block;">
+						<p class="walkroom_title">[${walkroom.walkroom_title }]<br>
+						"${walkroom.walkroom_words }"<br>
+						</p>
+						<p>산책 장소 : ${walkroom.walkroom_place }<br>
+						산책 스타일 : ${walkroom.style_content}<br>
+						원하는 산책메이트 특징<br>
+						✅입질 여부 : ${walkroom.bite_content }<br>
+						✅중성화 여부 : ${walkroom.desex_content }<br>
+						✅보호자 성별 : ${walkroom.samesex_content }<br>
+						</p>
+					</div>
+				</td>
+				<td style="vertical-align: middle;">
+					( ${walkroom.parti_count} / ${walkroom.walkroom_max } )<br>
+					최소 인원 ${walkroom.walkroom_min } 명<br>
+				</td>
+				<td style="vertical-align: middle;">${walkroom.pet_name }</td>
+				<td style="vertical-align: middle;">${walkroom.walkroom_start }<br> ~ <br>${walkroom.walkroom_end }</td>
+				<td style="vertical-align: middle;">
+					${walkroom.leader_nickname }
+				</td>
+				<td class="listTd" style="vertical-align: middle;"><button type="button">작성</button></td>
+				<td class="listTd" style="vertical-align: middle;"><button type="button">보기</button></td>
+			</tr>
+			</c:forEach>
+		</table>
+		<!-- 
 		<table id="bbsList_list" class="table" style="width: 100%;">
 			<tr id="title">
 				<th>글번호</th>
@@ -98,7 +148,7 @@
 				<td class="listTd"><button type="button">정보보기</button></td>
 			</tr>
 		</table>
-
+ -->
 		<%-- <%
          for (BoardDTO dto : lists)
          {
