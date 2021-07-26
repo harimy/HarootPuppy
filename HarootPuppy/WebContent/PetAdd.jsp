@@ -18,8 +18,6 @@
 <title>PetAdd.jsp</title>
 
 
-
-
 <script type="text/javascript" src="js/bootstrap.js"></script>
 
 <!-- <link rel="stylesheet" href="<%=cp%>/css/bootstrap.css">  -->
@@ -29,6 +27,16 @@
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <script type="text/javascript">
 
+	$(document).ready(function()
+	{
+		if( $("#pet_type_name").val=="치와와" )	
+			$("#pet_type_size").val="소형견";
+		else if( $("#pet_type_name").val=="비글" )
+			$("#pet_type_size".val="중형견");
+	    else if( $("#pet_type_name").val=="사모예드" )
+	   		$("#pet_type_size".val="대형견");
+	});
+	
 
 	$(function()
 	{
@@ -52,8 +60,6 @@
 		});            
 		*/
 		
-		
-		$
 	});
 
 	
@@ -257,7 +263,8 @@
 		
 <!-- content 영역 -->
 <div id="harootContent">
-	<form action="photoTest02.jsp" method="post" enctype="multipart/form-data" class="petRegisterForm">
+	<form method="post" action="addpet.action">
+		<input type="hidden" name="sid_code" value="${sid_code }">
 		<div>
 			<h1>반려견 등록</h1>
 		</div>
@@ -267,7 +274,7 @@
 				<th>반려견 사진 선택</th>
 				<td>
 					<div class="petPhoto">
-						<input type="file" value="파일 선택" name="upload" id="pet_photo"/>
+						<input type="file" value="파일 선택" name="pet_photo" id="pet_photo"/>
 					 	<div class="select_img"><img id="img"/></div>					 
 					 </div>
 				</td>
@@ -313,7 +320,13 @@
 			<tr>
 				<th>품종</th>
 				<td>
-					<input type="text" name="pet_type"	id="pet_type" placeholder="구현진행중">
+					<select id="type" id="pet_type_name" name="pet_type_name">
+						<option value="치와와">치와와</option>
+						<option value="비글">비글</option>
+						<option value="사모예드">사모예드</option>
+						<option value="믹스">믹스</option>
+					</select>
+					<input type="hidden" value="" name="pet_type_size">
 				</td>
 			</tr>
 			<tr>
@@ -322,7 +335,7 @@
 			<tr>
 				<th>반려견 주소</th>
 				<td>
-					<input type="text" id="pet_addr" placeholder="반려견 주소를 입력하세요">
+					<input type="text" name="pet_addr" id="pet_addr" placeholder="반려견 주소를 입력하세요">
 					<input type="button" onclick="openAddressChild()" value="주소 검색"><br>
 					<div id="addrMap" style="width:300px; height:300px; margin-top:10px; display:none"></div>
 					<input type="hidden" id="pet_addr_lat" name="pet_addr_lat" value="">
@@ -331,11 +344,11 @@
 			<tr>
 				<th>자주가는 산책 장소</th>
 				<td>
-					<input type="text" id="favWalk_addr" placeholder="자주가는 산책 주소를 입력하세요">
+					<input type="text" name="pet_fav_place" id="pet_fav_place" placeholder="자주가는 산책 주소를 입력하세요">
 					<input type="button" onclick="openAddressChild1()" value="주소 검색"><br>
 					<div id="addrMap" style="width:300px; height:300px; margin-top:10px; display:none"></div>
-					<input type="hidden" id="fav_addr_lat" name="pet_addr_lat" value="">
-					<input type="hidden" id="fav_addr_lng" name="pet_addr_lng" value="">
+					<input type="hidden" id="pet_fav_lat" name="pet_addr_lat" value="">
+					<input type="hidden" id="pet_fav_lng" name="pet_addr_lng" value="">
 				</td>
 			</tr>				
 		
@@ -348,27 +361,27 @@
 			<tr>
 				<th>반려견 등록번호</th>
 				<td>
-					<input type="text" name="petNum" placeholder="등록번호를 입력하세요">
+					<input type="text" name="pet_regnum" placeholder="등록번호를 입력하세요">
 				</td>
 			</tr>
 			<tr>
 				<th>기저 질환</th>
 				<td>
-					<label><input type="checkbox" name="dis" value="슬개골탈구">슬개골탈구</label>
-					<label><input type="checkbox" name="dis" value="알러지">알러지</label>
-					<label><input type="checkbox" name="dis" value="방광염">방광염</label>
-					<label><input type="checkbox" name="dis" value="피부염">피부염</label>
-					<label><input type="checkbox" name="dis" value="치매">치매</label>
+					<label><input type="checkbox" name="disease_content" value="슬개골탈구">슬개골탈구</label>
+					<label><input type="checkbox" name="disease_content" value="알러지">알러지</label>
+					<label><input type="checkbox" name="disease_content" value="방광염">방광염</label>
+					<label><input type="checkbox" name="disease_content" value="피부염">피부염</label>
+					<label><input type="checkbox" name="disease_content" value="치매">치매</label>
 				</td>
 			</tr>
 			<tr>
 				<th>관심 사료 (간식)</th>
 				<td>
-					<label><input type="checkbox" name="meal" value="피부개선">피부개선</label>
-					<label><input type="checkbox" name="meal" value="치석">치석</label>
-					<label><input type="checkbox" name="meal" value="방광염">방광염</label>
-					<label><input type="checkbox" name="meal" value="다이어트">다이어트</label>
-					<label><input type="checkbox" name="meal" value="호흡기">호흡기</label>
+					<label><input type="checkbox" name="fav_food_content" value="피부개선">피부개선</label>
+					<label><input type="checkbox" name="fav_food_content" value="치석">치석</label>
+					<label><input type="checkbox" name="fav_food_content" value="방광염">방광염</label>
+					<label><input type="checkbox" name="fav_food_content" value="다이어트">다이어트</label>
+					<label><input type="checkbox" name="fav_food_content" value="호흡기">호흡기</label>
 				</td>
 			</tr>
 		
@@ -405,30 +418,30 @@
 				<th>성격</th>
 				<td>1. 
 	              	<input type="radio" name="pet_char1_content" id="c1" value="활발해요">
-	              	<label for="활발">활발해요</label>
+	              	<label for="c1">활발해요</label>
 	             	<input type="radio" name="pet_char1_content	" id="c2" value="얌전해요">
-	             	<label for="얌전">얌전해요</label>
+	             	<label for="c2">얌전해요</label>
 	             	<br>
 	             		
 	             	2. 
 	             	<input type="radio" name="pet_char2_content" id="c3" value="겁이 많아요">
-	              	<label for="겁">겁이많아요</label>
+	              	<label for="c3">겁이많아요</label>
 	             	<input type="radio" name="pet_char2_content" id="c4" value="대범해요">
-	             	<label for="no">아니요</label>
+	             	<label for="c4">아니요</label>
 	             	<br>
 	             		
 	             	3.
 	             	<input type="radio" name="pet_char3_content" id="c5" value="말이 많아요">
-	              	<label for="말">말이 많아요</label>
+	              	<label for="c5">말이 많아요</label>
 	             	<input type="radio" name="pet_char3_content" id="c6" value="조용해요">
-	             	<label for="조용">조용해요</label>
+	             	<label for="c6">조용해요</label>
 	             	<br>
 	             		
 	             	4.
 	             	<input type="radio" name="pet_char4_content" id="c7" value="주인바라기">
-	              	<label for="주인">주인바라기</label>
+	              	<label for="c7">주인바라기</label>
 	             	<input type="radio" name="pet_char4_content" id="c8" value="사람이면 다 좋아요">
-	             	<label for="사람">사람이면 다 좋아요</label>
+	             	<label for="c8">사람이면 다 좋아요</label>
 	             </td>  		
 			</tr>						
 			<tr>
@@ -445,7 +458,7 @@
 		<br>
 		<div style="float: right;">
 		<input type="button" class="btn" value="취소">
-		<button type="button" class="btn" name="add" id="add" value="등록">등록</button>
+		<button type="submit" class="btn" name="add" id="add" value="등록">등록</button>
 		
 		<span id="errMsg">필수 입력 항목을 입력하세요.</span>			
 		</div>
@@ -455,7 +468,7 @@
 
 <br><br><br><br>
 
-<!— 하단 회사 설명 영역 —>
+<!--  하단 회사 설명 영역-->
 <div id="harootFooter">
 	<c:import url="MainFooter.jsp"></c:import>
 </div>

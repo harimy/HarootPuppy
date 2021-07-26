@@ -22,7 +22,7 @@ public interface IPetDAO
 	
 	
 	// 반려견 추가
-	public int petAdd(PetDTO pet);
+	public int addPet(PetDTO pet);
 	
 	// 반려견 정보 수정
 	public int petModify(PetDTO pet);

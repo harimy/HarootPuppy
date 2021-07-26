@@ -72,6 +72,15 @@ body {
 
 <script type="text/javascript">
 
+$(function() {
+   $("#petAdd").click(function()
+   {
+      $("#selectPetForm").attr("action", "petinsertform.action");
+      $("#selectPetForm").submit();   
+   });
+   
+}); 
+
 
 /*$(function()
    {
@@ -113,8 +122,8 @@ body {
       
       <div style="text-align: right; margin-right: 120px;">
          <button type="button" class="btn btn-warning"
-         id="register" name="petAdd" 
-         onclick="location.href='petadd.action'">반려견 추가</button>
+         id="petAdd" name="petAdd" 
+         onclick="">반려견 추가</button>
       </div>
       
 

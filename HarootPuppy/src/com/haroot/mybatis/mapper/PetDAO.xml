@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haroot.mybatis.IPetDAO">
+
+   
+   <!-- 반려동물 등록 프로시저 호출 -->
+   <insert id="addPet" statementType="CALLABLE">
+      {
+              call PRC_PET_INSERT(#{pet_photo}, #{pet_name}, #{pet_sex}
+              , #{desex_content}, #{inject_type_name}, #{pet_type_name}
+              , #{pet_birth}, #{pet_addr}, #{pet_addr_lat}, #{pet_addr_lng} 
+              , #{pet_regnum}, #{disease_content}, #{fav_food_content}
+              , #{pet_social}, #{pet_char1_content}, #{pet_char2_content}
+              , #{pet_char3_content}, #{pet_char4_content}
+              , #{pet_bite_content}, #{relation_type_content}
+              , #{sid_code} )
+      }
+   </insert>
+   
+
+</mapper>
