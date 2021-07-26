@@ -7,6 +7,8 @@ package com.haroot.mybatis;
 
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,6 +66,91 @@ public class AdminNoticeController
 		
 		return "redirect:adminnoticelist.action";
 	}
+	
+	// 관리자 > 공지관리 > 글 보기
+	@RequestMapping(value="/adminnoticeview.action", method=RequestMethod.GET)
+	public String adminNoticeView(ModelMap model, HttpServletRequest request) throws SQLException
+	{
+	
+		String notice_code = request.getParameter("notice_code");
+		//System.out.println(notice_code);
+		
+		// 공지dao 
+		IAdminNoticeDAO dao = sqlSession.getMapper(IAdminNoticeDAO.class);
+		
+		// 공지 글 보기
+		model.addAttribute("list", dao.view(notice_code));
+		
+		return "NoticeRead.jsp";
+	}
+	
+	
+	// 관리자 > 공지관리 > 글 삭제
+	@RequestMapping(value="/adminnoticedelete.action", method=RequestMethod.GET)
+	public String adminNoticeRemove(ModelMap model, HttpServletRequest request) throws SQLException
+	{
+	
+		String notice_code = request.getParameter("notice_code");
+		//System.out.println("공지코드 : " + notice_code);
+		
+		// 공지dao 
+		IAdminNoticeDAO dao = sqlSession.getMapper(IAdminNoticeDAO.class);
+		
+		// 공지삭제
+		dao.remove(notice_code);
+		
+		return "redirect:adminnoticelist.action";
+	}
+	
+	// 관리자 > 공지관리 > 글 수정
+	@RequestMapping(value="/adminnoticeupdateform.action", method=RequestMethod.GET)
+	public String adminNoticeUpdateForm(ModelMap model, HttpServletRequest request) throws SQLException
+	{
+	
+		String notice_code = request.getParameter("notice_code");
+		//System.out.println("공지코드 : " + notice_code);
+		
+		// 공지dao 
+		IAdminNoticeDAO dao = sqlSession.getMapper(IAdminNoticeDAO.class);
+		
+		// 공지글 수정 폼 페이지 이동
+		model.addAttribute("list", dao.view(notice_code));
+		
+		return "NoticeUpdateForm.jsp";
+	}
+	
+	
+	// 관리자 > 공지관리 > 글 수정
+	@RequestMapping(value="/adminnoticeupdate.action", method=RequestMethod.GET)
+	public String adminNoticeUpdate(AdminNoticeDTO dto) throws SQLException
+	{
+		
+		System.out.println("수정코드 : " + dto.getNotice_code());
+		System.out.println("글제목 : " + dto.getNotice_title());
+		System.out.println("글내용 : " + dto.getNotice_content());
+		System.out.println("말머리코드 : " + dto.getNotice_head_code());
+		/*
+		 수정코드 : 11,
+		글제목 : 210721 테스트
+		글내용 : 						
+								
+		테스트입니다
+								
+		말머리코드 : 1
+		 */
+		
+		// 공지dao 
+		IAdminNoticeDAO dao = sqlSession.getMapper(IAdminNoticeDAO.class);
+		
+		// 공지글 수정 
+		dao.modify(dto);
+		
+		return "redirect:adminnoticelist.action";
+		
+	}
+	
+	
+	
 	
 	
 }

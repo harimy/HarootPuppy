@@ -9,7 +9,9 @@ String cp = request.getContextPath();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminAskReadList.jsp</title>
+
+<title>AdminAskRead.jsp</title>
+
 
 <!-- jQuery JS -->
 <script type="text/javascript"
@@ -27,6 +29,7 @@ String cp = request.getContextPath();
 
 #AdminAskRead
 {
+
 	margin: 10px auto;
 	width: 900px; /* 900px 고정 */
 

@@ -13,5 +13,15 @@ public interface IAdminNoticeDAO
 	
 	// 공지 리스트 출력
 	public ArrayList<AdminNoticeDTO> list() throws SQLException;
+	
+	// 공지글 보기
+	public AdminNoticeDTO view(String notice_code) throws SQLException;
+	
+	// 공지글 수정
+	public int modify(AdminNoticeDTO dto) throws SQLException;
+	
+	// 공지글 삭제
+	public int remove(String notice_code) throws SQLException;
+	
 
 }

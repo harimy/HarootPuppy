@@ -33,10 +33,24 @@ public class AdminAskController
 		// 고객문의 
 		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
 		
-		// 전체 회원 정보 리스트 전달
+		// 고객문의 리스트
+		model.addAttribute("adminAskList", dao.adminAskList());
+		model.addAttribute("askNotRead", dao.askNotRead());
+		
+		return "AdminAskList.jsp";
+	}
+	
+	// 관리자 > 고객지원 > 긃 ㅗ기 
+	@RequestMapping(value="/adminaskview.action", method=RequestMethod.GET)
+	public String adminAskView(ModelMap model) throws SQLException
+	{
+		// 고객문의 
+		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
+		
+		// 고객문의 리스트
 		model.addAttribute("adminAskList", dao.adminAskList());
 		
-		return "/WEB-INF/views/AdminAskList.jsp";
+		return "AdminAskList.jsp";
 	}
 	
 	

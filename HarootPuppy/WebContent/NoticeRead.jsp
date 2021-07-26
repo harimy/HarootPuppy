@@ -26,7 +26,7 @@
 	margin: 100px auto;
 }
  
-.boardTh
+.noticeTh
 {
 	padding: 4px;
 }
@@ -38,7 +38,32 @@
 <script type="text/javascript">
 
 
-	
+	$(function()
+	{
+		$("#deleteBtn").click(function()
+		{
+
+			if (confirm("삭제하시겠습니까?"))
+			{
+				// alert($(this).val());
+
+				$(location).attr("href", "adminnoticedelete.action?notice_code=" + $(this).val());
+			}
+			
+		});
+		
+		$("#updateBtn").click(function()
+		{
+
+		
+			$(location).attr("href", "adminnoticeupdateform.action?notice_code=" + $(this).val());
+
+			
+		});
+		
+	});
+
+		
 </script>
 
 
@@ -51,39 +76,43 @@
 		<c:import url="AdminMenu.jsp"></c:import>
 	</div>
 	<div id="noticeDiv">
-	<form action="" id="" name="">
+	<!-- <form action="" id="" name=""> -->
 		<div>
 			
 			 <table style="width: 100%;">
 			 	<tr>
-			 		<th style="width: 20%;" class="boardTh">글제목</th>
-			 		<th style="width: 80%;" class="boardTh">${search.board_title }</th>
+			 		<th style="width: 20%;" class="noticeTh">글제목</th>
+			 		<th style="width: 80%;" class="noticeTh">${list.notice_title}</th>
 			 	</tr>
 			 	<tr>
-			 		<th class="boardTh">작성자</th>
-			 		<th class="boardTh">${search.board_writer }</th>
+			 		<th class="noticeTh">작성자</th>
+			 		<th class="noticeTh">${list.notice_writer }</th>
 			 	</tr>
 			 	<tr>
-			 		<th class="boardTh">작성일자</th>
-			 		<th class="boardTh">${search.rep_log_date }</th>
+			 		<th class="noticeTh">작성일자</th>
+			 		<th class="noticeTh">${list.notice_date }</th>
 			 	</tr>
 			 	
 			 </table>
 		</div>
 		
 		<div>
+				
 			<textarea rows="25" cols="127" readonly="readonly" style="resize: none;" >
-				<%-- ${search.board_content } --%>
+				<%-- ${view.notice_content } --%>
 				<%-- 줄바꿈 처리 --%>
-				<c:out value="${search.board_content }" />
+				<%-- <c:out value="${list.notice_content }" /> --%>
+				${list.notice_content }
 			</textarea>
-		</div><br>
+				
+		</div>
+		<br>
 		
 		<br>
 		
 		<div style="display: inline-block; float:right;">
-			<button class="btn btn-secondary">수정</button>
-			<button class="btn btn-secondary">삭제</button>
+			<button id="updateBtn" class="btn btn-secondary" value="${list.notice_code }">수정</button>
+			<button id="deleteBtn" class="btn btn-secondary" value="${list.notice_code }">삭제</button>
 		</div>
 		
 		<br><br><br>
@@ -96,17 +125,14 @@
 		</div>
 		<br><br>
 		<div>
-			<button type="button" id="listBtn" class="listbtn btn btn-secondary" onclick="location.href='adminreportboardlist.action'">
+			<button type="button" id="listBtn" class="listbtn btn btn-secondary" onclick="location.href='adminnoticelist.action'">
 				목록으로
 			</button>
 			
 		</div>
-	</form>
+	<!-- </form> -->
 	</div>
-	<!-- 하단 회사 설명 영역 -->
-	<div id="harootFooter">
-		<c:import url="MainFooter.jsp"></c:import>
-	</div>
+	
 	
 </div>	
 
