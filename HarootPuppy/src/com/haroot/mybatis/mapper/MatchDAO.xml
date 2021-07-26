@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haroot.mybatis.IMatchDAO"> <!-- implements IMemberDAO -->
+	
+	<!-- 매칭코드 최대값 구하는 메소드 -->
+	<select id="max" resultType="java.lang.Integer">
+		SELECT MAX(TO_NUMBER(SUBSTR(MATCH_CODE, 4)))
+		FROM TBL_MATCH
+	</select>
+	
+	<!-- 매칭시 매칭테이블에 추가하는 메소드 -->
+	<insert id="add">
+		INSERT INTO TBL_MATCH(MATCH_CODE, WALKROOM_CODE, MATCH_DATE)
+		VALUES(#{match_code}, #{walkroom_code}, SYSDATE)
+	</insert>
+	
+	<!-- 해당 산책방의 최소 인원 구하는 메소드 -->
+	<select id="minMem" resultType="java.lang.Integer">
+		SELECT WALKROOM_MIN
+		FROM TBL_WALKROOM
+		WHERE WALKROOM_CODE = #{walkroom_code}
+	</select>
+	
+	<!-- 해당 산책방의 현재 인원 구하는 메소드 -->
+	<select id="currentMem" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM WALKROOMVIEW
+		WHERE WALKROOM_CODE = #{walkroom_code}
+		GROUP BY WALKROOM_CODE
+	</select>
+	
+	<!-- 참여자들 레디 상태 체크 -->
+	<select id="readyStateCheck" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM WALKROOMVIEW
+		WHERE WALKROOM_CODE = #{walkroom_code}
+		  AND READYSTATE_CODE = 0
+	</select>
+	
+	<!-- 매칭 상태 체크 -->
+	<select id="matchStateCheck" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM TBL_MATCH
+		WHERE WALKROOM_CODE = #{walkroom_code}
+	</select>
+	
+	<!-- 매칭 취소 -->
+	<delete id="remove">
+		DELETE
+		FROM TBL_MATCH
+		WHERE WALKROOM_CODE = #{walkroom_code}
+	</delete>
+	
+</mapper>
+

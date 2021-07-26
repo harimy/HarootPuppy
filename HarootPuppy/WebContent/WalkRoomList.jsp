@@ -31,8 +31,8 @@ function openChild(walkroom_code)
     window.name = "parent";
     
     // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-    openWin = window.open("walkroomentercheck.action?num=" + walkroom_code,
-            "childForm", "width=570, height=350, resizable = no, scrollbars = no");
+    openWin = window.open("walkroomentercheck.action?num=" + walkroom_code + "&state=waiting"
+            ,"childForm", "width=570, height=350, resizable = no, scrollbars = no");
 }
 
 </script>
@@ -81,7 +81,7 @@ function openChild(walkroom_code)
 					<p class="walkroom_title">[${walkroom.walkroom_title }]<br>
 					"${walkroom.walkroom_words }"<br>
 					</p>
-					<p>${walkroom.walkroom_place }<br>
+					<p>산책 장소 : ${walkroom.walkroom_place }<br>
 					산책 스타일 : ${walkroom.style_content}<br>
 					원하는 산책메이트 특징<br>
 					✅입질 여부 : ${walkroom.bite_content }<br>

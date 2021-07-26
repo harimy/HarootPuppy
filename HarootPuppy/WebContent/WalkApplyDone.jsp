@@ -26,92 +26,70 @@
 	
 </style>
 
+<script type="text/javascript">
+var openWin;
+
+function openChild(walkroom_code, relation_code)
+{
+    // window.name = "부모창 이름"; 
+    window.name = "parent";
+    
+    //alert(walkroom_code);
+    //alert(relation_code);
+    
+    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+    openWin = window.open("walkroomentercheck.action?num=" + walkroom_code 
+    		+ "&rel=" + relation_code + "&state=apply"
+            ,"childForm", "width=570, height=350, resizable = no, scrollbars = no");
+}
+</script>
 </head>
 <body>
 	<div id="bbsList">
-		<table id="bbsList_list" class="table" style="width: 100%;">
+		<table id="bbsList_list" class="table">
 			<tr id="title">
-				<th>글번호</th>
-				<th colspan="2">소개</th>
-				<th>산책인원</th>
-				<th>반려견</th>
-				<th>산책 일시</th>
-				<th>개설자</th>
+				<th style="width: 10%;">글번호</th>
+				<th colspan="2" style="width: 35%;">소개</th>
+				<th style="width: 15%;">산책 인원</th>
+				<th style="width: 30%;">산책 일시</th>
+				<th style="width: 10%;">개설자</th>
 			</tr>
-			<tr id="lists">
-				<td class="listTd">1</td>
-				<td class="listTd">
-				<img style="border-radius: 100px;" src="images/jaerong.jpg" width=80 height=80></img>
+	
+			<c:forEach var="walkroom" items="${applyList }">
+			<tr class="lists" onclick="openChild('${walkroom.walkroom_code}', '${walkroom.relation_code }')">
+				<td style="vertical-align: middle;">
+					${walkroom.walkroom_code }
+					<input type="hidden" name="walkroom_code" value="${walkroom.walkroom_code }">
+					<input type="hidden" name="sid_code" value="${sid_code }">
 				</td>
-				<td>
-				<p>[ 저녁 산책하GO, 건강챙기GO! ]<br>
-				산책장소: 안양천<br>
-				원하는 산책메이트 특징<br>
-				- 대형견, 중형견<br>
-				- 동일성별 양육자
-				</p>
-				</td >
-				<td class="listTd">
-				<p>(3/4)<br>
-				최소 3명
-				</p>
+				<td style="vertical-align: middle;">
+					<img style="border-radius: 100px;" src="images/jaerong.jpg" width=80 height=80></img>
 				</td>
-				<td class="listTd">재롱이</td>
-				<td class="listTd">
-				<p>2021년 6월 13일<br>
-				(18:30 ~ 21:00)
-				</p>
+				<td style="text-align: left; width: 30%;" >
+					<div style="text-align: left; display:inline-block;">
+						<p class="walkroom_title">[${walkroom.walkroom_title }]<br>
+						"${walkroom.walkroom_words }"<br>
+						</p>
+						<p>산책 장소 : ${walkroom.walkroom_place }<br>
+						산책 스타일 : ${walkroom.style_content}<br>
+						원하는 산책메이트 특징<br>
+						✅입질 여부 : ${walkroom.bite_content }<br>
+						✅중성화 여부 : ${walkroom.desex_content }<br>
+						✅보호자 성별 : ${walkroom.samesex_content }<br>
+						</p>
+					</div>
 				</td>
-				<td class="listTd">뚜또맘</td>
+				<td style="vertical-align: middle;">
+					( ${walkroom.parti_count} / ${walkroom.walkroom_max } )<br>
+					최소 인원 ${walkroom.walkroom_min } 명<br>
+				</td>
+				<td style="vertical-align: middle;">${walkroom.walkroom_start }<br> ~ <br>${walkroom.walkroom_end }</td>
+				<td style="vertical-align: middle;">
+					${walkroom.leader_nickname }
+				</td>
 			</tr>
-			<tr id="lists">
-				<td class="listTd">4</td>
-				<td class="listTd">
-				<img style="border-radius: 100px;" src="images/puppy1.png" width=80 height=80></img>
-				</td>
-				<td>
-				<p>[ 오늘 저녁 번개산책 한판ㅋ ]<br>
-				산책장소: 철산한신아파트 106동 놀이터<br>
-				원하는 산책메이트 특징<br>
-				- 소형견<br>
-				- 동일성별 양육자<br>
-				- 입질 반려견 금지
-				</p>
-				</td>
-				<td class="listTd">
-				<p>(4/4)<br>
-				최소 2명
-				</p>
-				</td>
-				<td class="listTd">코코</td>
-				<td class="listTd">
-				<p>2021년 7월 1일<br>
-				(19:00 ~ 20:00)
-				</p>
-				</td>
-				<td class="listTd">제갈코코</td>
-			</tr>
+			</c:forEach>
 		</table>
-
-		<%-- <%
-         for (BoardDTO dto : lists)
-         {
-         %>
-         <dl>
-         	<dd class="num"><%=dto.getNum() %></dd>
-            <dd class="subject">
-            	<a href="<%=articleUrl %>&num=<%=dto.getNum() %>">		<!-- 825번 게시물 선택했을 때 링크 : Article.jsp?pageNum=1&num=825 -->
-            	<%=dto.getSubject() %>
-            	</a>
-            </dd>
-            <dd class="name"><%=dto.getName() %></dd>
-            <dd class="created"><%=dto.getCreated() %></dd>
-            <dd class="hitCount"><%=dto.getHitCount() %></dd>
-         </dl>
-         <%
-         }
-         %> --%>
-
 
 		<br>
 		<div id="bbsList_header">

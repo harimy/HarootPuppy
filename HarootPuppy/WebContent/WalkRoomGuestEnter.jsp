@@ -74,7 +74,6 @@
 	$(document).ready(function()
 	{	
 		//alert($("#readyBtn").val());
-		
 		if( $("#readyBtn").val() == "1" ) // 레디 완료 상태면
 		{
 			$("#readyBtn").css("background-color", "rgb(224, 224, 224)");
@@ -106,6 +105,24 @@
 					, "readystateupdate.action?readystate=" + $(this).val());
 			
 		});
+		
+		$("#list").click(function()
+		{
+			if("${roomState}" == "scheduled")
+			{
+				$("#leftTimer").css("display", "none");
+				$("#readyBtn").css("display", "none");
+				
+				$(location).attr("href"
+						, "WalkHistoryMain.jsp");
+			}
+			else
+			{
+				$(location).attr("href"
+						, "walkroommain.action");
+				
+			}
+		});
 	});
 	
 	function openChild()
@@ -116,11 +133,21 @@
 	    openWin = window.open("WalkRoomReplyBlock.jsp",
 	            "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
 	}
+	
+	function initialize()
+	{
+		alert("${roomState}");
+		if("${roomState}" == "scheduled")
+		{
+			$("#leftTimer").css("display", "none");
+			$("#readyBtn").css("display", "none");
+		}
+	}
 
 </script>
 
 </head>
-<body>
+<body onload="initialize()">
 <!-----------------------------
    WalkRoomGuestEnter.jsp
    - 일반 사용자용 산책방 페이지 
@@ -226,7 +253,7 @@
 	
 		<!-- 방장/일반 개별 버튼 -->
 		<div id="buttonArea" style="float: right;">
-			<button type="button" id="list" onclick="location.href='walkroommain.action'">목록으로</button>
+			<button type="button" id="list">목록으로</button>
 			<button type="button" id="out" onclick="location.href='walkroomexit.action'">방 나가기</button>
 		</div>
 		<br><br>

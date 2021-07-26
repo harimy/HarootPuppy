@@ -15,25 +15,17 @@
 		WHERE PET_CODE = #{pet_code}
 	</select>
 	
+	<!-- 접종내역 -->
 	<select id="petInfo3" parameterType="java.lang.String" resultType ="com.haroot.mybatis.PetDTO">
-		SELECT PET_CODE, PET_TYPE_NAME, BITE_CONTENT, DESEX_CONTENT
-        , PET_SEX, PET_BIRTH, PET_FAV_PLACE, PET_SOCIAL
-        , PET_CHAR1_CONTENT, PET_CHAR2_CONTENT, PET_CHAR3_CONTENT
-        , PET_CHAR4_CONTENT, PET_SIZE, PET_NAME, PET_PHOTO
-        , PET_ADDR, PET_REGNUM
-        , RELATION_CODE, SID_CODE
-		FROM FORPETNAME_VIEW
+		SELECT INJECT_TYPE_NAME
+		FROM VACCINE_VIEW
 		WHERE PET_CODE = #{pet_code}
 	</select>
 	
+	<!-- 기저질환 -->
 	<select id="petInfo4" parameterType="java.lang.String" resultType ="com.haroot.mybatis.PetDTO">
-		SELECT PET_CODE, PET_TYPE_NAME, BITE_CONTENT, DESEX_CONTENT
-        , PET_SEX, PET_BIRTH, PET_FAV_PLACE, PET_SOCIAL
-        , PET_CHAR1_CONTENT, PET_CHAR2_CONTENT, PET_CHAR3_CONTENT
-        , PET_CHAR4_CONTENT, PET_SIZE, PET_NAME, PET_PHOTO
-        , PET_ADDR, PET_REGNUM
-        , RELATION_CODE, SID_CODE
-		FROM FORPETNAME_VIEW
+		SELECT DISEASE_CONTENT
+		FROM DISEASE_VIEW
 		WHERE PET_CODE = #{pet_code}
 	</select>
 	 

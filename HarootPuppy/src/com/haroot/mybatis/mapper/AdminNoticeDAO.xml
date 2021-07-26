@@ -34,5 +34,33 @@
 		ORDER BY NOTICE_CODE
 	</select>
 	
+	<!-- 특정글 보기 -->
+	<select id="view" resultType="com.haroot.mybatis.AdminNoticeDTO">
+	SELECT NOTICE_CODE, NOTICE_WRITER, NOTICE_HEAD_CODE
+	    , NOTICE_CATE_CONTENT, NOTICE_TITLE, NOTICE_PHOTO
+	    , NOTICE_CONTENT, NOTICE_VIEW, NOTICE_LIKE, NOTICE_DATE
+		FROM NOTICEVIEW
+		WHERE NOTICE_CODE = #{notice_code, jdbcType=NUMERIC}
+	</select>
+	
+	<!-- 공지 삭제 -->
+	<delete id="remove">
+	DELETE
+	FROM TBL_NOTICE
+	WHERE NOTICE_CODE = #{notice_code, jdbcType=NUMERIC}
+      
+   </delete>
+	
+	<update id="modify">
+	
+	UPDATE TBL_NOTICE
+	SET NOTICE_HEAD_CODE = #{notice_head_code}
+	, NOTICE_TITLE = #{notice_title}
+	, NOTICE_CONTENT = #{notice_content}
+	WHERE NOTICE_CODE = #{notice_code, jdbcType=NUMERIC}
+	
+	</update>
+
+	
 	
 </mapper>

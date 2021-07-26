@@ -82,8 +82,6 @@ $(function() {
 }); 
 
 
-
-
 /*$(function()
    {
     $(".final_btn").click(function()
