@@ -234,13 +234,23 @@ max-width: 30px;
                   <td>품종</td>
                   <td>${infoList.pet_type_name }</td>
                </tr>
+               
                <tr>
                   <td>접종내역</td>
-                  <td>광견병 ...</td>
+                  <td>
+				  <c:forEach var="injectInfo" items="${injectInfo }">
+                  	${injectInfo.inject_type_name }
+                  </c:forEach>
+                  </td>
                </tr>
+               
                <tr>
                   <td>기저질환</td>
-                  <td>없음 </td>
+                  <td>
+                  <c:forEach var="disInfo" items="${disInfo }">
+                  	${disInfo.disease_content }
+				  </c:forEach>
+				  </td>
                </tr>
             </table>
             
