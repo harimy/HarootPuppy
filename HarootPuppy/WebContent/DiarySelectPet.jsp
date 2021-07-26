@@ -73,19 +73,12 @@ body {
 <script type="text/javascript">
 
 $(function() {
-   $("#register").click(function()
+   $("#petAdd").click(function()
    {
-      // alert($('input[name="reportOption"]:checked').val());
-      if(typeof $('input[name="petAdd"]:checked').val() == 'undefined' )
-      {
-          $("#errMsg").css("display" ,"inline");
-          return ; 
-         //alert("됨");
-      } 
-      
-      document.replyReport.submit();
-      // form을 일단 넘기고 속성값은 나중에 받아가기
+      $("#selectPetForm").attr("action", "petinsertform.action");
+      $("#selectPetForm").submit();   
    });
+   
 }); 
 
 
@@ -131,10 +124,8 @@ $(function() {
       
       <div style="text-align: right; margin-right: 120px;">
          <button type="button" class="btn btn-warning"
-         id="register" name="petAdd" 
-         onclick="location.href='petadd.action'">반려견 추가</button>
-
-         <span id="errMsg">필수 선택 사항을 선택하세요</span>
+         id="petAdd" name="petAdd" 
+         onclick="">반려견 추가</button>
       </div>
       
 
