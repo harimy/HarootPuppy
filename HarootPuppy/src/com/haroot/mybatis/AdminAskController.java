@@ -40,7 +40,7 @@ public class AdminAskController
 		return "AdminAskList.jsp";
 	}
 	
-	// 관리자 > 고객지원 > 긃 ㅗ기 
+	// 관리자 > 고객지원 > 글 보기
 	@RequestMapping(value="/adminaskview.action", method=RequestMethod.GET)
 	public String adminAskView(ModelMap model) throws SQLException
 	{

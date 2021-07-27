@@ -76,7 +76,6 @@
 		<c:import url="AdminMenu.jsp"></c:import>
 	</div>
 	<div id="noticeDiv">
-	<!-- <form action="" id="" name=""> -->
 		<div>
 			
 			 <table style="width: 100%;">
@@ -93,17 +92,25 @@
 			 		<th class="noticeTh">${list.notice_date }</th>
 			 	</tr>
 			 	
+			 	<tr>
+		 			<%-- <textarea rows="25" cols="127" readonly="readonly" style="resize: none;" >
+						줄바꿈 처리
+						<c:out value="${list.notice_content }" />
+						${list.notice_content }
+					</textarea> --%>
+					
+					<td colspan="2" style="padding: 30px 10px 10px 10px; vertical-align: top; height:300px;">
+						<%-- ${list.notice_content } --%>
+						<c:out value="${list.notice_content }" />
+					</td>
+			 	</tr>
+			 	
 			 </table>
 		</div>
 		
 		<div>
 				
-			<textarea rows="25" cols="127" readonly="readonly" style="resize: none;" >
-				<%-- ${view.notice_content } --%>
-				<%-- 줄바꿈 처리 --%>
-				<%-- <c:out value="${list.notice_content }" /> --%>
-				${list.notice_content }
-			</textarea>
+			
 				
 		</div>
 		<br>
@@ -130,7 +137,6 @@
 			</button>
 			
 		</div>
-	<!-- </form> -->
 	</div>
 	
 	

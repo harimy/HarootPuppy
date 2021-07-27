@@ -9,7 +9,7 @@ String cp = request.getContextPath();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminAskReadList.jsp</title>
+<title>AdminAskRead.jsp</title>
 
 <!-- jQuery JS -->
 <script type="text/javascript"
@@ -25,7 +25,7 @@ String cp = request.getContextPath();
 
 <style type="text/css">
 
-#AdminAskRead
+#AdminAskReadDiv
 {
 	margin: 10px auto;
 	width: 900px; /* 900px 고정 */
@@ -44,36 +44,58 @@ String cp = request.getContextPath();
 </head>
 <body>
 
-<!-----------------------------
-  Sample.jsp
-  - 페이지 설명
-------------------------------->
 	<div>
 		<!-- 메뉴영역 -->
 		<div id="harootHeader">
 			<c:import url="AdminMenu.jsp"></c:import>
 		</div>
-
+		
+		<br /><br />
+		
+		
 		<!-- content 영역 -->
-		<div id="AdminAskRead">
-			<form>
-				<div>
-					<h1>강아지 정보를 수정하고싶으면 어떻게 하죠?</h1>
-					<h4>뚜냐사랑</h4>
-				</div>
+		<div id="AdminAskReadDiv">
+			<div style="width: 100%; text-align: center;">
+				<h1>1:1 문의 게시판</h1>
+			</div>
+			
+			<div>
+			
+				<table style="width: 100%;">
+				 	<tr>
+				 		<th style="width: 20%;" class="noticeTh">글제목</th>
+				 		<th style="width: 80%;" class="noticeTh">${list.notice_title}</th>
+				 	</tr>
+				 	<tr>
+				 		<th class="noticeTh">작성자</th>
+				 		<th class="noticeTh">${list.notice_writer }</th>
+				 	</tr>
+				 	<tr>
+				 		<th class="noticeTh">작성일자</th>
+				 		<th class="noticeTh">${list.notice_date }</th>
+				 	</tr>
+				 	
+				 	<tr>
+				 		
+			 			<!-- 
+			 			<textarea rows="30" cols="120" readonly="readonly" style="resize: none;">
+			 			내용 불러오기
+			 			</textarea>
+			 			 -->
+			 			 
+						<td colspan="2" style="padding: 30px 10px 10px 10px; vertical-align: top; height:600px;">
+						내용 불러오기
+						</td>
+				
+				 			 
+				 			 
+				 		
+				 	</tr>
+				 	
+				</table>
+			</div>
 
-				<div>
-					<table>
-						<tr>
-							<td>21.06.26 13:34&nbsp;&nbsp;</td>
-							<td>조회수 45&nbsp;&nbsp;</td>
-						</tr>
-					</table>
-				</div>
-
-				<div>
-					<textarea rows="30" cols="120" readonly="readonly" style="resize: none;">내용 불러오기</textarea>
-				</div>
+				
 				<br>
 
 				<div>
@@ -94,24 +116,26 @@ String cp = request.getContextPath();
 					<input type="button" value="등록" id="submitBtn" class="submitbtn">
 				</div>
 
-				<div class="bbsArticle_bottomLine" style="width: 700px;">
-					<br>
-					<p>
-						<a href="">이전글 : </a>
-					</p>
+				
+				 
+				<br><br><br>
+				<div class="bbsArticle_bottomLine">
+					<p><a href="">이전글 : 이전글입니다. </a></p>
 					<hr>
 				</div>
-				<div class="bbsArticle_noLine" style="width: 700px;">
-					<p>
-						<a href="">다음글 : </a>
-					</p>
+				<div class="bbsArticle_noLine">
+					<p><a href="">다음글 : 다음글입니다. </a></p>
 				</div>
+				<br><br>
+				
+				
+				
 				<div>
 					<button type="button" id="updateBtn" class="listbtn">수정</button>
 					<button type="button" id="deleteBtn" class="listbtn">삭제</button>
 					<button type="button" id="listBtn" class="listbtn">목록으로</button>
 				</div>
-			</form>
+			
 		</div>
 		
 		
