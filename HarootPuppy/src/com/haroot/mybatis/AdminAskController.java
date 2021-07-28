@@ -8,6 +8,8 @@ package com.haroot.mybatis;
 
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,15 +44,27 @@ public class AdminAskController
 	
 	// 관리자 > 고객지원 > 글 보기
 	@RequestMapping(value="/adminaskview.action", method=RequestMethod.GET)
-	public String adminAskView(ModelMap model) throws SQLException
+	public String adminAskView(ModelMap model, HttpServletRequest request) throws SQLException
 	{
 		// 고객문의 
 		IAskDAO dao = sqlSession.getMapper(IAskDAO.class);
 		
-		// 고객문의 리스트
-		model.addAttribute("adminAskList", dao.adminAskList());
+		// ask_code 가져오기
+		int ask_code = Integer.parseInt(request.getParameter("ask_code"));
 		
-		return "AdminAskList.jsp";
+		//System.out.println("문의코드 : " + ask_code);
+		//--==>>
+		/*
+		   문의코드 : 4
+			문의코드 : 2
+		*/
+		
+		
+		// 고객문의 리스트
+		model.addAttribute("askView", dao.getReadData(ask_code));
+		
+		
+		return "AdminAskRead.jsp";
 	}
 	
 	

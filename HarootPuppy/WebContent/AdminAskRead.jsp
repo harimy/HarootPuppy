@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -59,34 +59,36 @@ String cp = request.getContextPath();
 				<h1>1:1 문의 게시판</h1>
 			</div>
 			
+			<br><br>
 			<div>
 			
 				<table style="width: 100%;">
 				 	<tr>
 				 		<th style="width: 20%;" class="noticeTh">글제목</th>
-				 		<th style="width: 80%;" class="noticeTh">${list.notice_title}</th>
+				 		<th style="width: 80%;" class="noticeTh">${askView.ask_title}</th>
 				 	</tr>
 				 	<tr>
 				 		<th class="noticeTh">작성자</th>
-				 		<th class="noticeTh">${list.notice_writer }</th>
+				 		<th class="noticeTh">${askView.mem_nickname }</th>
 				 	</tr>
 				 	<tr>
 				 		<th class="noticeTh">작성일자</th>
-				 		<th class="noticeTh">${list.notice_date }</th>
+				 		<th class="noticeTh">${askView.ask_date }</th>
 				 	</tr>
 				 	
 				 	<tr>
 				 		
 			 			<!-- 
 			 			<textarea rows="30" cols="120" readonly="readonly" style="resize: none;">
-			 			내용 불러오기
+			 			${askView.ask_content }
 			 			</textarea>
 			 			 -->
-			 			 
+			 			
+			 			
 						<td colspan="2" style="padding: 30px 10px 10px 10px; vertical-align: top; height:600px;">
-						내용 불러오기
+						${askView.ask_content }
 						</td>
-				
+						
 				 			 
 				 			 
 				 		

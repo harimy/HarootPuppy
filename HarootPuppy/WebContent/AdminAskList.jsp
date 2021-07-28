@@ -107,7 +107,7 @@ String cp = request.getContextPath();
 							<tr>
 								<td>${ask.ask_cate_content }</td>
 								<td>
-									<a href="adminnoticeview.action?notice_code=${list.notice_code }" class="link">
+									<a href="adminaskview.action?ask_code=${ask.ask_code }" class="link">
 										${ask.ask_title }
 									</a>
 								
