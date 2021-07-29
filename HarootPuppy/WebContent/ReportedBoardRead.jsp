@@ -138,7 +138,7 @@
 		</div>
 		<br><br>
 		<div>
-			<button type="button" id="listBtn" class="listbtn btn btn-secondary" onclick="location.href='adminnoticelist.action'">
+			<button type="button" id="listBtn" class="listbtn btn btn-secondary" onclick="location.href='adminreportboardlist.action'">
 				목록으로
 			</button>
 		</div>

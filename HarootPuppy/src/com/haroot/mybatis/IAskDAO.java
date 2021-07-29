@@ -64,5 +64,8 @@ public interface IAskDAO
 	
 	// 관리자용 게시글 리스트 확인
 	public ArrayList<AskDTO> adminAskList() throws SQLException;
+	
+	// 관리자용 열람날짜 업데이트
+	public int UpdateReadDate(int ask_code) throws SQLException;
 
 }

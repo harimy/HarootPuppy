@@ -59,6 +59,17 @@ public class AdminAskController
 			문의코드 : 2
 		*/
 		
+		AskDTO dto = dao.getReadData(ask_code);
+		
+		
+		System.out.println("테스트" + dto.getAsk_read());
+		//--==>> 테스트2021-06-23 00:00:00
+		
+		if (dto.getAsk_read() == null)
+		{
+			dao.UpdateReadDate(ask_code);
+		}
+		
 		
 		// 고객문의 리스트
 		model.addAttribute("askView", dao.getReadData(ask_code));
