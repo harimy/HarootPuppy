@@ -28,7 +28,7 @@
  
 .noticeTh
 {
-	padding: 4px;
+	margin: 5px;
 }
 
 .btn:hover { background: rgb(244,188,23);}
@@ -46,7 +46,6 @@
 			if (confirm("삭제하시겠습니까?"))
 			{
 				// alert($(this).val());
-
 				$(location).attr("href", "adminnoticedelete.action?notice_code=" + $(this).val());
 			}
 			
@@ -54,19 +53,12 @@
 		
 		$("#updateBtn").click(function()
 		{
-
-		
 			$(location).attr("href", "adminnoticeupdateform.action?notice_code=" + $(this).val());
-
-			
 		});
 		
 	});
-
 		
 </script>
-
-
 
 </head>
 <body>
@@ -75,72 +67,57 @@
 	<div id="harootHeader">
 		<c:import url="AdminMenu.jsp"></c:import>
 	</div>
-	<div id="noticeDiv">
-		<div>
+ 	
+ 	<div style="width: 85%; margin: auto; text-align: center;">
+		<h2>공지 관리</h2>
+	</div>
+	<div style="width: 85%; margin: auto;">
+		<h3>${list.notice_title}</h3>
 			
-			 <table style="width: 100%;">
-			 	<tr>
-			 		<th style="width: 20%;" class="noticeTh">글제목</th>
-			 		<th style="width: 80%;" class="noticeTh">${list.notice_title}</th>
-			 	</tr>
-			 	<tr>
-			 		<th class="noticeTh">작성자</th>
-			 		<th class="noticeTh">${list.notice_writer }</th>
-			 	</tr>
-			 	<tr>
-			 		<th class="noticeTh">작성일자</th>
-			 		<th class="noticeTh">${list.notice_date }</th>
-			 	</tr>
-			 	
-			 	<tr>
-		 			<%-- <textarea rows="25" cols="127" readonly="readonly" style="resize: none;" >
-						줄바꿈 처리
-						<c:out value="${list.notice_content }" />
-						${list.notice_content }
-					</textarea> --%>
+			<table>
+				<tr>
+					<th class="noticeTh" width="90px;">작성자</th>
+					<td class="noticeTh" style="display: inline-block;">${list.notice_writer }</td>
+				</tr>
+				
+				<tr>
+					<th class="noticeTh">작성일자 </th>
+					<td style="display: inline-block;">${list.notice_date }</td>
+				</tr>
+				
+			
+				<tr>
+					<th class="noticeTh">카테고리 </th>
+					<td style="display: inline-block;">${list.notice_cate_content }</td>
+				</tr>
 					
-					<td colspan="2" style="padding: 30px 10px 10px 10px; vertical-align: top; height:300px;">
-						<%-- ${list.notice_content } --%>
-						<c:out value="${list.notice_content }" />
-					</td>
-			 	</tr>
-			 	
-			 </table>
-		</div>
-		
-		<div>
-				
-			
-				
-		</div>
-		<br>
+			</table>
+
+	</div>
 		
 		<br>
-		
-		<div style="display: inline-block; float:right;">
-			<button id="updateBtn" class="btn btn-secondary" value="${list.notice_code }">수정</button>
-			<button id="deleteBtn" class="btn btn-secondary" value="${list.notice_code }">삭제</button>
+		<div style="width: 85%; margin: auto;">
+			<textarea rows="20" class="form-control" readonly="readonly" style="resize: none;">${list.notice_content }</textarea>
+		</div><br>
+
+			<div style="width: 85%; margin: auto; text-align: right;">
+		<button type="button" id="updateBtn" class="btn btn-warning" value="${list.notice_code }">수정</button>
+		<button type="button" id="deleteBtn" class="btn btn-danger" value="${list.notice_code }">삭제</button>
+		<button type="button" id="listBtn" class="btn btn-success" onclick="location.href='adminnoticelist.action'">목록으로</button>
 		</div>
+
 		
 		<br><br><br>
-		<div class="bbsArticle_bottomLine">
+		<div style="width: 85%; margin: auto;" class="bbsArticle_bottomLine">
 			<p><a href="">이전글 : 이전글입니다. </a></p>
 			<hr>
 		</div>
-		<div class="bbsArticle_noLine">
+		<div style="width: 85%; margin: auto;" class="bbsArticle_noLine">
 			<p><a href="">다음글 : 다음글입니다. </a></p>
 		</div>
 		<br><br>
-		<div>
-			<button type="button" id="listBtn" class="listbtn btn btn-secondary" onclick="location.href='adminnoticelist.action'">
-				목록으로
-			</button>
-			
-		</div>
-	</div>
-	
-	
-</div>	
+		
+</div>
 
 </body>
 </html>
