@@ -236,13 +236,30 @@ max-width: 30px;
                </tr>
                
                <tr>
-                  <td>접종내역</td>
-                  <td>
-				  <c:forEach var="injectInfo" items="${injectInfo }">
-                  	${injectInfo.inject_type_name }
-                  </c:forEach>
-                  </td>
-               </tr>
+				<td>접종내역</td>
+				<td>
+					<c:forEach var="injectInfo" items="${injectInfo }">
+                 		${injectInfo.inject_type_name }
+                 	</c:forEach>
+                 </td>
+
+						<%-- 
+				  <td>
+					<c:choose>
+						<c:when test="${empty injectInfo }">
+
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="injectInfo" items="${injectInfo }">
+                  			${injectInfo.inject_type_name }
+                  			</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				  </td> 
+				  --%>
+				  
+
+				</tr>
                
                <tr>
                   <td>기저질환</td>

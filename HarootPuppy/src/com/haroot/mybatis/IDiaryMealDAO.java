@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 public interface IDiaryMealDAO
-{
+{	
 	// 식사 입력
 	public int addMeal(DiaryMealDTO mealDto) throws SQLException;
 	
@@ -15,6 +15,7 @@ public interface IDiaryMealDAO
 	
 	// 식사 입력 (추가) : 즐찾존재 (X)
 	public int addMeal2(DiaryMealDTO mealDto) throws SQLException;
+	
 	
 	// 식사 수정
 	public int modifyMeal(DiaryMealDTO mealDto) throws SQLException;

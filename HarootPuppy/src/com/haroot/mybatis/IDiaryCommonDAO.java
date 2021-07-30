@@ -8,6 +8,9 @@ public interface IDiaryCommonDAO
 	// 공통 입력 (추가)
 	public int addCommon(DiaryCommonDTO commonDto) throws SQLException;
 	
+	// COMMON_CODE의 MAX 값 구하기
+	public int max() throws SQLException;
+	
 	// 공통 수정
 	public int modifyCommon(DiaryCommonDTO commonDto) throws SQLException;
 	

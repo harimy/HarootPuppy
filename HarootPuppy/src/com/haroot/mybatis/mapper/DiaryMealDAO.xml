@@ -3,32 +3,10 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.haroot.mybatis.IDiaryMealDAO"> <!-- 부모 노릇을 할 인터페이스 -->
+<mapper namespace="com.haroot.mybatis.IDiaryMealDAO"> <!-- 부모 노릇을 할 인터페이스 --> 
+	 
 	
-	<!-- 다이어리 식사 (meal) 등록 프로시저 호출 : 즐찾존재(O) -->
-	<insert id="addMeal1" statementType="CALLABLE">
-		{
-       	 	call PRC_DIARY_MEAL_INSERT(#{favorite_name,jdbcType=VARCHAR},#{common_start},#{common_end},#{meal_name},#{meal_amount},#{meal_type},#{common_memo,jdbcType=VARCHAR},#{common_photo,jdbcType=VARCHAR},#{sid_code},#{pet_code})
-       	}
-	</insert>
+
 	
-	
-	<!-- 다이어리 식사 (meal) 등록 프로시저 호출 : 즐찾존재(X) -->
-	<insert id="addMeal2" statementType="CALLABLE">
-		{
-			call PRC_DIARY_MEAL_INSERT2(#{common_start},#{common_end},#{meal_name},#{meal_amount},'#{meal_type}',#{common_memo,jdbcType=VARCHAR},#{common_photo,jdbcType=VARCHAR},#{sid_code},#{pet_code})
-       	}
-	</insert>
-		
-	<!--  	
-	<choose>
-		<when test = "pet_code=${pet_code} and daily_date = SYSDATE">
-		</when>
-		
-		<otherwise>
-			
-		</otherwise>
-	</choose>	
-	-->
 	
 </mapper>
