@@ -102,5 +102,11 @@
 		FROM TBL_ASK
 		WHERE ASK_CODE = #{ask_code}
 	</delete>
+	
+	<update id="UpdateReadDate">
+		UPDATE TBL_ASK
+		SET ASK_READ = SYSDATE
+		WHERE ASK_CODE = #{ask_code}
+	</update>
 
 </mapper>

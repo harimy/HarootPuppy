@@ -93,13 +93,6 @@
 		        <!-- Tab panes -->
 		        <div class="tab-content">
 		          <div role="tabpanel" class="tab-pane active" id="reportMenu1">
-		          	<!-- 전체 신고 자리  -->
-		          	<%-- 
-		          	무한로딩 걸림 ㅠ
-		          	<jsp:include page="/adminreportboardlist.action">
-		          		<jsp:param value="1" name="test"/>
-		          	</jsp:include> 
-		          	 --%>
 		          	<c:import url="ReportedBoardList.jsp"></c:import>
 		          </div>
 		          <div role="tabpanel" class="tab-pane" id="reportMenu2">
@@ -122,10 +115,6 @@
 		</div>
 	</div>
 			
-	<!-- 하단 회사 설명 영역 -->
-	<div id="harootFooter">
-		<c:import url="MainFooter.jsp"></c:import>
-	</div>
 </div>
 
 </body>

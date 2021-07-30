@@ -46,6 +46,9 @@ String cp = request.getContextPath();
 
 		$('#userTable').dataTable(
 		{
+			/* 0번째 인덱스로 내림차순으로 정렬 */
+			  order: [[0, 'desc']],
+			  ordering: true
 			
 		});
 	});
@@ -93,6 +96,7 @@ String cp = request.getContextPath();
 					id="userTable" style="text-align: center;">
 					<thead>
 						<tr>
+							<th>글번호</th>
 							<th>카테고리</th>
 							<th>글제목</th>
 							<th>닉네임</th>
@@ -105,9 +109,10 @@ String cp = request.getContextPath();
 					<tbody>
 						<c:forEach var="ask" items="${adminAskList}">
 							<tr>
+								<td>${ask.ask_code }</td>
 								<td>${ask.ask_cate_content }</td>
 								<td>
-									<a href="adminnoticeview.action?notice_code=${list.notice_code }" class="link">
+									<a href="adminaskview.action?ask_code=${ask.ask_code }" class="link">
 										${ask.ask_title }
 									</a>
 								
@@ -115,14 +120,16 @@ String cp = request.getContextPath();
 								
 								<td>${ask.mem_nickname }</td>
 								<td>${ask.ask_date }</td>
-								<td>${ask.ask_read == null ? 'Ⅹ' : '○' }</td>
+								<td>
+									${ask.ask_read == null ? 'Ⅹ' : '○' }
+									<%-- <input type="hidden" name="ask_read" id="ask_read" value="${ask.ask_read }"> --%>
+								</td>
 								<td>${ask.ask_state_content }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 
 				</table>
-				
 
 			</div>
 

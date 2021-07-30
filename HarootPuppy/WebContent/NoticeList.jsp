@@ -48,6 +48,9 @@
 	
 		$('#noticeTable').dataTable(
 		{
+			/* 0번째 인덱스로 내림차순으로 정렬 */
+			  order: [[0, 'desc']],
+			  ordering: true
 			
 		});
 	});
@@ -85,8 +88,8 @@
 					style="text-align: center; width: 100%;">
 					<thead>
 						<tr id="title">
-							<th class="cate" style="text-align: center;">카테고리</th>
 							<th class="num" style="text-align: center;">공지번호</th>
+							<th class="cate" style="text-align: center;">카테고리</th>
 							<th class="subject" style="text-align: center;">제목</th>
 							<th class="name" style="text-align: center;">작성자</th>
 							<th class="" style="text-align: center;">작성일</th>
@@ -98,8 +101,8 @@
 					<tbody>
 						<c:forEach var="list" items="${list }">
 							<tr>
-								<td>${list.notice_cate_content }</td>					
 								<td>${list.notice_code }</td>					
+								<td>${list.notice_cate_content }</td>					
 								<td>
 								
 								<a href="adminnoticeview.action?notice_code=${list.notice_code }" class="link">

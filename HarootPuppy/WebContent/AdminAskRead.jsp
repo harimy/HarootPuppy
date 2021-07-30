@@ -3,13 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminAskReadList.jsp</title>
+<title>AdminAskRead.jsp</title>
 
 <!-- jQuery JS -->
 <script type="text/javascript"
@@ -25,12 +25,6 @@ String cp = request.getContextPath();
 
 <style type="text/css">
 
-#AdminAskRead
-{
-	margin: 10px auto;
-	width: 900px; /* 900px 고정 */
-
-}
 
 #reply
 {
@@ -39,85 +33,119 @@ String cp = request.getContextPath();
 	resize: none;
 }
 
+.askth
+{
+	margin-right: 5px;
+
+}
+
+
+
 </style>
 
 </head>
 <body>
 
-<!-----------------------------
-  Sample.jsp
-  - 페이지 설명
-------------------------------->
 	<div>
 		<!-- 메뉴영역 -->
 		<div id="harootHeader">
 			<c:import url="AdminMenu.jsp"></c:import>
 		</div>
+		
+		<br /><br />
+		
+		<!-- 글 내용 영역 -->
+		<div style="width: 85%; margin: auto;">
+				<div>
+					<h1>${askView.ask_title}</h1>
+				</div>
+			
+			<table>
+				<tr>
+					<th class="askth" width="90px;">작성자</th>
+					<td class="askth" style="display: inline-block;">${askView.mem_nickname }</td>
+				</tr>
+				
+				<tr>
+					<th class="askth">작성일자 </th>
+					<td style="display: inline-block;">${askView.ask_date }</td>
+				</tr>
+				
+			
+				<tr>
+					<th class="askth">카테고리 </th>
+					<td style="display: inline-block;">${askView.ask_cate_content}</td>
+				</tr>
+			
+				<tr>
+					<th class="askth">읽음상태 </th>
+					<td style="display: inline-block;">${askView.ask_read == null ? 'Ⅹ' : '○' }</td>
+				</tr>
+				<tr>
+					<th class="askth">답변여부</th>
+					<td style="display: inline-block;"> ${askView.ask_state_content }</td>
+				</tr>
+					
+			</table>
 
-		<!-- content 영역 -->
-		<div id="AdminAskRead">
-			<form>
-				<div>
-					<h1>강아지 정보를 수정하고싶으면 어떻게 하죠?</h1>
-					<h4>뚜냐사랑</h4>
-				</div>
-
-				<div>
-					<table>
-						<tr>
-							<td>21.06.26 13:34&nbsp;&nbsp;</td>
-							<td>조회수 45&nbsp;&nbsp;</td>
-						</tr>
-					</table>
-				</div>
-
-				<div>
-					<textarea rows="30" cols="120" readonly="readonly" style="resize: none;">내용 불러오기</textarea>
-				</div>
-				<br>
-
-				<div>
-					<table>
-						<tr>
-							<th>댓글</th>
-						</tr>
-					</table>
-				</div>
-				<div>
-					<textarea rows="10" cols="120" readonly="readonly" id="reply">댓글 내용 불러와야됨</textarea>
-					<button type="button" id="updateBtn" class="listbtn">수정</button>
-					<button type="button" id="deleteBtn" class="listbtn">삭제</button>
-				</div>
-				<br>
-				<div>
-					<textarea rows="3" cols="112" style="float: left; resize:none;">댓글을 입력해주세요.</textarea>
-					<input type="button" value="등록" id="submitBtn" class="submitbtn">
-				</div>
-
-				<div class="bbsArticle_bottomLine" style="width: 700px;">
-					<br>
-					<p>
-						<a href="">이전글 : </a>
-					</p>
-					<hr>
-				</div>
-				<div class="bbsArticle_noLine" style="width: 700px;">
-					<p>
-						<a href="">다음글 : </a>
-					</p>
-				</div>
-				<div>
-					<button type="button" id="updateBtn" class="listbtn">수정</button>
-					<button type="button" id="deleteBtn" class="listbtn">삭제</button>
-					<button type="button" id="listBtn" class="listbtn">목록으로</button>
-				</div>
-			</form>
 		</div>
 		
-		
+			<br>
+			<div style="width: 85%; margin: auto;">
+				<textarea rows="20" class="form-control" readonly="readonly" style="resize: none;">${askView.ask_content }</textarea>
+			</div><br>
+			<div style="width: 85%; margin: auto; text-align: right;">
+				<button type="button" id="listBtn" class="btn btn-success"  onclick="location.href='adminasklist.action'">목록으로</button>
+			</div>
+			
+			<!-- 코멘트 -->
+			<%-- 
+			<div style="width: 85%; margin: auto;">
+				<div>
+				<table>
+				<c:forEach var="view" items="${commView }">
+				<tr>
+					<td>${view.board_comm_content }</td>
+				</tr>
+				</c:forEach>
+				</table>
+				</div>
+			</div>  
+			--%>
+			<br>
+			
+			<div class="container" style="width: 87%; margin: auto;">
+		        <label for="content">comment</label>
+		        <form name="commentInsertForm">
+		            <div class="input-group">
+		               <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">
+		               <span class="input-group-btn">
+		                    <button type="button" name="commentInsertBtn" class="btn btn-default" >등록</button>
+		               </span>
+		              </div>
+		        </form>
+		    </div>
+		    
+		    <div class="container">
+		        <div class="listComm"></div>
+		    </div>
+		    
+		    <!-- 댓글 자바스크립트 -->
+	 	    <%-- <jsp:include page="BoardComment.jsp" /> --%>
+	
+			<br><br><br>
+			<!-- 
+			<div style="width: 85%; margin: auto;" class="bbsArticle_bottomLine" style="width: 80%;">
+				<p><a href="">이전글 : </a></p>
+				<hr>
+			</div>
+			<div style="width: 85%; margin: auto;" class="bbsArticle_noLine" style="width: 80%;">
+				<p><a href="">다음글 :</a></p>
+			</div>
+			 -->
+			
 	</div>
-
-
+	
 
 </body>
 
