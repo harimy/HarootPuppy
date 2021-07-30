@@ -41,6 +41,14 @@ public class DiaryInfoController
 		model.addAttribute("injectInfo", petDao.petInfo3(pet_code));
 		model.addAttribute("disInfo", petDao.petInfo4(pet_code));
 		
+		/*
+		if (petDao.petInfo3(pet_code) == null)
+		{
+			model.addAttribute("injectInfo", "접종결과없음");
+		}
+		else
+			model.addAttribute("injectInfo", petDao.petInfo3(pet_code));
+		*/
 		
 		// System.out.println(petDao.petInfo3(pet_code).getInject_type_name());
 		//-- 마지막 접종내역만 출력됨

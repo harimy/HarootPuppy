@@ -25,26 +25,38 @@ public class DiaryMainController
 	public String startDiary(HttpServletRequest req, HttpServletResponse response, ModelMap model) throws SQLException 
 	{
 		IPetDAO petDao = sqlSession.getMapper(IPetDAO.class);
+		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
+		PetDTO petDto = new PetDTO();
 		
+		//-- sid 세션에서 받아오고 다시 설정하기
 		HttpSession session = req.getSession();
 		String sid_code = (String)session.getAttribute("sid_code");
 		
 		session.setAttribute("sid_code", sid_code);
 		model.addAttribute("sid_code", sid_code);
 		
-		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
+		//-- nickname 세션에서 받아오고 다시 설정하기
 		model.addAttribute("nickname", mem.searchNickName(sid_code));
 		
+		//-- pet_code 세션에서 받아오고 다시 설정하기 
 		String pet_code = req.getParameter("pet_code");
 		session.setAttribute("pet_code", pet_code);
 		
+		//-- 출력 확인
 		// System.out.println("세션" + pet_code);
 		// System.out.println("파라미터" + req.getParameter("pet_code"));
 		
+		//-- 데이터 보내기
 		model.addAttribute("pet_code", pet_code);
-		
 		model.addAttribute("list", petDao.petInfo(pet_code));
-
+		
+		//-- relation_code 세션에서 받아오고 다시 설정
+		String relation_code = petDao.relationCode(pet_code, sid_code);
+		session.setAttribute("relation_code", relation_code);
+		model.addAttribute("relation_code", relation_code);
+		
+		//-- 출력확인
+		// System.out.println(relation_code);
 		
 		return "/DiaryMain.jsp";
 	}

@@ -3,10 +3,20 @@ package com.haroot.mybatis;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
+
 public interface IDiaryDailyDAO
 {
 	// 일일 입력 (추가)
-	public int addDaily(String pet_code) throws SQLException;
+	public int addDaily(@Param("relation_code") String relation_code, @Param("daily_code") String daily_code
+					, @Param("daily_date") String daily_date) throws SQLException;
+	
+	// DAILY_CODE의 MAX 값 구하기
+	public int max() throws SQLException;
+	
+	// COUNT (입력 시의 조건 : REL_CODE , SYSDATE 존재 시 입력X)
+	public int count(@Param("relation_code") String relation_code, @Param("daily_date") String daily_date) throws SQLException;
+
 	
 	// daily_code 검색 (pet_code로)
 	public String search_dailyCode(String pet_code) throws SQLException;

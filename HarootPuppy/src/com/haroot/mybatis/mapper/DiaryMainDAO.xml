@@ -4,11 +4,11 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.haroot.mybatis.IPetDAO">
-	<!-- 특정회원의 특정 반려견 정보 pet_code 기반 -->
-	<select id="petInfo" parameterType="java.lang.String" resultType="com.haroot.mybatis.PetDTO">
-		SELECT *
-		FROM FORPETNAME_VIEW
-		WHERE PET_CODE = #{pet_code}
+	<select id="relationCode" parameterType="java.lang.String" resultType="java.lang.String" >
+		SELECT RELATION_CODE
+		FROM TBL_RELATION
+		WHERE PET_CODE= #{pet_code }
+		AND SID_CODE = #{sid_code }
 	</select>
 	 
 </mapper>

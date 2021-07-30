@@ -3,8 +3,14 @@ package com.haroot.mybatis;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
+
 public interface IPetDAO
 {
+	// 양육관계 코드 찾아내기 (REL_CODE)
+	public String relationCode(@Param("pet_code") String pet_code, @Param("sid_code") String sid_code) throws SQLException;
+	// @Param이 있어야 오류가 안남 ㅠ 
+	
 	// 나의 반려견 리스트 출력
 	public ArrayList<PetDTO> petList();
 	
