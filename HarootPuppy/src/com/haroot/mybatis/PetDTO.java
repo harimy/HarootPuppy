@@ -30,11 +30,9 @@ public class PetDTO
 				, relation_code									// 양육관계코드
 				, sid_code										// 회원코드
 				, relation_type_code							// 양육관계종류코드
-				, relation_type_content; 						// 양육관계종류내용
-
-
-	
-	private int pet_social;										// 반려견 사회성 정도
+				, relation_type_content 						// 양육관계종류내용
+				, pet_bite_content
+				, pet_social;										// 반려견 사회성 정도
 
 	
 	// getter / setter 생성
@@ -318,12 +316,12 @@ public class PetDTO
 		this.pet_regnum = pet_regnum;
 	}
 
-	public int getPet_social()
+	public String getPet_social()
 	{
 		return pet_social;
 	}
 
-	public void setPet_social(int pet_social)
+	public void setPet_social(String pet_social)
 	{
 		this.pet_social = pet_social;
 	}
@@ -426,6 +424,16 @@ public class PetDTO
 	public void setRelation_type_content(String relation_type_content)
 	{
 		this.relation_type_content = relation_type_content;
+	}
+
+	public String getPet_bite_content()
+	{
+		return pet_bite_content;
+	}
+
+	public void setPet_bite_content(String pet_bite_content)
+	{
+		this.pet_bite_content = pet_bite_content;
 	}
 	
 }

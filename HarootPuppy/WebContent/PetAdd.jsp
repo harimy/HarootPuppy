@@ -60,6 +60,17 @@
 		});            
 		*/
 		
+		$("#check").click(function()
+		{	
+			var chk_arr = [];
+			$("input[name=inject_type_name]:checked").each(function(){
+				var chk = $(this).val();
+				chk_arr.push(chk);				
+			})
+			alert(chk_arr);
+		});
+		
+		
 	});
 
 	
@@ -265,6 +276,7 @@
 <div id="harootContent">
 	<form method="post" action="addpet.action">
 		<input type="hidden" name="sid_code" value="${sid_code }">
+		<input type="hidden" name="relation_type_content" value="주양육자">
 		<div>
 			<h1>반려견 등록</h1>
 		</div>
@@ -315,6 +327,7 @@
 					<label><input type="checkbox" name="inject_type_name" value="켄넬코프">켄넬코프</label>
 					<label><input type="checkbox" name="inject_type_name" value="코로나">코로나</label>
 					<label><input type="checkbox" name="inject_type_name" value="인플루엔자">인플루엔자</label>
+					<button type='button' value="확인" id="check">확인</button>
 				</td>
 			</tr>
 			<tr>
@@ -419,7 +432,7 @@
 				<td>1. 
 	              	<input type="radio" name="pet_char1_content" id="c1" value="활발해요">
 	              	<label for="c1">활발해요</label>
-	             	<input type="radio" name="pet_char1_content	" id="c2" value="얌전해요">
+	             	<input type="radio" name="pet_char1_content" id="c2" value="얌전해요">
 	             	<label for="c2">얌전해요</label>
 	             	<br>
 	             		
@@ -447,9 +460,9 @@
 			<tr>
 				<th>입질 여부</th>
 				<td>
-	              	<input type="radio" name="bite_content" id="no" value="입질 없음">
+	              	<input type="radio" name="pet_bite_content" id="no" value="입질 없음">
 	              	<label for="no">안물어요</label>
-	             	<input type="radio" name="bite_content" id="yes" value="입질 있음">
+	             	<input type="radio" name="pet_bite_content" id="yes" value="입질 있음">
 	             	<label for="yes">물어요</label>
 		        </td>
 			</tr>     

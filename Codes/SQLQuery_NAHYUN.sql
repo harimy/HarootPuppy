@@ -345,3 +345,7 @@ select * from nls_database_parameters where parameter = 'NLS_CHARACTERSET';
 
 SELECT RELATION_CODE, SID_CODE, PET_CODE, RELATION_TYPE_CODE
 FROM TBL_RELATION;
+
+
+
+EXEC PRC_PET_INSERT('사진', '누렁이', 'M', '2019-12-14', 'M', '010-1435-1234', '인천시 연수구 송도동 12', '백설기12', 'Y');
