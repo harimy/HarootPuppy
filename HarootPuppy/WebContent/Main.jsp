@@ -50,12 +50,28 @@
     a:hover { text-decoration: none; }
     a:focus { text-decoration: none; }
     a:hover, a:active { text-decoration: none; }
+    
+    
+    #abDiv
+    {
+    	width: 100%;
+    	margin: 0px;
+    	font-size: 14px;
+    	color: black;
+    }
+    
+    body
+    {
+    	width: 100%;
+    	margin: 0px;
+    }
 </style>
 
 </head>
 <body>
-
+<div id="abDiv">
 <jsp:include page="MainHeader.jsp"></jsp:include>
+</div>
 
 <div id="container" class="ab" style="background-color: rgb(244,188,23);">
 <ul class="myMenu">
