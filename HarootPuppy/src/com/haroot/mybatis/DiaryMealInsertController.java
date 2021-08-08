@@ -59,13 +59,14 @@ public class DiaryMealInsertController
 		
 		// TBL_DAILY 데이터 입력 -------------------------------------------------
 		// 1. DAILY_CODE 에 MAX 값 입력
-		String daily_code = "DAILY" + (dailyDao.max()+1);
-		dailyDTO.setDaily_code(daily_code);
+		String daily_code="";
 		
 		// 2. DAILY_DATE 에 현재날짜 00:00:00 입력
 		SimpleDateFormat format1 = new SimpleDateFormat("yy/MM/dd");		
 		String time2 = format1.format(Calendar.getInstance().getTime());
 		String daily_date = time2;
+		
+		// System.out.println(daily_date); // 21/08/07
 		
 		// SYSDATE 에 00:00:00 으로 넣기
 		// System.out.println(time2);
@@ -75,10 +76,12 @@ public class DiaryMealInsertController
 		
 		if (count <= 0)
 		{
+			// DAILY_CODE 에 MAX 값 입력
+			daily_code = "DAILY" + (dailyDao.max()+1);
+			dailyDTO.setDaily_code(daily_code);
+			
 			dailyDao.addDaily(relation_code, daily_code, daily_date);
 		}
-		else
-			return "redirect:diarymain.action";
 		
 		//-------------------------------------------------------------------
 		
@@ -89,12 +92,29 @@ public class DiaryMealInsertController
 		commonDTO.setCommon_code(common_code);
 		
 		// 2. COMMON_START , END , MEMO , PHOTO 값 받아오기
-		String common_start = req.getParameter("common_start");
-		String common_end = req.getParameter("common_end");
-		String memo = req.getParameter("common_memo");
-		String photo = req.getParameter("common_photo");
+		String common_start = daily_date + " " + req.getParameter("common_start") + ":00";
+		String common_end = daily_date + " " + req.getParameter("common_end") + ":00";
+		String common_memo = req.getParameter("common_memo");
+		String common_photo = req.getParameter("common_photo");
+		
+		System.out.println(common_start); // 20:19 → 21/08/07 21:11:00
+		System.out.println(common_end);
+		
 		
 		// 3. DAILY_CODE 받아오기
+		if(count <= 0)
+		{
+			// daily_code 가 여기서 생성되었으면 바로 common 추가
+			commonDao.addCommon(common_code, common_start, common_end, common_memo, common_photo, daily_code);
+		}
+		else
+		{
+			// daily_code 이미 존재 시 찾아서 common 추가
+			daily_code = dailyDao.search_dailycode(relation_code, daily_date);
+			commonDao.addCommon(common_code, common_start, common_end, common_memo, common_photo, daily_code);
+		}
+		
+		
 		
 		//-------------------------------------------------------------------
 		
