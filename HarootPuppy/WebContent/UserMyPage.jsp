@@ -147,7 +147,7 @@
 			          	<c:import url="UserMyPageReport.jsp"></c:import>
 			          </div>
 			          <div role="tabpanel" class="tab-pane" id="menu4">
-			          	<c:import url="RegisterForm.jsp"></c:import>
+			          	<c:import url="memberupdateform.action"></c:import>
 			          </div>
 			          <div role="tabpanel" class="tab-pane" id="menu5">
 			          	<c:import url="UserMyPageOut.jsp"></c:import>
