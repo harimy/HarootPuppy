@@ -9,18 +9,12 @@
 		FROM TBL_COMMON
 	</select>
 	
-	<select id="count" resultType="java.lang.Integer" parameterType="java.lang.String">
-		SELECT COUNT(*) AS COUNT
-		FROM TBL_DAILY
-		WHERE RELATION_CODE= #{relation_code }
-		AND DAILY_DATE = TO_DATE(#{daily_date}, 'YYYY-MM-DD HH24:MI')
-	</select>
-	
-	<insert id="addDaily" parameterType="java.lang.String">
-		INSERT INTO TBL_DAILY(DAILY_CODE, RELATION_CODE, DAILY_DATE)
-		VALUES(#{daily_code }
-		, #{relation_code }
-		, TO_DATE(#{daily_date}, 'YYYY-MM-DD HH24:MI'))
+	<insert id="addCommon" parameterType="java.lang.String">
+		INSERT INTO TBL_COMMON(COMMON_CODE, COMMON_START, COMMON_END
+		, COMMON_MEMO, COMMON_PHOTO, DAILY_CODE)
+		VALUES(#{common_code }, , TO_DATE(#{common_start , jdbcType=TIMESTAMP}, 'YYYY-MM-DD HH24:MI'))
+        , , TO_DATE(#{common_end , jdbcType=TIMESTAMP}, 'YYYY-MM-DD HH24:MI'))
+        , #{common_memo, jdbcType=VARCHAR }, #{common_photo, jdbcType=VARCHAR }, #{daily_code })
 	</insert>
 
 	

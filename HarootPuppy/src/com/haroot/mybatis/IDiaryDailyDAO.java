@@ -18,8 +18,9 @@ public interface IDiaryDailyDAO
 	public int count(@Param("relation_code") String relation_code, @Param("daily_date") String daily_date) throws SQLException;
 
 	
-	// daily_code 검색 (pet_code로)
-	public String search_dailyCode(String pet_code) throws SQLException;
+	// daily_code 검색 (relation_code & daily_date 존재 시)
+	public String search_dailycode(@Param("relation_code") String relation_code, 
+								@Param("daily_date") String daily_date) throws SQLException;
 	
 	// 일일 수정
 	public int modifyDaily(DiaryDailyDTO dailyDto) throws SQLException;

@@ -23,5 +23,11 @@
 		, TO_DATE(#{daily_date}, 'YYYY-MM-DD HH24:MI'))
 	</insert>
 
+	<select id="search_dailycode" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT DAILY_CODE
+		FROM TBL_DAILY
+		WHERE RELATION_CODE = #{relation_code }
+		AND DAILY_DATE = TO_DATE(#{daily_date}, 'YYYY-MM-DD HH24:MI')
+	</select>
 	
 </mapper>
