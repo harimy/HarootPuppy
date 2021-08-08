@@ -28,6 +28,21 @@ ript" src="<%=cp%>/js/jquery-ui.js"></script>
 
 $(function()
 {
+	$("#mem_pw").keydown(function(key) {
+      if (key.keyCode == 13) {
+      	
+   		if ($('input[name="admin_check"]:checked').val() == 'admin' )
+   		{
+   			$("#mem_id").attr("name","admin_id");
+   			$("#mem_pw").attr("name","admin_pw");
+         		// form action 변경하는 코드
+   			$("#loginForm").attr("action", "loginadmin.action");
+         	}
+   		
+           $(loginForm).submit(); //자료를 선송
+      	}
+ 	 })
+
 	$("#loginBtn").click(function()                                                                                                               
 	{
 		if ($('input[name="admin_check"]:checked').val() == 'admin' )
@@ -41,6 +56,8 @@ $(function()
 		//$("#loginForm").action = "${path}/login_check.do";  //밑에 form1 폼을 Controller의 login_check에 맵핑하도록 한다.
         $(loginForm).submit(); //자료를 선송
 	});
+	
+	
 	
 	// 로그인 실패시 알림창 필요
 

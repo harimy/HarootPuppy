@@ -49,13 +49,13 @@ public class MainController
 		}
 
 	}
-	@RequestMapping(value="beforemain.action", method=RequestMethod.GET)
+	@RequestMapping(value="beforemain.action", method=RequestMethod.POST)
 	public String goToMainBefore(Model model)
 	{
-			return "main.action";
+			return "Main.jsp";
 	}
 	
-	@RequestMapping(value="mainmenu.action", method=RequestMethod.GET)
+	@RequestMapping(value="mainmenu.action", method=RequestMethod.POST)
 	public String goToMain2(Model model, HttpServletRequest request, HttpServletResponse response)
 	{
 		HttpSession session = request.getSession();

@@ -34,6 +34,7 @@ table {
 }
 span{
 	margin: 5px;
+	cursor: pointer;
 }
 </style>
 <script type="text/javascript">
@@ -66,8 +67,8 @@ span{
 		{
 			$("#log").attr("onclick", "location.href='logoutmem.action'");
 			$("#log").html("로그아웃");
-			$("#myPage").css('display', "inline-block");
-			$("#notice").css('display', "inline-block");
+			$("#myPage").css('display', "inline");
+			$("#notice").css('display', "inline");
 			var nickname = $("#nickname").val();
 			// alert(nickname);
 			$("#welcome").html(nickname + " 님 환영합니다!");
