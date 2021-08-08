@@ -35,12 +35,14 @@
 <body>
 
 <div id="harootHeader">
-	<div style="float:left;"><a href="Main.jsp" class="adminMain">로그아웃&nbsp;&nbsp;&nbsp;</a></div>
+	<div style="float:left; margin-right: 5px;"><a href="Main.jsp" class="adminMain">로그아웃</a></div>
 	<!-- <div style="float:right;">ADMIN</div> -->
 	<div style="float:right; padding-right: 5px;">ADMIN ${adminName }님, 환영합니다.</div>
 	<div id="logo" style="text-align : center;">
-		<a href="adminmain.action">
-			<img alt="" src="images/mainlogo.png" width="250" height="100" border="0">
+		<!-- <a href="adminmain.action"> -->
+		<!-- 메인로고 클릭하면 메인페이지로 돌아가게 수정 -->
+		<a href="adminmainlogo.action">
+			<img alt="" src="images/mainlogo.png" width="250px;" height="100px;" border="0">
 		</a>
 	</div>
 </div>

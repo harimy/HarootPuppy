@@ -122,7 +122,7 @@ function add_private() {
 			</svg></button>
 			
 			<!-- 즐겨찾기 영역 -->
-			<div style="background-color: #F6CEE3; width: 600px; height: 300px;">
+			<div style="width: 600px; height: 300px;">
 				
 				<!-- 
 					질병 이름 input text

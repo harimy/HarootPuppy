@@ -208,7 +208,7 @@ String cp = request.getContextPath();
 			<!-- content 영역 -->
 			<!-- 즐겨찾기 -->
 			<div class="container-fluid favorite" id="privateBlock"
-			style="background-color: #F6CEE3; width: 600px; height: 300px;">
+			style="width: 600px; height: 300px;">
 				즐겨찾기&nbsp; 
 				<select name="favorite">
 					<option value="mirivogi">미리보기</option>

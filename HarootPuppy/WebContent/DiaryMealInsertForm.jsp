@@ -198,7 +198,7 @@ String cp = request.getContextPath();
 		
 			
 			<!-- 즐겨찾기 영역 -->
-			<div style="background-color: #F6CEE3; width: 450px; height: 200px;">
+			<div style="width: 450px; height: 200px;">
 				<div class="form-group">
 				<input class="form-control" name="favorite_name" id="favorite_name" type="hidden" >
 				</div>
