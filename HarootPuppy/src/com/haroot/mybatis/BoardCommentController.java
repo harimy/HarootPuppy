@@ -20,7 +20,7 @@ public class BoardCommentController
 	private SqlSession sqlSession;
 	
 	// 댓글 목록 조회	
-	@RequestMapping(value="/boardcommlist.action", method=RequestMethod.GET)
+	@RequestMapping(value="/boardview.action", method=RequestMethod.GET)
 	public String boardCommList(HttpServletRequest request, Model model) throws SQLException
 	{
 		HttpSession session = request.getSession();
@@ -37,7 +37,7 @@ public class BoardCommentController
 			
 			model.addAttribute("list", dao.listComm());
 			
-			result = "/BoardCommList.jsp";
+			result = "/BoardRead.jsp";
 		}
 		return result;
 	}

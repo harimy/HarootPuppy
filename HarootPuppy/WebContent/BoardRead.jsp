@@ -67,17 +67,7 @@
 			<button type="button" id="deleteBtn" class="btn btn-danger">삭제</button>
 			<button type="button" id="listBtn" class="btn btn-success"  onclick="location.href='boardlist.action'">목록으로</button>
 		</div>
-		<%-- <div style="width: 85%; margin: auto;">
-			<div>
-			<table>
-			<c:forEach var="view" items="${commView }">
-			<tr>
-				<td>${view.board_comm_content }</td>
-			</tr>
-			</c:forEach>
-			</table>
-			</div>
-		</div>  --%>
+		
 		<br>
 		
 		<div class="container" style="width: 85%; margin: auto;">
@@ -96,8 +86,20 @@
 	        <div class="listComm"></div>
 	    </div>
 	    
- 	    <jsp:include page="BoardComment.jsp" />
-
+ 	    <!-- 댓글 리스트 -->
+ 	    <div id="reply">
+		  <ol class="replyList">
+		    <c:forEach items="${list}" var="list">
+		      <li>
+		        <p>
+		        작성 내용 : ${list.board_comm_content}<br />
+		        </p>
+		      </li>
+		    </c:forEach>   
+		  </ol>
+		</div>
+ 	    
+ 	    
 		<br><br><br>
 		
 		<div style="width: 85%; margin: auto;" class="bbsArticle_bottomLine" style="width: 80%;">
