@@ -20,7 +20,7 @@ public class BoardCommentController
 	private SqlSession sqlSession;
 	
 	// 댓글 목록 조회	
-	@RequestMapping(value="/boardview.action", method=RequestMethod.GET)
+	@RequestMapping(value="/boardcommview.action", method=RequestMethod.GET)
 	public String boardCommList(HttpServletRequest request, Model model) throws SQLException
 	{
 		HttpSession session = request.getSession();
