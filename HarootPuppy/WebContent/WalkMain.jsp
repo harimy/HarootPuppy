@@ -147,7 +147,6 @@
         center: new daum.maps.LatLng(${pet.pet_addr_lat}, ${pet.pet_addr_lng}), // 지도의 중심좌표
         level: 5 // 지도의 확대 레벨
     };
-
     //지도를 미리 생성
     var map = new daum.maps.Map(mapContainer, mapOption);
     //주소-좌표 변환 객체를 생성
@@ -158,8 +157,6 @@
         position: new daum.maps.LatLng(${pet.pet_addr_lat}, ${pet.pet_addr_lng}),
         map: map
     });
-
-
     function sample5_execDaumPostcode() 
     {
         new daum.Postcode(
@@ -167,7 +164,6 @@
             oncomplete: function(data) 
             {
                 var addr = data.address; // 최종 주소 변수
-
                 // 주소 정보를 해당 필드에 넣는다.
                 document.getElementById("sample5_address").innerHTML = '설정한 주소지 : ' + addr;
                 // 주소로 상세 정보를 검색
@@ -177,7 +173,6 @@
                     if (status === daum.maps.services.Status.OK) 
                     {     
                         var result = results[0]; //첫번째 결과의 값을 활용
-
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
                         // 지도를 보여준다.
