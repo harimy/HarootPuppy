@@ -134,7 +134,7 @@
 						<ul>
 							
 							<li>
-								<a href="" class="link">
+								<a href="adminreportboardlist.action" class="link">
 								미처리 게시물 <span class="spanSt1">${walkNotHandled }</span>건
 								</a>
 							</li>
@@ -142,7 +142,7 @@
 							<!-- <li>미처리 댓글 50건</li> -->
 							
 							<li>
-								<a href="" class="link">
+								<a href="adminreportboardlist.action" class="link">
 								미처리 댓글 <span class="spanSt1">${walkCommNotHandled }</span>건
 								</a>
 							</li>
@@ -152,7 +152,7 @@
 						<ul>
 							<!-- <li>미처리 무단결석 의견 50건</li> -->
 							<li>
-								<a href="" class="link">
+								<a href="adminreportboardlist.action" class="link">
 								미처리 무단결석 의견 <span class="spanSt1">${walkOffNotHandled }</span>건
 								</a>
 							</li>
@@ -164,7 +164,7 @@
 							<!-- <li>미처리 문의 50건</li> -->
 							
 							<li>
-								<a href="" class="link">
+								<a href="adminasklist.action" class="link">
 								답변대기 문의 <span class="spanSt1">${askNotHandled }</span>건
 								</a>
 							</li>
