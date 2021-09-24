@@ -35,7 +35,8 @@ $(function()
    		{
    			$("#mem_id").attr("name","admin_id");
    			$("#mem_pw").attr("name","admin_pw");
-         		// form action 변경하는 코드
+         	
+   			// 관리자로 접속 시 form action 변경하는 코드
    			$("#loginForm").attr("action", "loginadmin.action");
          	}
    		

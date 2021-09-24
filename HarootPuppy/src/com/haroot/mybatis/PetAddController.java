@@ -20,6 +20,7 @@ public class PetAddController
 	private SqlSession sqlSession;
 	
 	
+	// 반려동물 등록 
 	@RequestMapping(value = "/petinsertform.action", method = RequestMethod.POST)
 	public String registerForm(Model model, HttpServletRequest request)
 	{
@@ -30,6 +31,7 @@ public class PetAddController
 	}
 	
 	
+	// 반려동물 등록
 	@RequestMapping(value = "/addpet.action", method = RequestMethod.POST)
 	public String add(PetDTO p, HttpServletRequest request) throws SQLException 
 	{
