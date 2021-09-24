@@ -27,6 +27,8 @@
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <script type="text/javascript">
 
+	/*종에 따른 반려동물 크기 입력*/
+	
 	$(document).ready(function()
 	{
 		if( $("#pet_type_name").val=="치와와" )	
@@ -37,7 +39,8 @@
 	   		$("#pet_type_size".val="대형견");
 	});
 	
-
+	
+	/*반려동물 생일*/
 	$(function()
 	{
 		var checkNum1=0;
@@ -88,6 +91,7 @@
 	 		
 	  }
 	 
+	 /*반려동물 주소*/
 	 function openAddressChild1() 
 	  {
 		    var _width = '650';
